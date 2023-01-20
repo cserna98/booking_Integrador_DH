@@ -1,0 +1,12 @@
+
+.search-block {    
+    grid-template-columns: repeat(1, 1fr);    
+    grid-gap: 10px; 
+    background: #E5E5E5;
+    grid-template-rows: min-content 1fr;
+    height: 250px;  
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    text-align: center;   
+}
+
