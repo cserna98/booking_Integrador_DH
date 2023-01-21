@@ -1,5 +1,6 @@
 
 import SearchBlock from "./components/SearchBlock/SearchBlock";
+import BlockCategories from "./components/BlockCategories/BolckCategories";
 
 
 
@@ -8,7 +9,8 @@ function App() {
     <div className="App">
       <header className="App-header">       
       </header>
-      <SearchBlock/>    
+      <SearchBlock/> 
+      <BlockCategories/>   
     </div>
     
   );
