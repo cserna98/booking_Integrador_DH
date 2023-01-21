@@ -6,7 +6,7 @@ function SearchBlock(){
 
     return(
         <div className="search-block">
-            <div className='header'>
+            <div className='header' id='titleSearch'>
                 <h1>Buscar </h1>
                 <p>Encuentra el hotel perfecto para tu próximo viaje por galactico</p>                               
             </div> 

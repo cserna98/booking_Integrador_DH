@@ -10,19 +10,19 @@ const Categories = () => {
 
   return (
     <div className='categories Disp_grid'>
-      <h2 id="cate">Categorías</h2>
-      <p id="CategoriesText">Elige la categoría que más te interese</p>      
-      <div className="categories-container Disp_grid">
+        <h2 id="cate">Categorías</h2>
+        <p id="CategoriesText">Elige la categoría que más te interese</p>      
+        <ul className="categories-container Disp_grid">
         {categories.map((category) => (
-          <div className="category Disp_grid" key={category.id}>
-            <img id="categoryImg" src={category.image} alt={category.title} />
-            <div>
-                <h4>{category.title}</h4>
-                <p>{category.Description}</p>
-            </div>            
-          </div>
+            <li className="category Disp_grid" key={category.id}>
+                <img id="categoryImg" src={category.image} alt={category.title} />
+                <div>
+                    <h4>{category.title}</h4>
+                    <p>{category.Description}</p>
+                </div>            
+            </li>
         ))}
-      </div>
+        </ul>
     </div>
   );
 };

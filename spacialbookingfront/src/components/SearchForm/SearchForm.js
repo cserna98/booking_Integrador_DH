@@ -3,7 +3,7 @@ import logolocation from '../../assest/images/Vector.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import places from '../../assest/Json/places.json' 
 import { faLocationDot, faCalendarAlt, faSearch } from '@fortawesome/free-solid-svg-icons'
-import './SearchFromStyle.css'
+import './SearchFormStyle.css'
 
 function SearchForm(){
 
@@ -26,13 +26,17 @@ function SearchForm(){
 
 
     return(
-    <form className='Disp_grid'>                
-        <label  className='Disp_grid label' id="location"> 
 
-            <div>
-            <FontAwesomeIcon icon={faLocationDot} />            
-            <input              
-                placeholder={<FontAwesomeIcon icon={faLocationDot}/>} 
+    <form className='Disp_grid' id='FormSearch'>  
+
+        <label  className='Disp_grid label' id="location"> 
+           <div id="SearchInput" className='Disp_grid'>
+                <div id="locationIcon">
+                    <FontAwesomeIcon icon={faLocationDot} />
+                </div>                           
+                <input              
+                placeholder="Les't explore the galaxi"
+                id='value'   
                 className='form-inputs'
                 value={actualValue ? actualValue : ""}
                 onChange={onchangeSearch} 
@@ -42,7 +46,7 @@ function SearchForm(){
             
             <ul id="places" className={` ${actualValue ? "DisplayOn":"DisplayOff"}`}>
                 {filteredPlaces.map((place)=> (                        
-                <div  key={place.id}   value={place.name} id="inSearch" className='Disp_grid' >
+                <div  key={place.id}    value={place.name} id="inSearch" className='Disp_grid' >
                     <img src={logolocation}/>                                                                
                     <h4>{place.name}</h4>
                     <h6>{place.located}</h6>                     
@@ -51,12 +55,12 @@ function SearchForm(){
             </ul>               
         </label>       
        
-            <label className='label'>
-                <input  className='form-inputs' type="date"></input>
-            </label>
+        <label className='label' id='Date'>
+            <input  className='form-inputs' type="date"></input>
+        </label>
         
     
-        <button type="submit">Buscar</button>                     
+        <button  id='searchButon'className='submit' type="submit">Buscar</button>                     
     </form>
     );
 
