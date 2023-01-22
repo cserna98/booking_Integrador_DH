@@ -1,10 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
-import Login from './components/Login.jsx';
+import Login from './components/LoginUser/Login.jsx';
 
 function App() {
   return (
-    <Login titulo={"Hello World"}></Login>
+    <Login title={"Iniciar sesión"}></Login>
     // <div className="App">
       
     //   <header className="App-header">
