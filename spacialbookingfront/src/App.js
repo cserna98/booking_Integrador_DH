@@ -1,10 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
-import Login from './components/LoginUser/Login.jsx';
+import Login from './components/Login.jsx';
+import {Outlet} from 'react-router-dom';
 
 function App() {
   return (
+    <>
     <Login title={"Iniciar sesión"}></Login>
+    <Outlet></Outlet>
+    </>
     // <div className="App">
       
     //   <header className="App-header">
