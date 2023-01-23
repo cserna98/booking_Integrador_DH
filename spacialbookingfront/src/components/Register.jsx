@@ -5,7 +5,7 @@ import validateRegister from "../utils/validateRegister";
 function Register(){
     return (
         <>
-        <form>
+        <form id="register">
         <h2>Crear cuenta</h2>
         <div>
         <label htmlFor="nombre">Nombre:</label>
@@ -25,7 +25,7 @@ function Register(){
         <label htmlFor="passwordConfirm">Confirmar contraseña</label>
         <input type="password" name="passwordConfirm" id="passwordConfirm" placeholder="Ingresa tu contraseña"></input> 
         </div>
-        <button type="submit" onSubmit={validateRegister}>Crear cuenta</button>
+        <button type="submit" onClick={validateRegister}>Crear cuenta</button>
         <p>¿Ya tienes una cuenta? <Link to='/login'>Iniciar sesión</Link></p>
         </form>
         </>
