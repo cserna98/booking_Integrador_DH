@@ -1,0 +1,34 @@
+.footer{
+    width: 100vw;
+    background-color: #4C3B71;
+    position: absolute;
+    bottom: 0;
+    height: 5vh;
+    display: grid;
+    grid-template-columns: 10;
+}
+
+.icon{
+    font-size: 1.5rem;
+    color:#a7afc7;
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+.icon :hover{
+    color:#1D295180;
+}
+
+.section{
+    grid-column: 9/11;
+   justify-self: end;
+   margin-right: 2vw;
+  align-self: center;
+}
+
+.allrights{
+    height: 1rem;
+    color: #a7afc7;
+    align-self: center;
+    margin-left: 2vw;
+    margin-bottom: 0.5vw;
+}
