@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import logolocation from '../../assest/images/Vector.png'
+import logolocation from '../../assest/img/Vector.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import places from '../../assest/Json/places.json' 
 import { faLocationDot, faCalendarAlt, faSearch } from '@fortawesome/free-solid-svg-icons'

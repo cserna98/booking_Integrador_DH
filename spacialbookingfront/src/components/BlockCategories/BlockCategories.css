@@ -69,7 +69,39 @@
     margin-top: 15px;       
 }
 
-
-
-
 }
+
+/*_________________________________________mobile 414____________________________________*/
+
+
+@media (max-width: 450px) {    
+    
+    .categories{
+        grid-template-columns: repeat(1, 1fr);               
+        overflow: hidden ; 
+        margin-top: 100px;          
+    }
+    
+    .categories-container{
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(1, 1fr)       
+    }
+
+    .category{    
+        height: 312px;
+        width: 90%;      
+    }
+
+    #CategoriesText{        
+        height: 50px;
+        
+    }
+    
+    #cate{
+        grid-row-start: 0; 
+        grid-column-start: 1;   
+        text-align: center;        
+        
+    }
+    
+    }

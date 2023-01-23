@@ -3,10 +3,6 @@
     display: grid;
 }
 
-.label{
-    width: 100%;    
-}
-
 
 .search-block form{
     grid-template-columns: repeat(3, 1fr);   
@@ -19,23 +15,21 @@
 
 #FormSearch{    
     grid-template-columns: 35% 35% 30% ;    
-    padding-left: 3%;     
+    padding-left: 10%;     
     justify-content: center;      
 }
 
 #location{
     grid-column: 1/2;
-    grid-row: 1/1; 
-    margin: 2px 5% 2px 15%
+    grid-row: 1/1;     
 }
 
 #Date{
-    grid-column: 2/3;
+    grid-column: 2/3;    
 }
 
 #searchButon{    
-    width: 50%;
-    background-color: #1DBEB4;
+    width: 50%;    
 }
 
 #SearchInput{
@@ -49,10 +43,6 @@
     height: 30px;
     border-radius: 5px;
     border: solid 1px black;
-}
-
-#value{
-
 }
 
 .DisplayOff{
@@ -98,8 +88,43 @@
 
 /*________________________________________Tablet_______________________*/
 
-@media (max-width: 764px) {
+@media (max-width: 450px) {
+    .search-block form{
+        grid-template-columns: repeat(1, 1fr);   
+    }
+
+    #FormSearch{    
+        grid-template-columns: 100% ;
+        grid-template-rows: repeat(3,1fr) ;
+        justify-content: center; 
+        height: auto;
+        margin-left: 0;
+        padding-left: 0;  
+          
+    }
+    #SearchInput{
+       width: 100%;
+       grid-column-start: 1;    
+    }
+
+    #location{        
+        grid-row-start: 1; 
+        width: 100%;
+        grid-column-start: 1;        
+    }
     
+    #Date{
+        width: 100%;
+        grid-row-start: 2;
+        grid-column-start: 1;
+        margin-right: 0;
+        padding-right: 0;
+    }
     
+    #searchButon{    
+        width: 100%;
+        grid-row-start: 3;
+        background-color: #1DBEB4;
+    }
 
   }

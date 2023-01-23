@@ -3,7 +3,7 @@
         "id": 1,
         "title": "Planets",
         "Description": "Mauris ullamcorper mauris sollicitudin eros rhoncus pretium",
-        "image": "/static/media/category1.752e624b3709fba3f940.jpeg"
+        "image": "/static/media/category3.fd760ed50bb28d643152.jpeg"
     },
     {
         "id": 2,
@@ -13,7 +13,7 @@
     },
     {
         "id": 3,
-        "title": "",
+        "title": "Spacial station",
         "Description": "tortor quam pharetra erat, a tincidunt lorem magna sit amet tortor.",
         "image": "/static/media/category3.fd760ed50bb28d643152.jpeg"
     },

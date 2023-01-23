@@ -2,18 +2,17 @@
 .search-block {    
     grid-template-columns: repeat(1, 1fr);    
     grid-gap: 10px; 
-    background: #545776;
-    grid-template-rows: min-content 1fr;
-    height: 150px;  
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
-    text-align: center; 
-      
+    background: #545776;    
+    height:auto;
+    padding-bottom: 5%;
+    text-align: center;       
 }
 
 #titleSearch h1{    
     margin-bottom: 0px;
     color: #FFFFFF;
 }
+
+/*________________________________________Tablet_______________________*/
 
 
