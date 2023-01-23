@@ -1,12 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
 import Login from './components/Login.jsx';
-import {Outlet} from 'react-router-dom';
+import {Link, Outlet} from 'react-router-dom';
 
 function App() {
   return (
     <>
-    <Login title={"Iniciar sesión"}></Login>
+    <Link to='/login'>
+      <button>Login</button>
+    </Link>
+    <Link to='/signup'>
+      <button>Registro</button>
+    </Link>
     <Outlet></Outlet>
     </>
     // <div className="App">

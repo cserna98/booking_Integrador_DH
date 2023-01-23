@@ -5,17 +5,20 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter,Routes,Route} from 'react-router-dom';
 import Register from './components/Register';
-
+import Login from './components/Login';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
 {/* Se van a crear las rutas */}
     <BrowserRouter>
       <Routes>
-        <Route path='/signup' element={<Register></Register>}></Route>
+        <Route path="/" element={<App />} >
+          <Route path="/signup" element={<Register></Register>} />
+          <Route path="/login" element={<Login></Login>} />
+        </Route>
+        
       </Routes>
     </BrowserRouter>
-    <App />
   </React.StrictMode>
 );
 
