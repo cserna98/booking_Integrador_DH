@@ -7,10 +7,10 @@ function Register(){
         <form>
         <h2>Crear cuenta</h2>
         <div>
-        <label htmlFor="nombre">Nombre:</label>
-        <input type="text" name="nombre" id="nombre" placeholder="Nombre"></input>
-        <label htmlFor="apellido">Apellido:</label>
-        <input type="text" name="apellido" id="apellido" placeholder="Apellido"></input>
+        <label htmlFor="name">Nombre:</label>
+        <input type="text" name="name" id="name" placeholder="Nombre"></input>
+        <label htmlFor="lastName">Apellido:</label>
+        <input type="text" name="lastName" id="lastName" placeholder="Apellido"></input>
         </div>
         <div>
         <label htmlFor="email">Correo electrónico</label>
