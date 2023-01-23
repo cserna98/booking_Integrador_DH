@@ -21,8 +21,8 @@ function Register(){
         <input type="password" name="password" id="password" placeholder="Ingresa tu contraseña"></input>
         </div>
         <div>
-        <label htmlFor="password">Confirmar contraseña</label>
-        <input type="password" name="password" id="password" placeholder="Ingresa tu contraseña"></input> 
+        <label htmlFor="passwordConfirm">Confirmar contraseña</label>
+        <input type="password" name="passwordConfirm" id="passwordConfirm" placeholder="Ingresa tu contraseña"></input> 
         </div>
         <button type="submit">Crear cuenta</button>
         <p>¿Ya tienes una cuenta? <Link to='/login'>Iniciar sesión</Link></p>
