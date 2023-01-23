@@ -1,8 +1,10 @@
 import React from "react";
 import {Link} from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
+import validateLogin from "../utils/validateLogin";
 
 function Login(){
+    const isCorrect = false;
     return (
         <>
         <div>
@@ -22,9 +24,10 @@ function Login(){
         <label htmlFor="password">Contraseña</label>
         <input type="password" name="password" id="password" placeholder="Ingresa tu contraseña"></input>
         </div>
-        <button type="submit">Ingresar</button>
+        <button type="submit" onClick={validateLogin}>Ingresar</button>
         <p>¿Aún no tines cuenta? <Link to='/signup'>Regístrate</Link></p>
         </form>
+        {isCorrect?<p>Revisa la información</p>:undefined}
         </>
         
     )

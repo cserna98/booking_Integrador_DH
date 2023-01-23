@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import validateRegister from "../utils/validateRegister";
 
 function Register(){
     return (
@@ -24,7 +25,7 @@ function Register(){
         <label htmlFor="password">Confirmar contraseña</label>
         <input type="password" name="password" id="password" placeholder="Ingresa tu contraseña"></input> 
         </div>
-        <button type="submit">Crear cuenta</button>
+        <button type="submit" onSubmit={validateRegister}>Crear cuenta</button>
         <p>¿Ya tienes una cuenta? <Link to='/login'>Iniciar sesión</Link></p>
         </form>
         </>
