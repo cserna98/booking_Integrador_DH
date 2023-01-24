@@ -1,0 +1,130 @@
+
+.Disp_grid{
+    display: grid;
+}
+
+
+.search-block form{
+    grid-template-columns: repeat(3, 1fr);   
+}
+.form-inputs{
+    width: 80%;
+    height: 30px;
+    border-radius: 5px;
+}
+
+#FormSearch{    
+    grid-template-columns: 35% 35% 30% ;    
+    padding-left: 10%;     
+    justify-content: center;      
+}
+
+#location{
+    grid-column: 1/2;
+    grid-row: 1/1;     
+}
+
+#Date{
+    grid-column: 2/3;    
+}
+
+#searchButon{    
+    width: 50%;    
+}
+
+#SearchInput{
+    grid-template-columns: 10% 90%;
+    grid-template-rows: repeat(1, 1fr);
+    align-items: center;    
+}
+
+#locationIcon{
+    background-color: white;
+    height: 30px;
+    border-radius: 5px;
+    border: solid 1px black;
+}
+
+.DisplayOff{
+    display: none;
+}
+
+.DisplayOn{
+    position: absolute;
+    z-index: 1;
+    margin-top: 50px;    
+    height: auto;
+    width: 480px;       
+    border-radius: [object Object]px;
+    background: #FFFFFF;
+    border: 1px solid #F3F1ED;    
+}
+
+#inSearch{
+    grid-template-columns: repeat(3, 1fr); 
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: 10% 10% ; 
+    height: 100px; 
+}
+
+#inSearch img{
+    grid-column: 1/2;
+    grid-row: 2/2;
+
+}
+
+
+#inSearch h4{
+    grid-column: 2/2;
+    grid-row: 1/2;
+    background-color: #1DBEB4;
+}
+
+
+#inSearch h6{
+    grid-column: 2/2;
+    grid-row: 2/3;
+}
+
+/*________________________________________Tablet_______________________*/
+
+@media (max-width: 450px) {
+    .search-block form{
+        grid-template-columns: repeat(1, 1fr);   
+    }
+
+    #FormSearch{    
+        grid-template-columns: 100% ;
+        grid-template-rows: repeat(3,1fr) ;
+        justify-content: center; 
+        height: auto;
+        margin-left: 0;
+        padding-left: 0;  
+          
+    }
+    #SearchInput{
+       width: 100%;
+       grid-column-start: 1;    
+    }
+
+    #location{        
+        grid-row-start: 1; 
+        width: 100%;
+        grid-column-start: 1;        
+    }
+    
+    #Date{
+        width: 100%;
+        grid-row-start: 2;
+        grid-column-start: 1;
+        margin-right: 0;
+        padding-right: 0;
+    }
+    
+    #searchButon{    
+        width: 100%;
+        grid-row-start: 3;
+        background-color: #1DBEB4;
+    }
+
+  }
