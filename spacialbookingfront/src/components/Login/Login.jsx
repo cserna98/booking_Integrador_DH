@@ -2,6 +2,7 @@ import React from "react";
 import {Link, Redirect} from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import styles from './Login.module.css'
 
 function Login(){
     const validationData = {
@@ -49,15 +50,15 @@ function Login(){
 
 
     return (
-        <>
-        <div>
+        <div className={styles.loginTemplate}>
+        <div className={styles.buttonClosed}>
             {/* Agregar funcionalidad para redireccionar al home o pagina principal usando
             la etiqueta Link*/}
             {/* <Link to='/home'> */}
-            <button>X</button>
+            <button >X</button>
             {/* </Link> */}
         </div>
-        <form onSubmit={onSubmitLogin}>
+        <form onSubmit={onSubmitLogin} className={styles.form}>
         <h2>Iniciar sesión</h2>
         <div>
         <label htmlFor="email">Correo electrónico</label>
@@ -67,11 +68,11 @@ function Login(){
         <label htmlFor="password">Contraseña</label>
         <input type="password" name="password" id="password" placeholder="Ingresa tu contraseña" value={password} onChange={onChangePassword}></input>
         </div>
-        <button type="submit" >Ingresar</button>
-        <p>¿Aún no tines cuenta? <Link to='/signup'>Regístrate</Link></p>
+        <button type="submit" className={styles.buttonLogin}>Ingresar</button>
+        <p>¿Aún no tienes cuenta? <Link to='/signup'>Regístrate</Link></p>
         </form>
         
-        </>
+        </div>
         
     )
 }
