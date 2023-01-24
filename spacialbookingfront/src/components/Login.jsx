@@ -1,9 +1,11 @@
 import React from "react";
 import {Link} from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 function Login(){
-    const isCorrect = false;
+    // Creación de estados por cada input
+
     return (
         <>
         <div>
@@ -26,7 +28,7 @@ function Login(){
         <button type="submit" >Ingresar</button>
         <p>¿Aún no tines cuenta? <Link to='/signup'>Regístrate</Link></p>
         </form>
-        {isCorrect?<p>Revisa la información</p>:undefined}
+        
         </>
         
     )
