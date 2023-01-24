@@ -2,19 +2,14 @@ import React from 'react';
 import './App.css';
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
-import SearchBlock from './Components/SearchBlock/SearchBlock';
-import Searchform from './Components/SearchForm/SearchForm';
 
 
 function App() {
   return <>
   <Header />
-  <SearchBlock/>
-  <Searchform/>
   <main className="body"></main>
   <Footer/>
   </>;
-
 }
 
 export default App;
