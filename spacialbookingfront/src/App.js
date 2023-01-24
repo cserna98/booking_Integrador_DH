@@ -2,17 +2,16 @@ import React from 'react';
 import './App.css';
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
-import SearchBlock from "./Components/SearchBlock/SearchBlock";
-import BlockCategories from "./Components/BlockCategories/BolckCategories";
+import Main from './Components/Main/Main'
 
 function App() {
-  return <>
-  <Header />
-    <SearchBlock/> 
-    <BlockCategories/> 
-    <main className="body"></main>
-  <Footer/>
-  </>;
+  return(
+  <>
+      <Header />
+      <Main></Main>
+      <Footer/>
+        </>
+  ) ;
 
 }
 

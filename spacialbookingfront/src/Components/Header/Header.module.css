@@ -206,3 +206,8 @@
   grid-column: 2/4;
   grid-row: 4/5;
 }
+
+.Disp_none{
+  display: none;
+  background-color: green;
+}
