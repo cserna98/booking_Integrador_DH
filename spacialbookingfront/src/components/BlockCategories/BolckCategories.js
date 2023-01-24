@@ -2,7 +2,7 @@
 import React from 'react';
 import categories from '../../assest/Json/categories.json'
 import './BlockCategories.css'
-import img from '../../assest/img/category3.jpeg'
+import img from '../../assets/img/category3.jpeg'
 
 const Categories = () => {
 

@@ -1,3 +1,4 @@
+import React from 'react'; 
 import './SearchBlockStyle.css'
 import Serachform from '../SearchForm/SearchForm'
 

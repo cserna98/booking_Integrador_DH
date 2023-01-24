@@ -1,5 +1,6 @@
-import React, {useState, useEffect} from 'react';
-import logolocation from '../../assest/img/Vector.png'
+import  {useState, useEffect} from 'react';
+import React from 'react'; 
+import logolocation from '../../assets/img/Vector.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import places from '../../assest/Json/places.json' 
 import { faLocationDot, faCalendarAlt, faSearch } from '@fortawesome/free-solid-svg-icons'
@@ -32,7 +33,7 @@ function SearchForm(){
         <label  className='Disp_grid label' id="location"> 
            <div id="SearchInput" className='Disp_grid'>
                 <div id="locationIcon">
-                    <FontAwesomeIcon icon={faLocationDot} />
+                    
                 </div>                           
                 <input              
                 placeholder="Les't explore the galaxi"
