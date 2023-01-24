@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import Login from './components/Login.jsx';
-import {Link, Outlet} from 'react-router-dom';
+import Login from './components/Login/Login.jsx';
+import { Link, Outlet } from 'react-router-dom';
 
 function App() {
   return (
