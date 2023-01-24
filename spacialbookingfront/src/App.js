@@ -6,13 +6,14 @@ import { Link, Outlet } from 'react-router-dom';
 function App() {
   return (
     <>
-    <Link to='/login'>
+    {/* Esto de abajo era una prueba para renderizar los componentes */}
+    {/* <Link to='/login'>
       <button>Login</button>
     </Link>
     <Link to='/signup'>
       <button>Registro</button>
-    </Link>
-    <Outlet></Outlet>
+    </Link> */}
+    {/* <Outlet></Outlet> */}
     </>
     // <div className="App">
       
