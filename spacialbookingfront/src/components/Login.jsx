@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -36,6 +36,7 @@ function Login(){
             setEmail("");
             setPassword("");
             alert("Login exitoso")
+            // El alert no va, es para indicar qque falta redireccionarlo al Home y cambiar el estado is Logged del Header
         }else{
             alert("Error credenciales inválidas. Por favor valide los campos ingresados")
         }
