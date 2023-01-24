@@ -40,8 +40,11 @@ function Register(){
         e.preventDefault();
         const isCorrectForm = validateInputs();
         if(isCorrectForm){
-            // const formulario = document.getElementById("register");
-            // formulario.reset();
+            setName("");
+            setLastName("");
+            setEmail("");
+            setPassword("");
+            setPasswordConfirm("");
             alert("Registro exitoso")
         }else{
             alert("Error. Verifica los campos ingresados")
