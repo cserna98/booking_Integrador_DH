@@ -2,7 +2,7 @@
 .search-block {    
     grid-template-columns: repeat(1, 1fr);    
     grid-gap: 10px; 
-    background: #545776;    
+    background: #4C3B71    ;    
     height:auto;
     padding-bottom: 5%;
     text-align: center;       
