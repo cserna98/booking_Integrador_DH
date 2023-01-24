@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import styles from './Register.module.css';
 
 function Register(){
     // Creación de los estados
@@ -53,14 +54,18 @@ function Register(){
 
 
     return (
-        <>
-        <form id="register" onSubmit={onSubmitForm}>
+        <div className={styles.registerTemplate}>
+        <form id="register" onSubmit={onSubmitForm} className={styles.form}>
         <h2>Crear cuenta</h2>
+        <div className={styles.fullName}>
         <div>
         <label htmlFor="nombre">Nombre:</label>
         <input type="text" name="nombre" id="nombre" placeholder="Nombre" value={name} onChange={onChangeName}></input>
+        </div>
+        <div>
         <label htmlFor="apellido">Apellido:</label>
         <input type="text" name="apellido" id="apellido" placeholder="Apellido" value={lastName} onChange={onChangeLastName}></input>
+        </div>
         </div>
         <div>
         <label htmlFor="email">Correo electrónico</label>
@@ -74,10 +79,10 @@ function Register(){
         <label htmlFor="passwordConfirm">Confirmar contraseña</label>
         <input type="password" name="passwordConfirm" id="passwordConfirm" placeholder="Ingresa tu contraseña" value={passwordConfirm} onChange={onChangePasswordConfirm}></input> 
         </div>
-        <button type="submit" >Crear cuenta</button>
+        <button type="submit" className={styles.buttonSignup}>Crear cuenta</button>
         <p>¿Ya tienes una cuenta? <Link to='/login'>Iniciar sesión</Link></p>
         </form>
-        </>
+        </div>
     )
 }
 
