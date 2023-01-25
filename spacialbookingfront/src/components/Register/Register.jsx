@@ -2,14 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import styles from './Register.module.css';
+import { GlobalContext } from "../globalState/GlobalState";
 
 function Register(){
     // Creación de los estados
     const [name, setName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [lastName, setLastName] = useState("");    
     const [passwordConfirm, setPasswordConfirm] = useState("");
+
+    // Variables estado global 
+    const {email,setEmail,password,setPassword}= GlobalContext()
 
     // Manejadores de eventos para cada input para actualziar los estados a medida que el usurio escribe en los inputs
     const onChangeName = (e) => setName(e.target.value);
@@ -41,11 +43,12 @@ function Register(){
         e.preventDefault();
         const isCorrectForm = validateInputs();
         if(isCorrectForm){
-            setName("");
-            setLastName("");
-            setEmail("");
-            setPassword("");
-            setPasswordConfirm("");
+            setName(e.target.value);
+            console.log(name)
+            setLastName(e.target.value);
+            setEmail(e.target.value);
+            setPassword(e.target.value);
+            setPasswordConfirm(e.target.value);           
             alert("Registro exitoso")
         }else{
             alert("Error. Verifica los campos ingresados")

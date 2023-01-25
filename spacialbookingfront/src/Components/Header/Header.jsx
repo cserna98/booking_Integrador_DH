@@ -8,12 +8,12 @@ import { Link } from "react-router-dom"
 
 const Header = () => {
 
-  const {renderForm,setRenderForm}= GlobalContext()
-
+  const {renderForm,setRenderForm,isLoged,setLogin}= GlobalContext()
+ 
 
 
   const [isOpen,setOpen] = useState(false);
-  const [isLoged,setLogin] = useState(true);
+ 
   
 
   const handleMenu = () => {
@@ -30,14 +30,14 @@ const handleLogIn = () =>{
 }
 
   const handleLoged = () =>{
-    setLogin(!isLoged);
+    setLogin(false);
 
   }  
 
     return <>
     <header className={styles.header}>
-      <a href="#" className={styles.logo}><img  className={styles.logo} src={logo} alt="Logo Ovniric" /></a>
-      <a href="#" className={styles.lema}><img  className={styles.lema} src={lema} alt="Lema Ovniric" /></a>
+      <Link to="/" className={styles.logo}><img  className={styles.logo} src={logo} alt="Logo Ovniric" /></Link>
+      <Link to="/" className={styles.lema}><img  className={styles.lema} src={lema} alt="Lema Ovniric" /></Link>
       {isLoged ?
       <>
           <div className={styles.avatar}></div>
@@ -63,8 +63,8 @@ const handleLogIn = () =>{
           <a href="#" className={styles.hamburguerlogout}>Log out</a>
         </> :
         <>
-          <a href="#" className={styles.hamburguerlogin}> Log in</a>
-          <a href="#" className={styles.hamburguersignup}>Sign up</a>
+          <Link to="/login" className={styles.hamburguerlogin} onClick={handleSingUp}> Log in</Link>
+          <Link to="/signup" className={styles.hamburguersignup} onClick={handleLogIn}>Sign up</Link>
         </>  
         }
         </div> : 

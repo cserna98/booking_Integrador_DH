@@ -7,18 +7,21 @@ import { GlobalContext } from "../globalState/GlobalState";
 
 
 
+
 function Login(){
+
     const validationData = {
         email: "yuri.bermudez@turia-group.com",
         password: "DigitalHouse2"
     }
 
-    const {renderForm,setRenderForm}= GlobalContext()
-
+    const {renderForm,setRenderForm,isLoged,email,setEmail,setPassword,password,setLogin}= GlobalContext()
+    const navigate = useNavigate
     // Creación de estados por cada input
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+ 
 
+    // funcion que cambia estado logIn
+   
 
     // Manejadores de eventos para cada input para actualziar los estados a medida que el usurio escribe en los inputs
     const onChangeEmail = (e) => setEmail(e.target.value);
@@ -27,7 +30,7 @@ function Login(){
 
     // Funcion para validar campos del Login
     function validateLogin(){
-        if(email===validationData.email && password===validationData.password){
+        if(email===email && password===password){
             return true;
         }else{
             return false;
@@ -37,15 +40,20 @@ function Login(){
     // Manejador del evento del envío de formulario
     const onSubmitLogin = (e) =>{
         e.preventDefault();
+        console.log(email)
         const isCorrectLogin = validateLogin();
         if(isCorrectLogin){
             setEmail("");
             setPassword("");
             alert("Login exitoso")
+            setLogin(true)
+            navigate("/")
             // El alert no va, es para indicar qque falta redireccionarlo al Home y cambiar el estado is Logged del Header
         }else{
             alert("Error credenciales inválidas. Por favor valide los campos ingresados")
         }
+        
+
     }
 
 
@@ -61,7 +69,7 @@ function Login(){
             la etiqueta Link*/}
             {/* <Link to='/home'> */}
             <Link to="/" >
-                <button  >X</button>
+                <button >X</button>
             </Link>
             {/* </Link> */}
         </div>
@@ -75,7 +83,7 @@ function Login(){
         <label htmlFor="password">Contraseña</label>
         <input type="password" name="password" id="password" placeholder="Ingresa tu contraseña" value={password} onChange={onChangePassword}></input>
         </div>
-        <button type="submit" className={styles.buttonLogin}>Ingresar</button>
+        <button type="submit" className={styles.buttonLogin}  >Ingresar</button>
         <p>¿Aún no tienes cuenta? <Link to='/signup'>Regístrate</Link></p>
         </form>
         
