@@ -55,6 +55,15 @@ function Register(){
 
     return (
         <div className={styles.registerTemplate}>
+            <div className={styles.buttonClosed}>
+            {/* Agregar funcionalidad para redireccionar al home o pagina principal usando
+            la etiqueta Link*/}
+            {/* <Link to='/home'> */}
+                <Link to="/">
+                    <button >X</button>
+                </Link>
+            {/* </Link> */}
+            </div>
         <form id="register" onSubmit={onSubmitForm} className={styles.form}>
         <h2>Crear cuenta</h2>
         <div className={styles.fullName}>

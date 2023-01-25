@@ -3,12 +3,17 @@ import {Link, Redirect} from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import styles from './Login.module.css'
+import { GlobalContext } from "../globalState/GlobalState";
+
+
 
 function Login(){
     const validationData = {
         email: "yuri.bermudez@turia-group.com",
         password: "DigitalHouse2"
     }
+
+    const {renderForm,setRenderForm}= GlobalContext()
 
     // Creación de estados por cada input
     const [email, setEmail] = useState("");
@@ -55,7 +60,9 @@ function Login(){
             {/* Agregar funcionalidad para redireccionar al home o pagina principal usando
             la etiqueta Link*/}
             {/* <Link to='/home'> */}
-            <button >X</button>
+            <Link to="/" >
+                <button  >X</button>
+            </Link>
             {/* </Link> */}
         </div>
         <form onSubmit={onSubmitLogin} className={styles.form}>
