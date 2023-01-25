@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/api/categorias")
 public class CategoryController {
 
     private CategoryService categoryService;

@@ -1,18 +1,23 @@
 import React from 'react';
 import './App.css';
+import { Routes, Route } from 'react-router-dom';
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
-import SearchBlock from "./Components/SearchBlock/SearchBlock";
-import BlockCategories from "./Components/BlockCategories/BolckCategories";
+import Login from "./Components/Login/Login.jsx"
+import Register from "./Components/Register/Register.jsx"
+import Main from './Components/Main/Main'
 
 function App() {
   return <>
   <Header />
-    <SearchBlock/> 
-    <BlockCategories/> 
-    <main className="body"></main>
+  <Routes>
+        <Route path="/" element={<Main></Main>}/>
+        <Route path="/signup" element={<Register></Register>} />
+        <Route path="/login" element={<Login></Login>} />        
+      </Routes>       
   <Footer/>
   </>;
+
 
 }
 
