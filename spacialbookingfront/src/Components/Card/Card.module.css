@@ -1,0 +1,17 @@
+.container{
+    display: grid;
+    grid-template-columns: repeat(10,fr);
+    grid-auto-rows:  repeat(7,fr);
+    width: 40vw;
+    border: solid orange 3px;
+}
+.img{
+    grid-column: 1/2;
+    grid-row: 1/8;
+    background-color: blue;
+}
+.category{
+    grid-column: 2/3;
+    grid-row: 1/2;
+    align-self: center;
+}

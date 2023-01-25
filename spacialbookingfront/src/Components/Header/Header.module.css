@@ -108,7 +108,9 @@
 
 .header{
     background-color: var(--secondary-color);
-    position: sticky;
+    position: fixed;
+    top: 0;
+    width: 100%;
     display: grid;
     gap:0.7rem;
     grid-template-columns: repeat(10, 1fr);

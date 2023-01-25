@@ -6,6 +6,8 @@
     height: 5vh;
     display: grid;
     grid-template-columns: 10;
+    position: fixed;
+    bottom: 0;
 }
 
 .icon{
