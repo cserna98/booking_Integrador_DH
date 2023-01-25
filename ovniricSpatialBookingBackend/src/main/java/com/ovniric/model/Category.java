@@ -19,6 +19,22 @@ public class Category {
     @Column
     private String urlImage;
 
+    public Category(Long id, String title, String description, String urlImage) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.urlImage = urlImage;
+    }
+
+    public Category(String title, String description, String urlImage) {
+        this.title = title;
+        this.description = description;
+        this.urlImage = urlImage;
+    }
+
+    public Category() {
+    }
+
     public Long getId() {
         return id;
     }
