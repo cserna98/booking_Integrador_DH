@@ -31,11 +31,8 @@ const handleLogIn = () =>{
 
   const handleLoged = () =>{
     setLogin(!isLoged);
-  }
 
- 
-
-  
+  }  
 
     return <>
     <header className={styles.header}>
