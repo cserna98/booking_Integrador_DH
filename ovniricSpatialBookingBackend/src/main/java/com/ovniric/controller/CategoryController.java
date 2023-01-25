@@ -39,9 +39,9 @@ public class CategoryController {
         }
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<String> updateCategory(@PathVariable Long id, @RequestBody Category category){
-        Optional<Category> categoryToSearch = categoryService.getCategory(id);
+    @PutMapping
+    public ResponseEntity<String> updateCategory(@RequestBody Category category){
+        Optional<Category> categoryToSearch = categoryService.getCategory(category.getId());
         if(categoryToSearch.isPresent()) {
             categoryService.updateCategory(category);
             return ResponseEntity.ok("The category has been updated");
