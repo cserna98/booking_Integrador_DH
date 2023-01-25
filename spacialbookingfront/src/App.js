@@ -4,8 +4,9 @@ import { Routes, Route } from 'react-router-dom';
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
 import Login from "./Components/Login/Login.jsx"
-import Register from "./Components/Register/Register.jsx"
-import Main from './Components/Main/Main'
+import Register from "./Components/Register/Register.jsx";
+import Main from './Components/Main/Main';
+import ListContainer from './Components/ListContainer/ListContainer';
 
 function App() {
   return <>
@@ -15,6 +16,7 @@ function App() {
         <Route path="/signup" element={<Register></Register>} />
         <Route path="/login" element={<Login></Login>} />        
       </Routes>       
+   <ListContainer/>   
   <Footer/>
   </>;
 
