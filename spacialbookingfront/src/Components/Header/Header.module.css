@@ -114,16 +114,15 @@
 
 .header{
     background-color: var(--secondary-color);
-   
     width: 100%;
     display: grid;
     gap:0.7rem;
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: 2vh 4vh;
-    padding: 0.5rem;
-    padding-bottom: 1rem;
-    
-}
+    padding:0;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+  }
 
 .logo{
     align-self: center;

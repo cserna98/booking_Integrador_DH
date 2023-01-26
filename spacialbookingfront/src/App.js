@@ -17,8 +17,8 @@ function App() {
         <Route path="/" element={<Main></Main>}/>
         <Route path="/signup" element={<Register></Register>} />
         <Route path="/login" element={ !isLoged? <Login></Login> : <Navigate to="/"/>} />     
-      </Routes>       
-    <ListContainer/>   
+      </Routes>      
+  <ListContainer/>   
   <Footer/>
   </>;
 

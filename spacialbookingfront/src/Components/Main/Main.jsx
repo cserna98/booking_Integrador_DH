@@ -1,5 +1,5 @@
-import React from 'react';
-import { GlobalContext } from "../globalState/GlobalState"
+import React from "react";
+import { GlobalContext } from "../globalState/GlobalState";
 import SearchBlock from "../SearchBlock/SearchBlock";
 import BlockCategories from "../BlockCategories/BolckCategories";
 
@@ -10,7 +10,7 @@ const Main = () => {
     console.log(renderForm)
 
     return (
-    <div>
+    <div className=''>
         <SearchBlock/> 
         <BlockCategories/>                    
     </div>
