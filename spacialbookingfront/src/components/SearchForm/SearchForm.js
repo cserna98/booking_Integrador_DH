@@ -3,8 +3,8 @@ import React from 'react';
 import logolocation from '../../assets/img/Vector.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import places from '../../assets/Json/cardsInfo.json' 
-import { faLocationDot, faCalendarAlt, faSearch } from '@fortawesome/free-solid-svg-icons'
-import './SearchFormStyle.css'
+import {FaSearchLocation} from "react-icons/fa"
+import "./SearchFormStyle.css"
 
 function SearchForm(){
 
@@ -44,15 +44,14 @@ function SearchForm(){
 
     return(
 
-    <form className='Disp_grid' id='FormSearch'>  
+    <form className='form-grid' id='FormSearch'>  
     
 
-        <label  className='Disp_grid label' id="location"> 
-           <div id="SearchInput" className='Disp_grid'>
-                <div id="locationIcon">                    
-                </div>                           
-                <input              
-                placeholder="Les't explore the galaxi"
+        <label  className='search-container' id="location"> 
+           <div id="SearchInput" className='Disp_grid '>     
+                <FaSearchLocation className='locationIcon' />             
+                <input             
+                placeholder="Les't explore the galaxy"
                 id='value'   
                 className='form-inputs'
                 value={actualValue ? actualValue : ""}
@@ -76,13 +75,17 @@ function SearchForm(){
                 ))}
             </ul>               
         </label>       
-       
-        <label className='label' id='Date'>
-            <input  className='form-inputs' type="date"></input>
-        </label>
-        <label className='label' id='Date'>
-            <input  className='form-inputs' type="date"></input>
-        </label>
+        <div className='date-container'>
+            <b className='label lb'>Inicio:</b>
+            <label className='label' id='Date' >
+                <input  className='form-inputs div-item' type="date"></input>
+             </label>
+             <b className='label lb'>Final:</b>
+             <label className='label ' id='Date'>
+                <input  className='form-inputs' type="date"></input>
+             </label>
+        </div>
+      
         
     
         <button  id='searchButon'className='submit' type="submit">Buscar</button>                     
