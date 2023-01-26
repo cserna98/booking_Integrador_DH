@@ -16,7 +16,7 @@ const Categories = () => {
         <ul className="categories-container Disp_grid">
         {categories.map((category) => (
             <li className="category Disp_grid" key={category.id}>
-                <img id="categoryImg" src={img} alt={category.title} />
+                <img id="categoryImg" src={category.image} alt={category.title} />
                 <div>
                     <h4>{category.title}</h4>
                     <p>{category.Description}</p>

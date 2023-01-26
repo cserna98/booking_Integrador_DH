@@ -3,7 +3,7 @@
  [
     {   
         "id" : 1,
-        "url": "../../../public/img/ISS.jpg",
+        "url": "./img/neptune.webp",
         "category": "Globo estratosférico",
         "company": "World View",
         "name": "World View capsule",
@@ -15,7 +15,7 @@
     },
     {
         "id": 2,
-        "url": "../../assets/img/neptune.webp",
+        "url": "./img/worldview.webp",
         "category": "Globo estratosférico",
         "company": "Space Perspective",
         "name": "Neptune capsule",
@@ -27,7 +27,7 @@
     },
     {
         "id": 3,
-        "url": "../../assets/img/axiomSpaceStation.jpg",
+        "url": "./img/axiomSpaceStation.jpg",
         "category": "Estación Espacial",
         "company": "Axiom Space",
         "name": "Axiom Space Station",
@@ -39,7 +39,7 @@
      },
      {
         "id": 4,
-        "url": "../../assets/img/ISS.jpg",
+        "url": "./img/ISS.jpg",
         "category": "Estación Espacial",
         "company": "Axiom Space",
         "name":"International Space Station",
@@ -51,7 +51,7 @@
     },
     {
         "id": 5,
-        "url": "../../assets/img/newShepardBlueOrigin.jpg",
+        "url": "./img/dragonSpacex.jpeg",
         "category":"Nave Espacial",
         "company":"Blue Origin",
         "name": "New Shepard rocket",
@@ -63,7 +63,7 @@
     },
     {
         "id": 6,
-        "url": "../../assets/img/dragonSpacex.jpeg",
+        "url": "./img/newShepardBlueOrigin.jpg",
         "category":"Nave Espacial",
         "company": "SpaceX",
         "name": "Dragon spacecraft",
@@ -76,7 +76,7 @@
     },
     {
         "id":7,
-        "url": "../../../public/img/ISS.jpg",
+        "url": "./img/artemisBaseCamp.webp",
         "category":"Base Espacial",
         "company": "NASA",
         "name":"Artemis Base Camp",
@@ -88,7 +88,7 @@
      },
      {
         "id": 8,
-        "url": "../../assets/img/darkSideUnknown.jpg",
+        "url": "./img/darkSideUnknown.jpg",
         "category": "Base Espacial",
         "company":"Elite Mundial",
         "name":"Unknown",
