@@ -9,6 +9,9 @@ function Register(){
     const [name, setName] = useState("");
     const [lastName, setLastName] = useState("");    
     const [passwordConfirm, setPasswordConfirm] = useState("");
+    const [email1, setEmail1] = useState("");
+    const [password1, setPassword1] = useState("");
+
 
     // Variables estado global 
     const {email,setEmail,password,setPassword}= GlobalContext()
@@ -16,8 +19,8 @@ function Register(){
     // Manejadores de eventos para cada input para actualziar los estados a medida que el usurio escribe en los inputs
     const onChangeName = (e) => setName(e.target.value);
     const onChangeLastName = (e) => setLastName(e.target.value);
-    const onChangeEmail = (e) => setEmail(e.target.value);
-    const onChangePassword = (e) => setPassword(e.target.value);
+    const onChangeEmail = (e) => setEmail1(e.target.value);
+    const onChangePassword = (e) => setPassword1(e.target.value);
     const onChangePasswordConfirm = (e) => setPasswordConfirm(e.target.value);
 
     // Expresiones regulares para validar los inputs
@@ -30,8 +33,8 @@ function Register(){
 
     // Función para validación de los inputs
     function validateInputs (){
-        if(validations.name.test(name) && validations.lastName.test(lastName) && validations.email.test(email) 
-        && validations.password.test(password) && password ===passwordConfirm){
+        if(validations.name.test(name) && validations.lastName.test(lastName) && validations.email.test(email1) 
+        && validations.password.test(password1) && password1 ===passwordConfirm){
             return true;
         } else{
             return false;
@@ -43,12 +46,13 @@ function Register(){
         e.preventDefault();
         const isCorrectForm = validateInputs();
         if(isCorrectForm){
-            setName(e.target.value);
-            console.log(name)
-            setLastName(e.target.value);
+            setName("");
+            setLastName("");
             setEmail(e.target.value);
+            setEmail1("");
             setPassword(e.target.value);
-            setPasswordConfirm(e.target.value);           
+            setPassword1("");
+            setPasswordConfirm("");           
             alert("Registro exitoso")
         }else{
             alert("Error. Verifica los campos ingresados")
@@ -81,11 +85,11 @@ function Register(){
         </div>
         <div>
         <label htmlFor="email">Correo electrónico</label>
-        <input type="email" name="email" id="email" placeholder="Ingresa el correo electrónico" value={email} onChange={onChangeEmail}></input>
+        <input type="email" name="email" id="email" placeholder="Ingresa el correo electrónico" value={email1} onChange={onChangeEmail}></input>
         </div>
         <div>
         <label htmlFor="password">Contraseña</label>
-        <input type="password" name="password" id="password" placeholder="Ingresa tu contraseña" value={password} onChange={onChangePassword}></input>
+        <input type="password" name="password" id="password" placeholder="Ingresa tu contraseña" value={password1} onChange={onChangePassword}></input>
         </div>
         <div>
         <label htmlFor="passwordConfirm">Confirmar contraseña</label>

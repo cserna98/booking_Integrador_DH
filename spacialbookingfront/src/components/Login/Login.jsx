@@ -16,12 +16,8 @@ function Login(){
     }
 
     const {renderForm,setRenderForm,isLoged,email,setEmail,setPassword,password,setLogin}= GlobalContext()
-    const navigate = useNavigate
-    // Creación de estados por cada input
- 
 
-    // funcion que cambia estado logIn
-   
+
 
     // Manejadores de eventos para cada input para actualziar los estados a medida que el usurio escribe en los inputs
     const onChangeEmail = (e) => setEmail(e.target.value);
@@ -45,10 +41,7 @@ function Login(){
         if(isCorrectLogin){
             setEmail("");
             setPassword("");
-            alert("Login exitoso")
             setLogin(true)
-            navigate("/")
-            // El alert no va, es para indicar qque falta redireccionarlo al Home y cambiar el estado is Logged del Header
         }else{
             alert("Error credenciales inválidas. Por favor valide los campos ingresados")
         }
