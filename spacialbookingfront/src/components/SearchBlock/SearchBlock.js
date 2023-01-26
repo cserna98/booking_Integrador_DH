@@ -8,8 +8,8 @@ function SearchBlock(){
     return(
         <div className="search-block">
             <div className='header' id='titleSearch'>
-                <h1>Buscar </h1>
-                <p>Donde quieres vivir tu experiencia ? </p>                               
+                <h1>Encuentra</h1>
+                <p className='search-p'>¡El lugar y momento donde guardaras el mejor recuerdo de tu vida! </p>                               
             </div> 
             <Serachform/>          
         </div>
