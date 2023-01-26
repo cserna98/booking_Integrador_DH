@@ -13,8 +13,8 @@ const [isLoged,setLogin] = useState(false);
 const [renderForm,setRenderForm] = useState(null);    
  
 
-    
-   
+    console.log(email)
+   console.log(password)
     return (
       <ContextGlobal.Provider value={{renderForm,setRenderForm,isLoged,setLogin,email,setEmail,password,setPassword}}>
         {children}

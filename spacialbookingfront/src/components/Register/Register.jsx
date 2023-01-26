@@ -48,12 +48,13 @@ function Register(){
         if(isCorrectForm){
             setName("");
             setLastName("");
-            setEmail(e.target.value);
+            setEmail(e.target.email.value);
             setEmail1("");
-            setPassword(e.target.value);
+            setPassword(e.target.password.value);
             setPassword1("");
             setPasswordConfirm("");           
             alert("Registro exitoso")
+            console.log(e.target.email.value)
         }else{
             alert("Error. Verifica los campos ingresados")
         }

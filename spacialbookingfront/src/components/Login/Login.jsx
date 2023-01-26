@@ -27,7 +27,7 @@ function Login(){
 
     // Funcion para validar campos del Login
     function validateLogin(){
-        if(validationData.email===emailLogin && validationData.password===passwordLogin){
+        if(email===emailLogin && password===passwordLogin){
             return true;
         }else{
             return false;
@@ -38,6 +38,7 @@ function Login(){
     const onSubmitLogin = (e) =>{
         e.preventDefault();
         console.log(email)
+        console.log(emailLogin)
         const isCorrectLogin = validateLogin();
         if(isCorrectLogin){
             setEmailLogin("");
