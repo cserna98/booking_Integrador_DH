@@ -40,8 +40,8 @@ const handleLogIn = () =>{
       <Link to="/" className={styles.lema}><img  className={styles.lema} src={lema} alt="Lema Ovniric" /></Link>
       {isLoged ?
       <>
-          <div className={styles.avatar}></div>
-          <a href="#" className={styles.username}>username</a>
+          <div className={styles.avatar}><span> YR </span></div>
+          <a href="#" className={styles.username}>Hola Yuri</a>
           <button className={`${styles.btn} ${styles.logout}` } onClick={handleLoged} >Log out</button>          
         </> : 
         <>
