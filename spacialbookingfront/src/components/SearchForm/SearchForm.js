@@ -8,18 +8,30 @@ import './SearchFormStyle.css'
 
 function SearchForm(){
 
-    const [actualValue, setActualvalue] = useState("");
+    const [actualValue, setActualvalue] = useState(""); 
+    const [renderList, SetRenderList] = useState(true);
     const [filteredPlaces, setFilteredPlaces] = useState([]);
+
 
     const onchangeSearch = (event)=>{ 
         console.log(event.target.value)
         setActualvalue(event.target.value)
-        event.preventDefault()  
+        event.preventDefault() 
+        
     } 
 
-    const ValueChanger = (value) =>{
-        setActualvalue()
-    }
+
+    function Seletvalue(location){
+
+        setActualvalue(location)
+        SetRenderList(false)  
+        
+        
+}
+
+
+
+
 
     useEffect(()=>{
         const filtered = places.filter((place) => place.location.includes(actualValue));
@@ -51,15 +63,16 @@ function SearchForm(){
             
             <ul id="places" className={` ${actualValue ? "DisplayOn":"DisplayOff"}`}>
                 {filteredPlaces.map((place)=> (                        
-                <div  key={place.id}
+                <li  key={place.id}
                     value={place.logolocation}
                     id="inSearch"
                     className='Disp_grid'
+                    onClick={() => Seletvalue(place.location)}                                       
                     >
                     <img src={logolocation}/>                                                                
                     <h4>{place.name}</h4>
                     <h6>{place.location}</h6>                     
-                </div>                      
+                </li>                      
                 ))}
             </ul>               
         </label>       

@@ -1,6 +1,6 @@
 import React from "react";
 import { GlobalContext } from "../globalState/GlobalState";
-import SearchBlock from "../SearchBlock/SearchBlock";
+import ListContainer from '../ListContainer/ListContainer';
 import BlockCategories from "../BlockCategories/BolckCategories";
 
 const Main = () => {
@@ -10,9 +10,9 @@ const Main = () => {
     console.log(renderForm)
 
     return (
-    <div className=''>
-        <SearchBlock/> 
-        <BlockCategories/>                    
+    <div className=''>        
+        <BlockCategories/> 
+        <ListContainer/>                   
     </div>
     )
   }
