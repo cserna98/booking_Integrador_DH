@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Card.module.css";
-import mockedImg from "../../assets/img/ISS.jpg"
+import mockedImg from "../../assets/img/ISS.jpg";
 
 
 
