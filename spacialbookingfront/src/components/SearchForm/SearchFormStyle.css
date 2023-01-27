@@ -19,6 +19,7 @@
 }
 
 #searchButon{    
+    opacity: 0.9;
     grid-column: 5/7;  
     justify-self: flex-start;
     color: #1D2951;
@@ -39,8 +40,8 @@
 #searchButon::before{
     position: absolute;
     content: "";
-    width: calc(100% + 4px);
-    height: calc(100% + 4px);
+    width: calc(100% + 10px);
+    height: calc(100% + 10px);
     left: -2px;
     top: -2px;
     background: linear-gradient(
@@ -97,7 +98,7 @@
 #SearchInput{
     grid-template-columns: 10% 90%;
     grid-template-rows: repeat(1, 1fr);
-    align-self: center;    
+    align-self: center;
 }
 
 .locationIcon{
@@ -156,7 +157,7 @@
 }
 
 /*________________________________________Mobile_______________________*/
-@media only screen and (max-width: 480px){
+@media only screen and (max-width: 590px){
     .form-grid{
         display:grid;
         grid-template-columns: 1fr;
@@ -176,23 +177,35 @@
         height: 4vw;
         grid-column: 1/2;
         grid-row: 2/3;
-        justify-content: space-around;
+        justify-content: stretch;
+        justify-self: flex-end;
+    }
+    .label .form-inputs{
+        width: 33vw;
+        opacity: 0.5;
+
     }
     #searchButon{
         width: 90vw;
-        height: 3vw;
+        height: 4vw;
         grid-column: 1/2;
         grid-row: 3/4;
+        align-self: center;
+        justify-self: center;
     }
 
-    .search-container.form-inputs{
-        width: 70vw;
-        justify-self: center;
+    #SearchInput{
+        width: 87vw;
+        opacity: 0.5;
+    }
+
+    .lb{
+        padding: 0;
     }
 }
 
 
-@media only screen and (min-width: 481px){
+@media only screen and (min-width: 590px){
     .form-grid{
         display: grid;
         grid-template-columns: repeat (6, 1fr);
@@ -212,5 +225,6 @@
     width: 15vw;
     height: 30px;
     border-radius: 5px;
+    opacity: 0.5;
 }
 }

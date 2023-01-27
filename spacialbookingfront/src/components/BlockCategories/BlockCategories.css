@@ -1,3 +1,9 @@
+.titleCategories{
+    margin: 0;
+    color: #a7afc7;
+    padding-left: 2vw;
+    padding-top: 1vw;
+}
 
 .categories{
     grid-template-columns: repeat(4, 1fr);
@@ -18,13 +24,14 @@
 }
 
 .categories-container{   
-    margin-left: 3%;
+    margin-left: 2%;
     width: 100%;
     grid-template-columns: repeat(4, 1fr);
     align-items: center;
     grid-column: 1 / 5;
     grid-row: 2 / 2;
     padding-left: 0px;
+    margin-top: 1vw;
 }
 
 #CategoriesText{    
