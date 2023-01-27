@@ -14,7 +14,7 @@ function Register(){
 
 
     // Variables estado global 
-    const {email,setEmail,password,setPassword}= GlobalContext()
+    const {email,setEmail,password,setPassword, setNameUser, setLastNameUser}= GlobalContext()
 
     // Manejadores de eventos para cada input para actualziar los estados a medida que el usurio escribe en los inputs
     const onChangeName = (e) => setName(e.target.value);
@@ -46,7 +46,9 @@ function Register(){
         e.preventDefault();
         const isCorrectForm = validateInputs();
         if(isCorrectForm){
+            setNameUser(e.target.nombre.value);
             setName("");
+            setLastNameUser(e.target.apellido.value);
             setLastName("");
             setEmail(e.target.email.value);
             setEmail1("");
@@ -78,6 +80,8 @@ function Register(){
         <div>
         <label htmlFor="nombre">Nombre:</label>
         <input type="text" name="nombre" id="nombre" placeholder="Nombre" value={name} onChange={onChangeName}></input>
+        <i class="formulario__validacion-estado fas fa-times-circle"></i>
+        <p class="formulario__input-error">El usuario tiene que ser de 1 a 100 dígitos y solo puede contener letras y tildes.</p>
         </div>
         <div>
         <label htmlFor="apellido">Apellido:</label>

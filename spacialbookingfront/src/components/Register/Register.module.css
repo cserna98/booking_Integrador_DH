@@ -91,8 +91,12 @@
 
 
 .registerTemplate{
+<<<<<<< HEAD
     background: rgb(29,41,81);
     background: linear-gradient(90deg, rgba(29,41,81,1) 0%, rgba(167,175,199,1) 35%, rgba(76,59,113,1) 100%);
+=======
+    background-color: #ccc;
+>>>>>>> fa1dd174c1fd7adda03c0ae4fb137acc27209a87
 }
 
 .buttonSignup {
