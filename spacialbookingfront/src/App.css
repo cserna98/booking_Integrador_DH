@@ -9,4 +9,5 @@
 
 body{
   background-color: var(--primary-color);
+  padding-top: 8vh;
 }

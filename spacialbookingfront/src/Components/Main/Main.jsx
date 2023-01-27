@@ -2,6 +2,7 @@ import React from "react";
 import { GlobalContext } from "../globalState/GlobalState";
 import ListContainer from '../ListContainer/ListContainer';
 import BlockCategories from "../BlockCategories/BolckCategories";
+import styles from "./Main.module.css"
 
 const Main = () => {
 
@@ -10,8 +11,8 @@ const Main = () => {
     console.log(renderForm)
 
     return (
-    <div className=''>        
-        <BlockCategories/> 
+    <div className={styles.bg}>
+         <BlockCategories/> 
         <ListContainer/>                   
     </div>
     )
