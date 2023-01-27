@@ -29,6 +29,10 @@ function SearchForm(){
         
 }
 
+    function handleSubmit(e){
+        e.preventDefault()
+    }
+
 
 
 
@@ -44,7 +48,7 @@ function SearchForm(){
 
     return(
 
-    <form className='form-grid' id='FormSearch'>  
+    <form className='form-grid' id='FormSearch' onSubmit={handleSubmit}>  
     
 
         <label  className='search-container' id="location"> 
