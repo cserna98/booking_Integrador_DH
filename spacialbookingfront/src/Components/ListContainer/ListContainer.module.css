@@ -1,0 +1,14 @@
+.container{
+    display: grid;
+    grid-template-columns: repeat(10,1fr);
+    grid-auto-rows: auto;
+    background-color:transparent;
+}
+
+.recomendations{
+    color: #a7afc7;
+    margin: 1vw;
+    padding-left: 1vw;
+    margin-bottom: 0;
+}
+

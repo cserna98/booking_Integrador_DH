@@ -1,19 +1,26 @@
-
-.search-block {    
+.search-p{
+    margin: 1vw;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #FFFFFF;
+}
+.search-block {   
+    padding-top: 2.4vw;
     grid-template-columns: repeat(1, 1fr);    
-    grid-gap: 10px; 
-    background: #545776;
-    grid-template-rows: min-content 1fr;
-    height: 150px;  
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
-    text-align: center; 
-      
+    grid-gap: 10px;      
+    height:auto;
+    padding-bottom:1.5vw;
+    text-align: center;     
+    background-image: url("https://i.gifer.com/PS82.gif");
+    background-position: center;
+
 }
 
 #titleSearch h1{    
-    margin-bottom: 0px;
+    margin: 0;
     color: #FFFFFF;
 }
+
+/*________________________________________Tablet_______________________*/
 
 

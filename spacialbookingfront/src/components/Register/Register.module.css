@@ -1,0 +1,123 @@
+@media only screen and (max-width: 1400px) {
+    html {
+        font-size: 30px;
+        box-sizing: border-box;
+    }
+
+    .form input {
+        width: 35vw;
+        height: 3.5vh;
+    }
+
+    .form .fullName input {
+        width: 16vw;
+        height: 3.5vh;
+        margin-left: 65%;
+    }
+
+
+    .form .buttonSignup{
+        font-size: 22px;
+    }
+
+    .form p{
+        font-size: 18px;
+        padding-bottom: 20px;
+    }
+
+    .form label{
+        display: block;
+        text-align: left;
+        margin-left: 32%;
+    }
+    
+    .form .fullName {
+        display: flex;
+        margin-left: 21%;
+        gap: 30px;
+    }
+    
+    .fullName label{
+        display: block;
+        text-align: left;
+        margin-left: 65%;
+    }
+    
+    .form input{
+        margin-right: 1%;
+    }
+}  
+
+@media only screen and (max-width: 481px) {
+    html {
+        font-size: 18px;
+        box-sizing: border-box;
+    }
+
+    .form .buttonSignup{
+        font-size: 12px;
+    }
+
+    .form button{
+        width: 22vw;
+        height: 40px;
+    }
+
+    .form p{
+        font-size: 11px;
+    }
+
+    .form .fullName{
+        flex-direction: column;
+        text-align: start;
+        gap: 0;
+    }
+
+    .fullName div {
+        text-align: start;
+    }
+
+    .fullName label {
+        margin-left: 14%;
+    }
+
+    .form .fullName input {
+        margin-left: 14%;
+        width: 34vw;
+    }
+    
+}
+
+
+
+.registerTemplate{
+
+    background-color: #ccc;
+
+}
+
+.buttonSignup {
+    background-color:#1D2951;
+    color: white;
+    width: 22vw;
+    height: 50px;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    border: solid  #4C3B71 3px;
+    margin-top: 20px;
+
+}
+
+.buttonSignup:hover{
+    background-color: #4C3B71B3;
+}
+
+.form {
+    display: block;
+    text-align: center;
+}
+
+.form h2 {
+    color: #1D2951;
+}
+
