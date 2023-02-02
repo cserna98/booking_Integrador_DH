@@ -3,7 +3,7 @@ package com.ovniric.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "categorias")
+@Table(name = "categoria")
 public class Category {
 
     @Id
