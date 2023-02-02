@@ -9,13 +9,14 @@ import "./SearchFormStyle.css"
 function SearchForm(){
 
     const [actualValue, setActualvalue] = useState(""); 
-    const [renderList, SetRenderList] = useState(true);
+    const [renderList, SetRenderList] = useState(false);
     const [filteredPlaces, setFilteredPlaces] = useState([]);
 
 
     const onchangeSearch = (event)=>{ 
         console.log(event.target.value)
         setActualvalue(event.target.value)
+        SetRenderList(true)
         event.preventDefault() 
         
     } 
@@ -64,7 +65,7 @@ function SearchForm(){
                 
             </div>
             
-            <ul id="places" className={` ${actualValue ? "DisplayOn":"DisplayOff"}`}>
+            <ul id="places" className={` ${renderList ? "DisplayOn":"DisplayOff"}`}>
                 {filteredPlaces.map((place)=> (                        
                 <li  key={place.id}
                     value={place.logolocation}

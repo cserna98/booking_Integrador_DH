@@ -1,13 +1,13 @@
 package com.ovniric.model;
 
+
 import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
-@Table(name = "categorias")
-public class Category {
-
+@Table(name = "Characteristics")
+public class Feature {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,29 +15,20 @@ public class Category {
     @Column
     private String title;
 
-    @Column(length = 500)
-    private String description;
-
     @Column
-    private String urlImage;
+    private  String description;
 
-    @OneToMany(mappedBy = "category")
-    private List<Product> productos;
+    @ManyToMany(mappedBy = "feature")
+    private List<Product> products;
 
-    public Category(Long id, String title, String description, String urlImage) {
+    public Feature(Long id, String title, String description, List<Product> products) {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.urlImage = urlImage;
+        this.products = products;
     }
 
-    public Category(String title, String description, String urlImage) {
-        this.title = title;
-        this.description = description;
-        this.urlImage = urlImage;
-    }
-
-    public Category() {
+    public Feature() {
     }
 
     public Long getId() {
@@ -62,13 +53,5 @@ public class Category {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getUrlImage() {
-        return urlImage;
-    }
-
-    public void setUrlImage(String urlImage) {
-        this.urlImage = urlImage;
     }
 }
