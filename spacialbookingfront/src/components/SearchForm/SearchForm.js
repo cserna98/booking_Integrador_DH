@@ -9,13 +9,14 @@ import "./SearchFormStyle.css"
 function SearchForm(){
 
     const [actualValue, setActualvalue] = useState(""); 
-    const [renderList, SetRenderList] = useState(true);
+    const [renderList, SetRenderList] = useState(false);
     const [filteredPlaces, setFilteredPlaces] = useState([]);
 
 
     const onchangeSearch = (event)=>{ 
         console.log(event.target.value)
         setActualvalue(event.target.value)
+        SetRenderList(true)
         event.preventDefault() 
         
     } 
@@ -31,12 +32,13 @@ function SearchForm(){
 
     function handleSubmit(e){
         e.preventDefault()
+
     }
 
 
 
 
-
+ 
     useEffect(()=>{
         const filtered = places.filter((place) => place.location.includes(actualValue));
         setFilteredPlaces(filtered);
@@ -64,7 +66,7 @@ function SearchForm(){
                 
             </div>
             
-            <ul id="places" className={` ${actualValue ? "DisplayOn":"DisplayOff"}`}>
+            <ul id="places" className={` ${renderList ? "DisplayOn":"DisplayOff"}`}>
                 {filteredPlaces.map((place)=> (                        
                 <li  key={place.id}
                     value={place.logolocation}
@@ -92,7 +94,7 @@ function SearchForm(){
       
         
     
-        <button  id='searchButon'className='submit' type="submit">Buscar</button>                     
+        <button  id='searchButon'className='submit' type="submit" >Buscar</button>                     
     </form>
     );
 
