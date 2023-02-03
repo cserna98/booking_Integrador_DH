@@ -3,24 +3,25 @@ package com.ovniric.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "categoria")
+@Table(name = "Categoria")
 public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id_categoria")
+    private Long categoryId;
 
-    @Column
+    @Column(name = "titulo")
     private String title;
 
-    @Column(length = 500)
+    @Column(name = "descripcion",length = 500)
     private String description;
 
-    @Column
+    @Column(name = "url_imagen")
     private String urlImage;
 
-    public Category(Long id, String title, String description, String urlImage) {
-        this.id = id;
+    public Category(Long categoryId, String title, String description, String urlImage) {
+        this.categoryId = categoryId;
         this.title = title;
         this.description = description;
         this.urlImage = urlImage;
@@ -35,12 +36,12 @@ public class Category {
     public Category() {
     }
 
-    public Long getId() {
-        return id;
+    public Long getCategoryId() {
+        return categoryId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getTitle() {

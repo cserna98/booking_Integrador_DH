@@ -42,7 +42,7 @@ public class CategoryController {
 
     @PutMapping
     public ResponseEntity<String> updateCategory(@RequestBody Category category){
-        Optional<Category> categoryToSearch = categoryService.getCategory(category.getId());
+        Optional<Category> categoryToSearch = categoryService.getCategory(category.getCategoryId());
         if(categoryToSearch.isPresent()) {
             categoryService.updateCategory(category);
             return ResponseEntity.ok("The category has been updated");
@@ -63,6 +63,8 @@ public class CategoryController {
         }
 
     }
+
+
 
 
 }
