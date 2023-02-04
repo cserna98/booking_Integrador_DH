@@ -3,11 +3,15 @@ import cardsInfo from "../../assets/Json/cardsInfo.json"
 import styles from "../ListContainer/ListContainer.module.css"
 import Card from "../Card/Card"
 import  {useState, useEffect} from 'react';
+import { GlobalContext } from "../globalState/GlobalState";
+
 
 
 const ListContainer = () =>{
 
-    const [displayedProducts, setDisplayedProducts] = useState([]);
+    const {displayedProducts, setDisplayedProducts}= GlobalContext()
+    
+
 
     function getRandomProjectCards(projects, numberOfCards) {
         let randomProjects = [];
@@ -23,7 +27,7 @@ const ListContainer = () =>{
     }
 
     useEffect(()=>{
-        getRandomProjectCards(cardsInfo,5)
+        getRandomProjectCards(cardsInfo,2)
     },[])
 
 
