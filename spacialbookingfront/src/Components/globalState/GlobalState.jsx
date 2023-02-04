@@ -9,6 +9,7 @@ export const ContextProvider = ({children}) => {
     const [password, setPassword] = useState("");
     const [nameUser, setNameUser] = useState("");
     const [lastNameUser, setLastNameUser] = useState("");
+    const [displayedProducts, setDisplayedProducts] = useState([]);
 
   
 const [isLoged,setLogin] = useState(false); 
@@ -18,7 +19,22 @@ const [renderForm,setRenderForm] = useState(null);
     console.log(email)
    console.log(password)
     return (
-      <ContextGlobal.Provider value={{renderForm,setRenderForm,isLoged,setLogin,email,setEmail,password,setPassword, nameUser, setNameUser, lastNameUser, setLastNameUser}}>
+      <ContextGlobal.Provider
+      value={{renderForm,
+      setRenderForm,
+      isLoged,
+      setLogin,
+      email,
+      setEmail,
+      password,
+      setPassword,
+      nameUser,
+      setNameUser,
+      lastNameUser,
+      setLastNameUser,
+      displayedProducts,
+      setDisplayedProducts
+          }}>
         {children}
       </ContextGlobal.Provider>
     );

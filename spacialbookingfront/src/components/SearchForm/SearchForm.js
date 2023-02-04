@@ -5,31 +5,42 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import places from '../../assets/Json/cardsInfo.json' 
 import {FaSearchLocation} from "react-icons/fa"
 import "./SearchFormStyle.css"
+import { GlobalContext } from "../globalState/GlobalState";
 
 function SearchForm(){
 
+    const {displayedProducts, setDisplayedProducts}= GlobalContext()
     const [actualValue, setActualvalue] = useState(""); 
-    const [renderList, SetRenderList] = useState(true);
+    const [renderList, SetRenderList] = useState(false);
     const [filteredPlaces, setFilteredPlaces] = useState([]);
 
 
     const onchangeSearch = (event)=>{ 
         console.log(event.target.value)
-        setActualvalue(event.target.value)
+        setActualvalue(event.target.value)        
+            SetRenderList(true)               
         event.preventDefault() 
         
     } 
 
 
     function Seletvalue(location){
-
         setActualvalue(location)
-        SetRenderList(false)  
-        
-        
+        SetRenderList(false) 
 }
 
+
     function handleSubmit(e){
+        let locationsearch = []
+        places.map((e)=>{
+            if(e.location == actualValue){
+                locationsearch.push(e)
+                
+                console.log(locationsearch)
+            }
+            setDisplayedProducts(locationsearch);
+            setActualvalue("")
+        })
         e.preventDefault()
     }
 
@@ -38,7 +49,7 @@ function SearchForm(){
 
 
     useEffect(()=>{
-        const filtered = places.filter((place) => place.location.includes(actualValue));
+        const filtered = places.filter((place) => place.location.toLowerCase().includes(actualValue.toLowerCase()));
         setFilteredPlaces(filtered);
         console.log(filteredPlaces)
     },[actualValue])
@@ -64,7 +75,7 @@ function SearchForm(){
                 
             </div>
             
-            <ul id="places" className={` ${actualValue ? "DisplayOn":"DisplayOff"}`}>
+            <ul id="places" className={` ${!renderList || actualValue=="" ? "DisplayOff":"DisplayOn"}`}>
                 {filteredPlaces.map((place)=> (                        
                 <li  key={place.id}
                     value={place.logolocation}
