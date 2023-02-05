@@ -4,7 +4,7 @@ import logolocation from '../../assets/img/Vector.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import places from '../../assets/Json/cardsInfo.json' 
 import {FaSearchLocation} from "react-icons/fa"
-import "./SearchFormStyle.css"
+import styles from "./SearchForm.module.css"
 import { GlobalContext } from "../globalState/GlobalState";
 
 function SearchForm(){
@@ -60,29 +60,29 @@ function SearchForm(){
 
     return(
 
-    <form className='form-grid' id='FormSearch' onSubmit={handleSubmit}>  
-    
+    <form className={styles.formGrid} id={styles.FormSearch} onSubmit={handleSubmit}>    
 
-        <label  className='search-container' id="location"> 
-           <div id="SearchInput" className='Disp_grid '>     
-                <FaSearchLocation className='locationIcon' />             
-                <input             
-                placeholder="Les't explore the galaxy"
-                id='value'   
-                className='form-inputs'
-                value={actualValue ? actualValue : ""}
-                onChange={onchangeSearch} 
-                type="search"/> 
-                
+        <div className={styles.Disp_grid} id={styles.location}>
+
+            <div id={styles.SearchInput} className={styles.Disp_grid}> 
+
+                <FaSearchLocation className={`${styles.Disp_grid} ${styles.locationIcon}`}/>        
+                <label  className={`${styles.searchContainer} ${styles.Disp_grid}`}> 
+                    <input             
+                    placeholder="Les't explore the galaxy"
+                    id={styles.value}   
+                    className={styles.formInputs}
+                    value={actualValue ? actualValue : ""}
+                    onChange={onchangeSearch} 
+                    type="search"/>           
+                </label>            
             </div>
-            
-            <ul id="places" className={` ${!renderList || actualValue=="" ? "DisplayOff":"DisplayOn"}`}>
-
+            <ul id="places" className={actualValue ? styles.DisplayOn:styles.DisplayOff}>
                 {filteredPlaces.map((place)=> (                        
                 <li  key={place.id}
                     value={place.logolocation}
-                    id="inSearch"
-                    className='Disp_grid'
+                    id={styles.inSearch}
+                    className={styles.Disp_grid}
                     onClick={() => Seletvalue(place.location)}                                       
                     >
                     <img src={logolocation}/>                                                                
@@ -90,22 +90,21 @@ function SearchForm(){
                     <h6>{place.location}</h6>                     
                 </li>                      
                 ))}
-            </ul>               
-        </label>       
-        <div className='date-container'>
-            <b className='label lb'>Inicio:</b>
-            <label className='label' id='Date' >
-                <input  className='form-inputs div-item' type="date"></input>
+            </ul>  
+        </div> 
+       
+        <div className={styles.datecontainer}>
+            <b className={`${styles.label}, ${styles.lb}`}>Inicio:</b>
+            <label className={styles.label} id={styles.Date} >
+                <input  className={`${styles.formInputs} ${styles.divItem} `} type="date"></input>
              </label>
-             <b className='label lb'>Final:</b>
-             <label className='label ' id='Date'>
-                <input  className='form-inputs' type="date"></input>
+             <b className={`${styles.label}, ${styles.lb}`}>Final:</b>
+             <label className={styles.label} id='Date'>
+                <input  className={`${styles.formInputs} ${styles.divItem} `} type="date"></input>
              </label>
-        </div>
-      
-        
+        </div>     
     
-        <button  id='searchButon'className='submit' type="submit" >Buscar</button>                     
+        <button  id={styles.searchButon} className={styles.submit} type="submit" >Buscar</button>                     
     </form>
     );
 

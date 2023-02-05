@@ -4,6 +4,7 @@ import styles from "../ListContainer/ListContainer.module.css"
 import Card from "../Card/Card"
 import  {useState, useEffect} from 'react';
 import { GlobalContext } from "../globalState/GlobalState";
+import '../../stylesVariables/variables.css'
 
 
 
@@ -27,7 +28,7 @@ const ListContainer = () =>{
     }
 
     useEffect(()=>{
-        getRandomProjectCards(cardsInfo,2)
+        getRandomProjectCards(cardsInfo,4)
     },[])
 
 

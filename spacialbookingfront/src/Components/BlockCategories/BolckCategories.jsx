@@ -1,8 +1,9 @@
 
 import React from 'react';
 import categories from '../../assets/Json/categories.json'
-import './BlockCategories.css'
+import styles from './BlockCategories.module.css'
 import img from '../../assets/img/category3.jpeg'
+import '../../stylesVariables/variables.css'
 
 const Categories = () => {
 
@@ -10,13 +11,13 @@ const Categories = () => {
 
  console.log(img)
   return (
-    <div className='categories'>     
-        <h3 className="titleCategories">Busca por tipo de experiencia:</h3>
-        <ul className="categories-container Disp_grid">
+    <div className={styles.categories}>     
+        <h3 className={styles.titleCategories}>Busca por tipo de experiencia:</h3>
+        <ul className={styles.categoriesContainer} >
         {categories.map((category) => (
-            <li className="category Disp_grid" key={category.id}>
-                <img id="categoryImg" src={category.image} alt={category.title} />
-                <div>
+            <li className={styles.category}  key={category.id}>
+                <img id={styles.categoryImg} src={category.image} alt={category.title} />
+                <div className={styles.text}>
                     <h4>{category.title}</h4>
                     <p>{category.Description}</p>
                 </div>            

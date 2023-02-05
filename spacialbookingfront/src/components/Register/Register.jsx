@@ -74,35 +74,38 @@ function Register(){
                 </Link>
             {/* </Link> */}
             </div>
-        <form id="register" onSubmit={onSubmitForm} className={styles.form}>
-        <h2>Crear cuenta</h2>
-        <div className={styles.fullName}>
-        <div>
-        <label htmlFor="nombre">Nombre:</label>
-        <input type="text" name="nombre" id="nombre" placeholder="Nombre" value={name} onChange={onChangeName}></input>
-        <i class="formulario__validacion-estado fas fa-times-circle"></i>
-        <p class="formulario__input-error">El usuario tiene que ser de 1 a 100 dígitos y solo puede contener letras y tildes.</p>
-        </div>
-        <div>
-        <label htmlFor="apellido">Apellido:</label>
-        <input type="text" name="apellido" id="apellido" placeholder="Apellido" value={lastName} onChange={onChangeLastName}></input>
-        </div>
-        </div>
-        <div>
-        <label htmlFor="email">Correo electrónico</label>
-        <input type="email" name="email" id="email" placeholder="Ingresa el correo electrónico" value={email1} onChange={onChangeEmail}></input>
-        </div>
-        <div>
-        <label htmlFor="password">Contraseña</label>
-        <input type="password" name="password" id="password" placeholder="Ingresa tu contraseña" value={password1} onChange={onChangePassword}></input>
-        </div>
-        <div>
-        <label htmlFor="passwordConfirm">Confirmar contraseña</label>
-        <input type="password" name="passwordConfirm" id="passwordConfirm" placeholder="Ingresa tu contraseña" value={passwordConfirm} onChange={onChangePasswordConfirm}></input> 
-        </div>
-        <button type="submit" className={styles.buttonSignup}>Crear cuenta</button>
-        <p>¿Ya tienes una cuenta? <Link to='/login'>Iniciar sesión</Link></p>
-        </form>
+            <form id="register" onSubmit={onSubmitForm} className={styles.form}>
+                <h2 className={styles.inputsContainer}>Crear cuenta</h2>
+
+                <div className={styles.inputsContainer} id={styles.inputName}>
+                    <label htmlFor="nombre" className={styles.label}>Nombre:</label>
+                    <input type="text" name="nombre" id="nombre" placeholder="Nombre" value={name} onChange={onChangeName} className={styles.inputs}></input>
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                    <p class={styles.formulario__inputError}>El usuario tiene que ser de 1 a 100 dígitos y solo puede contener letras y tildes.</p>
+                </div>
+                <div className={styles.inputsContainer} id={styles.inputLastName}>
+                    <label htmlFor="apellido" className={styles.label}>Apellido:</label>
+                    <input type="text" name="apellido" id="apellido" placeholder="Apellido" value={lastName} onChange={onChangeLastName} className={styles.inputs}></input>
+                </div>
+                
+                <div className={styles.inputsContainer} id={styles.inputEmail}>
+                    <label htmlFor="email" className={styles.label}>Correo electrónico</label>
+                    <input type="email" name="email" id="email" placeholder="Ingresa el correo electrónico" value={email1} onChange={onChangeEmail} className={styles.inputs}></input>
+                </div>
+                <div className={styles.inputsContainer} id={styles.inputPassword}>
+                    <label htmlFor="password" className={styles.label}>Contraseña</label>
+                    <input type="password" name="password" id="password" placeholder="Ingresa tu contraseña" value={password1} onChange={onChangePassword} className={styles.inputs}></input>
+                </div>
+                <div className={styles.inputsContainer} id={styles.inputConfirm}>
+                    <label htmlFor="passwordConfirm" className={styles.label}>Confirmar contraseña</label>
+                    <input type="password" name="passwordConfirm" id="passwordConfirm" placeholder="Ingresa tu contraseña" value={passwordConfirm} onChange={onChangePasswordConfirm} className={styles.inputs}></input> 
+                </div>
+                <div className={styles.inputsContainer}>
+                <button type="submit" className={`${styles.buttonSignup} ${styles.inputsContainer}`}>Crear cuenta</button>
+                <p className={styles.inputsContainer}>¿Ya tienes una cuenta? <Link to='/login'>Iniciar sesión</Link></p>
+                </div>
+                
+            </form>
         </div>
     )
 }

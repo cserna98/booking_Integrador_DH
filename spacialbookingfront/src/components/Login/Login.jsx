@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import styles from './Login.module.css'
 import { GlobalContext } from "../globalState/GlobalState";
+import '../../stylesVariables/variables.css'
 
 
 
