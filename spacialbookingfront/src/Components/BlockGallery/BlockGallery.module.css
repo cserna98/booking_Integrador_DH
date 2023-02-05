@@ -1,0 +1,16 @@
+.containerImg{
+    border: 1px solid red;
+    display: flex;
+    padding: 1rem;
+    gap: 1rem;
+    width: 100vw;
+}
+
+.containerSecondImg{
+    border: 1px solid purple;
+    display: grid;
+    gap: 1rem;
+    grid-auto-flow: dense;
+    grid-template-columns: repeat(auto-fit,minmax(min(100%,30rem),1fr));
+    width: 50%;
+}
