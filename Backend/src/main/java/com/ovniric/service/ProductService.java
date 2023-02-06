@@ -18,7 +18,6 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-
     public Product createProduct(Product product){
         return productRepository.save(product);
     }
@@ -32,8 +31,8 @@ public class ProductService {
     }
 
 
-    public Optional<Product> searchProductByName(String name) {
-        return productRepository.findByName(name);
+    public Optional<Product> searchProductByName(String title) {
+        return productRepository.findByTitle(title);
     }
 
     public void updateProduct(Product product) {

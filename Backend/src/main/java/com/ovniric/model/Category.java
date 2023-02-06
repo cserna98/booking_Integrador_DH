@@ -1,6 +1,10 @@
 package com.ovniric.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "Categoria")
@@ -20,6 +24,11 @@ public class Category {
     @Column(name = "url_imagen")
     private String urlImage;
 
+
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Set<Product> products = new HashSet<>();
+
     public Category(Long categoryId, String title, String description, String urlImage) {
         this.categoryId = categoryId;
         this.title = title;
@@ -35,6 +44,8 @@ public class Category {
 
     public Category() {
     }
+
+ //GETTERS AND SETTERS
 
     public Long getCategoryId() {
         return categoryId;
@@ -66,5 +77,13 @@ public class Category {
 
     public void setUrlImage(String urlImage) {
         this.urlImage = urlImage;
+    }
+
+    public Set<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Set<Product> products) {
+        this.products = products;
     }
 }

@@ -4,44 +4,64 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "Producto")
 public class Product {
+
     //COLUMNS
     @Id
     @Column(name = "id_producto")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idProduct;
 
-    @Column(name = "nombre")
-    private String name;
+    @Column(name = "titulo")
+    private String title;
 
+    @ManyToOne
+    @JoinColumn(name = "id_categoria", referencedColumnName = "id_categoria" )
+    private Category category;
+
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Set<Location> locations = new HashSet();
+
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Set<Image> images = new HashSet();
+
+    @ManyToMany
+    @JoinTable(
+            name = "CaracteristicaProducto",
+            joinColumns = @JoinColumn(name = "id_producto"),
+            inverseJoinColumns = @JoinColumn(name="id_caracteristica")
+    )
+    @JsonIgnore
+    private Set<Feature> features = new HashSet();
+
+    @Column(name = "descripcion")
+    private String description;
     @Column(name = "disponibilidad")
     private Boolean availability;
 
     @Column(name = "politica", length = 500)
     private String policy;
 
-    //JOINS
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id")
-    private List<Image> images;
 
     //CONSTRUCTORS
 
-    public Product(Long idProduct, String name, Boolean availability, String policy) {
+    public Product(Long idProduct, String title, String description, Boolean availability, String policy) {
         this.idProduct = idProduct;
-        this.name = name;
+        this.title = title;
+        this.description = description;
         this.availability = availability;
         this.policy = policy;
     }
 
-    public Product(String name, Boolean availability, String policy) {
-        this.name = name;
+    public Product(String title, String description, Boolean availability, String policy) {
+        this.title = title;
+        this.description = description;
         this.availability = availability;
         this.policy = policy;
     }
@@ -61,12 +81,20 @@ public class Product {
         this.idProduct = idProduct;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Boolean getAvailability() {
@@ -83,5 +111,37 @@ public class Product {
 
     public void setPolicy(String policy) {
         this.policy = policy;
+    }
+
+    public Set<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(Set<Image> images) {
+        this.images = images;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Set<Location> getLocations() {
+        return locations;
+    }
+
+    public void setLocations(Set<Location> locations) {
+        this.locations = locations;
+    }
+
+    public Set<Feature> getFeatures() {
+        return features;
+    }
+
+    public void setFeatures(Set<Feature> features) {
+        this.features = features;
     }
 }

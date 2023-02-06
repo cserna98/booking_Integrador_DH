@@ -18,11 +18,8 @@ public class Image {
     @Column(name = "titulo_imagen")
     private String imageTitle;
 
-
-    //JOINS
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id")
+    @ManyToOne
+    @JoinColumn(name = "producto_id", referencedColumnName = "id_producto")
     private Product product;
 
     //CONSTRUCTORS
@@ -67,5 +64,13 @@ public class Image {
 
     public void setImageTitle(String imageTitle) {
         this.imageTitle = imageTitle;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }
