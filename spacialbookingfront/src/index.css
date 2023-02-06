@@ -11,3 +11,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.swiper-button-prev {
+  color: white;
+  font-weight: bold;
+}
+
+.swiper-button-next {
+  color: white;
+  font-weight: bold;
+}
