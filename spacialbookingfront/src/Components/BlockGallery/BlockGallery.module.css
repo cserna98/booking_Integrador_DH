@@ -1,16 +1,34 @@
-.containerImg{
+.containerImg {
     border: 1px solid red;
     display: flex;
-    padding: 1rem;
+    padding: 2rem;
     gap: 1rem;
-    width: 100vw;
+    height: 30rem;
 }
 
-.containerSecondImg{
-    border: 1px solid purple;
+.mainImg {
+    /* border: 10px solid greenyellow; */
+    width: 40%;
+}
+
+.mainImg img {
+    width: 100%;
+    height: 100%;
+    border-radius: 2rem;
+}
+
+.containerSecondImg {
+    /* border: 10px solid blue; */
     display: grid;
     gap: 1rem;
     grid-auto-flow: dense;
-    grid-template-columns: repeat(auto-fit,minmax(min(100%,30rem),1fr));
-    width: 50%;
+    grid-auto-rows: 48%;
+    grid-template-columns: repeat(auto-fit,minmax(min(100%, 19rem), 1fr));
+    width: 60%;
+}
+
+.containerSecondImg img {
+    width: 100%;
+    height: 100%;
+    border-radius: 2rem;
 }
