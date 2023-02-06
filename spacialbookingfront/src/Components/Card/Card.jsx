@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Card.module.css";
 import mockedImg from "../../assets/img/ISS.jpg";
+import { Link } from "react-router-dom";
 
 
 
@@ -13,7 +14,7 @@ const Card = (props) =>{
             <h2 className={styles.title}>{props.info.name}</h2>
             <h3 className={styles.location}><b>Ubicación:</b>{props.info.location}</h3>
             <p className={styles.description}>{`${props.info.description.substring(0,70)} ...`}</p>
-           <button className={styles.viewMore}>Ver más</button>
+           <button className={styles.viewMore}><Link className={styles.redirectDetail} to={"/bookingCalendar"}></Link>Ver más</button>
         </article>
     </section>
 };
