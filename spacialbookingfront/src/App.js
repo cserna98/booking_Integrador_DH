@@ -9,7 +9,7 @@ import Main from './Components/Main/Main';
 
 import { GlobalContext } from './Components/globalState/GlobalState';
 import SearchBlock from "./Components/SearchBlock/SearchBlock";
-import BookingCalendar from './Components/BookingCalendar/BookingCalendar';
+import BookingCalendar from './Components/BookingCalendar/BookingCalendar.jsx';
 
 function App() {
   const {isLoged} = GlobalContext();
