@@ -25,7 +25,7 @@ function Modal(props){
                 className={`mySwiper ${styles.swiper}`}
                 >
                     {imgSlides.map((image)=>(
-                        <SwiperSlide><img src={image.url} alt={image.title}></img></SwiperSlide>
+                        <SwiperSlide key={image.id}><img src={image.url} alt={image.title}></img></SwiperSlide>
                     ))}
                 </Swiper>
             </div>

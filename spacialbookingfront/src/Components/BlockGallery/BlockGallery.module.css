@@ -1,5 +1,4 @@
 .containerImg {
-    border: 1px solid red;
     display: flex;
     padding: 2rem;
     gap: 1rem;
@@ -64,4 +63,17 @@
 .viewMore button:hover {
     cursor: pointer;
     transform: scale(1.5);
+}
+
+.tabletMobile {
+    display: none;
+}
+@media only screen and (max-width: 1400px) {
+    .desktop {
+        display: none;
+    }
+    .tabletMobile {
+        display: block;
+        padding: 1rem;
+    }
 }

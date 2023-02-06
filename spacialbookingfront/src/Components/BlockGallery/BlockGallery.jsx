@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import imgList from "../../assets/Json/imgProducts.json";
 import styles from "./BlockGallery.module.css"
+import GalleryTabletMobile from "./GalleryTabletMobile";
 import Modal from "./Modal";
 
 function BlockGallery(){
@@ -12,6 +13,7 @@ function BlockGallery(){
 
     return(
         <>
+        <div className={styles.desktop}>
         <div className={styles.containerImg}>
             <div className={styles.mainImg}><img src={`${imgList[0].url}`} alt="" /></div>
             <div className={styles.containerSecondImg}>
@@ -22,6 +24,10 @@ function BlockGallery(){
         </div>
         <div className={styles.viewMore}><button onClick={handleModal}>Ver más...</button></div>
         <Modal imgSlides={imgList} isModal={isModal} handleModal={handleModal}></Modal>
+        </div>
+        <div className={styles.tabletMobile}>
+            <GalleryTabletMobile imgSlides={imgList}></GalleryTabletMobile>
+        </div>
         </>
     )
 }
