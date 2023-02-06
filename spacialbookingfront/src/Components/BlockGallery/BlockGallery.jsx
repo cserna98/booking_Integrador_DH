@@ -21,7 +21,7 @@ function BlockGallery(){
             </div>
         </div>
         <div className={styles.viewMore}><button onClick={handleModal}>Ver más...</button></div>
-        <Modal imgSlides={imgList} isModal={isModal}></Modal>
+        <Modal imgSlides={imgList} isModal={isModal} handleModal={handleModal}></Modal>
         </>
     )
 }

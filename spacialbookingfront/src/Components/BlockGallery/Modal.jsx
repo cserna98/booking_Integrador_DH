@@ -12,10 +12,11 @@ import {EffectFlip, Pagination, Navigation} from "swiper";
 
 
 function Modal(props){
-    const {isModal,imgSlides} = props
+    const {isModal,imgSlides, handleModal} = props
     return(
         <div className={isModal?styles.modal:styles.closeModal}>
-            <div className={styles.hello}>
+            <button className={styles.buttonClosed} onClick={handleModal}>X</button>
+            <div className={styles.gallery}>
                 <Swiper effect={"flip"}
                 grabCursor={true}
                 pagination={true}
