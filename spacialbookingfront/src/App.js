@@ -8,6 +8,7 @@ import Register from "./Components/Register/Register.jsx";
 import Main from './Components/Main/Main';
 import { GlobalContext } from './Components/globalState/GlobalState';
 import SearchBlock from "./Components/SearchBlock/SearchBlock";
+import BookingCalendar from './Components/BookingCalendar/BookingCalendar.jsx';
 
 function App() {
   const {isLoged} = GlobalContext();
@@ -17,7 +18,6 @@ function App() {
   <Routes>
         <Route path="/" element={<Main></Main>}/>
         <Route path="/signup" element={<Register></Register>} />
-        {/* <Route path='/detail' element={<BlockGallery></BlockGallery>}></Route> */}
         <Route path="/login" element={ !isLoged? <Login></Login> : <Navigate to="/"/>} />     
   </Routes>      
      

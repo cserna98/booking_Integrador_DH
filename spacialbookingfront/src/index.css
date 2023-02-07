@@ -12,6 +12,25 @@ code {
     monospace;
 }
 
+.react-calendar{
+  border-radius: 1rem;
+}
+
+@media only screen and (max-width: 1400px) {
+  .react-calendar--doubleView{
+      width: 70% !important;
+      margin: auto;
+  }
+}
+
+@media only screen and (max-width: 481px) {
+  .react-calendar{
+    /* width: 70% !important; */
+    /* position: relative; */
+    margin: auto;
+}
+}
+
 .swiper-button-prev {
   font-weight: bold;
 }
