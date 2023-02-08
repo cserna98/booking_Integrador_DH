@@ -1,0 +1,151 @@
+
+.container{
+    height: auto;
+    padding-bottom: 6vh;
+    background: linear-gradient(to bottom right, rgba(29,41,81,0.5) 20%,rgba(167,175,199,1) 70%, rgba(76,59,113,0.5) 100%);
+}
+.headerContainer{
+    box-sizing: border-box;
+    width: 100%; 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.3vw 2vw;
+    background: linear-gradient(to bottom right,rgba(76,59,113,1) 20%,rgba(76,59,113,0.8) 40%,rgba(76,59,113,0.7) 60%, rgba(76,59,113,0.8) 80%, rgba(76,59,113,1) 100%)
+
+}
+.title{
+    margin: 0;
+    font-size: 3vh;
+    color: #a7afc7;
+}
+
+.category{
+    font-size: 2vh;
+    font-weight: 500;
+    color: #a7afc7;
+}
+
+.goBack{
+    font-size: 5vh;
+    align-self: center;
+    color: #a7afc7;
+}
+
+.locationContainer{
+    padding: 0.5vw 2vw;
+    background-color: #a7afc7;
+}
+
+.location{
+    margin:0;
+    font-size: 1.5;
+    color: #1D2951;
+}
+
+
+.gallery{
+    height: 67vh;
+    border: solid rgba(167,175,199,1) 10px;
+}
+
+.featuresContainer{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    height: auto;
+    padding: 2vw;
+    background-color: transparent;
+}
+
+@media only screen and  (max-width: 992px){
+    .gallery{
+        height: 40vh;
+        border: solid #a7afc7 10px
+    }
+    .featuresContainer{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.descriptionContainer{
+    height: auto;
+    padding: 2vw;
+    padding-bottom: 0;
+
+}
+
+
+.feature{
+    justify-self: center;
+    margin: 0;
+    color: #1D2951;
+    font-size: 16px;
+    padding: 1vw;
+}
+
+.trueIcon{
+    font-size: 16px;
+    color:green;
+
+}
+
+.falseIcon{
+    font-size: 20px;
+    color:crimson;
+}
+
+.featureIcon{
+    font-size: 20px;
+    color:#1D2951;
+}
+
+.featuresTitle{
+    margin: 0;
+    padding: 1vw 2vw;
+    border-bottom: double rgba(76, 59, 113, 0.7);
+    color: #1D2951;
+
+}
+
+.policiesContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 2vw;
+}
+
+@media only screen and  (min-width: 590px) and (max-width: 992px){
+    .policiesContainer{
+         grid-template-columns: 1fr 1fr
+     }
+    }
+
+@media only screen and  (max-width: 590px){
+   .policiesContainer{
+        grid-template-columns: 1fr
+    }
+   }
+
+.policyTitle{
+    color: #1D2951;
+   
+    text-align: center;
+}
+
+.policyContent{
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+
+
+
+
+
+
+
+
+
+
+

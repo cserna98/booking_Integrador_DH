@@ -28,7 +28,7 @@ const ListContainer = () =>{
     }
 
     useEffect(()=>{
-        getRandomProjectCards(cardsInfo,4)
+        getRandomProjectCards(cardsInfo,5)
     },[])
 
 

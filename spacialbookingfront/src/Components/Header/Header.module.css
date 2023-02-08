@@ -225,3 +225,116 @@
 
 }
 
+.header{
+    position: fixed;
+    z-index: 2;
+    top:0px;
+    background-color: var(--secondary-color);
+    width: 100%;
+    display: grid;
+    gap:0.7rem;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: 2vh 4vh;
+    padding:0;
+    padding-bottom: 1.5vh;
+    padding-top: 1.5vh;
+  }
+
+.logo{
+    align-self: center;
+    justify-self: center;
+    height: 8vh;
+    grid-column: 1/2;
+    grid-row: 1/3;
+}
+
+.lema{
+    height: 4vh;
+    grid-column: 2/4;
+    grid-row: 2/3;
+}
+
+.btn{
+    background-color:transparent;
+    color: #a7afc7;
+    width: 15vw;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    border: solid  #4C3B71 3px;
+}
+
+.btn:hover{
+  background-color: #4C3B71B3;
+}
+.loginbtn{
+    grid-column: 9/11;
+    grid-row: 1/3;
+    align-self: center;
+    justify-self: start;
+    
+}
+
+.signupbtn{
+    grid-column: 7/9;
+    grid-row: 1/3;
+    align-self: center;
+    justify-self: end;
+}
+
+
+.menuarea > a{
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #a7afc7;
+  text-align: center;
+}
+
+.menuarea > a:hover{
+  color: #4C3B71;
+}
+
+
+
+.hamburguerlogin{
+  grid-column: 2/4;
+  grid-row: 2/3;
+}
+
+.hamburguersignup{
+  grid-column: 2/4;
+  grid-row: 4/5;
+}
+
+.hamburgueravatar{
+  border: 3px solid #4C3B71;
+  border-radius: 1.5rem;
+  width: 2.8rem;
+  height: 2.8rem;
+  background-color: #a7afc7;
+  align-self: center;
+  grid-column: 2/4;
+  grid-row: 1/3;
+  justify-self: center;
+  
+}
+
+.hamburguerusername{
+  grid-column: 2/4;
+  grid-row: 3/4;
+}
+
+.hamburguerlogout{
+  grid-column: 2/4;
+  grid-row: 4/5;
+}
+
+.Disp_none{
+  display: none;
+  background-color: green;
+}
+
+.ButtonsLog{
+  background-color: #007443;
+}
+
