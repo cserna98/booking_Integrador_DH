@@ -8,8 +8,8 @@ public class Location {
 
     //COLUMNS
     @Id
-    @Column(name = "id_localizacion")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_localizacion")
     private Long idLocation;
 
     @Column(name = "lugar")
