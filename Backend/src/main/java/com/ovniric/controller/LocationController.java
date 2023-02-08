@@ -2,13 +2,11 @@ package com.ovniric.controller;
 
 import com.ovniric.model.Feature;
 import com.ovniric.model.Location;
+import com.ovniric.model.Product;
 import com.ovniric.service.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -46,6 +44,29 @@ public class LocationController {
             return ResponseEntity.ok(locationToSearch.get());
         } else {
             return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @PutMapping
+    public ResponseEntity<String> updateLocation(@RequestBody Location location){
+        Optional<Location> locationToUpdate = locationService.searchLocation(location.getIdLocation());
+        if(locationToUpdate.isPresent()) {
+            locationService.updateLocation(location);
+            return ResponseEntity.ok("The location has been updated");
+        }else {
+            return ResponseEntity.badRequest().body("The location has not been updated because it is not in " +
+                    "the list of locations");
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteLocation(@PathVariable Long id) {
+        Optional<Location> locationToDelete = locationService.searchLocation(id);
+        if(locationToDelete.isPresent()) {
+           locationService.deleteLocation(id);
+            return ResponseEntity.ok("The location has been deleted");
+        }else {
+            return ResponseEntity.badRequest().body("The location with" + id + "does not exist in the database");
         }
     }
 
