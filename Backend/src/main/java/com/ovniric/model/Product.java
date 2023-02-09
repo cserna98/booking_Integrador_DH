@@ -21,14 +21,15 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name = "id_categoria", referencedColumnName = "id_categoria" )
+    @JsonIgnore
     private Category category;
 
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
-    @JsonIgnore
+
     private Set<Location> locations = new HashSet();
 
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
-    @JsonIgnore
+
     private Set<Image> images = new HashSet();
 
     @ManyToMany
@@ -37,7 +38,7 @@ public class Product {
             joinColumns = @JoinColumn(name = "id_producto"),
             inverseJoinColumns = @JoinColumn(name="id_caracteristica")
     )
-    @JsonIgnore
+
     private Set<Feature> features = new HashSet();
 
     @Column(name = "descripcion")

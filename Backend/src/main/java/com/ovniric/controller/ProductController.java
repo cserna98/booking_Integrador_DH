@@ -87,7 +87,7 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ProductDTO>> searchAllProducts(){
+    public ResponseEntity<List<Product>> searchAllProducts(){
         return ResponseEntity.ok(productService.searchAllProducts());
     }
 

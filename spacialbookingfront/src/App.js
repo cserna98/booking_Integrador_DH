@@ -19,7 +19,7 @@ function App() {
         <Route path="/" element={<Main></Main>}/>
         <Route path="/signup" element={<Register></Register>} />
         <Route path="/login" element={ !isLoged? <Login></Login> : <Navigate to="/"/>} />
-        <Route path="/productdetails" element={<ProductDetailView></ProductDetailView>} />
+        <Route path="/productdetails/:id" element={<ProductDetailView></ProductDetailView>} />
      
   </Routes>      
      

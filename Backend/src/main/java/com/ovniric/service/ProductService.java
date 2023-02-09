@@ -104,11 +104,11 @@ public class ProductService {
         return productToProductDTO(productToCreate);
     }
 
-    public List<ProductDTO> searchAllProducts(){
+    public List<Product> searchAllProducts(){
         List<Product> productsToSearch = productRepository.findAll();
-        List<ProductDTO> result = new ArrayList<>();
+        List<Product> result = new ArrayList<>();
         for(Product product : productsToSearch){
-            result.add(productToProductDTO(product));
+            result.add(product);
         }
         return result;
 

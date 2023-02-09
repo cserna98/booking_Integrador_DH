@@ -10,31 +10,24 @@ export const ContextProvider = ({children}) => {
     const [password, setPassword] = useState("");
     const [nameUser, setNameUser] = useState("");
     const [lastNameUser, setLastNameUser] = useState("");
-    const [displayedProducts, setDisplayedProducts] = useState([]);
+    const[actualProduct, SetActualproduct]= useState({});
     const [isLoged,setLogin] = useState(false); 
     const [renderForm,setRenderForm] = useState(null);    
-    const [dataproduct, setDataProduct] = useState([])
+    const [dataproduct, setDataProduct] = useState([]);
+    const [idProduct, setIdProduct] = useState();
+   
+    
 
 
     useEffect(() => {
-      async function fetchData() {
+      async function fetchDataProduct() {
         const response = await fetch('http://localhost:8080/api/productos');
         const data = await response.json();
         setDataProduct(data);
       }
-      fetchData();
-      console.log(dataproduct)
+      fetchDataProduct()
     }, []);
-  
-  
-  
 
-
-
- 
-
-    console.log(email)
-    console.log(password)
     return (
       <ContextGlobal.Provider
       value={{renderForm,
@@ -49,10 +42,12 @@ export const ContextProvider = ({children}) => {
       setNameUser,
       lastNameUser,
       setLastNameUser,
-      displayedProducts,
-      setDisplayedProducts,
       dataproduct,
-      setDataProduct
+      setDataProduct,
+      idProduct,
+      setIdProduct,
+      actualProduct,
+      SetActualproduct
           }}>
         {children}
       </ContextGlobal.Provider>
