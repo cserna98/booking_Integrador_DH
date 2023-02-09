@@ -8,39 +8,43 @@ import '../../stylesVariables/variables.css'
 
 
 
-const ListContainer = () =>{
 
-    const {displayedProducts, setDisplayedProducts}= GlobalContext()
-    
+const ListContainer = () => {
+  const { setDataProduct, dataproduct, SetIdImage } = GlobalContext();
+  const [displayedProducts, setDisplayedProducts] = useState([]);
 
+  function getRandomProjectCards(projects, numberOfCards) {
+    let randomProjects = [];
+    let randomIndices = [];
 
-    function getRandomProjectCards(projects, numberOfCards) {
-        let randomProjects = [];
-        let randomIndices = [];
-        while (randomIndices.length < numberOfCards) {
-            let randomIndex = Math.floor(Math.random() * cardsInfo.length);
-            if (randomIndices.indexOf(randomIndex) === -1) {
-              randomIndices.push(randomIndex);
-              randomProjects.push(projects[randomIndex]);
-            }
-          }
-          setDisplayedProducts(randomProjects)
+    while (randomIndices.length < numberOfCards) {
+      let randomIndex = Math.floor(Math.random() * dataproduct.length);
+      if (randomIndices.indexOf(randomIndex) === -1) {
+        randomIndices.push(randomIndex);
+        randomProjects.push(projects[randomIndex]);
+      }
     }
+    setDisplayedProducts(randomProjects);
+  }
 
-    useEffect(()=>{
-        getRandomProjectCards(cardsInfo,5)
-    },[])
+  useEffect(() => {
+    if (dataproduct.length > 0) {
+      getRandomProjectCards(dataproduct, 5);
+    }
+  }, [dataproduct]);
 
+  console.log(dataproduct);
 
-    return <>
-        <h3 className={styles.recomendations}>Recomendaciones:</h3>
-        <div className={styles.container}>
-        {displayedProducts.map( card => {
-            return <Card className={styles.card} key={card.id} info={card} />
-        })}
-    </div>
+  return (
+    <>
+      <h3 className={styles.recomendations}>Recomendaciones:</h3>
+      <div className={styles.container}>
+        {displayedProducts.map((card) => (
+          <Card className={styles.card} key={card.idProduct} info={card} />
+        ))}
+      </div>
     </>
-}
-
+  );
+};
 
 export default ListContainer;

@@ -1,5 +1,6 @@
 import React from 'react';
-import { useContext,useState,createContext} from "react";
+import { useContext,useState,createContext, useEffect} from "react";
+
 
 export const ContextGlobal = createContext();
 
@@ -9,15 +10,25 @@ export const ContextProvider = ({children}) => {
     const [password, setPassword] = useState("");
     const [nameUser, setNameUser] = useState("");
     const [lastNameUser, setLastNameUser] = useState("");
-    const [displayedProducts, setDisplayedProducts] = useState([]);
 
-  
-const [isLoged,setLogin] = useState(false); 
-const [renderForm,setRenderForm] = useState(null);    
- 
+    const[actualProduct, SetActualproduct]= useState({});
+    const [isLoged,setLogin] = useState(false); 
+    const [renderForm,setRenderForm] = useState(null);    
+    const [dataproduct, setDataProduct] = useState([]);
+    const [idProduct, setIdProduct] = useState();
+   
+    
 
-    console.log(email)
-   console.log(password)
+
+    useEffect(() => {
+      async function fetchDataProduct() {
+        const response = await fetch('http://localhost:8080/api/productos');
+        const data = await response.json();
+        setDataProduct(data);
+      }
+      fetchDataProduct()
+    }, []);
+
     return (
       <ContextGlobal.Provider
       value={{renderForm,
@@ -32,8 +43,13 @@ const [renderForm,setRenderForm] = useState(null);
       setNameUser,
       lastNameUser,
       setLastNameUser,
-      displayedProducts,
-      setDisplayedProducts
+      dataproduct,
+      setDataProduct,
+      idProduct,
+      setIdProduct,
+      actualProduct,
+      SetActualproduct
+
           }}>
         {children}
       </ContextGlobal.Provider>

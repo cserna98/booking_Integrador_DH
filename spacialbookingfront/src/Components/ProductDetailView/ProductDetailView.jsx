@@ -1,4 +1,6 @@
 import React from "react";
+import { useState,useEffect} from "react";
+
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import styles from "./ProductDetailView.module.css";
@@ -9,6 +11,7 @@ import { GoTelescope } from "react-icons/go";
 import { ImLab } from "react-icons/im";
 import { GiAstronautHelmet } from "react-icons/gi";
 import BlockGallery from "../BlockGallery/BlockGallery";
+import { GlobalContext } from "../globalState/GlobalState";
 
 const product =  {   
     "id" : 1,
@@ -31,7 +34,12 @@ const product =  {
 
 const ProductDetailView = () => {
 
-    let altitudeFormated = new Intl.NumberFormat().format(product.altitude);
+    const {actualProduct} = GlobalContext()
+    let location = actualProduct.locations[0]
+  
+    console.log(location)
+    let altitudeFormated = new Intl.NumberFormat().format(location.altitude);
+
    
   return <>
   <Header />
@@ -39,16 +47,19 @@ const ProductDetailView = () => {
     <section className={styles.headerContainer}>
         <article>
             <span className={styles.category}>{product.category}</span>
-            <h2 className={styles.title}> {product.name} </h2> 
+
+            <h2 className={styles.title}> {actualProduct.title} </h2> 
+
         </article>
         <IoIosArrowBack className={styles.goBack}/>
     </section>
     <section className={styles.locationContainer}>
-        <h4 className={styles.location}>  <IoLocationSharp/> {product.location}</h4>
-        <h5 className={styles.location} >{`A ${altitudeFormated} metros sobre el nivel del mar apróximadamente`}</h5>
+        <h4 className={styles.location}>  <IoLocationSharp/> {location.place}</h4>
+        <h5 className={styles.location} >{`A ${location.altitude} metros sobre el nivel del mar apróximadamente`}</h5>
     </section>
     <section className={styles.gallery}>
-        <BlockGallery></BlockGallery>
+        <BlockGallery ></BlockGallery>
+
     </section>
     <h3 className={styles.featuresTitle}>¡La mejor experiencia de tu vida!</h3>
     <section className={styles.descriptionContainer}>
