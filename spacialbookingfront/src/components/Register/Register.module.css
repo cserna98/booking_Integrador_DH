@@ -1,8 +1,76 @@
+
+.registerTemplate{
+    background-color: #ccc;
+    display: grid;
+    grid-template-rows: 5% 95% ;
+    height: auto;
+    grid-template-columns: repeat(1,1fr);
+}
+
+.buttonClosed button{
+    float: right;
+    background-color: transparent;
+    border-radius: 1vh;
+}
+
+
+.form{
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    grid-template-rows: repeat(9,1fr);
+    text-align: center;
+}
+
+
+.label{
+    text-align: left;    
+}
+.inputs{
+    width: 25vw;
+    height: 1.5vw;
+    border-radius: 0.5vw;
+}
+
+.formulario__inputError{
+ display: none;
+}
+
+.form h2 {
+    color: #1D2951;
+}
+.inputsContainer{
+    display: grid;
+    justify-content: center;
+    height: 8vh;
+    margin: 0;
+    align-items: center;
+}
+
+
+.buttonSignup {
+    background-color:#1D2951;
+    color: white;
+    width: 22vw;
+    height: 50px;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    border: solid  #4C3B71 3px;
+    margin-top: 20px;
+}
+
+.buttonSignup:hover{
+    background-color: #4C3B71B3;
+}
+
+
+
+
 @media only screen and (max-width: 1400px) {
     html {
         font-size: 30px;
         box-sizing: border-box;
     }
+
 
     .form input {
         width: 35vw;
@@ -89,35 +157,4 @@
 }
 
 
-
-.registerTemplate{
-
-    background-color: #ccc;
-
-}
-
-.buttonSignup {
-    background-color:#1D2951;
-    color: white;
-    width: 22vw;
-    height: 50px;
-    font-weight: 600;
-    border-radius: 0.5rem;
-    border: solid  #4C3B71 3px;
-    margin-top: 20px;
-
-}
-
-.buttonSignup:hover{
-    background-color: #4C3B71B3;
-}
-
-.form {
-    display: block;
-    text-align: center;
-}
-
-.form h2 {
-    color: #1D2951;
-}
 

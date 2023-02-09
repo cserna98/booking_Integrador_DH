@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import styles from './Login.module.css'
 import { GlobalContext } from "../globalState/GlobalState";
+import '../../stylesVariables/variables.css'
 
 
 
@@ -18,7 +19,7 @@ function Login(){
     const [emailLogin, setEmailLogin] = useState("")
     const [passwordLogin, setPasswordLogin] = useState("")
 
-    const {renderForm,setRenderForm,isLoged,email,setEmail,setPassword,password,setLogin}= GlobalContext()
+    const {email,password,setLogin}= GlobalContext()
 
     // Manejadores de eventos para cada input para actualziar los estados a medida que el usurio escribe en los inputs
     const onChangeEmail = (e) => setEmailLogin(e.target.value);

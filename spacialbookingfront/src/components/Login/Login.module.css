@@ -54,7 +54,7 @@
     height: 50px;
     font-weight: 600;
     border-radius: 0.5rem;
-    border: solid  #4C3B71 3px;
+    border: solid  var(--fourth-color) 3px;
     margin-top: 20px;
 
 }
@@ -69,7 +69,7 @@
 }
 
 .form h2 {
-    color: #1D2951;
+    color: var(--secondary-color);
 }
 
 .buttonClosed {

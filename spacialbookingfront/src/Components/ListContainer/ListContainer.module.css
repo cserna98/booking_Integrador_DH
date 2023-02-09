@@ -6,7 +6,7 @@
 }
 
 .recomendations{
-    color: #a7afc7;
+    color: var(--primary-color);
     margin: 1vw;
     padding-left: 1vw;
     margin-bottom: 0;

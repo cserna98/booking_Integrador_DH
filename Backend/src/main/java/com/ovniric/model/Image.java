@@ -1,5 +1,6 @@
 package com.ovniric.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -20,6 +21,7 @@ public class Image {
 
     @ManyToOne
     @JoinColumn(name = "producto_id", referencedColumnName = "id_producto")
+    @JsonIgnore
     private Product product;
 
     //CONSTRUCTORS

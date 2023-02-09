@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "../Footer/Footer.module.css"
 import {FaFacebook,FaInstagram,FaLinkedinIn,FaTwitter} from "react-icons/fa"
+import '../../stylesVariables/variables.css'
+
 const today = new Date();
 const Footer = () =>{
    
