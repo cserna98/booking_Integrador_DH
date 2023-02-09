@@ -8,10 +8,10 @@ import '../../stylesVariables/variables.css'
 
 
 
-
 const ListContainer = () => {
   const { setDataProduct, dataproduct, SetIdImage } = GlobalContext();
   const [displayedProducts, setDisplayedProducts] = useState([]);
+
 
   function getRandomProjectCards(projects, numberOfCards) {
     let randomProjects = [];

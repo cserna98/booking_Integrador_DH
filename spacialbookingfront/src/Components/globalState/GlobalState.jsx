@@ -11,6 +11,7 @@ export const ContextProvider = ({children}) => {
     const [nameUser, setNameUser] = useState("");
     const [lastNameUser, setLastNameUser] = useState("");
 
+
     const[actualProduct, SetActualproduct]= useState({});
     const [isLoged,setLogin] = useState(false); 
     const [renderForm,setRenderForm] = useState(null);    
@@ -18,6 +19,10 @@ export const ContextProvider = ({children}) => {
     const [idProduct, setIdProduct] = useState();
    
     
+
+    const [displayedProducts, setDisplayedProducts] = useState([]);
+
+
 
 
     useEffect(() => {
@@ -43,12 +48,17 @@ export const ContextProvider = ({children}) => {
       setNameUser,
       lastNameUser,
       setLastNameUser,
+
       dataproduct,
       setDataProduct,
       idProduct,
       setIdProduct,
       actualProduct,
-      SetActualproduct
+      SetActualproduct,
+      displayedProducts,
+      setDisplayedProducts,
+    
+
 
           }}>
         {children}
