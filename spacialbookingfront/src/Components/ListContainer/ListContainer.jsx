@@ -33,7 +33,7 @@ const ListContainer = () => {
     }
   }, [dataproduct]);
 
-  console.log(dataproduct);
+  console.log(displayedProducts);
 
   return (
     <>

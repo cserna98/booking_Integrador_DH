@@ -2,7 +2,6 @@ import  {useState, useEffect} from 'react';
 import React from 'react'; 
 import logolocation from '../../assets/img/Vector.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import places from '../../assets/Json/cardsInfo.json' 
 import {FaSearchLocation} from "react-icons/fa"
 import styles from "./SearchForm.module.css"
 import { GlobalContext } from "../globalState/GlobalState";
@@ -13,6 +12,16 @@ function SearchForm(){
     const [actualValue, setActualvalue] = useState(""); 
     const [renderList, SetRenderList] = useState(false);
     const [filteredPlaces, setFilteredPlaces] = useState([]);
+    const [places, setPlaces] = useState([]);
+
+    useEffect(() => {
+        async function fetchDataLocation() {
+          const response = await fetch('http://localhost:8080/api/localizaciones');
+          const data = await response.json();
+          setPlaces(data);
+        }
+        fetchDataLocation()
+      }, []);
 
 
     const onchangeSearch = (event)=>{ 
@@ -50,7 +59,7 @@ function SearchForm(){
 
  
     useEffect(()=>{
-        const filtered = places.filter((place) => place.location.toLowerCase().includes(actualValue.toLowerCase()));
+        const filtered = places.filter((place) => place.place.includes(actualValue));
         setFilteredPlaces(filtered);
         console.log(filteredPlaces)
     },[actualValue])
@@ -77,7 +86,7 @@ function SearchForm(){
                     type="search"/>           
                 </label>            
             </div>
-            <ul id="places" className={actualValue ? styles.DisplayOn:styles.DisplayOff}>
+            <ul id="places" className={` ${!renderList || actualValue=="" ? styles.DisplayOff:styles.DisplayOn}`}>
                 {filteredPlaces.map((place)=> (                        
                 <li  key={place.id}
                     value={place.logolocation}
