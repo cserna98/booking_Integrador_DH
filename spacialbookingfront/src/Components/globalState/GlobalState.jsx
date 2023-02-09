@@ -50,7 +50,9 @@ export const ContextProvider = ({children}) => {
       lastNameUser,
       setLastNameUser,
       displayedProducts,
-      setDisplayedProducts
+      setDisplayedProducts,
+      dataproduct,
+       SetDataProduct
           }}>
         {children}
       </ContextGlobal.Provider>

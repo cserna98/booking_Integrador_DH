@@ -8,7 +8,6 @@ import Register from "./Components/Register/Register.jsx";
 import Main from './Components/Main/Main';
 import { GlobalContext } from './Components/globalState/GlobalState';
 import SearchBlock from "./Components/SearchBlock/SearchBlock";
-import BookingCalendar from './Components/BookingCalendar/BookingCalendar.jsx';
 import ProductDetailView from './Components/ProductDetailView/ProductDetailView';
 
 function App() {

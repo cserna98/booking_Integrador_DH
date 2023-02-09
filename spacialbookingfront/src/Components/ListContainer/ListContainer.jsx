@@ -10,7 +10,7 @@ import '../../stylesVariables/variables.css'
 
 const ListContainer = () =>{
 
-    const {displayedProducts, setDisplayedProducts}= GlobalContext()
+    const {displayedProducts, setDisplayedProducts,dataproduct, SetDataProduct}= GlobalContext()
     
 
 
