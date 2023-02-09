@@ -15,18 +15,19 @@ function Login(){
         password: "DigitalHouse2"
     }
 
+    const [emailLogin, setEmailLogin] = useState("")
+    const [passwordLogin, setPasswordLogin] = useState("")
+
     const {renderForm,setRenderForm,isLoged,email,setEmail,setPassword,password,setLogin}= GlobalContext()
 
-
-
     // Manejadores de eventos para cada input para actualziar los estados a medida que el usurio escribe en los inputs
-    const onChangeEmail = (e) => setEmail(e.target.value);
-    const onChangePassword = (e) => setPassword(e.target.value);
+    const onChangeEmail = (e) => setEmailLogin(e.target.value);
+    const onChangePassword = (e) => setPasswordLogin(e.target.value);
 
 
     // Funcion para validar campos del Login
     function validateLogin(){
-        if(email===email && password===password){
+        if(email===emailLogin && password===passwordLogin){
             return true;
         }else{
             return false;
@@ -37,10 +38,11 @@ function Login(){
     const onSubmitLogin = (e) =>{
         e.preventDefault();
         console.log(email)
+        console.log(emailLogin)
         const isCorrectLogin = validateLogin();
         if(isCorrectLogin){
-            setEmail("");
-            setPassword("");
+            setEmailLogin("");
+            setPasswordLogin("");
             setLogin(true)
         }else{
             alert("Error credenciales inválidas. Por favor valide los campos ingresados")
@@ -70,11 +72,11 @@ function Login(){
         <h2>Iniciar sesión</h2>
         <div>
         <label htmlFor="email">Correo electrónico</label>
-        <input type="email" name="email" id="email" placeholder="Ingresa el correo electrónico" value={email} onChange={onChangeEmail}></input>
+        <input type="email" name="email" id="email" placeholder="Ingresa el correo electrónico" value={emailLogin} onChange={onChangeEmail}></input>
         </div>
         <div>
         <label htmlFor="password">Contraseña</label>
-        <input type="password" name="password" id="password" placeholder="Ingresa tu contraseña" value={password} onChange={onChangePassword}></input>
+        <input type="password" name="password" id="password" placeholder="Ingresa tu contraseña" value={passwordLogin} onChange={onChangePassword}></input>
         </div>
         <button type="submit" className={styles.buttonLogin}  >Ingresar</button>
         <p>¿Aún no tienes cuenta? <Link to='/signup'>Regístrate</Link></p>

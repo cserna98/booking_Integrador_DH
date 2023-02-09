@@ -4,9 +4,12 @@
   --tertiary-color: #333;
   --icon-size: 24px;
   --font-size: 16px;
+  background: rgb(29,41,81);
+  background: linear-gradient(90deg, rgba(29,41,81,1) 0%, rgba(167,175,199,1) 35%, rgba(76,59,113,1) 100%);
 }
 
 
 body{
   background-color: var(--primary-color);
+  padding-top: 8vh;
 }

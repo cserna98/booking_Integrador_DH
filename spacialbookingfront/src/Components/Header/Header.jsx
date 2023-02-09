@@ -8,7 +8,7 @@ import { Link } from "react-router-dom"
 
 const Header = () => {
 
-  const {renderForm,setRenderForm,isLoged,setLogin}= GlobalContext()
+  const {renderForm,setRenderForm,isLoged,setLogin, nameUser, lastNameUser}= GlobalContext()
  
 
 
@@ -29,19 +29,24 @@ const handleLogIn = () =>{
   console.log(renderForm)
 }
 
+const handleLogo = () => {
+  setRenderForm(null)
+}
+
   const handleLoged = () =>{
     setLogin(false);
+    setRenderForm(null);
 
   }  
 
     return <>
     <header className={styles.header}>
-      <Link to="/" className={styles.logo}><img  className={styles.logo} src={logo} alt="Logo Ovniric" /></Link>
-      <Link to="/" className={styles.lema}><img  className={styles.lema} src={lema} alt="Lema Ovniric" /></Link>
+      <Link to="/" className={styles.logo} onClick={handleLogo}><img  className={styles.logo} src={logo} alt="Logo Ovniric" /></Link>
+      <Link to="/" className={styles.lema} onClick={handleLogo}><img  className={styles.lema} src={lema} alt="Lema Ovniric" /></Link>
       {isLoged ?
       <>
-          <div className={styles.avatar}></div>
-          <a href="#" className={styles.username}>username</a>
+          <div className={styles.avatar}><span> {`${nameUser[0]}${lastNameUser[0]}`} </span></div>
+          <a href="#" className={styles.username}>{`Hola ${nameUser}`}</a>
           <button className={`${styles.btn} ${styles.logout}` } onClick={handleLoged} >Log out</button>          
         </> : 
         <>

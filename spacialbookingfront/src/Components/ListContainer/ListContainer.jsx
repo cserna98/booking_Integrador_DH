@@ -6,11 +6,14 @@ import Card from "../Card/Card"
 
 const ListContainer = () =>{
 
-    return <div className={styles.container}>
+    return <>
+        <h3 className={styles.recomendations}>Recomendaciones:</h3>
+        <div className={styles.container}>
         {cardsInfo.map( card => {
             return <Card className={styles.card} key={card.id} info={card} />
         })}
     </div>
+    </>
 }
 
 

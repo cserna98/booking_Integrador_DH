@@ -91,7 +91,9 @@
 
 
 .registerTemplate{
-    background-color: rgba(135, 205, 226, 0.597);
+
+    background-color: #ccc;
+
 }
 
 .buttonSignup {
