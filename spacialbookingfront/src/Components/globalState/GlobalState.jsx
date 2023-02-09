@@ -13,28 +13,28 @@ export const ContextProvider = ({children}) => {
     const [displayedProducts, setDisplayedProducts] = useState([]);
     const [isLoged,setLogin] = useState(false); 
     const [renderForm,setRenderForm] = useState(null);    
-    const [dataproduct, SetDataProduct] = useState()
+    const [dataproduct, setDataProduct] = useState([])
 
-    async function getData() {
-        try {
-          const response = await fetch('http://localhost:8080/api/productos');
-          const data = await response.json();
-          SetDataProduct(data);
-        } catch (error) {
-          console.error('Error al consumir la API: ', error);
-        }
-        console.log(dataproduct)
+
+    useEffect(() => {
+      async function fetchData() {
+        const response = await fetch('http://localhost:8080/api/productos');
+        const data = await response.json();
+        setDataProduct(data);
       }
+      fetchData();
+      console.log(dataproduct)
+    }, []);
+  
+  
+  
 
-      useEffect(()=>{
-        getData()
-        console.log(dataproduct)
-      }, [])
-      
+
+
  
 
     console.log(email)
-   console.log(password)
+    console.log(password)
     return (
       <ContextGlobal.Provider
       value={{renderForm,
@@ -52,7 +52,7 @@ export const ContextProvider = ({children}) => {
       displayedProducts,
       setDisplayedProducts,
       dataproduct,
-       SetDataProduct
+      setDataProduct
           }}>
         {children}
       </ContextGlobal.Provider>

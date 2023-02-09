@@ -8,17 +8,17 @@ import '../../stylesVariables/variables.css'
 
 
 
+
 const ListContainer = () =>{
 
-    const {displayedProducts, setDisplayedProducts,dataproduct, SetDataProduct}= GlobalContext()
-    
+    const {displayedProducts, setDisplayedProducts,dataproduct}= GlobalContext()
 
-
-    function getRandomProjectCards(projects, numberOfCards) {
+  function getRandomProjectCards(projects, numberOfCards) {
         let randomProjects = [];
         let randomIndices = [];
+        
         while (randomIndices.length < numberOfCards) {
-            let randomIndex = Math.floor(Math.random() * cardsInfo.length);
+            let randomIndex = Math.floor(Math.random() * dataproduct.length);
             if (randomIndices.indexOf(randomIndex) === -1) {
               randomIndices.push(randomIndex);
               randomProjects.push(projects[randomIndex]);
@@ -28,8 +28,10 @@ const ListContainer = () =>{
     }
 
     useEffect(()=>{
-        getRandomProjectCards(cardsInfo,5)
-    },[])
+        if (dataproduct.length > 0) {
+            getRandomProjectCards(dataproduct,5);
+          }
+    },[dataproduct])
 
 
     return <>
