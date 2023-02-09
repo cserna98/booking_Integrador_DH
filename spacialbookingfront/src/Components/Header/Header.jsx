@@ -5,6 +5,7 @@ import lema from "../../assets/img/ovniriclemaPurple.png"
 import {FaBars,FaTimes} from "react-icons/fa"
 import { GlobalContext } from "../globalState/GlobalState";
 import { Link } from "react-router-dom"
+import '../../stylesVariables/variables.css'
 
 const Header = () => {
 
