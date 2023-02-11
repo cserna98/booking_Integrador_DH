@@ -96,7 +96,7 @@ function SearchForm(){
                     >
                     <img src={logolocation}/>                                                                
                     <h4>{place.name}</h4>
-                    <h6>{place.location}</h6>                     
+                    <h6>{place.place}</h6>                     
                 </li>                      
                 ))}
             </ul>  

@@ -12,7 +12,7 @@ import java.util.Optional;
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/api/categorias")
-public class CategoryController {
+public class xCategoryController {
 
     private CategoryService categoryService;
 
