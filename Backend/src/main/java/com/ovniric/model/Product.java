@@ -23,12 +23,11 @@ public class Product {
     @JoinColumn(name = "id_categoria", referencedColumnName = "id_categoria" )
     private Category category;
 
+    @ManyToOne
+    @JoinColumn(name = "localizaciones_id", referencedColumnName = "id_localizacion")
+    private Location locations;
+
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
-
-    private Set<Location> locations = new HashSet();
-
-    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
-
     private Set<Image> images = new HashSet();
 
     @ManyToMany
@@ -129,11 +128,11 @@ public class Product {
         this.category = category;
     }
 
-    public Set<Location> getLocations() {
+    public Location getLocations() {
         return locations;
     }
 
-    public void setLocations(Set<Location> locations) {
+    public void setLocations(Location locations) {
         this.locations = locations;
     }
 
