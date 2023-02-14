@@ -30,7 +30,7 @@ const ListContainer = () => {
 
   useEffect(() => {
     if (dataproduct.length > 0) {
-      getRandomProjectCards(dataproduct, 5);
+      getRandomProjectCards(dataproduct, 1);
     }
   }, [dataproduct]);
 

@@ -27,14 +27,8 @@ function App() {
         <Route path="/" element={<Main></Main>}/>
         <Route path="/signup" element={<Register></Register>} />
         <Route path="/login" element={ !isLoged? <Login></Login> : <Navigate to="/"/>} />
-
         <Route path="/productdetails/:id" element={<ProductDetailView></ProductDetailView>} />
-
-
         <Route path='/categoryProducts/:id' element={<FilterCategory></FilterCategory>}></Route>
-
-     
-
   </Routes>      
      
   <Footer/>
@@ -44,4 +38,3 @@ function App() {
 }
 export default App;
 
-/*git cherry-pick 826a68f7473c5fb333a39d314e5d0a94abee20e9 -- .\src\components\BlockCategories\ .\src\components\SearchBlock\ .\src\components\SearchForm\*/
