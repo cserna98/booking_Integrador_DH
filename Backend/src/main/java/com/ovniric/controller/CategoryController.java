@@ -2,6 +2,7 @@ package com.ovniric.controller;
 
 import com.ovniric.model.Category;
 import com.ovniric.service.CategoryService;
+import com.ovniric.service.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,8 +11,10 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/categorias")
 public class CategoryController {
+
 
     private CategoryService categoryService;
 

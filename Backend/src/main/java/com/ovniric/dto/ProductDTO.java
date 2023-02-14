@@ -7,7 +7,7 @@ public class ProductDTO {
     private Long id;
     private String title;
     private Long categoryId;
-    private Set<Long> locationId;
+    private Long locationId;
     private Set<Long> imageId;
     private Set<Long> featureId;
     private String description;
@@ -38,11 +38,11 @@ public class ProductDTO {
         this.categoryId = categoryId;
     }
 
-    public Set<Long> getLocationId() {
+    public Long getLocationId() {
         return locationId;
     }
 
-    public void setLocationId(Set<Long> locationId) {
+    public void setLocationId(Long locationId) {
         this.locationId = locationId;
     }
 

@@ -53,7 +53,7 @@ public class ProductService {
         result.setId(product.getIdProduct());
         result.setTitle(product.getTitle());
         result.setCategoryId(product.getCategory().getCategoryId());
-        result.setLocationId(product.getLocations().stream().map(Location::getIdLocation).collect(Collectors.toSet()));
+        result.setLocationId(product.getLocations().getIdLocation());
         result.setImageId(product.getImages().stream().map(Image::getIdImage).collect(Collectors.toSet()));
         result.setFeatureId(product.getFeatures().stream().map(Feature::getIdFeature).collect(Collectors.toSet()));
         result.setDescription(product.getDescription());
@@ -66,10 +66,9 @@ public class ProductService {
     private Product productDTOToProduct(ProductDTO productDTO) {
         Product result = new Product();
 
-        Set<Location> locations = productDTO.getLocationId().stream().map(idLocation ->
-        {Location location = new Location();
-        location.setIdLocation(idLocation);
-        return location;}).collect(Collectors.toSet());
+        Location location = new Location();
+        location.setIdLocation(productDTO.getLocationId());
+
 
         Set<Image> images = productDTO.getImageId().stream().map(idImage -> {
             Image image = new Image();
@@ -89,7 +88,7 @@ public class ProductService {
         result.setIdProduct(productDTO.getId());
         result.setTitle(productDTO.getTitle());
         result.setCategory(category);
-        result.setLocations(locations);
+        result.setLocations(location);
         result.setImages(images);
         result.setFeatures(features);
         result.setDescription(productDTO.getDescription());
@@ -104,11 +103,11 @@ public class ProductService {
         return productToProductDTO(productToCreate);
     }
 
-    public List<ProductDTO> searchAllProducts(){
+    public List<Product> searchAllProducts(){
         List<Product> productsToSearch = productRepository.findAll();
-        List<ProductDTO> result = new ArrayList<>();
+        List<Product> result = new ArrayList<>();
         for(Product product : productsToSearch){
-            result.add(productToProductDTO(product));
+            result.add(product);
         }
         return result;
 

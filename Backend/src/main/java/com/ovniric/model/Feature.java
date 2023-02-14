@@ -1,5 +1,6 @@
 package com.ovniric.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -23,6 +24,7 @@ public class Feature {
 
 
     @ManyToMany(mappedBy = "features")
+    @JsonIgnore
     private Set<Product> products = new HashSet();
 
 

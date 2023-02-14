@@ -11,6 +11,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/productos")
 public class ProductController {
 
@@ -86,7 +87,7 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ProductDTO>> searchAllProducts(){
+    public ResponseEntity<List<Product>> searchAllProducts(){
         return ResponseEntity.ok(productService.searchAllProducts());
     }
 

@@ -1,6 +1,10 @@
 package com.ovniric.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "Localizacion")
@@ -18,9 +22,9 @@ public class Location {
     @Column(name = "altitud")
     private Double altitude;
 
-    @ManyToOne
-    @JoinColumn(name = "producto_id", referencedColumnName = "id_producto")
-    private Product product;
+    @OneToMany(mappedBy = "locations", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Set<Product> product = new HashSet<>();
 
     //CONSTRUCTORS
 
@@ -66,11 +70,11 @@ public class Location {
         this.altitude = altitude;
     }
 
-    public Product getProduct() {
+    public Set<Product> getProduct() {
         return product;
     }
 
-    public void setProduct(Product product) {
+    public void setProduct(Set<Product> product) {
         this.product = product;
     }
 }
