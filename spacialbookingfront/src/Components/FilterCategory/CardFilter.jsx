@@ -36,7 +36,8 @@ const CardFilter = (props) =>{
 
 
 
-    return <section className={styles.container}>
+    return (
+    <section className={styles.container}>
         <article className={styles.imgContainer}> <img src={dataImage?.imageUrl} alt=""  className={styles.img} /></article>
         <article className={styles.infoContainer}><span className={styles.category}>{dataCategory?.title}</span>
             <h2 className={styles.title}>{products?.title}</h2>
@@ -47,6 +48,7 @@ const CardFilter = (props) =>{
             </Link>
         </article>
     </section>
+    )
 };
 
 export default CardFilter ;
