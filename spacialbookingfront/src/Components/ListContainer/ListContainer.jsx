@@ -26,6 +26,7 @@ const ListContainer = () => {
     }
     setDisplayedProducts(randomProjects);
   }
+    
 
   useEffect(() => {
     if (dataproduct.length > 0) {

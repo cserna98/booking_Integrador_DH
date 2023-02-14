@@ -8,6 +8,7 @@ import Register from "./Components/Register/Register.jsx";
 import Main from './Components/Main/Main';
 import { GlobalContext } from './Components/globalState/GlobalState';
 import SearchBlock from "./Components/SearchBlock/SearchBlock";
+import { useEffect, useState} from "react";
 
 import BookingCalendar from './Components/BookingCalendar/BookingCalendar.jsx';
 
@@ -16,7 +17,9 @@ import FilterCategory from './Components/FilterCategory/FilterCategory';
 
 
 function App() {
-  const {isLoged} = GlobalContext();
+  const {isLoged,dataproduct,idProduct,setIdProduct,setDataProduct} = GlobalContext();
+ 
+
   return <>
   <Header />
   <SearchBlock/> 
