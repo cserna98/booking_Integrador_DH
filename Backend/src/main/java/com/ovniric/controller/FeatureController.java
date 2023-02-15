@@ -33,7 +33,7 @@ public class FeatureController {
         return ResponseEntity.ok(featureService.searchAllFeatures());
     }
 
-    @GetMapping("/id/{id}")
+    @GetMapping("/{id}")
     ResponseEntity<Feature> searchFeature(@PathVariable Long id) {
         Optional<Feature> featureToSearch = featureService.searchFeature(id);
         if (featureToSearch.isPresent()) {
