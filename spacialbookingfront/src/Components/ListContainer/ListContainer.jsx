@@ -9,7 +9,7 @@ import '../../stylesVariables/variables.css'
 
 
 const ListContainer = () => {
-  const { setDataProduct, dataproduct, SetIdImage } = GlobalContext();
+  const { setDataProduct, dataproduct } = GlobalContext();
   const [displayedProducts, setDisplayedProducts] = useState([]);
 
 
@@ -29,8 +29,9 @@ const ListContainer = () => {
     
 
   useEffect(() => {
+    console.log(displayedProducts)
     if (dataproduct.length > 0) {
-      getRandomProjectCards(dataproduct, 1);
+      getRandomProjectCards(dataproduct, 3);
     }
   }, [dataproduct]);
 
