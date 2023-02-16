@@ -54,6 +54,7 @@ public class ProductService {
         result.setTitle(product.getTitle());
         result.setCategoryId(product.getCategory().getCategoryId());
         result.setLocationId(product.getLocations().getIdLocation());
+        result.setAltitude(product.getAltitude());
         result.setImageId(product.getImages().stream().map(Image::getIdImage).collect(Collectors.toSet()));
         result.setFeatureId(product.getFeatures().stream().map(Feature::getIdFeature).collect(Collectors.toSet()));
         result.setDescription(product.getDescription());
@@ -89,6 +90,7 @@ public class ProductService {
         result.setTitle(productDTO.getTitle());
         result.setCategory(category);
         result.setLocations(location);
+        result.setAltitude(productDTO.getAltitude());
         result.setImages(images);
         result.setFeatures(features);
         result.setDescription(productDTO.getDescription());

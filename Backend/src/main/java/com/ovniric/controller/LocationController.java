@@ -28,7 +28,7 @@ public class LocationController {
         return ResponseEntity.ok(locationService.searchAllLocations());
     }
 
-    @GetMapping("/id/{id}")
+    @GetMapping("/{id}")
     ResponseEntity<Location> searchLocationById(@PathVariable Long id) {
         Optional<Location> locationToSearch = locationService.searchLocation(id);
         if (locationToSearch.isPresent()) {
@@ -38,7 +38,7 @@ public class LocationController {
         }
     }
 
-    @GetMapping("/place/{place}")
+    @GetMapping("/{place}")
     ResponseEntity<Location> searchLocationByPlace(@PathVariable String place) {
         Optional<Location> locationToSearch = locationService.searchLocationByPlace(place);
         if (locationToSearch.isPresent()) {
