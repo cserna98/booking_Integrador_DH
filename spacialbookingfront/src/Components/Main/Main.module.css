@@ -1,7 +1,0 @@
-.bg{
-    background: radial-gradient(circle at 100%,  var(--primary-color),var(--fourth-color) 50%,var(--primary-color), var(--fourth-color) 75%);
-    padding-top: 0;
-    padding-bottom: 4vw;
-    padding-left: 1vw;
-}
-
