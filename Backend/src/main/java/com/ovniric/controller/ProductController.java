@@ -91,7 +91,7 @@ public class ProductController {
         return ResponseEntity.ok(productService.searchAllProducts());
     }
 
-    @GetMapping("id/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<ProductDTO> searchProductById(@PathVariable Long id) {
         Optional<ProductDTO> productToSearch = productService.searchProduct(id);
         if(productToSearch.isPresent()) {
@@ -101,7 +101,7 @@ public class ProductController {
         }
     }
 
-    @GetMapping("/nombre/{name}")
+    @GetMapping("{name}")
     public ResponseEntity<ProductDTO> searchProductById(@PathVariable String name) {
         Optional<ProductDTO> productToSearch = productService.searchProductByName(name);
         if(productToSearch.isPresent()) {

@@ -12,6 +12,7 @@ import { GiAstronautHelmet } from "react-icons/gi";
 import BlockGallery from "../BlockGallery/BlockGallery";
 import { GlobalContext } from "../globalState/GlobalState";
 import { useParams } from 'react-router-dom';
+import BookingCalendar from "../BookingCalendar/BookingCalendar";
 
 const ProductDetailView = () => {
 
@@ -57,7 +58,7 @@ const ProductDetailView = () => {
     </section>
     <h3 className={styles.featuresTitle}>¡La mejor experiencia de tu vida!</h3>
     <section className={styles.descriptionContainer}>
-        <p>{/*product.description*/}</p>
+        <p>{product.description}</p>
     </section>
     <h3 className={styles.featuresTitle}>Comodidades</h3>
     <section className={styles.featuresContainer} >
@@ -69,6 +70,9 @@ const ProductDetailView = () => {
         <h5 className={styles.feature}> <IoBarbellSharp className={styles.featureIcon} /> Entrenamiento astronauta: {/*product.features.includes(6) ? <FaCheckCircle className={styles.trueIcon}/> : <IoCloseCircleSharp className={styles.falseIcon}/>*/}</h5>
         <h5 className={styles.feature}> <GiAstronautHelmet className={styles.featureIcon} /> Traje espacial: {/*product.features.includes(7) ? <FaCheckCircle className={styles.trueIcon}/> : <IoCloseCircleSharp className={styles.falseIcon}/>*/}</h5>
         <h5 className={styles.feature}> <ImLab className={styles.featureIcon} /> Laboratorio : {/*product.features.includes(8) ? <FaCheckCircle className={styles.trueIcon}/> : <IoCloseCircleSharp className={styles.falseIcon}/>*/}</h5>
+     </section>
+     <section>
+        <BookingCalendar></BookingCalendar>
      </section>
      <h3 className={styles.featuresTitle}>¡Información importante!</h3>
      <section className={styles.policiesContainer}>
