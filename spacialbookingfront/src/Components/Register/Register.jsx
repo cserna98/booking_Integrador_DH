@@ -62,13 +62,9 @@ function Register(){
         e.preventDefault();
         const isCorrectForm = validateInputs();
         if(isCorrectForm){
-            setNameUser(e.target.nombre.value);
             setName("");
-            setLastNameUser(e.target.apellido.value);
             setLastName("");
-            setEmail(e.target.email.value);
             setEmail1("");
-            setPassword(e.target.password.value);
             setPassword1("");
             setPasswordConfirm("");
             const newUser = {
@@ -81,7 +77,7 @@ function Register(){
                     id: 2,
                     name: "user"
                 }
-              };
+            };
 
             createUser(newUser);           
             alert("Registro exitoso")

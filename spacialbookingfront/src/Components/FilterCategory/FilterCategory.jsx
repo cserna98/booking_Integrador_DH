@@ -27,7 +27,6 @@ function FilterCategory(){
             ).map((prod) => (
                 <div>
                     <Card className={"styles.card"} key={prod.idProduct} info={prod} />
-                    holi
                 </div>
                 
             ))}

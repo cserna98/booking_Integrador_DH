@@ -17,7 +17,7 @@ const Card = ({info}) =>{
     const {SetActualproduct,SetActualproductId,ActualproductId}= GlobalContext()
     
     let image = info.images[0]
-    console.log(image.imageUrl)
+    console.log(image)
   
     
 

@@ -71,11 +71,11 @@ public class ProductService {
         location.setIdLocation(productDTO.getLocationId());
 
 
-        Set<Image> images = productDTO.getImageId().stream().map(idImage -> {
+        List<Image> images = productDTO.getImageId().stream().map(idImage -> {
             Image image = new Image();
             image.setIdImage(idImage);
             return image;
-        }).collect(Collectors.toSet());
+        }).collect(Collectors.toList());
 
         Set<Feature> features = productDTO.getFeatureId().stream().map(idFeature -> {
             Feature feature = new Feature();
@@ -115,10 +115,10 @@ public class ProductService {
 
     }
 
-    public Optional<ProductDTO> searchProduct(Long id) {
+    public Optional<Product> searchProduct(Long id) {
         Optional<Product> productSearched = productRepository.findById(id);
         if(productSearched.isPresent()) {
-            return Optional.of(productToProductDTO(productSearched.get()));
+            return Optional.of(productSearched.get());
         }else {
             return Optional.empty();
         }
@@ -139,7 +139,7 @@ public class ProductService {
     }
 
     public void deleteProduct(Long id) {
-        Optional<ProductDTO> productToDelete = searchProduct(id);
+        Optional<Product> productToDelete = searchProduct(id);
         if (productToDelete.isPresent()) {
             productRepository.deleteById(id);
         }
