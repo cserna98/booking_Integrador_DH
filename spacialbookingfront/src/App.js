@@ -14,6 +14,7 @@ import BookingCalendar from './Components/BookingCalendar/BookingCalendar.jsx';
 
 import ProductDetailView from './Components/ProductDetailView/ProductDetailView';
 import FilterCategory from './Components/FilterCategory/FilterCategory';
+import BookingForm from './Components/BookingForm/BookingForm';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path="/login" element={ !isLoged? <Login></Login> : <Navigate to="/"/>} />
         <Route path="/productdetails/:id" element={<ProductDetailView></ProductDetailView>} />
         <Route path='/categoryProducts/:id' element={<FilterCategory></FilterCategory>}></Route>
+        <Route path='/bookingForm' element={<BookingForm></BookingForm>}></Route>
   </Routes>      
      
   <Footer/>

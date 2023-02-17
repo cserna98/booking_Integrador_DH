@@ -2,6 +2,7 @@ import React from "react";
 import {useState} from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+import { Link } from "react-router-dom";
 import styles from "./BookingCalendar.module.css"
 
 function BookingCalendar(){
@@ -24,7 +25,9 @@ function BookingCalendar(){
                 </div>
             <div className={styles.sectionBooking}>
                 <p className={styles.letter}>A un clic de vivir tu experiencia espacial</p>
-                <button className={styles.viewMore}>Reserva Ya!</button>
+                <Link to={"/bookingForm"}>
+                    <button className={styles.viewMore}>Reserva Ya!</button>
+                </Link>
             </div>
         </div>
         </div>
