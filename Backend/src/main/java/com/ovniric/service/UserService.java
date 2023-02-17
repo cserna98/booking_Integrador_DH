@@ -28,14 +28,13 @@ public class UserService {
         // Encode password
         String encodedPassword = user.getPassword();
         user.setPassword(encodedPassword);
-
-        // Find role by name
-      Role role = roleRepository.findByName("");
-        user.setRole(role);
-
-        // Save user to the database
         return userRepository.save(user);
     }
+
+    public User getUserByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
 
     public Optional<User> getUserById(Long id) {
         return userRepository.findById(id);

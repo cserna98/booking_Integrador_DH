@@ -3,42 +3,41 @@ package com.ovniric.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "users")
+@Table(name = "usuarios")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String firstName;
 
+    @Column(name = "nombre")
+    private String firstName;
+    @Column(name = "apellido")
     private String lastName;
 
+
+    @Column(name = "email", unique = true)
     private String email;
 
+    @Column(name = "contraseña")
     private String password;
 
+    @Column(name = "ciudad")
     private String city;
 
     @ManyToOne
-    @JoinColumn(name = "role_id")
+    @JoinColumn(name = "role_id",referencedColumnName = "id")
     private Role role;
 
-    public User(String firstName, String lastName, String email, String password, String city) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
-        this.city = city;
-    }
 
-    public User(Long id, String firstName, String lastName, String email, String password, String city) {
-        this.id = id;
+    public User( String firstName, String lastName, String email, String password, String city, Role role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.city = city;
+        this.role = role;
     }
 
     public User() {
