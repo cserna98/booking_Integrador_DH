@@ -18,8 +18,7 @@ const ListContainer = () => {
     console.log(url)
     const response = await fetch(url);
     const data1 = await response.json();
-    console.log(data1)
-    setDisplayedProducts(data1);
+    setDisplayedProducts(data1);    
   }
 
   useEffect(()=>{
