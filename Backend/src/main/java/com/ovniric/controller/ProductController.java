@@ -144,5 +144,10 @@ public class ProductController {
         return ResponseEntity.ok(productos);
     }
 
+    @GetMapping("/random")
+    public List<Product> getRandomProducts(@RequestParam("count") int count) {
+        return productService.getRandomProducts(count);
+    }
+
 
 }
