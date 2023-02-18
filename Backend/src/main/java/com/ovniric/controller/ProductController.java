@@ -145,8 +145,8 @@ public class ProductController {
     }
 
     @GetMapping("/random")
-    public List<Product> getRandomProducts(@RequestParam("count") int count) {
-        return productService.getRandomProducts(count);
+    public List<Product> getRandomProducts() {
+        return productService.getRandomProducts(5);
     }
 
 

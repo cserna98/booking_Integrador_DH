@@ -136,7 +136,7 @@ public class ProductService {
         public List<Product> getRandomProducts(int count) {
             List<Product> allProducts = productRepository.findAll();
             Collections.shuffle(allProducts);
-            return allProducts.subList(0, count);
+            return allProducts.subList(0,count);
         }
 
 
