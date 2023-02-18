@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { GlobalContext } from "../globalState/GlobalState";
 import ListContainer from '../ListContainer/ListContainer';
 import BlockCategories from "../BlockCategories/BolckCategories";
@@ -7,13 +7,19 @@ import '../../stylesVariables/variables.css'
 
 const Main = () => {
 
-    const {renderForm} = GlobalContext()
+    const {renderForm,setUrl} = GlobalContext()
+
+    useEffect(()=>{
+        setUrl("http://localhost:8080/api/productos/random")
+    },[])
+
+
 
     console.log(renderForm)
 
     return (
     <div className={styles.bg}>
-         <BlockCategories/> 
+        <BlockCategories/> 
         <ListContainer/>                   
     </div>
     )

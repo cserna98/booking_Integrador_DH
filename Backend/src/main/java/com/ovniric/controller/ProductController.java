@@ -144,6 +144,12 @@ public class ProductController {
         return ResponseEntity.ok(productos);
     }
 
+    @GetMapping("/categoria/{categoryId}")
+    public ResponseEntity<List<Product>> getProductosByLocalizacionPlace(@PathVariable Long categoryId) {
+        List<Product> productos = productoRepository.findByCategoryId(categoryId);
+        return ResponseEntity.ok(productos);
+    }
+
     @GetMapping("/random")
     public List<Product> getRandomProducts() {
         return productService.getRandomProducts(5);
