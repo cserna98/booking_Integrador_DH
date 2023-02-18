@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
-import CardFilter from './CardFilter';
+import Card from '../Card/Card';
 
 function FilterCategory(){
     const {id} = useParams();
@@ -18,13 +18,17 @@ function FilterCategory(){
         getData(urlAPICategories);
     },[])
 
+        console.log(dataApi)
 
     return(
         <>
         {dataApi?.filter((product)=>
-            product.categoryId==id
+            product.category.categoryId==id
             ).map((prod) => (
-                <CardFilter products={prod}></CardFilter>
+                <div>
+                    <Card className={"styles.card"} key={prod.idProduct} info={prod} />
+                </div>
+                
             ))}
         </>
     )

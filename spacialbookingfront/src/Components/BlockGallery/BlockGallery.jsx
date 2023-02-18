@@ -6,14 +6,14 @@ import Modal from "./Modal";
 import { GlobalContext } from "../globalState/GlobalState";
 import  {useState, useEffect} from 'react';
 
-function BlockGallery(){
+function BlockGallery({images}){
 
     const [isModal, setIsModal]= useState(false);
 
-    const {actualProduct}= GlobalContext()
+    
   
-    let imgList = actualProduct.images 
-
+    let imgList = images;
+    console.log(imgList)
 
 
     function handleModal(){
@@ -34,7 +34,8 @@ function BlockGallery(){
             <div className={styles.mainImg}><img src={`${imgList[0].imageUrl}`} alt="" /></div>
             <div className={styles.containerSecondImg}>
                 {imgList.slice(1,5).map((image) => (
-                    <img key={image.idImage} src={image.imageUrl} alt={image.imagetitle}></img>
+                    <img key={image.idImage} src={image.imageUrl} alt={image.imageTitle}></img>
+                    
 
                 ))}
             </div>

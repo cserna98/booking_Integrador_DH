@@ -8,6 +8,7 @@ public class ProductDTO {
     private String title;
     private Long categoryId;
     private Long locationId;
+    private Integer altitude;
     private Set<Long> imageId;
     private Set<Long> featureId;
     private String description;
@@ -44,6 +45,14 @@ public class ProductDTO {
 
     public void setLocationId(Long locationId) {
         this.locationId = locationId;
+    }
+
+    public Integer getAltitude() {
+        return altitude;
+    }
+
+    public void setAltitude(Integer altitude) {
+        this.altitude = altitude;
     }
 
     public Set<Long> getImageId() {

@@ -3,7 +3,9 @@ package com.ovniric.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -24,11 +26,14 @@ public class Product {
     private Category category;
 
     @ManyToOne
-    @JoinColumn(name = "localizaciones_id", referencedColumnName = "id_localizacion")
+    @JoinColumn(name = "localizacion_id", referencedColumnName = "id_localizacion")
     private Location locations;
 
+    @Column(name = "altitud")
+    private Integer altitude;
+
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
-    private Set<Image> images = new HashSet();
+    private List<Image> images = new ArrayList<>();
 
     @ManyToMany
     @JoinTable(
@@ -48,18 +53,23 @@ public class Product {
     private String policy;
 
 
+
     //CONSTRUCTORS
 
-    public Product(Long idProduct, String title, String description, Boolean availability, String policy) {
+
+    public Product(Long idProduct, String title, Integer altitude, String description, Boolean availability, String policy) {
         this.idProduct = idProduct;
         this.title = title;
+        this.altitude = altitude;
         this.description = description;
         this.availability = availability;
         this.policy = policy;
     }
 
-    public Product(String title, String description, Boolean availability, String policy) {
+    public Product(String title, Location locations, Integer altitude, String description, Boolean availability, String policy) {
         this.title = title;
+        this.locations = locations;
+        this.altitude = altitude;
         this.description = description;
         this.availability = availability;
         this.policy = policy;
@@ -112,11 +122,11 @@ public class Product {
         this.policy = policy;
     }
 
-    public Set<Image> getImages() {
+    public List<Image> getImages() {
         return images;
     }
 
-    public void setImages(Set<Image> images) {
+    public void setImages(List<Image> images) {
         this.images = images;
     }
 
@@ -142,5 +152,13 @@ public class Product {
 
     public void setFeatures(Set<Feature> features) {
         this.features = features;
+    }
+
+    public Integer getAltitude() {
+        return altitude;
+    }
+
+    public void setAltitude(Integer altitude) {
+        this.altitude = altitude;
     }
 }

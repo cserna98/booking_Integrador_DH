@@ -54,6 +54,7 @@ public class ProductService {
         result.setTitle(product.getTitle());
         result.setCategoryId(product.getCategory().getCategoryId());
         result.setLocationId(product.getLocations().getIdLocation());
+        result.setAltitude(product.getAltitude());
         result.setImageId(product.getImages().stream().map(Image::getIdImage).collect(Collectors.toSet()));
         result.setFeatureId(product.getFeatures().stream().map(Feature::getIdFeature).collect(Collectors.toSet()));
         result.setDescription(product.getDescription());
@@ -70,11 +71,11 @@ public class ProductService {
         location.setIdLocation(productDTO.getLocationId());
 
 
-        Set<Image> images = productDTO.getImageId().stream().map(idImage -> {
+        List<Image> images = productDTO.getImageId().stream().map(idImage -> {
             Image image = new Image();
             image.setIdImage(idImage);
             return image;
-        }).collect(Collectors.toSet());
+        }).collect(Collectors.toList());
 
         Set<Feature> features = productDTO.getFeatureId().stream().map(idFeature -> {
             Feature feature = new Feature();
@@ -89,6 +90,7 @@ public class ProductService {
         result.setTitle(productDTO.getTitle());
         result.setCategory(category);
         result.setLocations(location);
+        result.setAltitude(productDTO.getAltitude());
         result.setImages(images);
         result.setFeatures(features);
         result.setDescription(productDTO.getDescription());
@@ -113,10 +115,10 @@ public class ProductService {
 
     }
 
-    public Optional<ProductDTO> searchProduct(Long id) {
+    public Optional<Product> searchProduct(Long id) {
         Optional<Product> productSearched = productRepository.findById(id);
         if(productSearched.isPresent()) {
-            return Optional.of(productToProductDTO(productSearched.get()));
+            return Optional.of(productSearched.get());
         }else {
             return Optional.empty();
         }
@@ -131,13 +133,19 @@ public class ProductService {
             return Optional.empty();
         }
     }
+        public List<Product> getRandomProducts(int count) {
+            List<Product> allProducts = productRepository.findAll();
+            Collections.shuffle(allProducts);
+            return allProducts.subList(0, count);
+        }
+
 
     public void updateProduct(ProductDTO productDTO) {
        productRepository.save(productDTOToProduct(productDTO));
     }
 
     public void deleteProduct(Long id) {
-        Optional<ProductDTO> productToDelete = searchProduct(id);
+        Optional<Product> productToDelete = searchProduct(id);
         if (productToDelete.isPresent()) {
             productRepository.deleteById(id);
         }

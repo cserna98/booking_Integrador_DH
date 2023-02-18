@@ -19,8 +19,6 @@ public class Location {
     @Column(name = "lugar")
     private String place;
 
-    @Column(name = "altitud")
-    private Double altitude;
 
     @OneToMany(mappedBy = "locations", fetch = FetchType.LAZY)
     @JsonIgnore
@@ -29,15 +27,14 @@ public class Location {
     //CONSTRUCTORS
 
 
-    public Location(Long idLocation, String place, Double altitude) {
+    public Location(Long idLocation, String place) {
         this.idLocation = idLocation;
         this.place = place;
-        this.altitude = altitude;
     }
 
-    public Location(String place, Double altitude) {
+    public Location(String place) {
         this.place = place;
-        this.altitude = altitude;
+
     }
 
     public Location() {
@@ -62,13 +59,7 @@ public class Location {
         this.place = place;
     }
 
-    public Double getAltitude() {
-        return altitude;
-    }
 
-    public void setAltitude(Double altitude) {
-        this.altitude = altitude;
-    }
 
     public Set<Product> getProduct() {
         return product;
