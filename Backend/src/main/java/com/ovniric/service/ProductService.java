@@ -133,6 +133,12 @@ public class ProductService {
             return Optional.empty();
         }
     }
+        public List<Product> getRandomProducts(int count) {
+            List<Product> allProducts = productRepository.findAll();
+            Collections.shuffle(allProducts);
+            return allProducts.subList(0, count);
+        }
+
 
     public void updateProduct(ProductDTO productDTO) {
        productRepository.save(productDTOToProduct(productDTO));
