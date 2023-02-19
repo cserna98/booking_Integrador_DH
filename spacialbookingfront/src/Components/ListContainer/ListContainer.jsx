@@ -9,31 +9,25 @@ import '../../stylesVariables/variables.css'
 
 
 const ListContainer = () => {
-  const { setDataProduct, dataproduct } = GlobalContext();
+
   const [displayedProducts, setDisplayedProducts] = useState([]);
+  const {url}= GlobalContext()  
 
 
-  function getRandomProjectCards(projects, numberOfCards) {
-    let randomProjects = [];
-    let randomIndices = [];
-
-    while (randomIndices.length < numberOfCards) {
-      let randomIndex = Math.floor(Math.random() * dataproduct.length);
-      if (randomIndices.indexOf(randomIndex) === -1) {
-        randomIndices.push(randomIndex);
-        randomProjects.push(projects[randomIndex]);
-      }
-    }
-    setDisplayedProducts(randomProjects);
+  async function fetchDataProduct() {
+    console.log(url)
+    const response = await fetch(url);
+    const data1 = await response.json();
+    console.log(data1)
+    setDisplayedProducts(data1);
   }
-    
 
-  useEffect(() => {
-    console.log(displayedProducts)
-    if (dataproduct.length > 0) {
-      getRandomProjectCards(dataproduct, 3);
-    }
-  }, [dataproduct]);
+  useEffect(()=>{
+    console.log(url) 
+    fetchDataProduct()
+  },[url])
+
+ 
 
   console.log(displayedProducts);
 

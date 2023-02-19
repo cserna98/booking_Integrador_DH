@@ -3,7 +3,9 @@ package com.ovniric.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -31,7 +33,7 @@ public class Product {
     private Integer altitude;
 
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
-    private Set<Image> images = new HashSet();
+    private List<Image> images = new ArrayList<>();
 
     @ManyToMany
     @JoinTable(
@@ -120,11 +122,11 @@ public class Product {
         this.policy = policy;
     }
 
-    public Set<Image> getImages() {
+    public List<Image> getImages() {
         return images;
     }
 
-    public void setImages(Set<Image> images) {
+    public void setImages(List<Image> images) {
         this.images = images;
     }
 

@@ -14,12 +14,9 @@ import { Link, useNavigate } from "react-router-dom";
 const Card = ({info}) =>{
     
     const navigate = useNavigate()
-    const {SetActualproduct,SetActualproductId,ActualproductId}= GlobalContext()
+    const {SetActualproductId}= GlobalContext()
     
-    let image = info.images[0]
-    console.log(image.imageUrl)
-  
-    
+    let image = info.images[0] 
 
     return <section className={styles.container}>
         <article className={styles.imgContainer}> <img src={image.imageUrl} alt=""  className={styles.img} /></article>
@@ -28,7 +25,7 @@ const Card = ({info}) =>{
             <h3 className={styles.location}><b>Ubicación:</b>{info.locations.place}</h3>
             <p className={styles.description}>{`${info.description.substring(0,70)} ...`}</p>
             <Link to={`/productdetails/${info.idProduct}`}>
-                <button className={styles.viewMore} onClick={SetActualproductId(info.idProduct)} >Ver más</button>
+                <button className={styles.viewMore} >Ver más</button>
             </Link>
         </article>
     </section>

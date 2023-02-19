@@ -9,13 +9,14 @@ export const ContextProvider = ({children}) => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [nameUser, setNameUser] = useState("");
+    const [user, setUser] = useState({}); 
     const [lastNameUser, setLastNameUser] = useState("");
     const[actualProductId, SetActualproductId]= useState({});
     const [isLoged,setLogin] = useState(false); 
     const [renderForm,setRenderForm] = useState(null);    
     const [dataproduct, setDataProduct] = useState([]);
     const [idProduct, setIdProduct] = useState();
+    const [url, setUrl] = useState("");
    
     
 
@@ -42,12 +43,8 @@ export const ContextProvider = ({children}) => {
       setRenderForm,
       isLoged,
       setLogin,
-      email,
-      setEmail,
-      password,
-      setPassword,
-      nameUser,
-      setNameUser,
+      user,
+      setUser,
       lastNameUser,
       setLastNameUser,
       dataproduct,
@@ -58,10 +55,9 @@ export const ContextProvider = ({children}) => {
       SetActualproductId,
       displayedProducts,
       setDisplayedProducts,
-      fetchDataProduct
-    
-
-
+      fetchDataProduct,
+      url,
+      setUrl
           }}>
         {children}
       </ContextGlobal.Provider>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Header.module.css"
 import logo from "../../assets/img/ovniriclogoPurple.png";
 import lema from "../../assets/img/ovniriclemaPurple.png"
@@ -9,7 +9,7 @@ import '../../stylesVariables/variables.css'
 
 const Header = () => {
 
-  const {renderForm,setRenderForm,isLoged,setLogin, nameUser, lastNameUser}= GlobalContext()
+  const {renderForm,setRenderForm,isLoged,setLogin, user}= GlobalContext()
  
 
 
@@ -37,8 +37,14 @@ const handleLogo = () => {
   const handleLoged = () =>{
     setLogin(false);
     setRenderForm(null);
-
   }  
+  
+  useEffect(()=>{
+    let name = user.firstname
+    console.log(name)
+  },[isLoged])
+  
+  console.log(user)
 
     return <>
     <header className={styles.header}>
@@ -46,8 +52,8 @@ const handleLogo = () => {
       <Link to="/" className={styles.lema} onClick={handleLogo}><img  className={styles.lema} src={lema} alt="Lema Ovniric" /></Link>
       {isLoged ?
       <>
-          <div className={styles.avatar}><span> {`${nameUser[0]}${lastNameUser[0]}`} </span></div>
-          <a href="#" className={styles.username}>{`Hola ${nameUser}`}</a>
+          <div className={styles.avatar}><span> {/*`${name}${user.lastName}`*/} </span></div>
+          <a href="#" className={styles.username}>{/*`Hola ${name}`*/}</a>
           <button className={`${styles.btn} ${styles.logout}` } onClick={handleLoged} >Log out</button>          
         </> : 
         <>
