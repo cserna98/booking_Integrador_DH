@@ -31,7 +31,17 @@ public class User {
     private Role role;
 
 
-    public User( String firstName, String lastName, String email, String password, String city, Role role) {
+    public User(Long id, String firstName, String lastName, String email, String password, String city, Role role) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.city = city;
+        this.role = role;
+    }
+
+    public User(String firstName, String lastName, String email, String password, String city, Role role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -41,6 +51,10 @@ public class User {
     }
 
     public User() {
+    }
+
+    public void CreateClient() {
+        Client newClient = new Client(this);
     }
 
     public Long getId() {

@@ -26,32 +26,32 @@ public class Reservation {
     private LocalDate endDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "producto_id", referencedColumnName = "idProduct")
+    @JoinColumn(name = "producto_id", referencedColumnName = "id_Producto")
     @JsonIgnore
     private Product product;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
-    private User user;
+    private Client clients;
 
     // CONSTRUCTORES
     public Reservation() {}
 
-    public Reservation(Long id, LocalTime startHour, LocalDate startDate, LocalDate endDate, Product product, User user) {
+    public Reservation(Long id, LocalTime startHour, LocalDate startDate, LocalDate endDate, Product product, Client clients) {
         this.id = id;
         this.startHour = startHour;
         this.startDate = startDate;
         this.endDate = endDate;
         this.product = product;
-        this.user = user;
+        this.clients = clients;
     }
 
-    public Reservation(LocalTime startHour, LocalDate startDate, LocalDate endDate, Product product, User user) {
+    public Reservation(LocalTime startHour, LocalDate startDate, LocalDate endDate, Product product, Client clients) {
         this.startHour = startHour;
         this.startDate = startDate;
         this.endDate = endDate;
         this.product = product;
-        this.user = user;
+        this.clients = clients;
     }
 
     public Long getId() {
@@ -94,12 +94,12 @@ public class Reservation {
         this.product = product;
     }
 
-    public User getUser() {
-        return user;
+    public Client getClients() {
+        return clients;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setClients(Client clients) {
+        this.clients = clients;
     }
 
     // GETTERS Y SETTERS

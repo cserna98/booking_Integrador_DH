@@ -1,6 +1,6 @@
 package com.ovniric.service;
 
-import com.ovniric.model.Role;
+
 import com.ovniric.model.User;
 import com.ovniric.repository.RoleRepository;
 import com.ovniric.repository.UserRepository;
@@ -47,4 +47,7 @@ public class UserService {
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
     }
+
+
+
 }
