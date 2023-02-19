@@ -15,7 +15,7 @@ const Main = () => {
 
 
 
-    console.log(renderForm)
+    console.log(renderForm, "main")
 
     return (
     <div className={styles.bg}>

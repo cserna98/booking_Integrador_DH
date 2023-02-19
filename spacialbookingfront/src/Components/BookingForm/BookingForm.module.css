@@ -1,3 +1,8 @@
+.selectTime{
+    margin-bottom: 17rem;
+    border: 1px solid red;
+}
+
 /* -------------Mobile----------- */
 @media only screen and (max-width: 481px) {
     .calendarSelect {

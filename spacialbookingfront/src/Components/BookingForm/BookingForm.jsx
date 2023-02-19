@@ -1,8 +1,10 @@
 import React from "react";
-import {Button, Form, Input} from "antd";
+import {Button, Form, Input,TimePicker} from "antd";
 import { useState } from "react";
 import Calendar from "react-calendar";
 import styles from "./BookingForm.module.css"
+import dayjs from "dayjs";
+import { GlobalContext } from "../globalState/GlobalState";
 
 
 
@@ -10,6 +12,9 @@ import styles from "./BookingForm.module.css"
 function BookingForm(){
     const [form] = Form.useForm();
     const [formLayout, setFormLayout] = useState('horizontal');
+    const {user}= GlobalContext();
+    const userCopy = {...user};
+    const format = 'HH:mm';
     const onFormLayoutChange = ({ layout }) => {
     setFormLayout(layout);
 };
@@ -18,6 +23,8 @@ const [value, setValue] = useState(new Date());
     function onChange(nextValue){
         setValue(nextValue);
     }
+
+    
 
 const formItemLayout =
     formLayout === 'horizontal'
@@ -40,6 +47,11 @@ const formItemLayout =
         }
       : null;
 
+      function onChangeCity(e){
+        userCopy.city = e.target.value;
+        console.log(userCopy.city)
+
+      }
 
     return(
         <>
@@ -57,16 +69,16 @@ const formItemLayout =
       }}
     >
       <Form.Item label="Nombre">
-        <Input placeholder="input placeholder" />
+        <Input value={user.firstName} disabled={true} />
       </Form.Item>
       <Form.Item label="Apellido">
-        <Input placeholder="input placeholder" />
+        <Input value={user.lastName} disabled={true} />
       </Form.Item>
       <Form.Item label="Email">
-        <Input placeholder="input placeholder" />
+        <Input value={user.email} disabled={true} />
       </Form.Item>
       <Form.Item label="Ciudad">
-        <Input placeholder="input placeholder" />
+        <Input placeholder="Ingresa la ciudad" onChange={onChangeCity}/>
       </Form.Item>
     
     </Form>
@@ -75,9 +87,10 @@ const formItemLayout =
                 <Calendar  onChange={onChange} value={value} showDoubleView={true} calendarType={"US"}>
                 </Calendar>
             </div>
-            <div className={styles.calendarMobile}>
-                <Calendar  onChange={onChange} value={value}  calendarType={"US"}>
-                </Calendar>
+
+        <div>
+          <h2>Tu horario de llegada</h2>
+          <TimePicker className={styles.selectTime} format={format} placeholder={"Seleccionar hora"} ></TimePicker>
         </div>
         </>
     )
