@@ -15,7 +15,7 @@ function Login(){
     const [passwordLogin, setPasswordLogin] = useState("")
     
 
-    const {setLogin,user,setUser}= GlobalContext()
+    const {setLogin,user,setUser,loginModal}= GlobalContext()
 
     // datos usuraio de la api 
     async function fetchDataUser(email) {
@@ -75,6 +75,7 @@ function Login(){
             {/* </Link> */}
         </div>
         <form onSubmit={onSubmitLogin} className={styles.form}>
+        { loginModal && <span className={styles.modal}>Para realizar una reserva debes de inciar sesión</span>}
         <h2>Iniciar sesión</h2>
         <div>
         <label htmlFor="email">Correo electrónico</label>
