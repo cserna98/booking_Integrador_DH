@@ -54,8 +54,14 @@ const formItemLayout =
 
       }
 
-      function onChangeTime(value){
-        setDataTime(value);
+      // function onChangeTime(e){
+      //   console.log(e, "evento")
+      //   setDataTime(e.H);
+      //   console.log(dataTime, "time booking")
+      // }
+      const handleChange = (e) => {
+        // const timeBooking = `${e.$H}:${e.$m}`
+        setDataTime(dayjs(e,format))
         console.log(dataTime)
       }
 
@@ -98,7 +104,7 @@ const formItemLayout =
           <h2>Tu horario de llegada</h2>
           <p>Tu experiencia está programada para las</p>
           <p>Indica tu horario estimado de llegada</p>
-          <TimePicker className={styles.selectTime} value={dataTime}  format={format} placeholder={"Seleccionar hora"} ></TimePicker>
+          <TimePicker className={styles.selectTime} value={dataTime} onOk={handleChange} format={format} placeholder={"Seleccionar hora"} ></TimePicker>
         </div>
         </>
     )
