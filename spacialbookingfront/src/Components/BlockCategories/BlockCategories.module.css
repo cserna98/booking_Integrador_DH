@@ -19,7 +19,7 @@
     width: 80%;       
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0px 4px 4px 0px #00000040;
+    box-shadow: rgba(29, 41, 81, 0.4) -5px 5px, rgba(29, 41, 81, 0.3) -10px 10px, rgba(29, 41, 81, 0.2) -15px 15px, rgba(29, 41, 81, 0.1) -20px 20px, rgba(29, 41, 81, 0.05) -25px 25px;
     display: grid;
     grid-template-rows: 60% 40%;
     
@@ -50,6 +50,12 @@
     grid-row: 1 / 2;
     height: 50px;
     margin-top: 25px;
+}
+.categoryTitle{
+    color: azure;
+}
+.categoryDescription{
+    color: azure;
 }
 
 #cate{    

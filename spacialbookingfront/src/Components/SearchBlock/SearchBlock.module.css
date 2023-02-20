@@ -15,11 +15,12 @@
     background-image: radial-gradient(at top center, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0.03) 100%), linear-gradient(to top, rgba(255,255,255,0.1) 0%, rgba(143,152,157,0.60) 100%);
  	background-blend-mode: normal, multiply;
     background-color: transparent;
+    box-shadow: rgba(167, 175, 199, 0.4) 0px 5px, rgba(167, 175, 199, 0.3) 0px 10px, rgba(167, 175, 199, 0.2) 0px 15px, rgba(167, 175, 199, 0.1) 0px 20px, rgba(167, 175, 199, 0.05) 0px 25px;
 }
 
 #titleSearch h1{    
     margin: 0;
-    color: rgba(187,194,204, 1);
+    color: azure
 }
 
 /*________________________________________Tablet_______________________*/

@@ -37,8 +37,8 @@ const Categories = () => {
                 <img id={styles.categoryImg} src={category.urlImage} alt={category.title} />
                 </Link>
                 <div className={styles.text}>
-                    <h4>{category.title}</h4>
-                    <p>{category.description}</p>
+                    <h4 className={styles.categoryTitle}>{category.title}</h4>
+                    <p className={styles.categoryDescription}>{category.description}</p>
 
                 </div>            
             </li>
