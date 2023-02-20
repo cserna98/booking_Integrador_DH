@@ -96,13 +96,14 @@ const formItemLayout =
     </Form>
         </div>
         <div className={styles.calendarSelect}>
-                <Calendar  onChange={onChange} value={value} showDoubleView={true} calendarType={"US"}>
+                <Calendar  onChange={onChange} value={value} minDate={new Date(Date.now()
+                )} selectRange={true}  showDoubleView={true} calendarType={"US"}>
                 </Calendar>
             </div>
 
         <div>
           <h2>Tu horario de llegada</h2>
-          <p>Tu experiencia está programada para las</p>
+          <p>Tu experiencia está programada para las {dataTime && `${dataTime?.$H}:${dataTime?.$m}`}</p>
           <p>Indica tu horario estimado de llegada</p>
           <TimePicker className={styles.selectTime} value={dataTime} onOk={handleChange} format={format} placeholder={"Seleccionar hora"} ></TimePicker>
         </div>
