@@ -1,0 +1,33 @@
+.mainContainer{
+    width: 25vw;
+    margin-bottom: 8vh;
+    background-color: white;
+    border-radius:5px;
+}
+
+.img{
+    width: 100%;
+    border-radius: 5px;
+}
+
+.title{
+    margin: 0;
+    padding-left: 0.3vw;
+}
+
+.category{
+    font-size: max(0.8rem, min(12px));
+    color: var(--primary-color);
+    font-weight: 400;
+    padding-left: 0.3vw;
+}
+
+.location{
+    padding-left: 0.3vw;
+}
+
+
+
+.location{
+    display: block;
+}

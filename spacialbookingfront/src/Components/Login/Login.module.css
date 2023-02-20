@@ -90,3 +90,8 @@
     align-items: flex-start;
 }
 
+.modal{
+    border: solid red 2px;
+    background-color: rgba(255,0,0,0.5);
+    color: azure;
+}

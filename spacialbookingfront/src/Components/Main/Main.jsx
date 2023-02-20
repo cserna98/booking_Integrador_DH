@@ -14,7 +14,7 @@ const Main = () => {
     return (
     <div className={styles.bg}>
          <BlockCategories/> 
-        <ListContainer/>                   
+         <ListContainer/>                   
     </div>
     )
   }

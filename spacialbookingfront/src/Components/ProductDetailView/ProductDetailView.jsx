@@ -16,9 +16,10 @@ import BookingCalendar from "../BookingCalendar/BookingCalendar";
 
 const ProductDetailView = () => {
 
-    const {dataproduct, setDataProduct,fetchDataProduct}= GlobalContext()
+    const {dataproduct, setDataProduct,fetchDataProduct,ActualproductId}= GlobalContext()
     const [product, setproduct] = useState()
     const {id} = useParams();
+
     
 
     useEffect(() => {
@@ -72,7 +73,7 @@ const ProductDetailView = () => {
         <h5 className={styles.feature}> <ImLab className={styles.featureIcon} /> Laboratorio : {/*product.features.includes(8) ? <FaCheckCircle className={styles.trueIcon}/> : <IoCloseCircleSharp className={styles.falseIcon}/>*/}</h5>
      </section>
      <section>
-        <BookingCalendar></BookingCalendar>
+        <BookingCalendar id={id}></BookingCalendar>
      </section>
      <h3 className={styles.featuresTitle}>¡Información importante!</h3>
      <section className={styles.policiesContainer}>
