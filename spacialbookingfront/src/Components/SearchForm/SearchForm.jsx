@@ -8,7 +8,7 @@ import { GlobalContext } from "../globalState/GlobalState";
 
 function SearchForm(){
 
-    const {displayedProducts, setDisplayedProducts}= GlobalContext()
+    const {displayedProducts, setDisplayedProducts,setUrl}= GlobalContext()
     const [actualValue, setActualvalue] = useState(""); 
     const [renderList, SetRenderList] = useState(false);
     const [filteredPlaces, setFilteredPlaces] = useState([]);
@@ -40,20 +40,10 @@ function SearchForm(){
 
 
     function handleSubmit(e){
-        let locationsearch = []
-        places.map((e)=>{
-            if(e.location == actualValue){
-                locationsearch.push(e)
-                
-                console.log(locationsearch)
-            }
-            setDisplayedProducts(locationsearch);
-            setActualvalue("")
-        })
+        console.log(places)
         e.preventDefault()
-
+        setUrl(`http://localhost:8080/api/productos/localizacion/${actualValue}`)
     }
-
 
 
 
@@ -61,7 +51,6 @@ function SearchForm(){
     useEffect(()=>{
         const filtered = places.filter((place) => place.place.includes(actualValue));
         setFilteredPlaces(filtered);
-        console.log(filteredPlaces)
     },[actualValue])
 
 
@@ -88,11 +77,10 @@ function SearchForm(){
             </div>
             <ul id="places" className={` ${!renderList || actualValue=="" ? styles.DisplayOff:styles.DisplayOn}`}>
                 {filteredPlaces.map((place)=> (                        
-                <li  key={place.id}
-                    value={place.logolocation}
+                <li  key={place.idLocation}
                     id={styles.inSearch}
                     className={styles.Disp_grid}
-                    onClick={() => Seletvalue(place.location)}                                       
+                    onClick={() => Seletvalue(place.place)}                                       
                     >
                     <img src={logolocation}/>                                                                
                     <h4>{place.name}</h4>
