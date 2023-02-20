@@ -19,6 +19,7 @@ function BookingForm(){
     setFormLayout(layout);
 };
 const [value, setValue] = useState(new Date());
+const [dataTime,setDataTime] = useState();
 
     function onChange(nextValue){
         setValue(nextValue);
@@ -51,6 +52,11 @@ const formItemLayout =
         userCopy.city = e.target.value;
         console.log(userCopy.city)
 
+      }
+
+      function onChangeTime(value){
+        setDataTime(value);
+        console.log(dataTime)
       }
 
     return(
@@ -90,7 +96,9 @@ const formItemLayout =
 
         <div>
           <h2>Tu horario de llegada</h2>
-          <TimePicker className={styles.selectTime} format={format} placeholder={"Seleccionar hora"} ></TimePicker>
+          <p>Tu experiencia está programada para las</p>
+          <p>Indica tu horario estimado de llegada</p>
+          <TimePicker className={styles.selectTime} value={dataTime}  format={format} placeholder={"Seleccionar hora"} ></TimePicker>
         </div>
         </>
     )
