@@ -24,7 +24,7 @@ public class SecurityConfiguration {
                 .csrf()//solicitudes necesitan enviar un token csrf
                 .disable()//desabilito la proteccion csrf
                 .authorizeHttpRequests()//reglas de autorización
-                .requestMatchers("/api/v1/auth/**")//todas las solicitudes que empiezan con este endpoint no necesitan ser autenticadas
+                .requestMatchers("/api/v1/auth/**", "/api/productos")//todas las solicitudes que empiezan con este endpoint no necesitan ser autenticadas
                 .permitAll()//todas las permitidas
                 .anyRequest() //request que necesitan ser autenticadas
                 .authenticated()//indica que necesitan ser autenticadas
