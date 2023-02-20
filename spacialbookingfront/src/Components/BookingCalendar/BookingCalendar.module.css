@@ -6,6 +6,7 @@
 
 .letter{
     font-weight: bold;
+    color: azure;
 }
 
 .sectionBooking{
@@ -89,6 +90,7 @@
 .calendarDouble h2{
     position: relative;
     left: 17%;
+    color: azure;
 }
 
 .calendarMobile {

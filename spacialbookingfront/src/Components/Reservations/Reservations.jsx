@@ -3,6 +3,7 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer"
 import { useParams } from "react-router-dom";
 import ReservationCard from "../ReservationsCard/ReservationCard";
+import GoBackHeader from "../GoBackHeader/GoBackHeader";
 
 
 
@@ -11,6 +12,7 @@ const Reservations = () => {
 
      return <>
         <Header/>
+        <GoBackHeader/>
         <ReservationCard id={id} />
         <Footer/>      
     </>

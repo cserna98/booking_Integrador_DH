@@ -5,13 +5,12 @@
     --fourth-color:#4C3B71;
     --icon-size: 24px;
     --font-size: 16px;
-    background: rgb(29,41,81);
-    background: linear-gradient(90deg, rgba(29,41,81,1) 0%, rgba(167,175,199,1) 35%, rgba(76,59,113,1) 100%);
+ 
   }
   
 
 body{
-  background: linear-gradient(to bottom, #323232 0%, #3F3F3F 40%, #1C1C1C 150%), linear-gradient(to top, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.25) 200%);
+background: linear-gradient(to bottom, #323232 0%, #3F3F3F 40%, #1C1C1C 150%), linear-gradient(to top, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.25) 200%);
  background-blend-mode: multiply;
   padding-top: 10.5vh;
 }
