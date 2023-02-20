@@ -1,6 +1,7 @@
 package com.ovniric.controller;
 import com.ovniric.dto.ProductDTO;
 import com.ovniric.model.Product;
+import com.ovniric.repository.ProductRepository;
 import com.ovniric.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -37,16 +38,16 @@ public class ProductController {
 //        return ResponseEntity.ok(productService.searchAllProducts());
 //    }
 //
-//    @GetMapping("id/{id}")
-//    public ResponseEntity<Product> searchProductById(@PathVariable Long id) {
-//        Optional<Product> productToSearch = productService.searchProduct(id);
-//        if(productToSearch.isPresent()) {
-//            return ResponseEntity.ok(productToSearch.get());
-//        }else {
-//            return ResponseEntity.notFound().build();
-//        }
-//    }
-//
+    @GetMapping("id/{id}")
+    public ResponseEntity<Product> searchProductById(@PathVariable Long id) {
+        Optional<Product> productToSearch = productService.searchProduct(id);
+        if(productToSearch.isPresent()) {
+            return ResponseEntity.ok(productToSearch.get());
+        }else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 //    @GetMapping("/nombre/{name}")
 //    public ResponseEntity<Product> searchProductById(@PathVariable String name) {
 //        Optional<Product> productToSearch = productService.searchProductByName(name);
@@ -91,17 +92,17 @@ public class ProductController {
         return ResponseEntity.ok(productService.searchAllProducts());
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<ProductDTO> searchProductById(@PathVariable Long id) {
-        Optional<ProductDTO> productToSearch = productService.searchProduct(id);
-        if(productToSearch.isPresent()) {
-            return ResponseEntity.ok(productToSearch.get());
-        }else {
-            return ResponseEntity.notFound().build();
-        }
-    }
+   // @GetMapping("id/{id}")
+    //public ResponseEntity<ProductDTO> searchProductById(@PathVariable Long id) {
+      //  Optional<ProductDTO> productToSearch = productService.searchProduct(id);
+        //if(productToSearch.isPresent()) {
+          //  return ResponseEntity.ok(productToSearch.get());
+        //}else {
+          //  return ResponseEntity.notFound().build();
+        //}
+    //}
 
-    @GetMapping("{name}")
+    @GetMapping("nombre/{name}")
     public ResponseEntity<ProductDTO> searchProductById(@PathVariable String name) {
         Optional<ProductDTO> productToSearch = productService.searchProductByName(name);
         if(productToSearch.isPresent()) {
@@ -113,7 +114,7 @@ public class ProductController {
 
     @PutMapping
     public ResponseEntity<String> updateProduct(@RequestBody ProductDTO productDTO){
-        Optional<ProductDTO> productToUpdate = productService.searchProduct(productDTO.getId());
+        Optional<Product> productToUpdate = productService.searchProduct(productDTO.getId());
         if(productToUpdate.isPresent()) {
             productService.updateProduct(productDTO);
             return ResponseEntity.ok("The product has been updated");
@@ -125,13 +126,33 @@ public class ProductController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteProduct(@PathVariable Long id) {
-        Optional<ProductDTO> productToDelete = productService.searchProduct(id);
+        Optional<Product> productToDelete = productService.searchProduct(id);
         if(productToDelete.isPresent()) {
             productService.deleteProduct(id);
             return ResponseEntity.ok("The product has been deleted");
         }else {
             return ResponseEntity.badRequest().body("The product does not exist in the database");
         }
+    }
+
+    @Autowired
+    private ProductRepository productoRepository;
+
+    @GetMapping("/localizacion/{place}")
+    public ResponseEntity<List<Product>> getProductosByLocalizacionPlace(@PathVariable String place) {
+        List<Product> productos = productoRepository.findByLocationPlace(place);
+        return ResponseEntity.ok(productos);
+    }
+
+    @GetMapping("/categoria/{categoryId}")
+    public ResponseEntity<List<Product>> getProductosByLocalizacionPlace(@PathVariable Long categoryId) {
+        List<Product> productos = productoRepository.findByCategoryId(categoryId);
+        return ResponseEntity.ok(productos);
+    }
+
+    @GetMapping("/random")
+    public List<Product> getRandomProducts() {
+        return productService.getRandomProducts(5);
     }
 
 

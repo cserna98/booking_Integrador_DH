@@ -16,6 +16,7 @@ export const ContextProvider = ({children}) => {
     const [renderForm,setRenderForm] = useState(null);    
     const [dataproduct, setDataProduct] = useState([]);
     const [idProduct, setIdProduct] = useState();
+    const [url, setUrl] = useState("");
    
     
 
@@ -54,7 +55,9 @@ export const ContextProvider = ({children}) => {
       SetActualproductId,
       displayedProducts,
       setDisplayedProducts,
-      fetchDataProduct
+      fetchDataProduct,
+      url,
+      setUrl
           }}>
         {children}
       </ContextGlobal.Provider>
