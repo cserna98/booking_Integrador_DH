@@ -11,10 +11,7 @@ import java.util.List;
 @PrimaryKeyJoinColumn(name = "usuario_id")
 public class Client extends User{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+
 
     @OneToMany(mappedBy = "clients", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
@@ -25,9 +22,8 @@ public class Client extends User{
         this.reservations = reservations;
     }
 
-    public Client(Long id, String firstName, String lastName, String email, String password, String city, Role role, Long id1, List<Reservation> reservations) {
+    public Client(Long id, String firstName, String lastName, String email, String password, String city, Role role,  List<Reservation> reservations) {
         super(firstName, lastName, email, password, city, role);
-        this.id = id;
         this.reservations = reservations;
     }
 
