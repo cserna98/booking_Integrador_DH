@@ -75,13 +75,13 @@ const formItemLayout =
       
     >
       <Form.Item label="Nombre">
-        <Input value={user.firstName} disabled={true} />
+        <Input value={user?.firstName} disabled={true} />
       </Form.Item>
       <Form.Item label="Apellido">
-        <Input value={user.lastName} disabled={true} />
+        <Input value={user?.lastName} disabled={true} />
       </Form.Item>
       <Form.Item label="Email">
-        <Input value={user.email} disabled={true} />
+        <Input value={user?.email} disabled={true} />
       </Form.Item>
       <Form.Item label="Ciudad">
         <Input placeholder="Ingresa la ciudad" className="input-color" onChange={onChangeCity}/>
