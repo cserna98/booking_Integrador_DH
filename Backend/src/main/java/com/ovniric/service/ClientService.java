@@ -1,8 +1,7 @@
 package com.ovniric.service;
 
 import com.ovniric.dto.ClientDTO;
-import com.ovniric.model.Client;
-import com.ovniric.model.Product;
+import com.ovniric.model.user.Client;
 import com.ovniric.model.user.Role;
 import com.ovniric.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;

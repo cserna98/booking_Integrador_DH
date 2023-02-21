@@ -11,7 +11,7 @@ function FilterCategory(){
     const {id} = useParams();
     // Creación de estado para guardar información de la API
     const [dataApi, setDataApi] = useState([]);
-    const urlcategory = `http://localhost:8080/api/productos/categoria/${id}`;
+    
 
     // Creación función asincróna para consumir la API
     async function getData(url){
@@ -21,9 +21,13 @@ function FilterCategory(){
     }
     
     useEffect(()=>{
-        setUrl(`http://localhost:8080/api/productos/categoria/${id}`)
-        console.log(url)
-    },[])
+        if(id){
+            console.log({id})
+            const urlcategory = `http://localhost:8080/api/productos/categoria/${id}`;
+            setUrl(urlcategory)
+        }
+        
+    },[id])
 
     return(
         <>

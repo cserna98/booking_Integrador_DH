@@ -7,15 +7,6 @@ import '../../stylesVariables/variables.css'
 
 const Main = () => {
 
-    const {renderForm,setUrl} = GlobalContext()
-
-    useEffect(()=>{
-        setUrl("http://localhost:8080/api/productos/random")
-    },[])
-
-
-
-    console.log(renderForm)
 
     return (
     <div className={styles.bg}>

@@ -17,7 +17,7 @@ import FilterCategory from './Components/FilterCategory/FilterCategory';
 
 
 function App() {
-  const {isLoged,dataproduct,idProduct,setIdProduct,setDataProduct} = GlobalContext();
+const {isLoged,dataproduct,idProduct,setIdProduct,setDataProduct} = GlobalContext();
  
 
   return <>

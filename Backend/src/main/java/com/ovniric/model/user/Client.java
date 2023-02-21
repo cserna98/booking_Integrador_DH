@@ -1,6 +1,7 @@
-package com.ovniric.model;
+package com.ovniric.model.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.ovniric.model.Reservation;
 import com.ovniric.model.user.Role;
 import com.ovniric.model.user.RoleEnum;
 import com.ovniric.model.user.User;

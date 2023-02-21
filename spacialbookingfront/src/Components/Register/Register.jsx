@@ -45,7 +45,7 @@ function Register(){
     // Crear usuario ( hacer post)
 
     async function createUser(user) {
-        const response = await fetch('http://localhost:8080/api/users', {
+        const response = await fetch('http://localhost:8080/api/v1/auth/userRegister', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -73,10 +73,6 @@ function Register(){
                 email: e.target.email.value,
                 password: e.target.password.value,
                 city: e.target.city.value,
-                role: {
-                    id: 2,
-                    name: "user"
-                }
             };
 
             createUser(newUser);           

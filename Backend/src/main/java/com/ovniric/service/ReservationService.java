@@ -1,7 +1,7 @@
 package com.ovniric.service;
 
 import com.ovniric.dto.ReservationDTO;
-import com.ovniric.model.Client;
+import com.ovniric.model.user.Client;
 import com.ovniric.model.Product;
 import com.ovniric.model.Reservation;
 import com.ovniric.repository.ReservationRepository;

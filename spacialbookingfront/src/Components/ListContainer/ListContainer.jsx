@@ -14,7 +14,7 @@ const ListContainer = () => {
   const {url}= GlobalContext()  
 
 
-  async function fetchDataProduct() {
+  async function fetchDataProduct(url) {
     console.log(url)
     const response = await fetch(url);
     const data1 = await response.json();
@@ -22,8 +22,11 @@ const ListContainer = () => {
   }
 
   useEffect(()=>{
-    console.log(url) 
-    fetchDataProduct()
+    console.log(url)
+    if(url){
+      fetchDataProduct(url)
+    } 
+    
   },[url])
 
  

@@ -1,7 +1,7 @@
 package com.ovniric.controller;
 
 import com.ovniric.dto.ClientDTO;
-import com.ovniric.model.Client;
+import com.ovniric.model.user.Client;
 import com.ovniric.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

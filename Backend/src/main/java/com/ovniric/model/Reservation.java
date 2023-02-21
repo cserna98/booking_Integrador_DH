@@ -1,6 +1,7 @@
 package com.ovniric.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.ovniric.model.user.Client;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;

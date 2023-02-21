@@ -34,7 +34,7 @@ const Categories = () => {
         {dataApi?.map((category) => (
             <li className={styles.category}  key={category.categoryId}>
                 <Link to={`/categoryProducts/${category.categoryId}`}> 
-                <img id={styles.categoryImg} src={category.urlImage} alt={category.title} />
+                    <img id={styles.categoryImg} src={category.urlImage} alt={category.title} />
                 </Link>
                 <div className={styles.text}>
                     <h4>{category.title}</h4>
