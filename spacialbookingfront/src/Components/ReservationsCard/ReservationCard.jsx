@@ -40,7 +40,10 @@ const ReservationCard = (props) => {
                 <span className={styles.category}>{reservationProduct.category}</span>
                 <h3 className={styles.title}>{reservationProduct.name}</h3>
                 <span  className={styles.location}> <IoLocationSharp/> {reservationProduct.location}</span>
-                <span className={styles.location}>{altitudeFormated}mts s.n.m</span> 
+                <span className={styles.location}>{altitudeFormated}mts s.n.m</span>
+                <p>Check in</p>
+                <p>Check out</p>
+                <button className={styles.viewMore} >Confirmar Reserva</button> 
             </section>
         </>
 };

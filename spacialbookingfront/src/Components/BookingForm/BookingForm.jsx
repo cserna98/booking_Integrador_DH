@@ -66,7 +66,7 @@ const formItemLayout =
       }
 
     return(
-        <>
+        <div className={styles.containerForm}>
         <div>
             <Form
       {...formItemLayout}
@@ -107,7 +107,7 @@ const formItemLayout =
           <p>Indica tu horario estimado de llegada</p>
           <TimePicker className={styles.selectTime} value={dataTime} onOk={handleChange} format={format} placeholder={"Seleccionar hora"} ></TimePicker>
         </div>
-        </>
+        </div>
     )
 
 }

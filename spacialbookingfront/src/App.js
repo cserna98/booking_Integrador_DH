@@ -34,7 +34,7 @@ function App() {
         <Route path="/login" element={ !isLoged? <Login></Login> : <Navigate to="/"/>} />
         <Route path="/productdetails/:id" element={<ProductDetailView></ProductDetailView>} />
         <Route path='/categoryProducts/:id' element={<FilterCategory></FilterCategory>}></Route>
-        <Route path='/bookingForm' element={<BookingForm></BookingForm>}></Route>
+        {/* <Route path='/bookingForm' element={<BookingForm></BookingForm>}></Route> */}
         <Route path='/reservations/:id' element={<Reservations></Reservations>}></Route>
   </Routes>      
      
