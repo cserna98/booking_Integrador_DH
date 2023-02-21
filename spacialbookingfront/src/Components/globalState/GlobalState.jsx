@@ -12,11 +12,12 @@ export const ContextProvider = ({children}) => {
     const [user, setUser] = useState({}); 
     const [lastNameUser, setLastNameUser] = useState("");
     const[actualProductId, SetActualproductId]= useState({});
-    const [isLoged,setLogin] = useState(false); 
+    const [isLoged,setLogin] = useState(true); 
     const [renderForm,setRenderForm] = useState(null);    
     const [dataproduct, setDataProduct] = useState([]);
     const [idProduct, setIdProduct] = useState();
     const [url, setUrl] = useState("");
+    const [loginModal,setLoginModal] = useState(false);
    
     
 
@@ -25,7 +26,7 @@ export const ContextProvider = ({children}) => {
     
     
       async function fetchDataProduct() {
-        const response = await fetch('http://localhost:8080/api/productos');
+        const response = await fetch('http://3.22.186.197:8080/api/productos');
         const data = await response.json();
         setDataProduct(data)
         console.log(dataproduct)
@@ -57,7 +58,9 @@ export const ContextProvider = ({children}) => {
       setDisplayedProducts,
       fetchDataProduct,
       url,
-      setUrl
+      setUrl,
+      loginModal,
+      setLoginModal
           }}>
         {children}
       </ContextGlobal.Provider>

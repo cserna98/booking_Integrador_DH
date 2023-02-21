@@ -1,6 +1,6 @@
 .footer{
     width: 100vw;
-    background-color: #4C3B71;
+    background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
     position: absolute;
     bottom: 0;
     height: 5vh;
@@ -10,9 +10,10 @@
     bottom: 0;
 }
 
+
 .icon{
     font-size: 1.5rem;
-    color:var(--primary-color);
+    color:azure;
     padding-left: 1vw;
     padding-right: 1vw;
 }

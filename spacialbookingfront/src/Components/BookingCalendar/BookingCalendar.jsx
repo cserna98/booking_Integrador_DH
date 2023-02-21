@@ -4,9 +4,21 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { Link } from "react-router-dom";
 import styles from "./BookingCalendar.module.css"
+import { GlobalContext } from "../globalState/GlobalState";
 
-function BookingCalendar(){
+
+function BookingCalendar(props){
+
+    const {isLoged,loginModal,setLoginModal}= GlobalContext();
+
+    const handleClick = () => {
+    }
     const [value, setValue] = useState(new Date());
+    
+    const pleaseLogin = () => {
+        setLoginModal(true);
+        return "/login"
+    }
 
     function onChange(nextValue){
         setValue(nextValue);
@@ -25,8 +37,8 @@ function BookingCalendar(){
                 </div>
             <div className={styles.sectionBooking}>
                 <p className={styles.letter}>A un clic de vivir tu experiencia espacial</p>
-                <Link to={"/bookingForm"}>
-                    <button className={styles.viewMore}>Reserva Ya!</button>
+                <Link to={isLoged ? `/reservations/${props.id}`: pleaseLogin() }>
+                    <button className={styles.viewMore} onClick={handleClick} >Reserva Ya!</button>
                 </Link>
             </div>
         </div>

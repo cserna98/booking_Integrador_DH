@@ -99,8 +99,7 @@ function SearchForm(){
              <label className={styles.label} id='Date'>
                 <input  className={`${styles.formInputs} ${styles.divItem} `} type="date"></input>
              </label>
-        </div>     
-    
+        </div> 
         <button  id={styles.searchButon} className={styles.submit} type="submit" >Buscar</button>                     
     </form>
     );
