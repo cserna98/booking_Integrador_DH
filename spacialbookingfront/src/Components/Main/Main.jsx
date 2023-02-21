@@ -10,7 +10,7 @@ const Main = () => {
     const {renderForm,setUrl} = GlobalContext()
 
     useEffect(()=>{
-        setUrl("http://localhost:8080/api/productos/random")
+        setUrl("http://3.22.186.197:8080/api/productos")
     },[])
 
 

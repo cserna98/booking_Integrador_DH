@@ -26,7 +26,7 @@ export const ContextProvider = ({children}) => {
     
     
       async function fetchDataProduct() {
-        const response = await fetch('http://3.22.186.197:8080/api/productos');
+        const response = await fetch('http:/3.22.186.197:8080/api/productos');
         const data = await response.json();
         setDataProduct(data)
         console.log(dataproduct)
