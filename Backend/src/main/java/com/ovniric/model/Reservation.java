@@ -3,13 +3,24 @@ package com.ovniric.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ovniric.model.user.Client;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Collection;
 
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "reservas")
-public class Reservation {
+@Table(name = "reserva")
+public class Reservation{
 
     // ATRIBUTOS
     @Id
@@ -35,74 +46,5 @@ public class Reservation {
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private Client clients;
 
-    // CONSTRUCTORES
-    public Reservation() {}
 
-    public Reservation(Long id, LocalTime startHour, LocalDate startDate, LocalDate endDate, Product product, Client clients) {
-        this.id = id;
-        this.startHour = startHour;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.product = product;
-        this.clients = clients;
-    }
-
-    public Reservation(LocalTime startHour, LocalDate startDate, LocalDate endDate, Product product, Client clients) {
-        this.startHour = startHour;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.product = product;
-        this.clients = clients;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public LocalTime getStartHour() {
-        return startHour;
-    }
-
-    public void setStartHour(LocalTime startHour) {
-        this.startHour = startHour;
-    }
-
-    public LocalDate getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
-    }
-
-    public LocalDate getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
-    public Client getClients() {
-        return clients;
-    }
-
-    public void setClients(Client clients) {
-        this.clients = clients;
-    }
-
-    // GETTERS Y SETTERS
-    // ...
 }
