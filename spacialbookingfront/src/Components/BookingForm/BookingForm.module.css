@@ -1,26 +1,43 @@
+:root {
+    --color-label: white;
+    --color-input: rgba(255, 255, 255, 0.5);
+}
+
+.containerForm{
+    width: 50%;
+}
+
 .selectTime{
     margin-bottom: 17rem;
     border: 1px solid red;
 }
 
-/* -------------Mobile----------- */
-@media only screen and (max-width: 481px) {
-    .calendarSelect {
-        display: none;
-    }
-    .calendarMobile {
-        display: block;
-    }
+.form {
+    /* border: 10px solid yellow; */
+    width: 100%;
+}
 
-    .sectionBooking {
-        display: block;
-    }
+.form label{
+    color: var(--color-label) !important;
+}
 
-    .sectionBooking button {
-        position: relative;
-        right: 1%;
-        height: 2rem;
-        width: 50%;
-        margin: 1%;
-    }
+
+.form input {
+    color: var(--color-input);
+}
+
+.containerForm h2 {
+    color: rgb(208, 203, 203);
+}
+
+.form form {
+    /* border: 10px solid red; */
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.letterP {
+    color: rgb(208, 203, 203);
 }

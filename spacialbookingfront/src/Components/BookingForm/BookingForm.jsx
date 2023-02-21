@@ -9,20 +9,17 @@ import { GlobalContext } from "../globalState/GlobalState";
 
 
 
-function BookingForm(){
+function BookingForm(props){
+    const {date,changeDate, time, changeTime, changeCity,user} = props;
     const [form] = Form.useForm();
     const [formLayout, setFormLayout] = useState('horizontal');
-    const {user}= GlobalContext();
-    const userCopy = {...user};
     const format = 'HH:mm';
     const onFormLayoutChange = ({ layout }) => {
     setFormLayout(layout);
 };
-const [value, setValue] = useState(new Date());
-const [dataTime,setDataTime] = useState();
 
-    function onChange(nextValue){
-        setValue(nextValue);
+    function onChangeDate(nextValue){
+        changeDate(nextValue);
     }
 
     
@@ -49,9 +46,7 @@ const formItemLayout =
       : null;
 
       function onChangeCity(e){
-        userCopy.city = e.target.value;
-        console.log(userCopy.city)
-
+        changeCity(e.target.value)
       }
 
       // function onChangeTime(e){
@@ -59,15 +54,16 @@ const formItemLayout =
       //   setDataTime(e.H);
       //   console.log(dataTime, "time booking")
       // }
-      const handleChange = (e) => {
+      const handleChangeTime = (e) => {
         // const timeBooking = `${e.$H}:${e.$m}`
-        setDataTime(dayjs(e,format))
-        console.log(dataTime)
+        changeTime(dayjs(e,format))
+        console.log(time)
       }
 
     return(
         <div className={styles.containerForm}>
-        <div>
+          <h2>Completa tu información</h2>
+        <div className={styles.form}>
             <Form
       {...formItemLayout}
       layout={formLayout}
@@ -76,9 +72,7 @@ const formItemLayout =
         layout: formLayout,
       }}
       onValuesChange={onFormLayoutChange}
-      style={{
-        maxWidth: 600,
-      }}
+      
     >
       <Form.Item label="Nombre">
         <Input value={user.firstName} disabled={true} />
@@ -90,22 +84,23 @@ const formItemLayout =
         <Input value={user.email} disabled={true} />
       </Form.Item>
       <Form.Item label="Ciudad">
-        <Input placeholder="Ingresa la ciudad" onChange={onChangeCity}/>
+        <Input placeholder="Ingresa la ciudad" className="input-color" onChange={onChangeCity}/>
       </Form.Item>
     
     </Form>
-        </div>
+        </div >
+        <h2>Selecciona tu fecha de reserva</h2>
         <div className={styles.calendarSelect}>
-                <Calendar  onChange={onChange} value={value} minDate={new Date(Date.now()
+                <Calendar  onChange={changeDate} value={date} minDate={new Date(Date.now()
                 )} selectRange={true}  showDoubleView={true} calendarType={"US"}>
                 </Calendar>
             </div>
 
-        <div>
+        <div className={styles.letterP}>
           <h2>Tu horario de llegada</h2>
-          <p>Tu experiencia está programada para las {dataTime && `${dataTime?.$H}:${dataTime?.$m}`}</p>
+          <p>Tu experiencia está programada para las {time && `${time?.$H}:${time?.$m}`}</p>
           <p>Indica tu horario estimado de llegada</p>
-          <TimePicker className={styles.selectTime} value={dataTime} onOk={handleChange} format={format} placeholder={"Seleccionar hora"} ></TimePicker>
+          <TimePicker className={styles.selectTime} value={time} onOk={handleChangeTime} format={format} placeholder={"Seleccionar hora"} ></TimePicker>
         </div>
         </div>
     )

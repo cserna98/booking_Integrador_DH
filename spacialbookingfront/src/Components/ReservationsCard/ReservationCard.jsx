@@ -31,6 +31,14 @@ const ReservationCard = (props) => {
          fetchData()
         });
 
+        function handleClick(){
+            if(props.city && props.date && props.time){
+                alert("Reserva exitosa")
+            } else{
+                alert("Lamentablemente la reserva no ha podido realizarse. Por favor, intente más tarde")
+            }
+        }
+
         let altitudeFormated = new Intl.NumberFormat().format(reservationProduct.altitude);
 
         return <>
@@ -41,9 +49,9 @@ const ReservationCard = (props) => {
                 <h3 className={styles.title}>{reservationProduct.name}</h3>
                 <span  className={styles.location}> <IoLocationSharp/> {reservationProduct.location}</span>
                 <span className={styles.location}>{altitudeFormated}mts s.n.m</span>
-                <p>Check in</p>
-                <p>Check out</p>
-                <button className={styles.viewMore} >Confirmar Reserva</button> 
+                <p>Check in {`${props.date[0]?.toLocaleDateString()}`}</p>
+                <p>Check out {`${props.date[1]?.toLocaleDateString()}`}</p>
+                <button className={styles.viewMore} onClick={handleClick}>Confirmar Reserva</button> 
             </section>
         </>
 };
