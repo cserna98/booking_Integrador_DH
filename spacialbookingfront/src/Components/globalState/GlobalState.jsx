@@ -23,22 +23,7 @@ export const ContextProvider = ({children}) => {
     const [displayedProducts, setDisplayedProducts] = useState([]);
     
 
-    
-    
-      async function fetchDataProduct() {
-        const response = await fetch('http://localhost:8080/api/productos');
-        const data = await response.json();
-        setDataProduct(data)
-        console.log(dataproduct)
-      }
-
-
-      useEffect(()=>{
-        //fetchDataProduct()
-        console.log("renderizando el gglobal")
-        setUrl("http://localhost:8080/api/productos/random")
-        console.log("Main")
-    },[])
+     
       
 
 
@@ -60,7 +45,6 @@ export const ContextProvider = ({children}) => {
       SetActualproductId,
       displayedProducts,
       setDisplayedProducts,
-      fetchDataProduct,
       url,
       setUrl
           }}>

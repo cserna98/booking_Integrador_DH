@@ -4,9 +4,11 @@ import com.ovniric.model.Product;
 import com.ovniric.repository.ProductRepository;
 import com.ovniric.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -155,5 +157,12 @@ public class ProductController {
         return productService.getRandomProducts(5);
     }
 
+    @GetMapping ("/disponibles/{location}/{startDate}/{endDate}")
+    public List<Product> getProductosDisponibles(@PathVariable("location") String location,
+                                                 @PathVariable("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+                                                 @PathVariable("endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) {
+        List<Product> productAvalibles= productoRepository.findAvailableProductosByLocalizacion(location, startDate, endDate);
+        return productAvalibles;
+    }
 
 }

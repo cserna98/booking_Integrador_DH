@@ -16,22 +16,24 @@ import BookingCalendar from "../BookingCalendar/BookingCalendar";
 
 const ProductDetailView = () => {
 
-    const {dataproduct, setDataProduct,fetchDataProduct}= GlobalContext()
-    const [product, setproduct] = useState()
+    const [product, setProduct] = useState()
     const {id} = useParams();
     
-
-    useEffect(() => {
-        console.log(dataproduct)
-        dataproduct.map((e)=>{
-        if(e.idProduct == id){
-            setproduct(e)
-        }
-    });
+    async function fetchDataProduct(url) {
+        console.log(url)
+        const response = await fetch(url);
+        const data = await response.json();
+        setProduct(data)
         
-        console.log(product)
-    }, [dataproduct]);
+      }
 
+
+        
+    useEffect(()=>{
+            fetchDataProduct(`http://localhost:8080/api/productos/id/${id}`)
+    },[])
+
+    console.log(product)
   return (
     !product  ? (
         <div>Cargando...</div>

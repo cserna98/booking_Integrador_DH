@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { GlobalContext } from "../globalState/GlobalState";
 import ListContainer from '../ListContainer/ListContainer';
 import BlockCategories from "../BlockCategories/BolckCategories";
@@ -29,7 +30,6 @@ const Main = () => {
           }
           
       },[id])
-
 
     return (
     <div className={styles.bg}>
