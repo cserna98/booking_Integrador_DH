@@ -41,8 +41,10 @@ public class Product {
             joinColumns = @JoinColumn(name = "id_producto"),
             inverseJoinColumns = @JoinColumn(name="id_caracteristica")
     )
-    @JsonIgnore
     private Set<Feature> features = new HashSet();
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Reservation> reservations = new ArrayList<>();
 
     @Column(name = "descripcion")
     private String description;

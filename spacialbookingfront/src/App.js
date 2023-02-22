@@ -16,9 +16,8 @@ import Reservations from './Components/Reservations/Reservations';
 
 
 function App() {
- 
- 
- const {isLoged,dataproduct,idProduct,setIdProduct,setDataProduct} = GlobalContext();
+
+const {isLoged,dataproduct,idProduct,setIdProduct,setDataProduct} = GlobalContext();
  
 
   return <>

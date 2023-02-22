@@ -1,6 +1,6 @@
 package com.ovniric.service;
 
-import com.ovniric.model.Role;
+import com.ovniric.model.user.Role;
 import com.ovniric.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

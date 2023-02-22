@@ -1,6 +1,6 @@
 package com.ovniric.controller;
 
-import com.ovniric.model.Role;
+import com.ovniric.model.user.Role;
 import com.ovniric.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/roles")
 public class RoleController {
 
