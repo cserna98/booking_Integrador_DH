@@ -19,17 +19,13 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "cliente")
-
-@PrimaryKeyJoinColumn(name = "usuario_id")
+//
+//@PrimaryKeyJoinColumn(name = "usuario_id")
 public class Client extends User{
 
 
-
-    @OneToMany(mappedBy = "clients", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private List<Reservation> reservations = new ArrayList<>();
 
-    public Client(User user) {
-
-    }
 }
