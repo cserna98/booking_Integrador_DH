@@ -1,4 +1,4 @@
-package com.ovniric.config;
+package com.ovniric.auth.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

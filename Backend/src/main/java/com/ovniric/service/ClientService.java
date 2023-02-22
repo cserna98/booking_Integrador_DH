@@ -22,51 +22,51 @@ public class ClientService {
         this.clientRepository = clientRepository;
     }
 
-    public List<ClientDTO> getAllClients() {
-        List<Client> clients = clientRepository.findAll();
-        return clients.stream().map(this::toUserDTO).collect(Collectors.toList());
+//    public List<ClientDTO> getAllClients() {
+//        List<Client> clients = clientRepository.findAll();
+//        return clients.stream().map(this::toUserDTO).collect(Collectors.toList());
+//    }
+
+    public Client createClient(Client client) {
+        return clientRepository.save(client);
+    }
+    public List<Client> getAllClients() {
+        return  clientRepository.findAll();
     }
 
     public Optional<Client> getClientByid(Long id){
-        Optional<Client> clientSelected = clientRepository.findById(id);
-        if (clientSelected.isPresent()){
-            return Optional.of(clientSelected.get());
-        }else{
-            return Optional.empty();
-        }
+       return clientRepository.findById(id);
     }
 
-    public Client createClient(Client client) {
-        Client ClientTocreate = (Client) clientRepository.save(client);
-        return ClientTocreate;
+    public void updateClient(Client client){
+        clientRepository.save(client);
     }
-
     public void deleteClient(Long id) {
-        Optional<Client> productToDelete = getClientByid(id);
-        if (productToDelete.isPresent()) {
+        Optional<Client> clientToDelete = getClientByid(id);
+        if (clientToDelete.isPresent()) {
             clientRepository.deleteById(id);
         }
     }
 
 
-    public ClientDTO toUserDTO(Client user) {
-        ClientDTO dto = new ClientDTO();
-        dto.setId(user.getId());
-        dto.setFirstName(user.getFirstname());
-        dto.setLastName(user.getLastname());
-        dto.setEmail(user.getEmail());
-        dto.setCity(user.getCity());
-        dto.setRoleName(user.getRole().getRoleEnum().name());
-        return dto;
-    }
-
-    public Client toUser(ClientDTO dto) {
-        Client user = new Client();
-        user.setFirstname(dto.getFirstName());
-        user.setLastname(dto.getLastName());
-        user.setEmail(dto.getEmail());
-        user.setCity(dto.getCity());
-        Role role = new Role();
-        return user;
-    }
+//    public ClientDTO toUserDTO(Client user) {
+//        ClientDTO dto = new ClientDTO();
+//        dto.setId(user.getId());
+//        dto.setFirstName(user.getFirstname());
+//        dto.setLastName(user.getLastname());
+//        dto.setEmail(user.getEmail());
+//        dto.setCity(user.getCity());
+//        dto.setRoleName(user.getRole().getRoleEnum().name());
+//        return dto;
+//    }
+//
+//    public Client toUser(ClientDTO dto) {
+//        Client user = new Client();
+//        user.setFirstname(dto.getFirstName());
+//        user.setLastname(dto.getLastName());
+//        user.setEmail(dto.getEmail());
+//        user.setCity(dto.getCity());
+//        Role role = new Role();
+//        return user;
+//    }
 }
