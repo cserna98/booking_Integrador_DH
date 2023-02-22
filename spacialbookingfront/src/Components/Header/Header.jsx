@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Header.module.css"
-import logo from "../../assets/img/ovniriclogoPurple.png";
-import lema from "../../assets/img/ovniriclemaPurple.png"
+import logo from "../../assets/img/ovniricLogoLight.png";
+import lema from "../../assets/img/ovniricLemaLight.png"
 import {FaBars,FaTimes} from "react-icons/fa"
 import { GlobalContext } from "../globalState/GlobalState";
 import { Link } from "react-router-dom"

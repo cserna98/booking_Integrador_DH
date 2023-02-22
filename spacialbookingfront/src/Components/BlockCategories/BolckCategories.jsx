@@ -42,7 +42,7 @@ const Categories = () => {
                 </div>
                 <div className={styles.text}>
                     <h4 className={styles.categoryTitle}>{category.title}</h4>
-                    <p className={styles.categoryDescription}>{category.description}</p>
+                    <p className={styles.categoryDescription}>{`${category.description.substring(0,233)}...`}</p>
 
                 </div>            
             </li>
