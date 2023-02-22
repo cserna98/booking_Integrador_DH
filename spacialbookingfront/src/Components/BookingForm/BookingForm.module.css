@@ -1,0 +1,43 @@
+:root {
+    --color-label: white;
+    --color-input: rgba(255, 255, 255, 0.5);
+}
+
+.containerForm{
+    width: 50%;
+}
+
+.selectTime{
+    margin-bottom: 17rem;
+    border: 1px solid red;
+}
+
+.form {
+    /* border: 10px solid yellow; */
+    width: 100%;
+}
+
+.form label{
+    color: var(--color-label) !important;
+}
+
+
+.form input {
+    color: var(--color-input);
+}
+
+.containerForm h2 {
+    color: rgb(208, 203, 203);
+}
+
+.form form {
+    /* border: 10px solid red; */
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.letterP {
+    color: rgb(208, 203, 203);
+}

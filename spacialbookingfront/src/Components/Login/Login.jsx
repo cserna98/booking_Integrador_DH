@@ -25,6 +25,8 @@ function Login(){
         console.log(user)
       }
 
+      console.log(user, "login")
+
     // Manejadores de eventos para cada input para actualziar los estados a medida que el usurio escribe en los inputs
     const onChangeEmail = (e) => setEmailLogin(e.target.value);
     const onChangePassword = (e) => setPasswordLogin(e.target.value);
@@ -45,7 +47,7 @@ function Login(){
         fetchDataUser(e.target.email.value)
         console.log(user)
         e.preventDefault();
-        const isCorrectLogin = validateLogin();
+        const isCorrectLogin = user && validateLogin();
         if(isCorrectLogin){
             setEmailLogin("");
             setPasswordLogin("");
