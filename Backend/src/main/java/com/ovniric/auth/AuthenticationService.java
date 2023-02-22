@@ -31,6 +31,7 @@ public class AuthenticationService {
                 .city(request.getCity())
                 .build();
         userRepository.save(user);
+
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder()
                 .token(jwtToken)
