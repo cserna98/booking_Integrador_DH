@@ -1,3 +1,7 @@
+.shadow{
+    padding: 20px;
+    
+}
 .searchP{
     margin: 1vw;
     font-size: 1.2rem;
@@ -10,17 +14,19 @@
     grid-template-columns: repeat(1, 1fr);    
     grid-gap: 10px;      
     height:auto;
+    border-radius: 5px;
     padding-bottom:1.5vh;
     text-align: center;
-    background-image: radial-gradient(at top center, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0.03) 100%), linear-gradient(to top, rgba(255,255,255,0.1) 0%, rgba(143,152,157,0.60) 100%);
- 	background-blend-mode: normal, multiply;
     background-color: transparent;
-    box-shadow: rgba(167, 175, 199, 0.4) 0px 5px, rgba(167, 175, 199, 0.3) 0px 10px, rgba(167, 175, 199, 0.2) 0px 15px, rgba(167, 175, 199, 0.1) 0px 20px, rgba(167, 175, 199, 0.05) 0px 25px;
+    background-image: radial-gradient(at top center, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0.03) 100%), linear-gradient(to top, rgba(255,255,255,0.1) 0%, rgba(143,152,157,0.60) 100%);
+    background-blend-mode: normal, multiply;
+    box-shadow: rgba(107, 140, 206, 0.4) -5px 5px, rgba(107, 140, 206, 0.3) -10px 10px, rgba(107, 140, 206, 0.2) -15px 15px, rgba(107, 140, 206, 0.1) -20px 20px, rgba(107, 140, 206, 0.05) -25px 25px, rgba(107, 140, 206, 0.4) 5px 5px, rgba(107, 140, 206, 0.3) 10px 10px, rgba(107, 140, 206, 0.2) 15px 15px, rgba(107, 140, 206, 0.1) 20px 20px, rgba(107, 140, 206, 0.05) 25px 25px;
+   
 }
 
 #titleSearch h1{    
     margin: 0;
-    color: azure
+    color: snow;
 }
 
 /*________________________________________Tablet_______________________*/
