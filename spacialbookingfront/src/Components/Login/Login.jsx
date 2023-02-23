@@ -54,12 +54,12 @@ function Login(){
         console.log(passwordLogin)
         getToken(emailLogin,passwordLogin)
         e.preventDefault();
-<<<<<<< HEAD
-        const isCorrectLogin = user && validateLogin();
-        if(isCorrectLogin){
-=======
+// <<<<<<< HEAD
+//         const isCorrectLogin = user && validateLogin();
+//         if(isCorrectLogin){
+// =======
         if(tokenLogin){
->>>>>>> 785f0ecc09360d97276731007febfce979726406
+// >>>>>>> 785f0ecc09360d97276731007febfce979726406
             setEmailLogin("");
             setPasswordLogin("");
         }else{
