@@ -1,4 +1,4 @@
-package com.ovniric.auth.config;
+package com.ovniric.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -24,7 +24,7 @@ public class SecurityConfiguration {
                 .csrf()//solicitudes necesitan enviar un token csrf
                 .disable()//desabilito la proteccion csrf
                 .authorizeHttpRequests()//reglas de autorización
-                .requestMatchers( "/api/**")//todas las solicitudes que empiezan con este endpoint no necesitan ser autenticadas
+                .requestMatchers( "/api/**","/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html")//todas las solicitudes que empiezan con este endpoint no necesitan ser autenticadas
                 .permitAll()//todas las permitidas
                 .anyRequest() //request que necesitan ser autenticadas
                 .authenticated()//indica que necesitan ser autenticadas

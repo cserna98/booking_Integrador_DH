@@ -8,6 +8,7 @@ import com.ovniric.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalTime;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -41,13 +42,40 @@ public class ReservationService {
 
 
     public Reservation toReservation(ReservationDTO reservationDTO) {
-        Reservation reservation = new Reservation();
-        Product product = productService.searchProduct(reservationDTO.getProductId()).orElseThrow(() -> new NoSuchElementException("Client not found"));
-        Client client = clientService.getClientByid(reservationDTO.getClientId()).orElseThrow(() -> new NoSuchElementException("Client not found"));
 
-        reservation.setProduct(product);
-        reservation.setClients(client);
-        return reservation;
+        Reservation newreservation = new Reservation();
+        newreservation.setId(reservationDTO.getId());
+        newreservation.setStartHour(reservationDTO.getStartHour());
+        newreservation.setEndDate(reservationDTO.getEndDate());
+        newreservation.setStartDate(reservationDTO.getStartDate());
+        Client client = new Client();
+        Product product= new Product();
+
+        product.setIdProduct(reservationDTO.getProductId());
+        client.setId(reservationDTO.getClientId());
+
+
+
+
+        newreservation.setProduct(product);
+        newreservation.setClients(client);
+        return newreservation;
+    }
+
+    public ReservationDTO toReservationDTO(Reservation reservation) {
+
+
+        ReservationDTO result = new ReservationDTO();
+
+        result.setId(reservation.getId());
+        result.setStartHour(LocalTime.now());
+        result.setEndDate(reservation.getEndDate());
+        result.setStartDate(reservation.getStartDate());
+        result.setClientId(reservation.getClients().getId());
+        result.setProductId(reservation.getProduct().getIdProduct());
+
+        return result;
+
     }
 
 }

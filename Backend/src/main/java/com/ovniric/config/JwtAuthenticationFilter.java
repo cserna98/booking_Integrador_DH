@@ -1,4 +1,4 @@
-package com.ovniric.auth.config;
+package com.ovniric.config;
 
 import com.ovniric.service.JwtService;
 import jakarta.servlet.FilterChain;

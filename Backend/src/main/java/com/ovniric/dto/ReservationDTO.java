@@ -1,29 +1,26 @@
 package com.ovniric.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ReservationDTO {
+
+
+    private Long id;
+    private LocalTime startHour;
+    private LocalDate startDate;
+    private LocalDate endDate;
     private Long productId;
     private Long clientId;
 
-    public ReservationDTO() {}
 
-    public ReservationDTO(Long productId, Long clientId) {
-        this.productId = productId;
-        this.clientId = clientId;
-    }
-
-    public Long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Long productId) {
-        this.productId = productId;
-    }
-
-    public Long getClientId() {
-        return clientId;
-    }
-
-    public void setClientId(Long clientId) {
-        this.clientId = clientId;
-    }
 }
