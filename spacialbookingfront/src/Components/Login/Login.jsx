@@ -14,7 +14,8 @@ function Login(){
     const [emailLogin, setEmailLogin] = useState("")
     const [passwordLogin, setPasswordLogin] = useState("")
     const [tokenLogin, setTokenLogin] = useState()
-    const {setLogin,user,setUser,loginModal}= GlobalContext()
+    const {setLogin,user,setUser,loginModal, setEmailUser}= GlobalContext()
+    console.log(user, "datos usuarios")
 
     // datos usuraio de la api 
   
@@ -31,6 +32,7 @@ function Login(){
           }
         });
         const data = await response.json();
+        console.log(data)
         if(response.ok){
             setTokenLogin(data.token)
             localStorage.setItem('token', data.token);
@@ -40,6 +42,8 @@ function Login(){
 
         return data.token;
       }
+
+      console.log(user, "login")
 
     // Manejadores de eventos para cada input para actualziar los estados a medida que el usurio escribe en los inputs
     const onChangeEmail = (e) => setEmailLogin(e.target.value);
@@ -52,7 +56,13 @@ function Login(){
         console.log(passwordLogin)
         getToken(emailLogin,passwordLogin)
         e.preventDefault();
+// <<<<<<< HEAD
+//         const isCorrectLogin = user && validateLogin();
+//         if(isCorrectLogin){
+// =======
         if(tokenLogin){
+// >>>>>>> 785f0ecc09360d97276731007febfce979726406
+            setEmailUser(emailLogin)
             setEmailLogin("");
             setPasswordLogin("");
         }else{

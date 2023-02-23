@@ -12,6 +12,7 @@ import { useEffect, useState} from "react";
 import BookingCalendar from './Components/BookingCalendar/BookingCalendar.jsx';
 import ProductDetailView from './Components/ProductDetailView/ProductDetailView';
 import FilterCategory from './Components/FilterCategory/FilterCategory';
+import BookingForm from './Components/BookingForm/BookingForm';
 import Reservations from './Components/Reservations/Reservations';
 
 
@@ -32,6 +33,7 @@ const {isLoged,dataproduct,idProduct,setIdProduct,setDataProduct} = GlobalContex
         <Route path="/login" element={ !isLoged? <Login></Login> : <Navigate to="/"/>} />
         <Route path="/productdetails/:id" element={<ProductDetailView></ProductDetailView>} />
         <Route path='/categoryProducts/:id' element={<FilterCategory></FilterCategory>}></Route>
+        {/* <Route path='/bookingForm' element={<BookingForm></BookingForm>}></Route> */}
         <Route path='/reservations/:id' element={<Reservations></Reservations>}></Route>
   </Routes>      
      

@@ -2,9 +2,9 @@ import React from "react";
 import {useState} from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+import { Link } from "react-router-dom";
 import styles from "./BookingCalendar.module.css"
 import { GlobalContext } from "../globalState/GlobalState";
-import { Link } from "react-router-dom";
 
 
 function BookingCalendar(props){
