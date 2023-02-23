@@ -20,7 +20,7 @@ public class Client extends User{
 
 
     @OneToMany(mappedBy = "id", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore
+
     private List<Reservation> reservations = new ArrayList<>();
 
     public Client() {
