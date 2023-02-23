@@ -8,18 +8,23 @@ import { GlobalContext } from "../globalState/GlobalState";
 
 function SearchForm(){
 
-    const {displayedProducts, setDisplayedProducts,setUrl}= GlobalContext()
+    const {setUrl,url}= GlobalContext()
     const [actualValue, setActualvalue] = useState(""); 
     const [renderList, SetRenderList] = useState(false);
     const [filteredPlaces, setFilteredPlaces] = useState([]);
     const [places, setPlaces] = useState([]);
+    const [startDate, setStartDate] = useState();
+    const [endDate, setEndDate] = useState();
 
     useEffect(() => {
         async function fetchDataLocation() {
-          const response = await fetch('http://localhost:8080/api/localizaciones');
+          const response = await fetch(`http://localhost:8080/api/localizaciones`);
           const data = await response.json();
           setPlaces(data);
         }
+
+        ///disponibles/${location}/${startDate}/${endDate}
+
         fetchDataLocation()
       }, []);
 
@@ -42,7 +47,14 @@ function SearchForm(){
     function handleSubmit(e){
         console.log(places)
         e.preventDefault()
-        setUrl(`http://localhost:8080/api/productos/localizacion/${actualValue}`)
+        if(startDate && endDate){
+            console.log("holi")
+            setUrl(`http://localhost:8080/api/productos/disponibles/${actualValue}/${startDate}/${endDate}`)
+            console.log(url)            
+        }else{
+            setUrl(`http://localhost:8080/api/productos/localizacion/${actualValue}`)
+        }
+        
     }
 
 
@@ -93,11 +105,11 @@ function SearchForm(){
         <div className={styles.datecontainer}>
             <b className={`${styles.label}, ${styles.lb}`}>Inicio:</b>
             <label className={styles.label} id={styles.Date} >
-                <input  className={`${styles.formInputs} ${styles.divItem} `} type="date"></input>
+                <input  className={`${styles.formInputs} ${styles.divItem} `} type="date"  onChange={(e)=>setStartDate(e.target.value)}></input>
              </label>
              <b className={`${styles.label}, ${styles.lb}`}>Final:</b>
              <label className={styles.label} id='Date'>
-                <input  className={`${styles.formInputs} ${styles.divItem} `} type="date"></input>
+                <input  className={`${styles.formInputs} ${styles.divItem} `} type="date" onChange={(e)=>setEndDate(e.target.value)}></input>
              </label>
         </div>     
     
