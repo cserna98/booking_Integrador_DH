@@ -12,7 +12,7 @@ export const ContextProvider = ({children}) => {
     const [user, setUser] = useState({}); 
     const [lastNameUser, setLastNameUser] = useState("");
     const[actualProductId, SetActualproductId]= useState({});
-    const [isLoged,setLogin] = useState(true); 
+    const [isLoged,setLogin] = useState(false); 
     const [renderForm,setRenderForm] = useState(null);    
     const [dataproduct, setDataProduct] = useState([]);
     const [idProduct, setIdProduct] = useState();
@@ -24,20 +24,6 @@ export const ContextProvider = ({children}) => {
     const [displayedProducts, setDisplayedProducts] = useState([]);
     
     
-    
-      async function fetchDataProduct() {
-        const response = await fetch('http://3.22.186.197:8080/api/productos');
-        const data = await response.json();
-        setDataProduct(data)
-        console.log(dataproduct)
-      }
-
-      useEffect(()=>{
-        fetchDataProduct()
-    },[])
-      
-
-
     return (
       <ContextGlobal.Provider
       value={{renderForm,
@@ -56,7 +42,6 @@ export const ContextProvider = ({children}) => {
       SetActualproductId,
       displayedProducts,
       setDisplayedProducts,
-      fetchDataProduct,
       url,
       setUrl,
       loginModal,

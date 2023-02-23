@@ -11,25 +11,36 @@ import '../../stylesVariables/variables.css'
 const ListContainer = () => {
 
   const [displayedProducts, setDisplayedProducts] = useState([]);
-  const {url}= GlobalContext()  
+  const {url, setUrl}= GlobalContext()  
 
 
-  async function fetchDataProduct() {
+  async function fetchDataProduct(url) {
     console.log(url)
     const response = await fetch(url);
-    const data1 = await response.json();
-    console.log(data1)
-    setDisplayedProducts(data1);
+    const data = await response.json();
+    setDisplayedProducts(data);    
   }
 
   useEffect(()=>{
-    console.log(url) 
-    fetchDataProduct()
+    //fetchDataProduct()
+    console.log("renderizando el global")
+    setUrl("http://localhost:8080/api/productos/random")
+    console.log("Main")
+},[])
+
+
+  useEffect(()=>{
+    console.log(url)
+    if(url){
+      fetchDataProduct(url)
+    } 
+    console.log(displayedProducts);
+    
   },[url])
 
  
 
-  console.log(displayedProducts);
+ 
 
   return (
     <>

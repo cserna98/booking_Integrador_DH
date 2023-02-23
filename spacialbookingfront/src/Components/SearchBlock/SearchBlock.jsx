@@ -6,6 +6,7 @@ function SearchBlock(){
 
 
     return(
+    <div className={styles.shadow}>
         <div className={styles.searchBlock}>
             <div className={styles.header} id={styles.titleSearch}>
                 <h1>Encuentra</h1>
@@ -13,6 +14,7 @@ function SearchBlock(){
             </div> 
             <Serachform className={styles.Disp_grid}/>          
         </div>
+    </div>
     );
 }
 

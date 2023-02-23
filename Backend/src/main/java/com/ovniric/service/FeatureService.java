@@ -5,9 +5,7 @@ import com.ovniric.model.Feature;
 import com.ovniric.repository.FeatureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class FeatureService {
@@ -41,4 +39,6 @@ public class FeatureService {
             featureRepository.deleteById(id);
         }
     }
-}
+
+    }
+

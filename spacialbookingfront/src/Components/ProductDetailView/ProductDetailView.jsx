@@ -16,37 +16,27 @@ import GoBackHeader from "../GoBackHeader/GoBackHeader";
 import img from "../../assets/img/loader.gif";
 
 const ProductDetailView = () => {
+
+
+    const [product, setProduct] = useState()
     const {id} = useParams();
-    const [product, setproduct] = useState({
-        title: "cargando",
-        category: "cargando",
-        location: "cargando",
-        altitude: "cargando",
-        images: [{imageUrl: img}],
-        description: "cargando"
-    }
-    );
-
-    useEffect( () => {
-        const fetchData= async () => {
-            const data = await fetch(`http://3.22.186.197:8080/api/productos/id/${id}`);
-            const card = await data.json();
-
-            setproduct({
-                title: card.title,
-                category: card.category.title,
-                location: card.locations.place,
-                altitude: card.altitude,
-                images : card.images,
-                description: card.description
-            })
-
-         };
-
-         fetchData()
-        });
+    
+    async function fetchDataProduct(url) {
+        console.log(url)
+        const response = await fetch(url);
+        const data = await response.json();
+        setProduct(data)
+        
+      }
 
 
+        
+    useEffect(()=>{
+            fetchDataProduct(`http://localhost:8080/api/productos/id/${id}`)
+    },[])
+
+
+    console.log(product)
   return (
     !product  ? (
         <div>Cargando...</div>
@@ -54,9 +44,9 @@ const ProductDetailView = () => {
     
     <main className={styles.container}>
         <Header />
-        <GoBackHeader category={product.category} title={product.title}/>
+        <GoBackHeader category={product.category.title} title={product.title}/>
         <section className={styles.locationContainer}>
-            <h4 className={styles.location}>  <IoLocationSharp/> {product.location}</h4>
+            <h4 className={styles.location}>  <IoLocationSharp/> {product.locations.place}</h4>
             <h5 className={styles.location} >{`A ${product.altitude} metros sobre el nivel del mar apróximadamente`}</h5>
         </section>
         

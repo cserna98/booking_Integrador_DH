@@ -1,5 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
+import { GlobalContext } from "../globalState/GlobalState";
 
 import categories from '../../assets/Json/categories.json'
 import styles from './BlockCategories.module.css'
@@ -12,7 +13,10 @@ const Categories = () => {
 
  // Creación de estado para guardar información de la API
     const [dataApi, setDataApi] = useState();
-    const urlAPICategories = "http://3.22.186.197:8080/api/categorias";
+
+    const {setUrl}= GlobalContext()
+    const urlAPICategories = "http://localhost:8080/api/categorias";
+
 
     // Creación función asincróna para consumir la API
     async function getData(url){
@@ -33,12 +37,12 @@ const Categories = () => {
 
         {dataApi?.map((category) => (
             <li className={styles.category}  key={category.categoryId}>
-                <Link to={`/categoryProducts/${category.categoryId}`}> 
-                <img id={styles.categoryImg} src={category.urlImage} alt={category.title} />
-                </Link>
+                <div onClick={()=>setUrl(`http://localhost:8080/api/productos/categoria/${category.categoryId}`)} > 
+                    <img id={styles.categoryImg} src={category.urlImage} alt={category.title} />
+                </div>
                 <div className={styles.text}>
                     <h4 className={styles.categoryTitle}>{category.title}</h4>
-                    <p className={styles.categoryDescription}>{category.description}</p>
+                    <p className={styles.categoryDescription}>{`${category.description.substring(0,233)}...`}</p>
 
                 </div>            
             </li>

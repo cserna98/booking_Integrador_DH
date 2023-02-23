@@ -13,16 +13,32 @@ function Login(){
 
     const [emailLogin, setEmailLogin] = useState("")
     const [passwordLogin, setPasswordLogin] = useState("")
-    
-
+    const [tokenLogin, setTokenLogin] = useState()
     const {setLogin,user,setUser,loginModal}= GlobalContext()
 
     // datos usuraio de la api 
-    async function fetchDataUser(email) {
-        const response = await fetch(`http://localhost:8080/api/users/email/${email}`);
+  
+
+      const getToken = async (email,password) => {
+        const response = await fetch('http://localhost:8080/api/v1/auth/authenticate', {
+          method: 'POST',
+          body: JSON.stringify({
+            email: email,
+            password: password 
+        }),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
         const data = await response.json();
-        setUser(data)
-        console.log(user)
+        if(response.ok){
+            setTokenLogin(data.token)
+            localStorage.setItem('token', data.token);
+            console.log(tokenLogin)
+            setLogin(true)
+        }
+
+        return data.token;
       }
 
       console.log(user, "login")
@@ -31,27 +47,21 @@ function Login(){
     const onChangeEmail = (e) => setEmailLogin(e.target.value);
     const onChangePassword = (e) => setPasswordLogin(e.target.value);
 
-    // Funcion para validar campos del Login
-    function validateLogin(){
-        if(user.email===emailLogin && user.password===passwordLogin){
-            return true;
-        }else{
-            return false;
-        }
-    }
 
     // Manejador del evento del envío de formulario
     const onSubmitLogin = (e) =>{
         console.log(emailLogin)
         console.log(passwordLogin)
-        fetchDataUser(e.target.email.value)
-        console.log(user)
+        getToken(emailLogin,passwordLogin)
         e.preventDefault();
+<<<<<<< HEAD
         const isCorrectLogin = user && validateLogin();
         if(isCorrectLogin){
+=======
+        if(tokenLogin){
+>>>>>>> 785f0ecc09360d97276731007febfce979726406
             setEmailLogin("");
             setPasswordLogin("");
-            setLogin(true)
         }else{
             alert("Error credenciales inválidas. Por favor valide los campos ingresados")
         }
@@ -59,11 +69,7 @@ function Login(){
 
     }
 
-
-
-
-
-
+  
 
     return (
         <div className={styles.loginTemplate}>
@@ -93,7 +99,8 @@ function Login(){
         
         </div>
         
-    )
-}
+    );
+          }
+
 
 export default Login;

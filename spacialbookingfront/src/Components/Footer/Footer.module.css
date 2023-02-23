@@ -1,6 +1,6 @@
 .footer{
     width: 100vw;
-    background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
+    background-image: linear-gradient(to top, #0c3483 0%, #a2b6df 100%, #6b8cce 100%, #a2b6df 100%);
     position: absolute;
     bottom: 0;
     height: 5vh;
@@ -30,7 +30,7 @@
 
 .allrights{
     height: 1rem;
-    color: var(--primary-color);
+    color: snow;
     align-self: center;
     margin-left: 2vw;
     margin-bottom: 0.5vw;
