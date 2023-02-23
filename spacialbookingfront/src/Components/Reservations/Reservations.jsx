@@ -17,6 +17,19 @@ const Reservations = () => {
     const {user}= GlobalContext();
     const [userCopy, setUserCopy] = useState();
     const [city,setCity] = useState();
+    const [correctBooking,setCorrectBooking] = useState(false);
+    // const [datos, setDatos] = useState({
+    //     city: "datos"
+    // })
+    const datos = {
+        city: city
+    }
+
+     // useEffect(() => {
+    //     setDatos({...datos, city})
+    // },[city])
+    console.log(datos.city, "datos")
+
 
     useEffect(()=>{
         setDate([new Date(Date.now()),new Date(Date.now())])
@@ -26,6 +39,33 @@ const Reservations = () => {
         const copy = {...user};
         setUserCopy(copy)
     },[])
+
+
+    // Función para conectar la API de reservas
+    async function confirmBooking(information){
+        const url = "url de la Api/REservations";
+
+        const booking = {
+            method: "POST",
+            headers: {
+                "Content-Type": 'application/json'
+            },
+            body: JSON.stringify(information)
+        }
+
+        const bookingRequest = await fetch(url,booking);
+
+        if(bookingRequest.status===201) {
+            setCorrectBooking(true)
+        } else{
+            alert("“Lamentablemente la reserva no ha podido realizarse. Por favor, intente más tarde”.")
+        }
+
+        const responseBooking = await bookingRequest.json();
+
+    }
+
+
 
      return <>
         <Header/>

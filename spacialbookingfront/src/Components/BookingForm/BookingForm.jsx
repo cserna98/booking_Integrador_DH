@@ -60,6 +60,8 @@ const formItemLayout =
         console.log(time)
       }
 
+      console.log(time.$d.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', hour12: false}))
+
     return(
         <div className={styles.containerForm}>
           <h2>Completa tu información</h2>
@@ -98,7 +100,7 @@ const formItemLayout =
 
         <div className={styles.letterP}>
           <h2>Tu horario de llegada</h2>
-          <p>Tu experiencia está programada para las {time && `${time?.$H}:${time?.$m}`}</p>
+          <p>Tu experiencia está programada para las {time && `${time?.$d.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', hour12: false})}`}</p>
           <p>Indica tu horario estimado de llegada</p>
           <TimePicker className={styles.selectTime} value={time} onOk={handleChangeTime} format={format} placeholder={"Seleccionar hora"} ></TimePicker>
         </div>
