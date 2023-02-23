@@ -1,8 +1,6 @@
 package com.ovniric.service;
 
-import com.ovniric.model.Role;
-import com.ovniric.model.User;
-import com.ovniric.repository.RoleRepository;
+import com.ovniric.model.user.User;
 import com.ovniric.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,39 +10,29 @@ import java.util.Optional;
 
 @Service
 public class UserService {
-
-
     private UserRepository userRepository;
-    private RoleRepository roleRepository;
-
 
     @Autowired
-    public UserService(UserRepository userRepository, RoleRepository roleRepository) {
+    public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
     }
 
-    public User createUser(User user) {
-        // Encode password
-        String encodedPassword = user.getPassword();
-        user.setPassword(encodedPassword);
-        return userRepository.save(user);
-    }
-
-    public User getUserByEmail(String email) {
-        return userRepository.findByEmail(email);
-    }
-
-
-    public Optional<User> getUserById(Long id) {
+    public Optional<User> getUser(Long id) {
         return userRepository.findById(id);
     }
 
-    public List<User> GetUser() {
+    public List<User> getUsers(){
         return userRepository.findAll();
     }
 
+    public void updateUser(User user) {
+        userRepository.save(user);
+    }
+
     public void deleteUser(Long id) {
-        userRepository.deleteById(id);
+        Optional<User> userToDelete = getUser(id);
+        if(userToDelete.isPresent()) {
+            userRepository.deleteById(id);
+        }
     }
 }

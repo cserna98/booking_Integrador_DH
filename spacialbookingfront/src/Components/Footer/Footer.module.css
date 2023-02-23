@@ -1,6 +1,6 @@
 .footer{
     width: 100vw;
-    background-color: #4C3B71;
+    background-image: linear-gradient(to top, #0c3483 0%, #a2b6df 100%, #6b8cce 100%, #a2b6df 100%);
     position: absolute;
     bottom: 0;
     height: 5vh;
@@ -10,9 +10,10 @@
     bottom: 0;
 }
 
+
 .icon{
     font-size: 1.5rem;
-    color:var(--primary-color);
+    color:azure;
     padding-left: 1vw;
     padding-right: 1vw;
 }
@@ -29,7 +30,7 @@
 
 .allrights{
     height: 1rem;
-    color: var(--primary-color);
+    color: snow;
     align-self: center;
     margin-left: 2vw;
     margin-bottom: 0.5vw;

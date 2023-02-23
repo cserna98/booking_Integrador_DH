@@ -13,7 +13,7 @@ function BlockGallery({images}){
     
   
     let imgList = images;
-    console.log()
+    console.log(imgList)
 
 
     function handleModal(){

@@ -8,7 +8,7 @@ import { GlobalContext } from "../globalState/GlobalState";
 
 function SearchForm(){
 
-    const {displayedProducts, setDisplayedProducts,datapr}= GlobalContext()
+    const {displayedProducts, setDisplayedProducts,setUrl}= GlobalContext()
     const [actualValue, setActualvalue] = useState(""); 
     const [renderList, SetRenderList] = useState(false);
     const [filteredPlaces, setFilteredPlaces] = useState([]);
@@ -41,20 +41,9 @@ function SearchForm(){
 
     function handleSubmit(e){
         console.log(places)
-        let locationsearch = []
-        places.map((e)=>{
-            if(e.place == actualValue){
-                locationsearch.push(e)
-                console.log(locationsearch)
-            }
-            setDisplayedProducts(locationsearch);
-            console.log(displayedProducts)
-            setActualvalue("")
-        })
         e.preventDefault()
-
+        setUrl(`http://localhost:8080/api/productos/localizacion/${actualValue}`)
     }
-
 
 
 

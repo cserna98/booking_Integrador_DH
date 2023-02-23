@@ -13,43 +13,48 @@ function Login(){
 
     const [emailLogin, setEmailLogin] = useState("")
     const [passwordLogin, setPasswordLogin] = useState("")
-    
-
-    const {setLogin,user,setUser}= GlobalContext()
+    const [tokenLogin, setTokenLogin] = useState()
+    const {setLogin,user,setUser,loginModal}= GlobalContext()
 
     // datos usuraio de la api 
-    async function fetchDataUser(email) {
-        const response = await fetch(`http://localhost:8080/api/users/email/${email}`);
+  
+
+      const getToken = async (email,password) => {
+        const response = await fetch('http://localhost:8080/api/v1/auth/authenticate', {
+          method: 'POST',
+          body: JSON.stringify({
+            email: email,
+            password: password 
+        }),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
         const data = await response.json();
-        setUser(data)
-        console.log(user)
+        if(response.ok){
+            setTokenLogin(data.token)
+            localStorage.setItem('token', data.token);
+            console.log(tokenLogin)
+            setLogin(true)
+        }
+
+        return data.token;
       }
 
     // Manejadores de eventos para cada input para actualziar los estados a medida que el usurio escribe en los inputs
     const onChangeEmail = (e) => setEmailLogin(e.target.value);
     const onChangePassword = (e) => setPasswordLogin(e.target.value);
 
-    // Funcion para validar campos del Login
-    function validateLogin(){
-        if(user.email===emailLogin && user.password===passwordLogin){
-            return true;
-        }else{
-            return false;
-        }
-    }
 
     // Manejador del evento del envío de formulario
     const onSubmitLogin = (e) =>{
         console.log(emailLogin)
         console.log(passwordLogin)
-        fetchDataUser(e.target.email.value)
-        console.log(user)
+        getToken(emailLogin,passwordLogin)
         e.preventDefault();
-        const isCorrectLogin = validateLogin();
-        if(isCorrectLogin){
+        if(tokenLogin){
             setEmailLogin("");
             setPasswordLogin("");
-            setLogin(true)
         }else{
             alert("Error credenciales inválidas. Por favor valide los campos ingresados")
         }
@@ -57,11 +62,7 @@ function Login(){
 
     }
 
-
-
-
-
-
+  
 
     return (
         <div className={styles.loginTemplate}>
@@ -75,6 +76,7 @@ function Login(){
             {/* </Link> */}
         </div>
         <form onSubmit={onSubmitLogin} className={styles.form}>
+        { loginModal && <span className={styles.modal}>Para realizar una reserva debes de inciar sesión</span>}
         <h2>Iniciar sesión</h2>
         <div>
         <label htmlFor="email">Correo electrónico</label>
@@ -90,7 +92,8 @@ function Login(){
         
         </div>
         
-    )
-}
+    );
+          }
+
 
 export default Login;

@@ -1,8 +1,9 @@
 .titleCategories{
-    margin: 0;
-    color: var(--primary-color);
+    color: snow;
     padding-left: 2vw;
     padding-top: 1vw;
+    margin: 0px;
+
 }
 
 .categories{
@@ -15,27 +16,32 @@
 }
 
 .category{    
-    height: 312px;
-    width: 80%;       
+ 
+    width: 21vw;    
+    height: 21vw;   
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0px 4px 4px 0px #00000040;
+    box-shadow: rgba(107, 140, 206, 0.4) -5px 5px, rgba(107, 140, 206, 0.3) -10px 10px, rgba(107, 140, 206, 0.2) -15px 15px, rgba(107, 140, 206, 0.1) -20px 20px, rgba(107, 140, 206, 0.05) -25px 25px;
     display: grid;
     grid-template-rows: 60% 40%;
-    
+    background-color: transparent;
+    background-image: radial-gradient(at top center, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0.03) 100%), linear-gradient(to top, rgba(255,255,255,0.1) 0%, rgba(143,152,157,0.60) 100%);
+    background-blend-mode: normal, multiply;
+}
+
+.category:hover{
+    transform: scale(1.05);
 }
 
 .text{
     display: grid;
-    padding: 15px;
-    padding-top: 0px;
     grid-row: 2;
-    grid-template-rows: 30% 70%;
+    grid-template-rows: 10% 90%;
 }
 
 .categoriesContainer{
     display: grid;   
-    margin-left: 2%;
+    margin-left: 1vw;
     width: 100%;
     grid-template-columns: repeat(4, 1fr);
     align-items: center;
@@ -45,11 +51,28 @@
     margin-top: 1vw;
 }
 
-#CategoriesText{    
+/*#CategoriesText{    
     grid-column: 2 / 3;
     grid-row: 1 / 2;
     height: 50px;
     margin-top: 25px;
+}*/
+
+
+.categoryTitle{
+    color:azure;
+    margin: 0;
+    align-self: center;
+    justify-self: center;
+    
+}
+.categoryDescription{
+    color: azure;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    padding:0.5vw;
+    padding-bottom: 2vw;
 }
 
 #cate{    

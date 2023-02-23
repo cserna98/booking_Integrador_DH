@@ -6,80 +6,7 @@
 }
 
 
-#searchButon{    
-    opacity: 0.9;
-    grid-column: 5/7;  
-    justify-self: flex-start;
-    color: #1D2951;
-    font-weight: 600;
-    width: 15vw;
-    font-size: 0.7rem;
-    height: 100%;
-    border: none;
-    outline: none;
-    background: transparent;
-    cursor: pointer;
-    position: relative;
-    z-index: 0;
-    border-radius: 10px;
-    align-self: center;
-}
 
-#searchButon::before{
-    position: absolute;
-    content: "";
-    width: calc(100% + 10px);
-    height: calc(100% + 10px);
-    left: -2px;
-    top: -2px;
-    background: linear-gradient(
-      124deg,
-      #013026,
-      #7b337d,
-      #014760,
-      #f5d5e0,
-      #107e57,
-      #210535,
-      #a1ce3f,
-      #430d4b,
-      #cbe58e
-       );
-    z-index: -1;
-    filter: blur(5px);
-    animation: move 20s linear infinite;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    border-radius: 10px;
-}
-
-#searchButon:hover::before{
-    opacity: 1;
-}
-
-#searchButon::after{
-    z-index: -1;
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background:  #a7afc7;
-    left: 0;
-    top: 0;
-    border-radius: 10px;
-  }
-  
-  @keyframes move {
-    0% {
-      background-position: 0 0;
-    }
-    50% {
-      background-position: 400% 0;
-    }
-    100% {
-      background-position: 0 0;
-    }
-
-}
 
 .DisplayOff{
     display: none;
@@ -121,33 +48,6 @@
     grid-column: 2/2;
     grid-row: 2/3;
 }
-
-.datecontainer{
-    display: flex;
-    flex: row;
-    justify-content: stretch;
-    align-items: center;
-}
-
-
-.formGrid{
-    display:grid;
-    grid-template-columns: 30vw 10vw 30vw 10vw;             
-}
-
-#location{
-    justify-content: flex-end;
-
-}
-
-
-.datecontainer{
-    display: flex;
-    flex: row;
-    justify-content: stretch;
-    align-items: center;
-}
-
 #SearchInput{
     grid-template-columns: 10% 80%;
     grid-template-rows: repeat(1, 1fr);
@@ -281,3 +181,50 @@
     opacity: 0.5;
 }
 }
+
+.formGrid{
+    display:grid;
+    grid-template-columns: 29vw 46vw 25vw;
+    justify-content: center;
+    padding-left: 3vw;
+    padding-bottom: 2vw;
+}
+
+#location{
+    padding-left: 2vw;
+    justify-self: end;
+
+}
+#location:hover{
+    transform: scale(1.01);
+}
+
+.datecontainer{
+    grid-column: 2/3;
+    display: flex;
+    flex: row;
+    justify-self: center;
+    align-items: center;
+    padding-right: 4vw;
+}
+.datecontainer:hover{
+    transform: scale(1.01);
+}
+
+#searchButon{  
+    color: azure;
+    background-color: transparent;
+    width: 15vw;
+    height: 33px;
+    border-radius: 10px;
+    font-weight: 900;
+    background-color: #0c3483;
+    border: solid 2px #0c3483;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+#searchButon:hover{
+    background-color:  #a2b6df ;
+    color:#0c3483 ;
+  }
+
