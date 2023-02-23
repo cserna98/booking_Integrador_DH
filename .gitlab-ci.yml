@@ -27,11 +27,11 @@ deploy_Backend:
         - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
         - touch ~/.ssh/config
         - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
-        - ssh-keyscan -H "3.22.186.197" >> ~/.ssh/known_hosts
+        - ssh-keyscan -H "3.135.143.34" >> ~/.ssh/known_hosts
         - chmod 644 ~/.ssh/known_hosts
     script:
         - echo "Deploying started..."
-        - ssh ubuntu@3.22.186.197 "sudo systemctl stop ovniricapp.service"
-        - scp Backend/target/ovniric-0.0.1-SNAPSHOT.jar ubuntu@3.22.186.197:~/ovniric-app/
-        - ssh ubuntu@3.22.186.197 "sudo systemctl start ovniricapp.service"
+        #- ssh ubuntu@3.135.143.34 "sudo systemctl stop ovniricapp.service"
+        - scp Backend/target/ovniric-0.0.1-SNAPSHOT.jar ubuntu@3.135.143.34:~/ovniric-app/
+        #- ssh ubuntu@3.135.143.34 "sudo systemctl start ovniricapp.service"
         - echo "Finished deploying the app."
