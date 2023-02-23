@@ -11,6 +11,7 @@ import { GlobalContext } from "../globalState/GlobalState";
 
 function BookingForm(props){
     const {date,changeDate, time, changeTime, changeCity,user} = props;
+    // console.log(user)
     const [form] = Form.useForm();
     const [formLayout, setFormLayout] = useState('horizontal');
     const format = 'HH:mm';
@@ -60,7 +61,7 @@ const formItemLayout =
         console.log(time)
       }
 
-      console.log(time.$d.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', hour12: false}))
+      console.log(time?.$d.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', hour12: false}))
 
     return(
         <div className={styles.containerForm}>

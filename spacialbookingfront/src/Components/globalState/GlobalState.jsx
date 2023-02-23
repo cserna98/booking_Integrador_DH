@@ -18,6 +18,7 @@ export const ContextProvider = ({children}) => {
     const [idProduct, setIdProduct] = useState();
     const [url, setUrl] = useState("");
     const [loginModal,setLoginModal] = useState(false);
+    const [emailUser, setEmailUser] = useState();
    
     
 
@@ -45,7 +46,9 @@ export const ContextProvider = ({children}) => {
       url,
       setUrl,
       loginModal,
-      setLoginModal
+      setLoginModal,
+      emailUser,
+      setEmailUser
           }}>
         {children}
       </ContextGlobal.Provider>
