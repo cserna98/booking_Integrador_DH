@@ -1,6 +1,6 @@
 stages:
     - build
-    #- deploy
+    - deploy
 
 build_backend:
     stage: build
@@ -14,3 +14,24 @@ build_backend:
         expire_in: 1 week
         paths:
             - Backend/target/ovniric-0.0.1-SNAPSHOT.jar
+
+deploy_Backend:
+    stage: deploy
+    needs: [build_backend]
+    image: alpine:3.11
+    before_script:
+        - apk update && apk add openssh-client bash
+        - mkdir -p ~/.ssh
+        - chmod 700 ~/.ssh
+        - eval $(ssh-agent -s)
+        - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+        - touch ~/.ssh/config
+        - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+        - ssh-keyscan -H "3.22.186.197" >> ~/.ssh/known_hosts
+        - chmod 644 ~/.ssh/known_hosts
+    script:
+        - echo "Deploying started..."
+        - ssh ubuntu@3.22.186.197 "sudo systemctl stop consoleapp.service"
+        - scp Backend/target/ovniric-0.0.1-SNAPSHOT.jar ubuntu@3.22.186.197:~/console-app/
+        - ssh ubuntu@3.22.186.197 "sudo systemctl start ovniricapp.service"
+        - echo "Finished deploying the app."
