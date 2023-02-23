@@ -71,8 +71,8 @@ async function logout() {
       <Link to="/" className={styles.lema} onClick={handleLogo}><img  className={styles.lema} src={lema} alt="Lema Ovniric" /></Link>
       {isLoged ?
       <>
-          <div className={styles.avatar}><span> {/*`${name}${user.lastName}`*/} </span></div>
-          <a href="#" className={styles.username}>{/*`Hola ${name}`*/}</a>
+          <div className={styles.avatar}><span> {`${user.firstname} ${user.lastname}`} </span></div>
+          <a href="#" className={styles.username}>{`Hola ${user.firstname}`}</a>
           <button className={`${styles.btn} ${styles.logout}` } onClick={logout} >Log out</button>          
         </> : 
         <>

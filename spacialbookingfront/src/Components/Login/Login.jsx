@@ -43,6 +43,17 @@ function Login(){
         return data.token;
       }
 
+      // fecth de usuario cuando se encuentre logeado
+      async function fetchDataUser(url) {
+        console.log(url)
+        const response = await fetch(url);
+        const data = await response.json();
+        console.log(data)
+        setUser(data);    
+      }
+
+      
+
       console.log(user, "login")
 
     // Manejadores de eventos para cada input para actualziar los estados a medida que el usurio escribe en los inputs
@@ -56,13 +67,10 @@ function Login(){
         console.log(passwordLogin)
         getToken(emailLogin,passwordLogin)
         e.preventDefault();
-// <<<<<<< HEAD
-//         const isCorrectLogin = user && validateLogin();
-//         if(isCorrectLogin){
-// =======
+        fetchDataUser(`http://localhost:8080/api/usuarios/email/${emailLogin}`)
         if(tokenLogin){
-// >>>>>>> 785f0ecc09360d97276731007febfce979726406
             setEmailUser(emailLogin)
+            
             setEmailLogin("");
             setPasswordLogin("");
         }else{
