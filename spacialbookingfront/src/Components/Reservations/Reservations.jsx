@@ -92,7 +92,9 @@ const Reservations = () => {
 
     }
 
-
+    useEffect(() => {
+        window.scrollTo(0,0)
+    },[])
 
      return (
        <>
@@ -104,7 +106,7 @@ const Reservations = () => {
              changeDate={setDate}
              time={dataTime}
              changeTime={setDataTime}
-             user={userCopy}
+             user={user}
              changeCity={setCity}
           
            />
