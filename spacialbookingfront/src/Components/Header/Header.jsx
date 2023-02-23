@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Header.module.css"
-import logo from "../../assets/img/ovniriclogoPurple.png";
-import lema from "../../assets/img/ovniriclemaPurple.png"
+import logo from "../../assets/img/ovniricLogoLight.png";
+import lema from "../../assets/img/ovniricLemaLight.png"
 import {FaBars,FaTimes} from "react-icons/fa"
 import { GlobalContext } from "../globalState/GlobalState";
 import { Link } from "react-router-dom"
@@ -34,9 +34,28 @@ const handleLogo = () => {
   setRenderForm(null)
 }
 
-  const handleLoged = () =>{
+async function logout() {
     setLogin(false);
     setRenderForm(null);
+    console.log(localStorage.getItem('token'))
+    try {
+      const response = await fetch("http://localhost:8080/api/v1/auth/logout", {
+        method: 'POST',
+        headers: {
+          'Authorization': 'Token ' + localStorage.getItem('token'),
+          'Content-Type': 'application/json'
+        }
+      });
+      if (response.status === 204) {
+        // Logout successful, remove token from local storage and redirect to login page
+        localStorage.removeItem('token');
+      } else {
+        throw new Error('Logout failed');
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  
   }  
   
   useEffect(()=>{
@@ -54,7 +73,7 @@ const handleLogo = () => {
       <>
           <div className={styles.avatar}><span> {/*`${name}${user.lastName}`*/} </span></div>
           <a href="#" className={styles.username}>{/*`Hola ${name}`*/}</a>
-          <button className={`${styles.btn} ${styles.logout}` } onClick={handleLoged} >Log out</button>          
+          <button className={`${styles.btn} ${styles.logout}` } onClick={logout} >Log out</button>          
         </> : 
         <>
           <Link to="/signup"  className={`${styles.loginbtn}` }>

@@ -1,5 +1,6 @@
 package com.ovniric.controller;
 
+import com.ovniric.dto.ReservationDTO;
 import com.ovniric.model.Reservation;
 import com.ovniric.service.ReservationService;
 import lombok.AllArgsConstructor;
@@ -16,8 +17,8 @@ public class ReservationController {
     private ReservationService reservationService;
 
     @PostMapping
-    public ResponseEntity<Reservation> createReservation(@RequestBody Reservation reservation){
-        return ResponseEntity.ok(reservationService.createReservation(reservation));
+    public ResponseEntity<ReservationDTO> createReservation(@RequestBody ReservationDTO reservationDTO){
+        return ResponseEntity.ok(reservationService.toReservationDTO(reservationService.createReservation(reservationService.toReservation(reservationDTO))));
     }
 
     @GetMapping

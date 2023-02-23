@@ -17,16 +17,13 @@ export const ContextProvider = ({children}) => {
     const [dataproduct, setDataProduct] = useState([]);
     const [idProduct, setIdProduct] = useState();
     const [url, setUrl] = useState("");
+    const [loginModal,setLoginModal] = useState(false);
    
     
 
     const [displayedProducts, setDisplayedProducts] = useState([]);
     
-
-     
-      
-
-
+    
     return (
       <ContextGlobal.Provider
       value={{renderForm,
@@ -46,7 +43,9 @@ export const ContextProvider = ({children}) => {
       displayedProducts,
       setDisplayedProducts,
       url,
-      setUrl
+      setUrl,
+      loginModal,
+      setLoginModal
           }}>
         {children}
       </ContextGlobal.Provider>

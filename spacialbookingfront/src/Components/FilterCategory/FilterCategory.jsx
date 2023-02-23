@@ -5,7 +5,6 @@ import { GlobalContext } from "../globalState/GlobalState";
 
 function FilterCategory(){
 
-  
 
     return(
         <>

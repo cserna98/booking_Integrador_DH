@@ -45,6 +45,7 @@ function Register(){
     // Crear usuario ( hacer post)
 
     async function createUser(user) {
+        console.log(user)
         const response = await fetch('http://localhost:8080/api/v1/auth/userRegister', {
           method: 'POST',
           headers: {
@@ -68,8 +69,8 @@ function Register(){
             setPassword1("");
             setPasswordConfirm("");
             const newUser = {
-                firstName: e.target.nombre.value,
-                lastName: e.target.apellido.value,
+                firstname: e.target.nombre.value,
+                lastname: e.target.apellido.value,
                 email: e.target.email.value,
                 password: e.target.password.value,
                 city: e.target.city.value,

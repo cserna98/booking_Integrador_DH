@@ -20,12 +20,16 @@ const Card = ({info}) =>{
 
     return <section className={styles.container}>
         <article className={styles.imgContainer}> <img src={image.imageUrl} alt=""  className={styles.img} /></article>
-        <article className={styles.infoContainer}><span className={styles.category}>{info.title}</span>
-            <h2 className={styles.title}>{""}</h2>
-            <h3 className={styles.location}><b>Ubicación:</b>{info.locations.place}</h3>
+        <article className={styles.infoContainer}>
+            <div className={styles.cardMainInfo}>
+                <span className={styles.category}>{info.category.title}</span>
+                <h2 className={styles.title}>{info.title}</h2>
+                <h3 className={styles.location}><b>Ubicación:</b> {info.locations.place}</h3>
+            </div>
+         
             <p className={styles.description}>{`${info.description.substring(0,70)} ...`}</p>
-            <Link to={`/productdetails/${info.idProduct}`}>
-                <button className={styles.viewMore} >Ver más</button>
+            <Link  className={styles.viewMore} to={`/productdetails/${info.idProduct}`}  >
+                <button className={styles.button} >Ver más</button>
             </Link>
         </article>
     </section>

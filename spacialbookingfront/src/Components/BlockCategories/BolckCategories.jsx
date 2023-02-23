@@ -13,8 +13,10 @@ const Categories = () => {
 
  // Creación de estado para guardar información de la API
     const [dataApi, setDataApi] = useState();
+
     const {setUrl}= GlobalContext()
     const urlAPICategories = "http://localhost:8080/api/categorias";
+
 
     // Creación función asincróna para consumir la API
     async function getData(url){
@@ -39,8 +41,8 @@ const Categories = () => {
                     <img id={styles.categoryImg} src={category.urlImage} alt={category.title} />
                 </div>
                 <div className={styles.text}>
-                    <h4>{category.title}</h4>
-                    <p>{category.description}</p>
+                    <h4 className={styles.categoryTitle}>{category.title}</h4>
+                    <p className={styles.categoryDescription}>{`${category.description.substring(0,233)}...`}</p>
 
                 </div>            
             </li>

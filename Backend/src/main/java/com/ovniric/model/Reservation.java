@@ -44,6 +44,7 @@ public class Reservation{
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
+    @JsonIgnore
     private Client clients;
 
 

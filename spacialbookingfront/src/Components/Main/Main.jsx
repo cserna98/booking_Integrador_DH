@@ -31,6 +31,7 @@ const Main = () => {
           
       },[id])
 
+
     return (
     <div className={styles.bg}>
         <BlockCategories/> 
