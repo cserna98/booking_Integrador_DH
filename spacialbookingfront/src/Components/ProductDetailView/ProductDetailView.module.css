@@ -10,13 +10,13 @@
 
 .locationContainer{
     padding: 0.5vw 2vw;
-    background-color: #a7afc7;
+    background-color:#0c3483;;
 }
 
 .location{
     margin:0;
     font-size: 1.5;
-    color: #1D2951;
+    color: azure;
 }
 
 
@@ -88,35 +88,24 @@
 
 }
 
-.policiesContainer{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    padding: 2vw;
+.calendarContainer{
+    background-image: radial-gradient(at top center, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0.03) 100%), linear-gradient(to top, rgba(255,255,255,0.1) 0%, rgba(143,152,157,0.60) 100%);
+    background-blend-mode: normal, multiply;
+    border-radius: 10px;
+    width: 90vw;
+    padding-bottom: 2vw;
+    margin: auto;
+    margin-bottom: 2vw;
+    margin-top: 1vw;
+    box-shadow: rgba(107, 140, 206, 0.4) -5px 5px, rgba(107, 140, 206, 0.3) -10px 10px, rgba(107, 140, 206, 0.2) -15px 15px, rgba(107, 140, 206, 0.1) -20px 20px, rgba(107, 140, 206, 0.05) -25px 25px;
 }
 
-@media only screen and  (min-width: 590px) and (max-width: 992px){
-    .policiesContainer{
-         grid-template-columns: 1fr 1fr
-     }
-    }
-
-@media only screen and  (max-width: 590px){
-   .policiesContainer{
-        grid-template-columns: 1fr
-    }
-   }
-
-.policyTitle{
-    color: #1D2951;
-   
-    text-align: center;
+.calendarContainer:hover{
+    transform: scale(1.01);
 }
 
-.policyContent{
-    text-align: center;
-    font-size: 14px;
-    font-weight: 400;
-}
+
+
 
 
 

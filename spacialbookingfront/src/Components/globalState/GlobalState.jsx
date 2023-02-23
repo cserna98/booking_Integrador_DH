@@ -12,7 +12,7 @@ export const ContextProvider = ({children}) => {
     const [user, setUser] = useState({}); 
     const [lastNameUser, setLastNameUser] = useState("");
     const[actualProductId, SetActualproductId]= useState({});
-    const [isLoged,setLogin] = useState(false); 
+    const [isLoged,setLogin] = useState(true); 
     const [renderForm,setRenderForm] = useState(null);    
     const [dataproduct, setDataProduct] = useState([]);
     const [idProduct, setIdProduct] = useState();

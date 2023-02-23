@@ -5,6 +5,7 @@ import Calendar from "react-calendar";
 import styles from "./BookingForm.module.css"
 import dayjs from "dayjs";
 import { GlobalContext } from "../globalState/GlobalState";
+import "../../stylesVariables/styledCalendar.css"
 
 
 
@@ -62,7 +63,7 @@ const formItemLayout =
 
     return(
         <div className={styles.containerForm}>
-          <h2>Completa tu información</h2>
+          <h2 className={styles.bookingTitles}>Completa tu información</h2>
         <div className={styles.form}>
             <Form
       {...formItemLayout}
@@ -76,7 +77,7 @@ const formItemLayout =
     >
       <Form.Item label="Nombre">
         <Input value={user?.firstName} disabled={true} />
-      </Form.Item>
+      </Form.Item> 
       <Form.Item label="Apellido">
         <Input value={user?.lastName} disabled={true} />
       </Form.Item>
@@ -89,16 +90,15 @@ const formItemLayout =
     
     </Form>
         </div >
-        <h2>Selecciona tu fecha de reserva</h2>
-        <div className={styles.calendarSelect}>
-                <Calendar  onChange={changeDate} value={date} minDate={new Date(Date.now()
+        <h2 className={styles.bookingTitles}>Selecciona tu fecha de reserva</h2>
+        <div className={styles.calendarContainer}>
+                <Calendar onChange={changeDate} value={date} minDate={new Date(Date.now()
                 )} selectRange={true}  showDoubleView={true} calendarType={"US"}>
                 </Calendar>
-            </div>
-
+        </div>
+        <h2 className={styles.bookingTitles}>Tu horario de llegada</h2>
         <div className={styles.letterP}>
-          <h2>Tu horario de llegada</h2>
-          <p>Tu experiencia está programada para las {time && `${time?.$H}:${time?.$m}`}</p>
+          <p >Tu experiencia está programada para las {time && `${time?.$H}:${time?.$m}`}</p>
           <p>Indica tu horario estimado de llegada</p>
           <TimePicker className={styles.selectTime} value={time} onOk={handleChangeTime} format={format} placeholder={"Seleccionar hora"} ></TimePicker>
         </div>

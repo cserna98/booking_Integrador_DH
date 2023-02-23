@@ -24,8 +24,9 @@ function BookingCalendar(props){
         setValue(nextValue);
     }
     return(
-        <div className={styles.calendarDouble}>
-        <h2>Fechas Disponibles</h2>
+    
+    <div className={styles.calendarDouble}>
+    
         <div className={styles.bookingCalendar}>
             <div className={styles.calendarSelect}>
                 <Calendar  onChange={onChange} value={value} showDoubleView={true} calendarType={"US"}>
@@ -38,7 +39,7 @@ function BookingCalendar(props){
             <div className={styles.sectionBooking}>
                 <p className={styles.letter}>A un clic de vivir tu experiencia espacial</p>
                 <Link to={isLoged ? `/reservations/${props.id}`: pleaseLogin() }>
-                    <button className={styles.viewMore} onClick={handleClick} >Reserva Ya!</button>
+                    <button className={styles.btnReserva} onClick={handleClick} >Reserva Ya!</button>
                 </Link>
             </div>
         </div>

@@ -7,6 +7,7 @@ import GoBackHeader from "../GoBackHeader/GoBackHeader";
 import BookingForm from "../BookingForm/BookingForm";
 import styles from "./Reservations.module.css"
 import { GlobalContext } from "../globalState/GlobalState";
+import Policies from "../Policies/Policies";
 
 
 
@@ -27,15 +28,37 @@ const Reservations = () => {
         setUserCopy(copy)
     },[])
 
-     return <>
-        <Header/>
-        <GoBackHeader/>
-        <div className={styles.containerBooking}>
-        <BookingForm date={date} changeDate={setDate} time={dataTime} changeTime={setDataTime} user={userCopy} changeCity={setCity}></BookingForm>
-        <ReservationCard id={id} date={date} time={dataTime} user={userCopy} changeUser={setUserCopy} city={city}/>
-        </div>
-        <Footer/>      
-    </>
+     return (
+       <>
+         <GoBackHeader />
+         <section className={styles.reservationInfoContainer}>
+            <article className={styles.form}>
+            <BookingForm 
+             date={date}
+             changeDate={setDate}
+             time={dataTime}
+             changeTime={setDataTime}
+             user={userCopy}
+             changeCity={setCity}
+          
+           />
+            </article>
+         
+           <ReservationCard 
+             className={styles.reservationCard}
+             id={id}
+             date={date}
+             time={dataTime}
+             user={userCopy}
+             changeUser={setUserCopy}
+             city={city} />
+         </section>
+         <Header />
+
+         <Policies className={styles.policiesContainer} />
+         <Footer />
+       </>
+     );
 
 }
 
