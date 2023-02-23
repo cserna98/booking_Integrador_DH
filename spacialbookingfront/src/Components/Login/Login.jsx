@@ -14,7 +14,7 @@ function Login(){
     const [emailLogin, setEmailLogin] = useState("")
     const [passwordLogin, setPasswordLogin] = useState("")
     const [tokenLogin, setTokenLogin] = useState()
-    const {setLogin,user,setUser,loginModal, setEmailUser}= GlobalContext()
+    const {setLogin,user,setUser,loginModal, setEmailUser, isLoged}= GlobalContext()
     console.log(user, "datos usuarios")
 
     // datos usuraio de la api 
@@ -38,8 +38,6 @@ function Login(){
             localStorage.setItem('token', data.token);
             console.log(tokenLogin)
             setLogin(true)
-        }else{
-          alert("Error credenciales inválidas. Por favor valide los campos ingresados")
         }
         return response;
       }
@@ -66,14 +64,19 @@ function Login(){
     const onSubmitLogin = (e) =>{
         console.log(emailLogin)
         console.log(passwordLogin)
+        getToken(emailLogin,passwordLogin)
         e.preventDefault();
         fetchDataUser(`http://localhost:8080/api/usuarios/email/${emailLogin}`)
-        if(getToken(emailLogin,passwordLogin)){
+        if(tokenLogin){
             setEmailUser(emailLogin)
             setEmailLogin("");
             setPasswordLogin("");
+        }else{
+          alert("Error credenciales inválidas. Por favor valide los campos ingresados")
         }
     }
+
+  
 
   
 
