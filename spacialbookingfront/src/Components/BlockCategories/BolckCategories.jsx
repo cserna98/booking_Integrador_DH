@@ -15,7 +15,7 @@ const Categories = () => {
     const [dataApi, setDataApi] = useState();
 
     const {setUrl}= GlobalContext()
-    const urlAPICategories = "http://localhost:8080/api/categorias";
+    const urlAPICategories = "http://3.133.88.194:8080/api/categorias";
 
 
     // Creación función asincróna para consumir la API

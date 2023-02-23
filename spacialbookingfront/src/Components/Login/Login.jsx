@@ -21,7 +21,7 @@ function Login(){
   
 
       const getToken = async (email,password) => {
-        const response = await fetch('http://localhost:8080/api/v1/auth/authenticate', {
+        const response = await fetch('http://3.133.88.194:8080/api/v1/auth/authenticate', {
           method: 'POST',
           body: JSON.stringify({
             email: email,
@@ -66,7 +66,7 @@ function Login(){
         console.log(passwordLogin)
         getToken(emailLogin,passwordLogin)
         e.preventDefault();
-        fetchDataUser(`http://localhost:8080/api/usuarios/email/${emailLogin}`)
+        fetchDataUser(`http://3.133.88.194:8080/api/usuarios/email/${emailLogin}`)
         if(tokenLogin){
             setEmailUser(emailLogin)
             setEmailLogin("");

@@ -14,6 +14,7 @@ import { useParams } from 'react-router-dom';
 import BookingCalendar from "../BookingCalendar/BookingCalendar";
 import GoBackHeader from "../GoBackHeader/GoBackHeader";
 import img from "../../assets/img/loader.gif";
+import Policies from "../Policies/Policies";
 
 const ProductDetailView = () => {
 
@@ -32,7 +33,7 @@ const ProductDetailView = () => {
 
         
     useEffect(()=>{
-            fetchDataProduct(`http://localhost:8080/api/productos/id/${id}`)
+            fetchDataProduct(`http://3.133.88.194:8080/api/productos/id/${id}`)
     },[])
 
 
@@ -67,27 +68,12 @@ const ProductDetailView = () => {
 <h5 className={styles.feature}> <GiAstronautHelmet className={styles.featureIcon} /> Traje espacial: {/*product.features.includes(7) ? <FaCheckCircle className={styles.trueIcon}/> : <IoCloseCircleSharp className={styles.falseIcon}/>*/}</h5>
 <h5 className={styles.feature}> <ImLab className={styles.featureIcon} /> Laboratorio : {/*product.features.includes(8) ? <FaCheckCircle className={styles.trueIcon}/> : <IoCloseCircleSharp className={styles.falseIcon}/>*/}</h5>
 </section>
-<BookingCalendar id={id}></BookingCalendar>
-{/* 
-<h3 className={styles.featuresTitle}>¡Información importante!</h3>
-<section className={styles.policiesContainer}>
-<article>
-  <h4 className={styles.policyTitle}>Normas</h4>
-  {product.policies.normas.map(norma => <p className={styles.policyContent} >{norma}</p>)}
-</article>
-<article>
-  <h4 className={styles.policyTitle}>Salud</h4>
-  {product.policies.salud.map(element => <p className={styles.policyContent} >{element}</p>)}
-</article>
-<article>
-  <h4 className={styles.policyTitle}>Cancelaciones</h4>
-  {product.policies.cancelacion.map(element => <p className={styles.policyContent}>{element}</p>)}
-</article>
-</section>
-*/}
+<Policies/>
+<h2  className={styles.featuresTitle} >Fechas Disponibles</h2>
+<div className={styles.calendarContainer}><BookingCalendar id={id}></BookingCalendar></div>
 
-        <Footer/>
-    </main>
+<Footer/>
+</main>
 
     )
     )

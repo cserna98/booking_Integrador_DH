@@ -18,7 +18,7 @@ function SearchForm(){
 
     useEffect(() => {
         async function fetchDataLocation() {
-          const response = await fetch(`http://localhost:8080/api/localizaciones`);
+          const response = await fetch(`http://3.133.88.194:8080/api/localizaciones`);
           const data = await response.json();
           setPlaces(data);
         }

@@ -15,7 +15,7 @@ const ReservationCard = (props) => {
 
     useEffect( () => {
         const fetchData= async () => {
-            const data = await fetch(`http://3.22.186.197:8080/api/productos/id/${props.id}`);
+            const data = await fetch(`http://3.133.88.194:8080/api/productos/id/${props.id}`);
             const card = await data.json();
 
             setReservationProduct({
@@ -43,15 +43,15 @@ const ReservationCard = (props) => {
 
         return <>
             <section className={styles.mainContainer}>
-                <h2>Detalles de la reserva</h2>
+                <h2 className={styles.cardTitle}>Detalles de la reserva</h2>
                 <img src={reservationProduct.img} alt="product img" className={styles.img} />
                 <span className={styles.category}>{reservationProduct.category}</span>
                 <h3 className={styles.title}>{reservationProduct.name}</h3>
                 <span  className={styles.location}> <IoLocationSharp/> {reservationProduct.location}</span>
                 <span className={styles.location}>{altitudeFormated}mts s.n.m</span>
-                <p>Check in {`${props.date[0]?.toLocaleDateString()}`}</p>
-                <p>Check out {`${props.date[1]?.toLocaleDateString()}`}</p>
-                <button className={styles.viewMore} onClick={handleClick}>Confirmar Reserva</button> 
+                <p className={styles.checkInOut}>Check in {`${props.date[0]?.toLocaleDateString()}`}</p>
+                <p className={styles.checkInOut}>Check out {`${props.date[1]?.toLocaleDateString()}`}</p>
+                <button className={styles.reservationbtn} onClick={handleClick}>Confirmar Reserva</button> 
             </section>
         </>
 };
