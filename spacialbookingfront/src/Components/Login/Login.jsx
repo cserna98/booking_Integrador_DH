@@ -32,15 +32,16 @@ function Login(){
           }
         });
         const data = await response.json();
-        console.log(data)
+        
         if(response.ok){
             setTokenLogin(data.token)
             localStorage.setItem('token', data.token);
             console.log(tokenLogin)
             setLogin(true)
+        }else{
+          alert("Error credenciales inválidas. Por favor valide los campos ingresados")
         }
-
-        return data.token;
+        return response;
       }
 
       // fecth de usuario cuando se encuentre logeado
@@ -65,19 +66,13 @@ function Login(){
     const onSubmitLogin = (e) =>{
         console.log(emailLogin)
         console.log(passwordLogin)
-        getToken(emailLogin,passwordLogin)
         e.preventDefault();
         fetchDataUser(`http://localhost:8080/api/usuarios/email/${emailLogin}`)
-        if(tokenLogin){
+        if(getToken(emailLogin,passwordLogin)){
             setEmailUser(emailLogin)
-            
             setEmailLogin("");
             setPasswordLogin("");
-        }else{
-            alert("Error credenciales inválidas. Por favor valide los campos ingresados")
         }
-        
-
     }
 
   
