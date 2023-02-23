@@ -14,7 +14,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Data
-@SuperBuilder
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity

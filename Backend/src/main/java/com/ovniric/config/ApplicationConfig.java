@@ -1,4 +1,4 @@
-package com.ovniric.auth.config;
+package com.ovniric.config;
 
 import com.ovniric.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
