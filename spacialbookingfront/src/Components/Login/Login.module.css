@@ -1,0 +1,97 @@
+@media only screen and (max-width: 1400px) {
+    html {
+        font-size: 30px;
+        box-sizing: border-box;
+    }
+
+    .form input {
+        width: 40vw;
+        height: 3.5vh;
+    }
+
+    .form .buttonLogin{
+        font-size: 22px;
+    }
+
+    .form p{
+        font-size: 18px;
+        padding-bottom: 20px;
+    }
+}  
+
+@media only screen and (max-width: 481px) {
+    html {
+        font-size: 20px;
+        box-sizing: border-box;
+    }
+
+    .form input {
+        width: 40vw;
+        height: 3.5vh;
+    }
+
+    .form .buttonLogin{
+        font-size: 13px;
+        width: 22vw;
+        height: 30px;
+    }
+
+    .form p{
+        font-size: 11px;
+        padding-bottom: 20px;
+    }
+}  
+
+.loginTemplate{
+    background: rgb(29,41,81);
+    background: linear-gradient(90deg, rgba(29,41,81,1) 0%, rgba(167,175,199,1) 35%, rgba(76,59,113,1) 100%);
+    height:auto;
+}
+.buttonLogin {
+    background-color:#1D2951;
+    color: white;
+    width: 22vw;
+    height: 50px;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    border: solid  var(--fourth-color) 3px;
+    margin-top: 20px;
+
+}
+
+.buttonLogin:hover{
+    background-color: #4C3B71B3;
+}  
+
+.form {
+    display: block;
+    text-align: center;
+}
+
+.form h2 {
+    color: var(--secondary-color);
+}
+
+.buttonClosed {
+    text-align: right;
+}
+
+.buttonClosed button {
+    color: red;
+    font-weight: 8px;
+}
+
+.form div {
+    margin: 15px 0;
+}
+
+.form div label {
+    display: block;
+    align-items: flex-start;
+}
+
+.modal{
+    border: solid red 2px;
+    background-color: rgba(255,0,0,0.5);
+    color: azure;
+}
