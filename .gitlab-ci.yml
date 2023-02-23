@@ -8,8 +8,6 @@ build_backend:
     script:
         - cd Backend
         - echo "Building app..."
-        - mvn clean install
-        - echo "Finished building the app."
     artifacts:
         expire_in: 1 week
         paths:
