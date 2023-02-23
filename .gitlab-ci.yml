@@ -1,45 +1,71 @@
-# This file is a template, and might need editing before it works on your project.
-# To contribute improvements to CI/CD templates, please follow the Development guide at:
-# https://docs.gitlab.com/ee/development/cicd/templates.html
-# This specific template is located at:
-# https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Getting-Started.gitlab-ci.yml
-
-# This is a sample GitLab CI/CD configuration file that should run without any modifications.
-# It demonstrates a basic 3 stage CI/CD pipeline. Instead of real tests or scripts,
-# it uses echo commands to simulate the pipeline execution.
-#
-# A pipeline is composed of independent jobs that run scripts, grouped into stages.
-# Stages run in sequential order, but jobs within stages run in parallel.
-#
-# For more information, see: https://docs.gitlab.com/ee/ci/yaml/index.html#stages
-
-stages:          # List of stages for jobs, and their order of execution
+stages:
   - build
-  - test
   - deploy
 
-build-job:       # This job runs in the build stage, which runs first.
+build_backend:
   stage: build
+  image: maven:14.0.0-openjdk-19
   script:
-    - echo "Compiling the code..."
-    - echo "Compile complete."
+    - cd Backend
+    - echo "Building app..."
+    - mvn clean install
+    - echo "Finished building the app."
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - backend/PI/target/ovniric-0.0.1-SNAPSHOT.jar
 
-unit-test-job:   # This job runs in the test stage.
-  stage: test    # It only starts when the job in the build stage completes successfully.
+build_frontend:
+  stage: build
+  image: node:latest
   script:
-    - echo "Running unit tests... This will take about 60 seconds."
-    - sleep 60
-    - echo "Code coverage is 90%"
+    - echo "Building the app"
+    - cd frontend/rent-car
+    - ls
+    - npm --force install
+    - CI=false npm run build
+    - cd build
+    - ls
+    - cd ..
+    - pwd
+  artifacts:
+    expire_in: 1 week
+    name: react_build
+    paths:
+      - ./frontend/rent-car/build/
 
-lint-test-job:   # This job also runs in the test stage.
-  stage: test    # It can run at the same time as unit-test-job (in parallel).
+deploy_Backend:
+  stage: deploy
+  needs: [build_backend]
+  image: alpine:3.11
+  before_script:
+    - apk update && apk add openssh-client bash
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - touch ~/.ssh/config
+      - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    - ssh-keyscan -H "$3.22.186.197" >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
   script:
-    - echo "Linting code... This will take about 10 seconds."
-    - sleep 10
-    - echo "No lint issues found."
+    - echo "Deploying started..."
+    - ssh ubuntu@$3.22.186.197 "sudo systemctl stop ovniricapp.service"
+    - scp backend/PI/target/ovniric-0.0.1-SNAPSHOT.jar ubuntu@$3.22.186.197:~/ovniric-app/
+    - ssh ubuntu@$3.22.186.197 "sudo systemctl start consoleapp.service"
+    - echo "Finished deploying the app."
 
-deploy-job:      # This job runs in the deploy stage.
-  stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
+deploy_Frontend:
+  stage: deploy
+  needs: [build_frontend]
+  image: python:latest
   script:
-    - echo "Deploying application..."
-    - echo "Application successfully deployed."
+    - cd /builds/ctd/proyecto-integrador-1022/0222-ft-c1/grupo-04/frontend/rent-car/build
+    - ls
+    - pwd
+    - cd /builds/ctd/proyecto-integrador-1022/0222-ft-c1/grupo-04
+    - ls
+    - pip install awscli
+    - aws configure set aws_secret_key_id $AWS_ACCESS_KEY_ID
+    - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+    - aws s3 sync /builds/ctd/proyecto-integrador-1022/0222-ft-c1/grupo-04/frontend/rent-car/build s3://grupo4c1frontend
