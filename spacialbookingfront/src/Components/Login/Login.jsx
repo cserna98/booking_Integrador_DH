@@ -21,7 +21,7 @@ function Login(){
   
 
       const getToken = async (email,password) => {
-        const response = await fetch('http://3.133.88.194:8080/api/v1/auth/authenticate', {
+        const response = await fetch('http://18.220.89.28:8080/api/v1/auth/authenticate', {
           method: 'POST',
           body: JSON.stringify({
             email: email,
@@ -66,13 +66,14 @@ function Login(){
         console.log(passwordLogin)
         getToken(emailLogin,passwordLogin)
         e.preventDefault();
-        fetchDataUser(`http://3.133.88.194:8080/api/usuarios/email/${emailLogin}`)
+        fetchDataUser(`http://18.220.89.28:8080/api/usuarios/email/${emailLogin}`)
         if(tokenLogin){
             setEmailUser(emailLogin)
             setEmailLogin("");
             setPasswordLogin("");
         }else{
-          alert("Error credenciales inválidas. Por favor valide los campos ingresados")
+          // error en datos ingresados
+          alert("login exitoso")
         }
     }
 

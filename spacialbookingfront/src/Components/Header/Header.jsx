@@ -37,9 +37,9 @@ const handleLogo = () => {
 async function logout() {
     setLogin(false);
     setRenderForm(null);
-    console.log(localStorage.getItem('token'))
+    console.log("se elimino tl token " + localStorage.getItem('token'))
     try {
-      const response = await fetch("http://3.133.88.194:8080/api/v1/auth/logout", {
+      const response = await fetch("http://18.220.89.28:8080/api/v1/auth/logout", {
         method: 'POST',
         headers: {
           'Authorization': 'Token ' + localStorage.getItem('token'),

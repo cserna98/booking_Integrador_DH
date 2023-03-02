@@ -25,7 +25,7 @@ const Main = () => {
       useEffect(()=>{
           if(id){
               console.log({id})
-              const urlcategory = `http://3.133.88.194:8080/api/productos/categoria/${id}`;
+              const urlcategory = `http://18.220.89.28:8080/api/productos/categoria/${id}`;
               setUrl(urlcategory)
           }
           

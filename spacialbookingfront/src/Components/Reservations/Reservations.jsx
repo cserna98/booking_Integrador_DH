@@ -17,6 +17,7 @@ const Reservations = () => {
     const [id, setId] = useState(useParams().id);
     const [date, setDate] = useState(new Date());
     const [dataTime,setDataTime] = useState();
+    const [time,setTime] = useState();
     const {emailUser, user}= GlobalContext();
 
     const [userCopy, setUserCopy] = useState();
@@ -26,28 +27,38 @@ const Reservations = () => {
     // const [datos, setDatos] = useState({
     //     city: "datos"
     // })
-    const datos = {
-        city: city
+    const [reservation, setReservation] = useState({
+        id: '',
+        startHour: '',
+        startDate: '',
+        endDate: '',
+        productId: '',
+        clientId: '',
+      });
+
+      function handleClick(){
+
+        console.log("click working")
+        if(city && date && time){
+            setReservation({
+                startHour: {time},
+                startDate: {date},
+                endDate: '',
+                productId: '',
+                clientId: '',
+              })
+            alert("Reserva exitosa")
+            console.log(time)
+        } else{
+            alert("Lamentablemente la reserva no ha podido realizarse. Por favor, intente más tarde")
+        }
     }
 
-    const urlDataUsers = "http://3.133.88.194:8080/api/usuarios"
-    async function getDataUser(){
-        const data = await fetch(urlDataUsers, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                authorization: "Bearer " + localStorage.getItem('token'),
-                'Access-Control-Allow-Origin': 'http://localhost:3000'
-            }
-        })
-        const dataApiUsers = await data.json()
-        setDataUsers(dataApiUsers);
+    useEffect(()=>{
 
-    }
+        console.log(reservation)
 
-    useEffect(() => {
-        getDataUser()
-    }, [])
+    },[reservation])
 
 
 
@@ -55,6 +66,12 @@ const Reservations = () => {
     //     setDatos({...datos, city})
     // },[city])
     // console.log(datos.city, "datos")
+    useEffect(()=>{
+        console.log(dataTime)
+        let timeSelected = dataTime?.$d.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit',second:'2-digit', hour12: false})
+        setTime(timeSelected)
+        console.log(time)
+    },[dataTime])
 
 
     useEffect(()=>{
@@ -102,13 +119,13 @@ const Reservations = () => {
          <section className={styles.reservationInfoContainer}>
             <article className={styles.form}>
             <BookingForm 
-             date={date}
-             changeDate={setDate}
-             time={dataTime}
-             changeTime={setDataTime}
-             user={user}
-             changeCity={setCity}
-          
+            date={date}
+            changeDate={setDate}
+            time={dataTime}
+            changeTime={setDataTime}
+            user={user}
+            changeCity={setCity}
+           
            />
             </article>
          
@@ -119,7 +136,9 @@ const Reservations = () => {
              time={dataTime}
              user={userCopy}
              changeUser={setUserCopy}
-             city={city} />
+             city={city}
+             handleClick = {handleClick} 
+             />
          </section>
          <Header />
 
