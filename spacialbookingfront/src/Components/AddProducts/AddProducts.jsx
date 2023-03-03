@@ -10,7 +10,7 @@ const {TextArea} = Input;
 
 function AddProducts(){
 
-     return(
+      return(
       <Form
         labelCol={{
           span: 4,
@@ -35,7 +35,7 @@ function AddProducts(){
           <Button>Button</Button>
         </Form.Item>
       </Form>
-     )
+      )
 }
 
 export default AddProducts;
