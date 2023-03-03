@@ -22,7 +22,7 @@
 }
 
 .section{
-    grid-column: 9/11;
+grid-column: 9/11;
    justify-self: end;
    margin-right: 2vw;
   align-self: center;

@@ -33,7 +33,7 @@ const ProductDetailView = () => {
 
         
     useEffect(()=>{
-            fetchDataProduct(`http://3.133.88.194:8080/api/productos/id/${id}`)
+            fetchDataProduct(`http://18.220.89.28:8080/api/productos/id/${id}`)
     },[])
 
 
@@ -70,7 +70,7 @@ const ProductDetailView = () => {
 </section>
 <Policies/>
 <h2  className={styles.featuresTitle} >Fechas Disponibles</h2>
-<div className={styles.calendarContainer}><BookingCalendar id={id}></BookingCalendar></div>
+<div className={styles.calendarContainer}><BookingCalendar idProduct={id}></BookingCalendar></div>
 
 <Footer/>
 </main>

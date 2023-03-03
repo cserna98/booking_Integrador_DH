@@ -24,7 +24,7 @@ const ListContainer = () => {
   useEffect(()=>{
     //fetchDataProduct()
     console.log("renderizando el global")
-    setUrl("http://3.133.88.194:8080/api/productos/random")
+    setUrl("http://18.220.89.28:8080/api/productos/random")
     console.log("Main")
 },[])
 

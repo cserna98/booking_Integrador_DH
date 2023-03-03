@@ -38,7 +38,7 @@ function BookingCalendar(props){
                 </div>
             <div className={styles.sectionBooking}>
                 <p className={styles.letter}>A un clic de vivir tu experiencia espacial</p>
-                <Link to={isLoged ? `/reservations/${props.id}`: pleaseLogin() }>
+                <Link to={isLoged ? `/reservations/${props.idProduct}`: pleaseLogin() }>
                     <button className={styles.btnReserva} onClick={handleClick} >Reserva Ya!</button>
                 </Link>
             </div>

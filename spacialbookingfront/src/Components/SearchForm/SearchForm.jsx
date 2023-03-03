@@ -18,7 +18,7 @@ function SearchForm(){
 
     useEffect(() => {
         async function fetchDataLocation() {
-          const response = await fetch(`http://3.133.88.194:8080/api/localizaciones`);
+          const response = await fetch(`http://18.220.89.28:8080/api/localizaciones`);
           const data = await response.json();
           setPlaces(data);
         }
@@ -49,10 +49,10 @@ function SearchForm(){
         e.preventDefault()
         if(startDate && endDate){
             console.log("holi")
-            setUrl(`http://localhost:8080/api/productos/disponibles/${actualValue}/${startDate}/${endDate}`)
+            setUrl(`http://18.220.89.28:8080/api/productos/disponibles/${actualValue}/${startDate}/${endDate}`)
             console.log(url)            
         }else{
-            setUrl(`http://localhost:8080/api/productos/localizacion/${actualValue}`)
+            setUrl(`http://18.220.89.28:8080/api/productos/localizacion/${actualValue}`)
         }
         
     }

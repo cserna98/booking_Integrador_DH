@@ -5,6 +5,7 @@ import styles from "./ReservationCard.module.css";
 import { IoLocationSharp} from "react-icons/io5";
 
 const ReservationCard = (props) => {
+
     const[reservationProduct,setReservationProduct] = useState({
         img: img,
         category: "cargando",
@@ -15,7 +16,7 @@ const ReservationCard = (props) => {
 
     useEffect( () => {
         const fetchData= async () => {
-            const data = await fetch(`http://3.133.88.194:8080/api/productos/id/${props.id}`);
+            const data = await fetch(`http://18.220.89.28:8080/api/productos/id/${props.id}`);
             const card = await data.json();
 
             setReservationProduct({
@@ -31,13 +32,7 @@ const ReservationCard = (props) => {
          fetchData()
         });
 
-        function handleClick(){
-            if(props.city && props.date && props.time){
-                alert("Reserva exitosa")
-            } else{
-                alert("Lamentablemente la reserva no ha podido realizarse. Por favor, intente más tarde")
-            }
-        }
+        
 
         let altitudeFormated = new Intl.NumberFormat().format(reservationProduct.altitude);
 
@@ -51,7 +46,7 @@ const ReservationCard = (props) => {
                 <span className={styles.location}>{altitudeFormated}mts s.n.m</span>
                 <p className={styles.checkInOut}>Check in {`${props.date[0]?.toLocaleDateString()}`}</p>
                 <p className={styles.checkInOut}>Check out {`${props.date[1]?.toLocaleDateString()}`}</p>
-                <button className={styles.reservationbtn} onClick={handleClick}>Confirmar Reserva</button> 
+                <button className={styles.reservationbtn} onClick={props.handleClick}>Confirmar Reserva</button> 
             </section>
         </>
 };
