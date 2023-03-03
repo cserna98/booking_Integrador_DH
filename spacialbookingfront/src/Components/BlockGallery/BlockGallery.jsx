@@ -36,7 +36,6 @@ function BlockGallery({images}){
                 {imgList.slice(1,5).map((image) => (
                     <img key={image.idImage} src={image.imageUrl} alt={image.imageTitle}></img>
                     
-
                 ))}
             </div>
         </div>

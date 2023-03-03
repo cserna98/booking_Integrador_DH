@@ -35,7 +35,7 @@ function GalleryTabletMobile(props){
         className={`mySwiper ${styles.swiper}`}
         >
             {imgSlides.map((image)=>(
-                <SwiperSlide key={image.id}><img src={image.url} alt={image.title}></img></SwiperSlide>
+                <SwiperSlide key={image.idImage}><img src={image.imageUrl} alt={image.imageTitle}></img></SwiperSlide>
             ))}
             <div className="autoplay-progress" slot="container-end">
                 <svg viewBox="0 0 48 48" ref={progressCircle}>
