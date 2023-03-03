@@ -5,33 +5,6 @@ import { Button,Form,Input,InputNumber,Select } from "antd";
 import { useState } from "react";
 const {TextArea} = Input;
 
-
-
-
-
-
-
-const formItemLayout = {
-  labelCol: {
-    xs: { span: 24 },
-    sm: { span: 4 },
-  },
-  wrapperCol: {
-    xs: { span: 24 },
-    sm: { span: 20 },
-  },
-};
-
-const formItemLayoutWithOutLabel = {
-  wrapperCol: {
-    xs: { span: 24, offset: 0 },
-    sm: { span: 20, offset: 4 },
-  },
-};
-
-
-
-
 function AddProducts(){
 
       return(
@@ -46,13 +19,36 @@ function AddProducts(){
       >
 
 
-<Form.List
+
+        <div>
+          <h2>Información del producto</h2>
+        <Form.Item label="Nombre">
+          <Input />
+        </Form.Item>
+        <Form.Item label="Categoría">
+          <Select>
+            <Select.Option value="demo">Demo</Select.Option>
+          </Select>
+        </Form.Item>
+        <Form.Item label="Ubicación">
+          <Input />
+        </Form.Item>
+        <Form.Item label="Altitud">
+          <Input />
+        </Form.Item>
+        <Form.Item label="Descripción">
+          <TextArea rows={4} />
+        </Form.Item>
+        </div>
+        <div>
+          <h2>Características</h2>
+        <Form.List
         name="names"
         rules={[
           {
             validator: async (_, names) => {
-              if (!names || names.length < 2) {
-                return Promise.reject(new Error('At least 2 passengers'));
+              if (!names || names.length < 8) {
+                return Promise.reject(new Error('Debes agregar mínimo 8 características'));
               }
             },
           },
@@ -62,8 +58,8 @@ function AddProducts(){
           <>
             {fields.map((field, index) => (
               <Form.Item
-                {...(index === 0 ? formItemLayout : formItemLayoutWithOutLabel)}
-                label={index === 0 ? 'Passengers' : ''}
+                // {...(index === 0 ? formItemLayout : formItemLayoutWithOutLabel)}
+                label={'Característica'}
                 required={false}
                 key={field.key}
               >
@@ -74,12 +70,12 @@ function AddProducts(){
                     {
                       required: true,
                       whitespace: true,
-                      message: "Please input passenger's name or delete this field.",
+                      message: "Por favor ingresa la característica del producto.",
                     },
                   ]}
                   noStyle
                 >
-                  <Input placeholder="passenger name" style={{ width: '60%' }} />
+                  <Input placeholder="Insertar url imagen" style={{ width: '60%' }} />
                 </Form.Item>
                 {fields.length > 1 ? (
                   <MinusCircleOutlined
@@ -93,37 +89,98 @@ function AddProducts(){
               <Button
                 type="dashed"
                 onClick={() => add()}
-                style={{ width: '60%' }}
                 icon={<PlusOutlined />}
               >
-                Add field
+                Agregar característica
               </Button>
               <Form.ErrorList errors={errors} />
             </Form.Item>
           </>
         )}
       </Form.List>
+      </div>
 
-
-
-
-
-
-
-
-        <Form.Item label="Nombre">
-          <Input />
-        </Form.Item>
-        <Form.Item label="Select">
-          <Select>
-            <Select.Option value="demo">Demo</Select.Option>
-          </Select>
-        </Form.Item>
-        <Form.Item label="TextArea">
+        <div>
+          <h2>Políticas del producto</h2>
+        <Form.Item label="Normas">
           <TextArea rows={4} />
         </Form.Item>
-        <Form.Item label="Button">
-          <Button>Button</Button>
+        <Form.Item label="Salud">
+          <TextArea rows={4} />
+        </Form.Item>
+        <Form.Item label="Cancelaciones">
+          <TextArea rows={4} />
+        </Form.Item>
+        </div>
+
+        <div>
+          <h2>Cargar imágenes</h2>
+        <Form.List
+        name="names"
+        rules={[
+          {
+            validator: async (_, names) => {
+              if (!names || names.length < 5) {
+                return Promise.reject(new Error('Debes agregar almenos cinco imagenes'));
+              }
+            },
+          },
+        ]}
+      >
+        {(fields, { add, remove }, { errors }) => (
+          <>
+            {fields.map((field, index) => (
+              <Form.Item
+                // {...(index === 0 ? formItemLayout : formItemLayoutWithOutLabel)}
+                label={'Url Imagen'}
+                required={false}
+                key={field.key}
+              >
+                <Form.Item
+                  {...field}
+                  validateTrigger={['onChange', 'onBlur']}
+                  rules={[
+                    {
+                      required: true,
+                      whitespace: true,
+                      message: "Por favor ingresa la url de la imagen.",
+                    },
+                  ]}
+                  noStyle
+                >
+                  <Input placeholder="Insertar url imagen" style={{ width: '60%' }} />
+                </Form.Item>
+                {fields.length > 1 ? (
+                  <MinusCircleOutlined
+                    className="dynamic-delete-button"
+                    onClick={() => remove(field.name)}
+                  />
+                ) : null}
+              </Form.Item>
+            ))}
+            <Form.Item>
+              <Button
+                type="dashed"
+                onClick={() => add()}
+                icon={<PlusOutlined />}
+              >
+                Agregar imagen
+              </Button>
+              <Form.ErrorList errors={errors} />
+            </Form.Item>
+          </>
+        )}
+      </Form.List>
+      </div>
+
+
+
+
+
+
+
+        <Form.Item>
+          <Button>Crear Producto</Button>
         </Form.Item>
       </Form>
       )
