@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalTime;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -29,6 +28,9 @@ public class ReservationService {
         return reservationRepository.findById(id);
     }
 
+//    public List<Reservation> getReservationsByClient(Client client) {
+//        return reservationRepository.findByClient(client);
+//    }
     public Reservation createReservation(Reservation reservation) {
         return reservationRepository.save(reservation);
     }
@@ -44,7 +46,7 @@ public class ReservationService {
     public Reservation toReservation(ReservationDTO reservationDTO) {
 
         Reservation newreservation = new Reservation();
-        newreservation.setId(reservationDTO.getId());
+        newreservation.setIdReservation(reservationDTO.getId());
         newreservation.setStartHour(reservationDTO.getStartHour());
         newreservation.setEndDate(reservationDTO.getEndDate());
         newreservation.setStartDate(reservationDTO.getStartDate());
@@ -54,11 +56,8 @@ public class ReservationService {
         product.setIdProduct(reservationDTO.getProductId());
         client.setId(reservationDTO.getClientId());
 
-
-
-
         newreservation.setProduct(product);
-        newreservation.setClients(client);
+        newreservation.setClient(client);
         return newreservation;
     }
 
@@ -67,11 +66,11 @@ public class ReservationService {
 
         ReservationDTO result = new ReservationDTO();
 
-        result.setId(reservation.getId());
+        result.setId(reservation.getIdReservation());
         result.setStartHour(LocalTime.now());
         result.setEndDate(reservation.getEndDate());
         result.setStartDate(reservation.getStartDate());
-        result.setClientId(reservation.getClients().getId());
+        result.setClientId(reservation.getClient().getId());
         result.setProductId(reservation.getProduct().getIdProduct());
 
         return result;
