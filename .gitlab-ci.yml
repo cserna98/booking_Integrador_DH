@@ -11,9 +11,9 @@ build_backend:
         - mvn clean install
         - echo "Finished building the app."
     artifacts:
-        -paths: 
+        paths: 
             Backend/target/ovniric-0.0.1-SNAPSHOT.jar
-        -expire_in: 1 week
+        expire_in: 1 week
         
 
 deploy_backend:
