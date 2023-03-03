@@ -55,8 +55,8 @@ public class ProductService {
         result.setCategoryId(product.getCategory().getCategoryId());
         result.setLocationId(product.getLocations().getIdLocation());
         result.setAltitude(product.getAltitude());
-        result.setImageId(product.getImages().stream().map(Image::getIdImage).collect(Collectors.toSet()));
-        result.setFeatureId(product.getFeatures().stream().map(Feature::getIdFeature).collect(Collectors.toSet()));
+        result.setImageUrl(product.getImages().stream().map(Image::getUrl).collect(Collectors.toSet()));
+        result.setFeatureTitle(product.getFeatures().stream().map(Feature::getTitle).collect(Collectors.toSet()));
         result.setDescription(product.getDescription());
         result.setAvailability(product.getAvailability());
         result.setPolicy(product.getPolicy());
@@ -71,15 +71,15 @@ public class ProductService {
         location.setIdLocation(productDTO.getLocationId());
 
 
-        List<Image> images = productDTO.getImageId().stream().map(idImage -> {
+        List<Image> images = productDTO.getImageUrl().stream().map(urlImage -> {
             Image image = new Image();
-            image.setIdImage(idImage);
+            image.setUrl(urlImage);
             return image;
         }).collect(Collectors.toList());
 
-        Set<Feature> features = productDTO.getFeatureId().stream().map(idFeature -> {
+        Set<Feature> features = productDTO.getFeatureTitle().stream().map(titleFeature -> {
             Feature feature = new Feature();
-            feature.setIdFeature(idFeature);
+            feature.setTitle(titleFeature);
             return feature;
         }).collect(Collectors.toSet());
 
