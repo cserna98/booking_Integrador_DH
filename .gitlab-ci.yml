@@ -13,7 +13,7 @@ build_backend:
     artifacts:
         expire_in: 1 week
         paths:
-            - Backend/target/PI-0.0.1-SNAPSHOT.jar
+            - Backend/target/ovniric-0.0.1-SNAPSHOT.jar
     rules:
         - changes: 
             - Backend/**/*
@@ -35,7 +35,7 @@ deploy_Backend:
     script:
         - echo "Deploying started..."
         - ssh ubuntu@$SERVER_IP "sudo systemctl stop ovniric.service"
-        - scp Backend/target/PI-0.0.1-SNAPSHOT.jar ubuntu@$SERVER_IP:~/artifacOvniric/
+        - scp Backend/target/ovniric-0.0.1-SNAPSHOT.jar ubuntu@$SERVER_IP:~/artifacOvniric/
         - ssh ubuntu@$SERVER_IP "sudo systemctl start ovniric.service"
         - echo "Finished deploying the app."
     rules:
