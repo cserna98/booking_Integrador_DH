@@ -4,7 +4,7 @@ stages:
 
 build_backend:
     stage: build
-    image:  maven:3.8.6-openjdk-19
+    image:  maven:3.9-amazoncorretto-19
     script:
         - cd Backend
         - echo "Building app..."
