@@ -22,7 +22,7 @@ public class Image {
     private Long idImage;
 
     @Column(name = "url_imagen")
-    private String url;
+    private String imageUrl;
 
     @Column(name = "titulo_imagen")
     private String imageTitle;

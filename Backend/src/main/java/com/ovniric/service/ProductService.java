@@ -55,7 +55,7 @@ public class ProductService {
         result.setCategoryId(product.getCategory().getCategoryId());
         result.setLocationId(product.getLocations().getIdLocation());
         result.setAltitude(product.getAltitude());
-        result.setImageUrl(product.getImages().stream().map(Image::getUrl).collect(Collectors.toSet()));
+        result.setImageUrl(product.getImages().stream().map(Image::getImageUrl).collect(Collectors.toSet()));
         result.setFeatureTitle(product.getFeatures().stream().map(Feature::getTitle).collect(Collectors.toSet()));
         result.setDescription(product.getDescription());
         result.setAvailability(product.getAvailability());
@@ -73,7 +73,7 @@ public class ProductService {
 
         List<Image> images = productDTO.getImageUrl().stream().map(urlImage -> {
             Image image = new Image();
-            image.setUrl(urlImage);
+            image.setImageUrl(urlImage);
             return image;
         }).collect(Collectors.toList());
 
