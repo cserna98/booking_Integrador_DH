@@ -39,4 +39,13 @@ public class UserService {
             userRepository.deleteById(id);
         }
     }
+
+    public User findByEmail(String email) {
+        Optional<User> optionalUser = userRepository.findByEmail(email);
+        if (optionalUser.isPresent()) {
+            return optionalUser.get();
+        } else {
+            return null;
+        }
+    }
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {Link, Redirect} from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -14,32 +14,57 @@ function Login(){
     const [emailLogin, setEmailLogin] = useState("")
     const [passwordLogin, setPasswordLogin] = useState("")
     const [tokenLogin, setTokenLogin] = useState()
-    const {setLogin,user,setUser,loginModal}= GlobalContext()
+    const [response, setresponse] = useState()
+    const {setLogin,user,setUser,loginModal, setEmailUser, isLoged}= GlobalContext()
+    console.log(user, "datos usuarios")
 
     // datos usuraio de la api 
   
 
-      const getToken = async (email,password) => {
-        const response = await fetch('http://localhost:8080/api/v1/auth/authenticate', {
+    const getToken = async (email, password) => {
+      try {
+        const response = await fetch('http://18.220.89.28:8080/api/v1/auth/authenticate', {
           method: 'POST',
           body: JSON.stringify({
             email: email,
-            password: password 
-        }),
+            password: password
+          }),
           headers: {
             'Content-Type': 'application/json'
           }
         });
-        const data = await response.json();
-        if(response.ok){
-            setTokenLogin(data.token)
-            localStorage.setItem('token', data.token);
-            console.log(tokenLogin)
-            setLogin(true)
+    
+        if (response.ok) {
+          const data = await response.json();
+          localStorage.setItem('token', data.token);
+          console.log(tokenLogin);
+          setLogin(true);
+          return response;
+        } else {
+          throw new Error('Credenciales inválidas');
         }
-
-        return data.token;
+      } catch (error) {
+        alert(error.message);
       }
+    };
+
+      // fecth de usuario cuando se encuentre logeado
+      async function fetchDataUser(url) {
+        console.log(url)
+        const response = await fetch(url);
+        const data = await response.json();
+        console.log(data)
+        setUser(data);    
+      }
+
+      useEffect(()=>{
+        console.log(user)
+      },[user])
+
+
+      
+
+      console.log(user, "login")
 
     // Manejadores de eventos para cada input para actualziar los estados a medida que el usurio escribe en los inputs
     const onChangeEmail = (e) => setEmailLogin(e.target.value);
@@ -51,16 +76,12 @@ function Login(){
         console.log(emailLogin)
         console.log(passwordLogin)
         getToken(emailLogin,passwordLogin)
+        console.log(response)
         e.preventDefault();
-        if(tokenLogin){
-            setEmailLogin("");
-            setPasswordLogin("");
-        }else{
-            alert("Error credenciales inválidas. Por favor valide los campos ingresados")
-        }
-        
-
+        fetchDataUser(`http://18.220.89.28:8080/api/usuarios/email/${emailLogin}`)
     }
+
+  
 
   
 

@@ -37,9 +37,9 @@ const handleLogo = () => {
 async function logout() {
     setLogin(false);
     setRenderForm(null);
-    console.log(localStorage.getItem('token'))
+    console.log("se elimino tl token " + localStorage.getItem('token'))
     try {
-      const response = await fetch("http://localhost:8080/api/v1/auth/logout", {
+      const response = await fetch("http://18.220.89.28:8080/api/v1/auth/logout", {
         method: 'POST',
         headers: {
           'Authorization': 'Token ' + localStorage.getItem('token'),
@@ -71,8 +71,8 @@ async function logout() {
       <Link to="/" className={styles.lema} onClick={handleLogo}><img  className={styles.lema} src={lema} alt="Lema Ovniric" /></Link>
       {isLoged ?
       <>
-          <div className={styles.avatar}><span> {/*`${name}${user.lastName}`*/} </span></div>
-          <a href="#" className={styles.username}>{/*`Hola ${name}`*/}</a>
+          <div className={styles.avatar}><span> {`${user.firstname} ${user.lastname}`} </span></div>
+          <a href="#" className={styles.username}>{`Hola ${user.firstname}`}</a>
           <button className={`${styles.btn} ${styles.logout}` } onClick={logout} >Log out</button>          
         </> : 
         <>

@@ -25,12 +25,22 @@ const Main = () => {
       useEffect(()=>{
           if(id){
               console.log({id})
-              const urlcategory = `http://localhost:8080/api/productos/categoria/${id}`;
+              const urlcategory = `http://18.220.89.28:8080/api/productos/categoria/${id}`;
               setUrl(urlcategory)
           }
           
       },[id])
 
+// <<<<<<< HEAD
+//     useEffect(()=>{
+//         setUrl("http://localhost:8080/api/productos/random")
+//     },[])
+
+
+
+//     console.log(renderForm, "main")
+// =======
+// >>>>>>> 785f0ecc09360d97276731007febfce979726406
 
     return (
     <div className={styles.bg}>

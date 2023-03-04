@@ -92,3 +92,7 @@ code {
   stroke-dasharray: 125.6;
   transform: rotate(-90deg);
 }
+
+.input-color {
+  color: black !important;
+}

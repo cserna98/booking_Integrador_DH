@@ -2,9 +2,9 @@ import React from "react";
 import {useState} from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+import { Link } from "react-router-dom";
 import styles from "./BookingCalendar.module.css"
 import { GlobalContext } from "../globalState/GlobalState";
-import { Link } from "react-router-dom";
 
 
 function BookingCalendar(props){
@@ -24,8 +24,9 @@ function BookingCalendar(props){
         setValue(nextValue);
     }
     return(
-        <div className={styles.calendarDouble}>
-        <h2>Fechas Disponibles</h2>
+    
+    <div className={styles.calendarDouble}>
+    
         <div className={styles.bookingCalendar}>
             <div className={styles.calendarSelect}>
                 <Calendar  onChange={onChange} value={value} showDoubleView={true} calendarType={"US"}>
@@ -37,8 +38,8 @@ function BookingCalendar(props){
                 </div>
             <div className={styles.sectionBooking}>
                 <p className={styles.letter}>A un clic de vivir tu experiencia espacial</p>
-                <Link to={isLoged ? `/reservations/${props.id}`: pleaseLogin() }>
-                    <button className={styles.viewMore} onClick={handleClick} >Reserva Ya!</button>
+                <Link to={isLoged ? `/reservations/${props.idProduct}`: pleaseLogin() }>
+                    <button className={styles.btnReserva} onClick={handleClick} >Reserva Ya!</button>
                 </Link>
             </div>
         </div>

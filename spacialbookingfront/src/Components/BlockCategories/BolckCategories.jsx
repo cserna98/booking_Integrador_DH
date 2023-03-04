@@ -15,7 +15,7 @@ const Categories = () => {
     const [dataApi, setDataApi] = useState();
 
     const {setUrl}= GlobalContext()
-    const urlAPICategories = "http://localhost:8080/api/categorias";
+    const urlAPICategories = "http://18.220.89.28:8080/api/categorias";
 
 
     // Creación función asincróna para consumir la API
@@ -36,8 +36,8 @@ const Categories = () => {
         <ul className={styles.categoriesContainer} >
 
         {dataApi?.map((category) => (
-            <li className={styles.category}  key={category.categoryId}>
-                <div onClick={()=>setUrl(`http://localhost:8080/api/productos/categoria/${category.categoryId}`)} > 
+            <li className={styles.category}  key={category.categoryId} onClick={()=>setUrl(`http://18.220.89.28:8080/api/productos/categoria/${category.categoryId}`)}>
+                <div  > 
                     <img id={styles.categoryImg} src={category.urlImage} alt={category.title} />
                 </div>
                 <div className={styles.text}>

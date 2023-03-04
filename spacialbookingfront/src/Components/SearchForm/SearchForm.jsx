@@ -18,7 +18,7 @@ function SearchForm(){
 
     useEffect(() => {
         async function fetchDataLocation() {
-          const response = await fetch(`http://localhost:8080/api/localizaciones`);
+          const response = await fetch(`http://18.220.89.28:8080/api/localizaciones`);
           const data = await response.json();
           setPlaces(data);
         }
@@ -49,11 +49,17 @@ function SearchForm(){
         e.preventDefault()
         if(startDate && endDate){
             console.log("holi")
-            setUrl(`http://localhost:8080/api/productos/disponibles/${actualValue}/${startDate}/${endDate}`)
+            setUrl(`http://18.220.89.28:8080/api/productos/disponibles/${actualValue}/${startDate}/${endDate}`)
             console.log(url)            
         }else{
-            setUrl(`http://localhost:8080/api/productos/localizacion/${actualValue}`)
+            setUrl(`http://18.220.89.28:8080/api/productos/localizacion/${actualValue}`)
         }
+
+        setActualvalue("")
+        setEndDate("")
+        setStartDate("")
+        
+        
         
     }
 
@@ -105,11 +111,11 @@ function SearchForm(){
         <div className={styles.datecontainer}>
             <b className={`${styles.label}, ${styles.lb}`}>Inicio:</b>
             <label className={styles.label} id={styles.Date} >
-                <input  className={`${styles.formInputs} ${styles.divItem} `} type="date"  onChange={(e)=>setStartDate(e.target.value)}></input>
+                <input value={startDate ? startDate : ""}  className={`${styles.formInputs} ${styles.divItem} `} type="date"  onChange={(e)=>setStartDate(e.target.value)}></input>
              </label>
              <b className={`${styles.label}, ${styles.lb}`}>Final:</b>
              <label className={styles.label} id='Date'>
-                <input  className={`${styles.formInputs} ${styles.divItem} `} type="date" onChange={(e)=>setEndDate(e.target.value)}></input>
+                <input value={endDate ? endDate : ""} className={`${styles.formInputs} ${styles.divItem} `}   type="date" onChange={(e)=>setEndDate(e.target.value)}></input>
              </label>
         </div>     
     
