@@ -15,6 +15,7 @@ import FilterCategory from './Components/FilterCategory/FilterCategory';
 import BookingForm from './Components/BookingForm/BookingForm';
 import Reservations from './Components/Reservations/Reservations';
 import AddProducts from './Components/AddProducts/AddProducts';
+import MyBookings from './Components/MyBookings/MyBookings';
 
 
 function App() {
@@ -37,6 +38,7 @@ const {isLoged,dataproduct,idProduct,setIdProduct,setDataProduct} = GlobalContex
         {/* <Route path='/bookingForm' element={<BookingForm></BookingForm>}></Route> */}
         <Route path='/administrationProducts' element={<AddProducts></AddProducts>}></Route>
         <Route path='/reservations/:id' element={<Reservations></Reservations>}></Route>
+        <Route path='/MyBookings'element={<MyBookings></MyBookings>}></Route>
   </Routes>      
      
   <Footer/>
