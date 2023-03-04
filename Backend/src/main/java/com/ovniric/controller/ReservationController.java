@@ -2,6 +2,7 @@ package com.ovniric.controller;
 
 import com.ovniric.dto.ReservationDTO;
 import com.ovniric.model.Reservation;
+import com.ovniric.model.user.Client;
 import com.ovniric.service.ReservationService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -37,9 +38,21 @@ public class ReservationController {
         }
     }
 
+//    @GetMapping("/cliente/{idClient}")
+//    public ResponseEntity<List<Reservation>> getReservationsByClient(@PathVariable Long idClient){
+//        Client client = new Client();
+//        client.setIdClient(idClient);
+//        List<Reservation> reservations = reservationService.getReservationsByClient(client);
+//        if(reservations.isEmpty()){
+//            return ResponseEntity.noContent().build();
+//        } else {
+//            return ResponseEntity.ok(reservations);
+//        }
+//    }
+
     @PutMapping
     public ResponseEntity<String> updateReservation(@RequestBody Reservation reservation) {
-        Optional<Reservation> reservationToSearch = reservationService.getReservationById(reservation.getId());
+        Optional<Reservation> reservationToSearch = reservationService.getReservationById(reservation.getIdReservation());
         if (reservationToSearch.isPresent()) {
             reservationService.updateReservation(reservation);
             return ResponseEntity.ok("The reservation has been updated");

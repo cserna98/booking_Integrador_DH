@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 
 @Data
@@ -26,7 +27,7 @@ public class Reservation{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private Long idReservation;
 
     @Column(name = "hora_comienzo")
     private LocalTime startHour;
@@ -45,7 +46,8 @@ public class Reservation{
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     @JsonIgnore
-    private Client clients;
+    private Client client;
+
 
 
 }
