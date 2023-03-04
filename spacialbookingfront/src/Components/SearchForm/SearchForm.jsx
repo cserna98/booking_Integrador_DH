@@ -54,6 +54,12 @@ function SearchForm(){
         }else{
             setUrl(`http://18.220.89.28:8080/api/productos/localizacion/${actualValue}`)
         }
+
+        setActualvalue("")
+        setEndDate("")
+        setStartDate("")
+        
+        
         
     }
 
@@ -105,11 +111,11 @@ function SearchForm(){
         <div className={styles.datecontainer}>
             <b className={`${styles.label}, ${styles.lb}`}>Inicio:</b>
             <label className={styles.label} id={styles.Date} >
-                <input  className={`${styles.formInputs} ${styles.divItem} `} type="date"  onChange={(e)=>setStartDate(e.target.value)}></input>
+                <input value={startDate ? startDate : ""}  className={`${styles.formInputs} ${styles.divItem} `} type="date"  onChange={(e)=>setStartDate(e.target.value)}></input>
              </label>
              <b className={`${styles.label}, ${styles.lb}`}>Final:</b>
              <label className={styles.label} id='Date'>
-                <input  className={`${styles.formInputs} ${styles.divItem} `} type="date" onChange={(e)=>setEndDate(e.target.value)}></input>
+                <input value={endDate ? endDate : ""} className={`${styles.formInputs} ${styles.divItem} `}   type="date" onChange={(e)=>setEndDate(e.target.value)}></input>
              </label>
         </div>     
     
