@@ -1,0 +1,34 @@
+.formProduct{
+    border: 10px solid purple;
+
+}
+
+
+.informationProduct{
+    border: 1px solid red;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.informationProduct >div {
+    /* border: 1px solid blue; */
+    width: 90%;
+    margin: 0.5rem auto;
+}
+
+.informationProduct >div >div {
+    display: block;
+}
+
+.description {
+    border: 1px solid blue;
+}
+
+.description >div{
+    width: 95%;
+    margin: 0.5rem auto;
+}
+
+label::before {
+    content: "" !important;
+}

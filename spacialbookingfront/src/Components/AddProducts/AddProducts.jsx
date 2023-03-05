@@ -1,4 +1,5 @@
 import React from "react";
+import styles from './AddProducts.module.css';
 // import { icons } from "react-icons/lib";
 import { MinusCircleOutlined, PlusOutlined  } from '@ant-design/icons';
 import { Button,Form,Input,InputNumber,Select } from "antd";
@@ -8,20 +9,21 @@ const {TextArea} = Input;
 function AddProducts(){
 
       return(
-      <Form
-        labelCol={{
-          span: 4,
-        }}
-        wrapperCol={{
-          span: 14,
-        }}
-        layout="horizontal"
+      <Form className={styles.formProduct}
+        // labelCol={{
+        //   span: 4,
+        // }}
+        // wrapperCol={{
+        //   span: 14,
+        // }}
+        // layout="horizontal"
       >
 
 
-
+        <h1>Administración de Productos</h1>
         <div>
           <h2>Información del producto</h2>
+          <div className={styles.informationProduct}>
         <Form.Item label="Nombre">
           <Input />
         </Form.Item>
@@ -36,7 +38,8 @@ function AddProducts(){
         <Form.Item label="Altitud">
           <Input />
         </Form.Item>
-        <Form.Item label="Descripción">
+        </div>
+        <Form.Item label="Descripción" className={styles.description}>
           <TextArea rows={4} />
         </Form.Item>
         </div>
@@ -47,8 +50,8 @@ function AddProducts(){
         rules={[
           {
             validator: async (_, names) => {
-              if (!names || names.length < 8) {
-                return Promise.reject(new Error('Debes agregar mínimo 8 características'));
+              if (!names || names.length > 8) {
+                return Promise.reject(new Error('Debes agregar máximo 8 características'));
               }
             },
           },
@@ -59,7 +62,7 @@ function AddProducts(){
             {fields.map((field, index) => (
               <Form.Item
                 // {...(index === 0 ? formItemLayout : formItemLayoutWithOutLabel)}
-                label={'Característica'}
+                // label={'Característica'}
                 required={false}
                 key={field.key}
               >
@@ -73,14 +76,18 @@ function AddProducts(){
                       message: "Por favor ingresa la característica del producto.",
                     },
                   ]}
-                  noStyle
+                  label={"Nombre"}
+                  // noStyle
                 >
-                  <Input placeholder="Insertar url imagen" style={{ width: '60%' }} />
+                  <Input placeholder="Insertar url imagen" style={{ width: '60%' }} onChange={(e) => {console.log(e.target.value)}} />
+                </Form.Item>
+                <Form.Item label={"Icono"}>
+                  <Input placeholder="hola" style={{ width: '60%' }}></Input>
                 </Form.Item>
                 {fields.length > 1 ? (
                   <MinusCircleOutlined
                     className="dynamic-delete-button"
-                    onClick={() => remove(field.name)}
+                    onClick={() => {remove(field.name) ;console.log(field)}}
                   />
                 ) : null}
               </Form.Item>
