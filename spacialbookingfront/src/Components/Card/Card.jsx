@@ -17,6 +17,7 @@ const Card = ({info}) =>{
     const {SetActualproductId}= GlobalContext()
     
     let image = info.images[0] 
+    console.log(image)
 
     return <section className={styles.container}>
         <article className={styles.imgContainer}> <img src={image.imageUrl} alt=""  className={styles.img} /></article>

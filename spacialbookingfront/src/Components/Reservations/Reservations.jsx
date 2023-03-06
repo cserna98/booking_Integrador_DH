@@ -14,21 +14,24 @@ import Policies from "../Policies/Policies";
 
 
 const Reservations = () => {
-    const [id, setId] = useState(useParams().id);
     const [date, setDate] = useState(new Date());
     const [dataTime,setDataTime] = useState();
     const [time,setTime] = useState();
     const {emailUser, user}= GlobalContext();
+    const [startDate, setStartDate] = useState();
+    const [endDate, setEndDate] = useState();
 
     const [userCopy, setUserCopy] = useState();
     const [city,setCity] = useState();
     const [correctBooking,setCorrectBooking] = useState(false);
     const [dataUsers, setDataUsers] = useState()
+    const {id} = useParams();
     // const [datos, setDatos] = useState({
     //     city: "datos"
     // })
+
+    const productId = parseInt(id)
     const [reservation, setReservation] = useState({
-        id: '',
         startHour: '',
         startDate: '',
         endDate: '',
@@ -41,11 +44,11 @@ const Reservations = () => {
         console.log("click working")
         if(city && date && time){
             setReservation({
-                startHour: {time},
-                startDate: {date},
-                endDate: '',
-                productId: '',
-                clientId: '',
+                startHour: time,
+                startDate: startDate,
+                endDate: endDate,
+                productId: productId,
+                clientId: user.id
               })
             alert("Reserva exitosa")
             console.log(time)
@@ -74,16 +77,12 @@ const Reservations = () => {
     },[dataTime])
 
 
-    useEffect(()=>{
-        setDate([new Date(Date.now()),new Date(Date.now())])
-    },[])
-
     // useEffect(()=>{
     //     const copy = dataUsers?.filter( user => user.email === emailUser)[0];
     //     setUserCopy(copy)
     // },[dataUsers])
 
-    console.log(userCopy)
+    console.log(user)
 
     // Función para conectar la API de reservas
     async function confirmBooking(information){
@@ -119,8 +118,8 @@ const Reservations = () => {
          <section className={styles.reservationInfoContainer}>
             <article className={styles.form}>
             <BookingForm 
-            date={date}
-            changeDate={setDate}
+            setStartDate={setStartDate}
+            setEndDate={setEndDate}
             time={dataTime}
             changeTime={setDataTime}
             user={user}
@@ -131,7 +130,7 @@ const Reservations = () => {
          
            <ReservationCard 
              className={styles.reservationCard}
-             id={id}
+             id={productId}
              date={date}
              time={dataTime}
              user={userCopy}
