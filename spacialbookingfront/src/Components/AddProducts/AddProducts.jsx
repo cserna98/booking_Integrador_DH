@@ -6,6 +6,7 @@ import { Button,Form,Input,InputNumber,Select } from "antd";
 import { useState } from "react";
 import { ContextGlobal } from "../globalState/GlobalState";
 const {TextArea} = Input;
+const {Option} = Select;
 
 function AddProducts(){
   const [listCategory, setListCategory] = useState([]);
@@ -14,10 +15,55 @@ function AddProducts(){
   //Estado para guardar la información del producto
   const [informationProduct, setInformationProduct] = useState({
     title: "",
-    categoryId: "",
-    locationId: "",
-    
-  })
+    categoryId: 0,
+    locationId: 0,
+    altitude: 0,
+    description: "",
+  });
+
+  const [informationPolicies,setInformationPolicies] = useState({
+    normas: "",
+    salud: "",
+    cancelaciones: "",
+  });
+
+  const changeName = (e) => {
+    setInformationProduct({...informationProduct, title: e.target.value});
+  }
+
+  const changeCategory = (e) => {
+    setInformationProduct({...informationProduct, categoryId: e});
+  }
+
+  const changeLocation = (e) => {
+    setInformationProduct({...informationProduct, locationId: e});
+  }
+
+  const changeAltitude = (e) => {
+    setInformationProduct({...informationProduct, altitude: e.target.value});
+  }
+
+  const changeDescription = (e) => {
+    setInformationProduct({...informationProduct, description: e.target.value});
+  }
+
+  const changeNormas = (e) => {
+    setInformationPolicies({...informationPolicies, normas: e.target.value});
+  }
+
+  const changeSalud = (e) => {
+    setInformationPolicies({...informationPolicies, salud: e.target.value});
+  }
+
+  const changeCancelaciones = (e) => {
+    setInformationPolicies({...informationPolicies, cancelaciones: e.target.value});
+  }
+
+
+
+
+
+
 
   const urlCategories = "http://18.220.89.28:8080/api/categorias";
   const urlLocations = "http://18.220.89.28:8080/api/localizaciones";
@@ -34,7 +80,7 @@ function AddProducts(){
     setListLocations(locations)
   }
 
-
+  console.log(informationProduct)
 
   useEffect(() => {
     getCategories(urlCategories);
@@ -58,30 +104,30 @@ function AddProducts(){
           <h2>Información del producto</h2>
           <div className={styles.informationProduct}>
         <Form.Item label="Nombre">
-          <Input placeholder={'Ingrese el nombre del producto'}/>
+          <Input placeholder={'Ingrese el nombre del producto'} onChange={changeName}/>
         </Form.Item>
         <Form.Item label="Categoría">
-          <Select placeholder={'Seleccione la categoría'}>
+          <Select placeholder={'Seleccione la categoría'} onChange={changeCategory}>
             {listCategory?.map(category => (
-              <Select.Option key={category.categoryId} id={category.categoryId} value={category.title}>{category.title}</Select.Option>
+              <Option key={category.categoryId} id={category.categoryId} value={category.id}>{category.title}</Option>
             ))}
           </Select>
         </Form.Item>
         <Form.Item label="Ubicación">
-          <Select placeholder={'Seleccione la ubicación'}>
+          <Select placeholder={'Seleccione la ubicación'} onChange={changeLocation}>
             {listLocations?.map(location => (
-              <Select.Option key={location.idLocation} id={location.idLocation} value={location.place}>{location.place}</Select.Option>
+              <Option key={location.idLocation} id={location.idLocation} value={location.idLocation}>{location.place}</Option>
             ))}
           </Select>
         </Form.Item>
 
         
         <Form.Item label="Altitud">
-          <Input placeholder={'Ingrese la altitud en números sin comas ni puntos'}/>
+          <Input placeholder={'Ingrese la altitud en números sin comas ni puntos'} onChange={changeAltitude}/>
         </Form.Item>
         </div>
         <Form.Item label="Descripción" className={styles.description}>
-          <TextArea rows={4} />
+          <TextArea rows={4} onChange={changeDescription}/>
         </Form.Item>
         </div>
         <div>
@@ -158,13 +204,13 @@ function AddProducts(){
           <h2>Políticas del producto</h2>
           <div className={styles.policyProduct}>
         <Form.Item label="Normas">
-          <TextArea rows={4} />
+          <TextArea rows={4} onChange={changeNormas}/>
         </Form.Item>
         <Form.Item label="Salud">
-          <TextArea rows={4} />
+          <TextArea rows={4} onChange={changeSalud}/>
         </Form.Item>
         <Form.Item label="Cancelaciones">
-          <TextArea rows={4} />
+          <TextArea rows={4} onChange={changeCancelaciones}/>
         </Form.Item>
         </div>
         </div>
