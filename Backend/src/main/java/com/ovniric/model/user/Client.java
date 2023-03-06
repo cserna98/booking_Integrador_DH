@@ -11,7 +11,6 @@ import java.util.List;
 public class Client extends User{
 
     @OneToMany(mappedBy = "idReservation", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-
     private List<Reservation> reservations = new ArrayList<>();
 
 

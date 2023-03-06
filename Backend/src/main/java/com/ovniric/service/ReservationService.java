@@ -28,9 +28,16 @@ public class ReservationService {
         return reservationRepository.findById(id);
     }
 
-//    public List<Reservation> getReservationsByClient(Client client) {
-//        return reservationRepository.findByClient(client);
-//    }
+
+
+    public List<Reservation> getReservationsByClient(Client client) {
+        return reservationRepository.findByClient(client);
+    }
+
+    public List<Reservation> findReservationsByProductId(Long productId) {
+        return reservationRepository.findAllByProductId(productId);
+    }
+
     public Reservation createReservation(Reservation reservation) {
         return reservationRepository.save(reservation);
     }
