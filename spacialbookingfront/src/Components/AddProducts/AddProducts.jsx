@@ -1,12 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from './AddProducts.module.css';
 // import { icons } from "react-icons/lib";
 import { MinusCircleOutlined, PlusOutlined  } from '@ant-design/icons';
 import { Button,Form,Input,InputNumber,Select } from "antd";
 import { useState } from "react";
+import { ContextGlobal } from "../globalState/GlobalState";
 const {TextArea} = Input;
 
 function AddProducts(){
+  const [listCategory, setListCategory] = useState([]);
+
+  const urlCategories = "http://18.220.89.28:8080/api/categorias";
+
+  async function getCategories(url) {
+    const data = await fetch(url);
+    const categories = await data.json();
+    setListCategory(categories)
+  }
+
+  useEffect(() => {
+    getCategories(urlCategories);
+  }, [])
 
       return(
       <Form className={styles.formProduct}
@@ -28,8 +42,10 @@ function AddProducts(){
           <Input />
         </Form.Item>
         <Form.Item label="Categoría">
-          <Select>
-            <Select.Option value="demo">Demo</Select.Option>
+          <Select placeholder={'Seleccionar categoria'}>
+            {listCategory?.map(category => (
+              <Select.Option key={category.categoryId} value={category.title}>{category.title}</Select.Option>
+            ))}
           </Select>
         </Form.Item>
         <Form.Item label="Ubicación">
@@ -79,11 +95,11 @@ function AddProducts(){
                   label={"Nombre"}
                   // noStyle
                 >
-                  <Input placeholder="Insertar url imagen" style={{ width: '60%' }} onChange={(e) => {console.log(e.target.value)}} />
+                  <Input placeholder="Agregar característica" style={{ width: '60%' }} onChange={(e) => {console.log(e.target.value)}} />
                 </Form.Item>
-                <Form.Item label={"Icono"}>
+                {/* <Form.Item label={"Icono"}>
                   <Input placeholder="hola" style={{ width: '60%' }}></Input>
-                </Form.Item>
+                </Form.Item> */}
                 {fields.length > 1 ? (
                   <MinusCircleOutlined
                     className="dynamic-delete-button"

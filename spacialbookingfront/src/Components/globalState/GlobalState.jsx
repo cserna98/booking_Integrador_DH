@@ -48,7 +48,7 @@ export const ContextProvider = ({children}) => {
       loginModal,
       setLoginModal,
       emailUser,
-      setEmailUser
+      setEmailUser,
           }}>
         {children}
       </ContextGlobal.Provider>
