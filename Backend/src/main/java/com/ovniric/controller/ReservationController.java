@@ -38,14 +38,14 @@ public class ReservationController {
         }
     }
 
-//    @GetMapping("/cliente/{clientId}")
-//    public ResponseEntity<List<Reservation>> getReservationsByClient(@RequestBody Long clientId){
-//        Client
-//    }
+    @GetMapping("/cliente/{clientId}")
+    public ResponseEntity<List<Reservation>> getReservationsByClientId(@PathVariable Long clientId) {
+        return ResponseEntity.ok(reservationService.getReservationsByClient(clientId));
+    }
 
     @GetMapping("/producto/{productId}")
-    public List<Reservation> getReservationsByProductId(@PathVariable Long productId) {
-        return reservationService.findReservationsByProductId(productId);
+    public ResponseEntity<List<Reservation>> getReservationsByProductId(@PathVariable Long productId) {
+        return ResponseEntity.ok(reservationService.findReservationsByProductId(productId));
     }
 
     @PutMapping

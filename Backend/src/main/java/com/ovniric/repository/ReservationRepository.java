@@ -9,7 +9,8 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface ReservationRepository extends JpaRepository<Reservation,Long> {
-    List<Reservation> findByClient(Client client);
+
+    List<Reservation> findByClientId(Long clientId);
 
     @Query("SELECT r FROM Reservation r WHERE r.product.idProduct = :productId")
     List<Reservation> findAllByProductId(@Param("productId") Long productId);
