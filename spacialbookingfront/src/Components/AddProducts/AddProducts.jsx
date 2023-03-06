@@ -5,12 +5,14 @@ import { MinusCircleOutlined, PlusOutlined  } from '@ant-design/icons';
 import { Button,Form,Input,InputNumber,Select } from "antd";
 import { useState } from "react";
 import { ContextGlobal } from "../globalState/GlobalState";
+import { useNavigate } from "react-router-dom";
 const {TextArea} = Input;
 const {Option} = Select;
 
 function AddProducts(){
   const [listCategory, setListCategory] = useState([]);
   const [listLocations, setListLocations] = useState([]);
+  const navigate = useNavigate();
 
   //Estado para guardar la información del producto
   const [informationProduct, setInformationProduct] = useState({
@@ -26,6 +28,14 @@ function AddProducts(){
     salud: "",
     cancelaciones: "",
   });
+
+  const [informationFeatures, setInformationFeatures] = useState({
+
+  })
+
+  const [informationImages, setInformationImages] = useState({
+
+  })
 
   const changeName = (e) => {
     setInformationProduct({...informationProduct, title: e.target.value});
@@ -59,10 +69,75 @@ function AddProducts(){
     setInformationPolicies({...informationPolicies, cancelaciones: e.target.value});
   }
 
+  const changeFeatures = (e) => {
+    setInformationFeatures({...informationFeatures, [e.target.id]: e.target.value})
+  }
 
+  const removeFeatures = (clave) => {
+    console.log(clave)
+    const featuresIndex = 'features_0';
+    const newFeaturesInformation = informationFeatures;
+    if(clave === 0) {
+      delete newFeaturesInformation[featuresIndex]
+    } else {
+      delete newFeaturesInformation[clave]
+    }
+    setInformationFeatures(newFeaturesInformation)
+  }
 
+  const changeImages = (e) => {
+    setInformationImages({...informationImages, [e.target.id]: e.target.value})
+  }
 
+  const removeImages = (clave) => {
+    const imagesIndex = 'images_0';
+    const newInformationImages = informationImages;
+    if(clave === 0){
+      delete newInformationImages[imagesIndex]
+    } else {
+      delete newInformationImages[clave]
+    }
+    setInformationImages(newInformationImages)
+  }
 
+  const createProduct = async (url, data) => {
+    const datos = await fetch(url, data);
+    const responseCreate = await datos.json();
+
+    // console.log(responseCreate.id)
+    if (responseCreate.id) {
+      navigate("/administrationProducts/successful")
+    } else {
+      alert("Por favor intenta mas tarde");
+    }
+  } 
+
+    const handleSubmit = () => {
+      const urlCreateProduct = 'http://18.220.89.28:8080/api/productos';
+      const imageUrl = [];
+      for (let clave in informationImages) {
+        imageUrl.push(informationImages[clave]);
+      }
+      const featureTitle = [];
+      for (let clave in informationFeatures) {
+        featureTitle.push(informationFeatures[clave]);
+      }
+      let policy = "";
+      for (let clave in informationPolicies) {
+        policy += informationPolicies[clave] + " ";
+      }
+      const body = {...informationProduct, imageUrl, featureTitle, availability: true, policy};
+
+      const createProducts = {
+        method: 'POST',
+        body: JSON.stringify(body),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+      console.log(body)
+      createProduct(urlCreateProduct, createProducts)
+  }
 
 
   const urlCategories = "http://18.220.89.28:8080/api/categorias";
@@ -80,7 +155,8 @@ function AddProducts(){
     setListLocations(locations)
   }
 
-  console.log(informationProduct)
+  // console.log(informationProduct)
+  console.log(informationImages)
 
   useEffect(() => {
     getCategories(urlCategories);
@@ -133,11 +209,11 @@ function AddProducts(){
         <div>
           <h2>Características</h2>
         <Form.List
-        name="names"
+        name="features"
         rules={[
           {
-            validator: async (_, names) => {
-              if (!names || names.length > 8) {
+            validator: async (_, features) => {
+              if (!features || features.length > 8) {
                 return Promise.reject(new Error('Debes agregar máximo 8 características'));
               }
             },
@@ -167,7 +243,7 @@ function AddProducts(){
                   label={"Nombre"}
                   // noStyle
                 >
-                  <Input placeholder="Agregar característica" style={{ width: '60%' }} onChange={(e) => {console.log(e.target.value)}} />
+                  <Input id={field.key} placeholder="Agregar característica" style={{ width: '60%' }} onChange={changeFeatures} />
                 </Form.Item>
                 {/* <Form.Item label={"Icono"}>
                   <Input placeholder="hola" style={{ width: '60%' }}></Input>
@@ -175,7 +251,7 @@ function AddProducts(){
                 {fields.length > 1 ? (
                   <MinusCircleOutlined
                     className="dynamic-delete-button"
-                    onClick={() => {remove(field.name) ;console.log(field)}}
+                    onClick={() => {remove(field.name) ; removeFeatures(field.key); console.log(field)}}
                   />
                 ) : null}
               </Form.Item>
@@ -218,11 +294,11 @@ function AddProducts(){
         <div>
           <h2>Cargar imágenes</h2>
         <Form.List
-        name="names"
+        name="images"
         rules={[
           {
-            validator: async (_, names) => {
-              if (!names || names.length < 5) {
+            validator: async (_, images) => {
+              if (!images || images.length < 5) {
                 return Promise.reject(new Error('Debes agregar almenos cinco imagenes'));
               }
             },
@@ -251,12 +327,12 @@ function AddProducts(){
                   ]}
                   noStyle
                 >
-                  <Input placeholder="Insertar url imagen" style={{ width: '60%' }} />
+                  <Input id={field.key} placeholder="Insertar url imagen" style={{ width: '60%' }} onChange={changeImages}/>
                 </Form.Item>
                 {fields.length > 1 ? (
                   <MinusCircleOutlined
                     className="dynamic-delete-button"
-                    onClick={() => remove(field.name)}
+                    onClick={() => {remove(field.name); removeImages(field.key)}}
                   />
                 ) : null}
               </Form.Item>
@@ -288,7 +364,7 @@ function AddProducts(){
 
         <Form.Item>
           <div className={styles.buttonAdd}>
-          <Button className={styles.button}>Crear Producto</Button>
+          <Button className={styles.button} onClick={handleSubmit}>Crear Producto</Button>
           </div>
         </Form.Item>
       </Form>
