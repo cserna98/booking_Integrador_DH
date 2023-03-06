@@ -9,8 +9,18 @@ const {TextArea} = Input;
 
 function AddProducts(){
   const [listCategory, setListCategory] = useState([]);
+  const [listLocations, setListLocations] = useState([]);
+
+  //Estado para guardar la información del producto
+  const [informationProduct, setInformationProduct] = useState({
+    title: "",
+    categoryId: "",
+    locationId: "",
+    
+  })
 
   const urlCategories = "http://18.220.89.28:8080/api/categorias";
+  const urlLocations = "http://18.220.89.28:8080/api/localizaciones";
 
   async function getCategories(url) {
     const data = await fetch(url);
@@ -18,8 +28,17 @@ function AddProducts(){
     setListCategory(categories)
   }
 
+  async function getLocations(url) {
+    const dataLocations = await fetch(url);
+    const locations = await dataLocations.json();
+    setListLocations(locations)
+  }
+
+
+
   useEffect(() => {
     getCategories(urlCategories);
+    getLocations(urlLocations);
   }, [])
 
       return(
@@ -39,20 +58,26 @@ function AddProducts(){
           <h2>Información del producto</h2>
           <div className={styles.informationProduct}>
         <Form.Item label="Nombre">
-          <Input />
+          <Input placeholder={'Ingrese el nombre del producto'}/>
         </Form.Item>
         <Form.Item label="Categoría">
-          <Select placeholder={'Seleccionar categoria'}>
+          <Select placeholder={'Seleccione la categoría'}>
             {listCategory?.map(category => (
-              <Select.Option key={category.categoryId} value={category.title}>{category.title}</Select.Option>
+              <Select.Option key={category.categoryId} id={category.categoryId} value={category.title}>{category.title}</Select.Option>
             ))}
           </Select>
         </Form.Item>
         <Form.Item label="Ubicación">
-          <Input />
+          <Select placeholder={'Seleccione la ubicación'}>
+            {listLocations?.map(location => (
+              <Select.Option key={location.idLocation} id={location.idLocation} value={location.place}>{location.place}</Select.Option>
+            ))}
+          </Select>
         </Form.Item>
+
+        
         <Form.Item label="Altitud">
-          <Input />
+          <Input placeholder={'Ingrese la altitud en números sin comas ni puntos'}/>
         </Form.Item>
         </div>
         <Form.Item label="Descripción" className={styles.description}>
@@ -76,6 +101,7 @@ function AddProducts(){
         {(fields, { add, remove }, { errors }) => (
           <>
             {fields.map((field, index) => (
+              <div className={styles.features}>
               <Form.Item
                 // {...(index === 0 ? formItemLayout : formItemLayoutWithOutLabel)}
                 // label={'Característica'}
@@ -107,24 +133,30 @@ function AddProducts(){
                   />
                 ) : null}
               </Form.Item>
+              </div>
             ))}
             <Form.Item>
+            <div className={styles.buttonAdd}>
               <Button
                 type="dashed"
                 onClick={() => add()}
                 icon={<PlusOutlined />}
+                className={styles.button}
               >
                 Agregar característica
               </Button>
+              </div>
               <Form.ErrorList errors={errors} />
             </Form.Item>
           </>
         )}
+        
       </Form.List>
       </div>
 
         <div>
           <h2>Políticas del producto</h2>
+          <div className={styles.policyProduct}>
         <Form.Item label="Normas">
           <TextArea rows={4} />
         </Form.Item>
@@ -134,6 +166,7 @@ function AddProducts(){
         <Form.Item label="Cancelaciones">
           <TextArea rows={4} />
         </Form.Item>
+        </div>
         </div>
 
         <div>
@@ -153,6 +186,7 @@ function AddProducts(){
         {(fields, { add, remove }, { errors }) => (
           <>
             {fields.map((field, index) => (
+              <div className={styles.images}>
               <Form.Item
                 // {...(index === 0 ? formItemLayout : formItemLayoutWithOutLabel)}
                 label={'Url Imagen'}
@@ -180,15 +214,19 @@ function AddProducts(){
                   />
                 ) : null}
               </Form.Item>
+              </div>
             ))}
             <Form.Item>
+            <div className={styles.buttonAdd}>
               <Button
                 type="dashed"
                 onClick={() => add()}
                 icon={<PlusOutlined />}
+                className={styles.button}
               >
                 Agregar imagen
               </Button>
+              </div>
               <Form.ErrorList errors={errors} />
             </Form.Item>
           </>
@@ -203,7 +241,9 @@ function AddProducts(){
 
 
         <Form.Item>
-          <Button>Crear Producto</Button>
+          <div className={styles.buttonAdd}>
+          <Button className={styles.button}>Crear Producto</Button>
+          </div>
         </Form.Item>
       </Form>
       )
