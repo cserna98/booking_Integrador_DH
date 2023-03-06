@@ -21,6 +21,4 @@ public class ReservationDTO {
     private LocalDate endDate;
     private Long productId;
     private Long clientId;
-
-
 }
