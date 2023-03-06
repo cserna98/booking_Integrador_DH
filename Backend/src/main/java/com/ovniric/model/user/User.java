@@ -25,10 +25,13 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(name = "nombre")
     private String firstname;
+
     @Column(name = "apellido")
     private String lastname;
+
     @Column(unique = true)
     private String email;
     @Column(name = "contrasena")

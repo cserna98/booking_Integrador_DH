@@ -38,17 +38,15 @@ public class ReservationController {
         }
     }
 
-//    @GetMapping("/cliente/{idClient}")
-//    public ResponseEntity<List<Reservation>> getReservationsByClient(@PathVariable Long idClient){
-//        Client client = new Client();
-//        client.setIdClient(idClient);
-//        List<Reservation> reservations = reservationService.getReservationsByClient(client);
-//        if(reservations.isEmpty()){
-//            return ResponseEntity.noContent().build();
-//        } else {
-//            return ResponseEntity.ok(reservations);
-//        }
-//    }
+    @GetMapping("/cliente/{clientId}")
+    public ResponseEntity<List<Reservation>> getReservationsByClientId(@PathVariable Long clientId) {
+        return ResponseEntity.ok(reservationService.getReservationsByClient(clientId));
+    }
+
+    @GetMapping("/producto/{productId}")
+    public ResponseEntity<List<Reservation>> getReservationsByProductId(@PathVariable Long productId) {
+        return ResponseEntity.ok(reservationService.findReservationsByProductId(productId));
+    }
 
     @PutMapping
     public ResponseEntity<String> updateReservation(@RequestBody Reservation reservation) {
