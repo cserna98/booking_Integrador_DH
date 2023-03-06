@@ -5,6 +5,7 @@ import com.ovniric.model.Reservation;
 import com.ovniric.model.user.Client;
 import com.ovniric.service.ReservationService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,8 +21,10 @@ public class ReservationController {
 
     @PostMapping
     public ResponseEntity<ReservationDTO> createReservation(@RequestBody ReservationDTO reservationDTO){
-        return ResponseEntity.ok(reservationService.toReservationDTO(reservationService.createReservation(reservationService.toReservation(reservationDTO))));
+        ReservationDTO reservation = reservationService.createReservation(reservationDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(reservation);
     }
+
 
     @GetMapping
     public ResponseEntity<List<Reservation>> getALLReservations(){

@@ -1,19 +1,21 @@
 package com.ovniric.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.ovniric.config.HibernateProxySerializer;
+import com.ovniric.config.LocalTimeDeserializer;
 import com.ovniric.model.user.Client;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Collection;
 
 @Data
 @Builder
@@ -30,6 +32,7 @@ public class Reservation{
     private Long idReservation;
 
     @Column(name = "hora_comienzo")
+    @JsonDeserialize(using = LocalTimeDeserializer.class)
     private LocalTime startHour;
 
     @Column(name = "fecha_inicio")
@@ -40,14 +43,12 @@ public class Reservation{
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "producto_id", referencedColumnName = "id_Producto")
-    @JsonIgnore
+    @JsonSerialize(using = HibernateProxySerializer.class)
     private Product product;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     @JsonIgnore
     private Client client;
-
-
 
 }
