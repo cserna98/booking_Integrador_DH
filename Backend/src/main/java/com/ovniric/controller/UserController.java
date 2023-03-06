@@ -33,6 +33,16 @@ public class UserController {
         }
     }
 
+    @GetMapping("email/{email}")
+    public ResponseEntity<User> getUserByEmail(@PathVariable String email){
+        Optional<User> user = userService.getUserByEmail(email);
+        if (user.isPresent()) {
+            return ResponseEntity.ok(user.get());
+        }else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @GetMapping
     public ResponseEntity<List<User>> getAllUsers(){
         return ResponseEntity.ok(userService.getUsers());
@@ -50,15 +60,6 @@ public class UserController {
         }
     }
 
-
-    @GetMapping("/email/{email}")
-    public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
-        User user = userService.findByEmail(email);
-        if (user == null) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(user);
-    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteUser(@PathVariable Long id){

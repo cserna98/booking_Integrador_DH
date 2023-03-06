@@ -25,6 +25,10 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    public Optional<User> getUserByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
     public void updateUser(User user) {
         userRepository.save(user);
     }

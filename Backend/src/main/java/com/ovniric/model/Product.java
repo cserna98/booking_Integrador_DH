@@ -32,10 +32,10 @@ public class Product {
     @Column(name = "altitud")
     private Integer altitude;
 
-    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Image> images = new ArrayList<>();
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
             name = "CaracteristicaProducto",
             joinColumns = @JoinColumn(name = "id_producto"),
