@@ -9,7 +9,7 @@ function SearchBlock(){
     <div className={styles.shadow}>
         <div className={styles.searchBlock}>
             <div className={styles.header} id={styles.titleSearch}>
-                <h1>Frontend Pipeline connected</h1>
+                <h1>Encuentra</h1>
                 <p className={styles.searchP}>¡El lugar y momento donde guardaras el mejor recuerdo de tu vida! </p>                               
             </div> 
             <Serachform className={styles.Disp_grid}/>          

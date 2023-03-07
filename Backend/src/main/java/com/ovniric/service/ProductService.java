@@ -71,9 +71,9 @@ public class ProductService {
         location.setIdLocation(productDTO.getLocationId());
 
 
-        List<Image> images = productDTO.getImageUrl().stream().map(urlImage -> {
+        List<Image> images = productDTO.getImageUrl().stream().map(imageUrl -> {
             Image image = new Image();
-            image.setImageUrl(urlImage);
+            image.setImageUrl(imageUrl);
             return image;
         }).collect(Collectors.toList());
 

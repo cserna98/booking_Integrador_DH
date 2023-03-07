@@ -1,8 +1,10 @@
 package com.ovniric.auth;
 
 
+import com.ovniric.model.user.Role;
 import com.ovniric.model.user.RoleEnum;
 import com.ovniric.model.user.User;
+import com.ovniric.repository.RoleRepository;
 import com.ovniric.repository.UserRepository;
 import com.ovniric.service.JwtService;
 import lombok.RequiredArgsConstructor;
@@ -19,15 +21,18 @@ public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
+    private final RoleRepository roleRepository;
 
 
     public AuthenticationResponse registerUser(RegisterRequest request) {
+        var userRole = roleRepository.findByName("USER")
+                .orElseThrow(() -> new RuntimeException("User Role not found"));
         var user = User.builder()
                 .firstname(request.getFirstname())
                 .lastname(request.getLastname())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .roleEnum(RoleEnum.USER)
+                .role(userRole)
                 .city(request.getCity())
                 .build();
         userRepository.save(user);
@@ -39,12 +44,14 @@ public class AuthenticationService {
     }
 
     public AuthenticationResponse registerAdmin(RegisterRequest request) {
+        var userRole = roleRepository.findByName("ADMIN")
+                .orElseThrow(() -> new RuntimeException("User Role not found"));
         var user = User.builder()
                 .firstname(request.getFirstname())
                 .lastname(request.getLastname())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .roleEnum(RoleEnum.ADMIN)
+                .role(userRole)
                 .city(request.getCity())
                 .build();
         userRepository.save(user);

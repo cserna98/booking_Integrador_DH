@@ -18,7 +18,7 @@ public class ImageService {
         this.imageRepository = imageRepository;
     }
 
-    public Image saveImage(Image image) {
+    public Image createImage(Image image) {
         return imageRepository.save(image);
     }
 

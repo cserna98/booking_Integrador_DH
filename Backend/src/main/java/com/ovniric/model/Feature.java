@@ -19,10 +19,6 @@ public class Feature {
     @Column(name = "titulo")
     private String title;
 
-    @Column(name = "descripcion")
-    private String description;
-
-
     @ManyToMany(mappedBy = "features")
     @JsonIgnore
     private Set<Product> products = new HashSet();
@@ -31,15 +27,14 @@ public class Feature {
     //CONSTRUCTORS
 
 
-    public Feature(Long idFeature, String title, String description) {
+    public Feature(Long idFeature, String title) {
         this.idFeature = idFeature;
         this.title = title;
-        this.description = description;
     }
 
-    public Feature(String title, String description) {
+    public Feature(String title) {
         this.title = title;
-        this.description = description;
+
     }
 
     public Feature() {
@@ -63,14 +58,6 @@ public class Feature {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public Set<Product> getProducts() {

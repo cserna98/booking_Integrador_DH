@@ -9,9 +9,7 @@ import '../../stylesVariables/variables.css'
 
 const Header = () => {
 
-  const {renderForm,setRenderForm,isLoged,setLogin, user}= GlobalContext()
- 
-
+  const {renderForm,setRenderForm,isLoged,setLogin, user}= GlobalContext();
 
   const [isOpen,setOpen] = useState(false);
  
@@ -59,22 +57,27 @@ async function logout() {
   }  
   
   useEffect(()=>{
-    let name = user.firstname
+    let name = user.firstname ;
     console.log(name)
   },[isLoged])
   
   console.log(user)
 
+ 
     return <>
     <header className={styles.header}>
       <Link to="/" className={styles.logo} onClick={handleLogo}><img  className={styles.logo} src={logo} alt="Logo Ovniric" /></Link>
       <Link to="/" className={styles.lema} onClick={handleLogo}><img  className={styles.lema} src={lema} alt="Lema Ovniric" /></Link>
       {isLoged ?
-      <>
-          <div className={styles.avatar}><span> {`${user.firstname} ${user.lastname}`} </span></div>
-          <a href="#" className={styles.username}>{`Hola ${user.firstname}`}</a>
-          <button className={`${styles.btn} ${styles.logout}` } onClick={logout} >Log out</button>          
-        </> : 
+           <>
+              <div className={styles.avtContainer}>
+                <span className={styles.avtSpan}>
+                  {`${user.firstname} ${user.lastname}`.split(" ").reduce(( accum,current) => {return accum + current[0].toUpperCase() + "."},"")}
+                </span>
+              </div>
+              <a href="#" className={styles.username}>{`Hola ${user.firstname}`}</a>
+              <button className={`${styles.btn} ${styles.logout}` } onClick={logout} >Log out</button>          
+           </> : 
         <>
           <Link to="/signup"  className={`${styles.loginbtn}` }>
             <button className={` ${styles.btn} ${renderForm == "SignUp" ? styles.Disp_none : "" }`} onClick={handleSingUp}>Sign up </button>
