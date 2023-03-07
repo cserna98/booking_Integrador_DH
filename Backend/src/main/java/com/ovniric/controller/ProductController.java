@@ -14,10 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
@@ -91,7 +88,7 @@ public class ProductController {
 
         product.setFeatures(features);
 
-        Set<Image> images = new HashSet<>();
+        List<Image> images = new ArrayList<>();
         for(String imageUrl : productDTO.getImageUrl()){
             Image image = new Image();
             image.setImageUrl(imageUrl);

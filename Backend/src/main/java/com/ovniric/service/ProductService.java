@@ -71,11 +71,11 @@ public class ProductService {
         location.setIdLocation(productDTO.getLocationId());
 
 
-        Set<Image> images = productDTO.getImageUrl().stream().map(imageUrl -> {
+        List<Image> images = productDTO.getImageUrl().stream().map(imageUrl -> {
             Image image = new Image();
             image.setImageUrl(imageUrl);
             return image;
-        }).collect(Collectors.toSet());
+        }).collect(Collectors.toList());
 
         Set<Feature> features = productDTO.getFeatureTitle().stream().map(titleFeature -> {
             Feature feature = new Feature();
