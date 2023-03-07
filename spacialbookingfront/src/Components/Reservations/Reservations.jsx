@@ -50,7 +50,7 @@ const Reservations = () => {
                 productId: productId,
                 clientId: user.id
               })
-            alert("Reserva exitosa")
+            alert("objeto ennviado con exito");
             console.log(time)
         } else{
             alert("Lamentablemente la reserva no ha podido realizarse. Por favor, intente más tarde")
@@ -58,9 +58,26 @@ const Reservations = () => {
     }
 
     useEffect(()=>{
+        console.log(reservation)
+        const postReservation = async (reservation) =>{
+            const response = await fetch('http://18.220.89.28:8080/api/reservaciones', {
+                method: 'POST',
+                body: JSON.stringify(reservation),
+                headers: {
+                'Content-Type': 'application/json',
+                }
+            });
+
+            if(response.ok){
+                console.log('La reserva ha sido creada:');
+            } else {
+                console.log('Hubo un error al crear la reserva:');
+            }
+        }
+        
 
         console.log(reservation)
-
+        postReservation(reservation)
     },[reservation])
 
 
