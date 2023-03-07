@@ -21,9 +21,12 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+//    @Column(name = "nombre")
+//    @Enumerated(EnumType.STRING)
+//    private RoleEnum roleEnum;
+
     @Column(name = "nombre")
-    @Enumerated(EnumType.STRING)
-    private RoleEnum roleEnum;
+    private String name;
 
     @OneToMany(mappedBy = "role", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonIgnore

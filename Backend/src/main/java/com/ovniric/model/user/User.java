@@ -1,12 +1,14 @@
 package com.ovniric.model.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.ovniric.repository.ClientRepository;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -39,18 +41,19 @@ public class User implements UserDetails {
 
     @Column(name = "ciudad")
     private String city;
-    @Column(name = "rol")
-    @Enumerated(EnumType.STRING)
-    private RoleEnum roleEnum;
+//    @Column(name = "rol")
+//    @Enumerated(EnumType.STRING)
+//    private RoleEnum roleEnum;
 
     @ManyToOne
     @JoinColumn(name = "rol_id",referencedColumnName = "id")
     @JsonIgnore
     private Role role;
 
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(roleEnum.name()));
+        return List.of(new SimpleGrantedAuthority(role.getName()));
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.ovniric.model.user;
 
 import com.ovniric.model.Reservation;
+import com.ovniric.repository.ClientRepository;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -22,8 +23,8 @@ public class Client extends User{
         this.reservations = reservations;
     }
 
-    public Client(Long id, String firstname, String lastname, String email, String password, String city, RoleEnum roleEnum, Role role, Long clienteId, List<Reservation> reservations) {
-        super(id, firstname, lastname, email, password, city, roleEnum, role);
+    public Client(Long id, String firstname, String lastname, String email, String password, String city, Role role, Long idClient, List<Reservation> reservations) {
+        super(id, firstname, lastname, email, password, city, role);
         this.idClient = idClient;
         this.reservations = reservations;
     }
