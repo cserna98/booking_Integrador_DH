@@ -24,7 +24,7 @@ p{
 }
 
 
-button{
+.backHome{
     color: azure;
     background-color: transparent;
     width: 15vw;
@@ -39,7 +39,7 @@ button{
     bottom: 4rem;
 }
 
-button:hover{
+.backHome:hover{
     background-color:  #a2b6df ;
     color:#0c3483 ;
 }
