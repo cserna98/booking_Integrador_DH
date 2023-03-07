@@ -19,7 +19,7 @@ const Card = ({info}) =>{
     let image = info.images[0] 
     console.log(image)
     return <section className={styles.container}>
-        <article className={styles.imgContainer}> <img src={image.urlImage} alt=""  className={styles.img} /></article>
+        <article className={styles.imgContainer}> <img src={image.imageUrl} alt=""  className={styles.img} /></article>
         <article className={styles.infoContainer}>
             <div className={styles.cardMainInfo}>
                 <span className={styles.category}>{info.category.title}</span>
