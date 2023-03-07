@@ -40,7 +40,7 @@ const {isLoged,dataproduct,idProduct,setIdProduct,setDataProduct} = GlobalContex
         <Route path='/administrationProducts' element={<AddProducts></AddProducts>}></Route>
         <Route path='/administrationProducts/successful' element={<SuccessfulAdd></SuccessfulAdd>}></Route>
         <Route path='/reservations/:id' element={<Reservations></Reservations>}></Route>
-        <Route path='/MyBookings'element={<MyBookings></MyBookings>}></Route>
+        <Route path='/MisReservas'element={<MyBookings></MyBookings>}></Route>
   </Routes>      
      
   <Footer/>
