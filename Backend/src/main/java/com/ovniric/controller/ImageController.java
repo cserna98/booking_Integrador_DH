@@ -35,6 +35,11 @@ public class ImageController {
         }
     }
 
+    @PostMapping
+    public ResponseEntity<Image> createImage(@RequestBody Image image) {
+        return ResponseEntity.ok(imageService.createImage(image));
+    }
+
     @PutMapping
     public ResponseEntity<String> updateImage(@RequestBody Image image) {
         Optional<Image> imageToSearch = imageService.getImage(image.getIdImage());

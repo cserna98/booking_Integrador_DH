@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -59,7 +60,9 @@ public class ReservationService {
 
         Reservation result = new Reservation();
         result.setIdReservation(reservationDTO.getId());
-        result.setStartHour(reservationDTO.getStartHour());
+        LocalTime startHour =  LocalTime.parse(reservationDTO.getStartHour(), DateTimeFormatter.ofPattern("HH:mm:ss"));
+        result.setStartHour(startHour);
+
         result.setEndDate(reservationDTO.getEndDate());
         result.setStartDate(reservationDTO.getStartDate());
         result.setProduct(product);
@@ -72,7 +75,10 @@ public class ReservationService {
         ReservationDTO result = new ReservationDTO();
 
         result.setId(reservation.getIdReservation());
-        result.setStartHour(reservation.getStartHour());
+
+        String startHour = reservation.getStartHour().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+        result.setStartHour(startHour);
+
         result.setEndDate(reservation.getEndDate());
         result.setStartDate(reservation.getStartDate());
         result.setClientId(reservation.getClient().getIdClient());
