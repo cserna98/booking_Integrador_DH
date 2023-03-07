@@ -25,7 +25,4 @@ public class ReservationDTO {
     public ReservationDTO() {
     }
 
-    public ReservationDTO(String startHour) {
-        this.startHour = startHour;
-    }
 }

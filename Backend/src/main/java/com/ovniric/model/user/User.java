@@ -41,9 +41,6 @@ public class User implements UserDetails {
 
     @Column(name = "ciudad")
     private String city;
-//    @Column(name = "rol")
-//    @Enumerated(EnumType.STRING)
-//    private RoleEnum roleEnum;
 
     @ManyToOne
     @JoinColumn(name = "rol_id",referencedColumnName = "id")

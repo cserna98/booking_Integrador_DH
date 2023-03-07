@@ -32,7 +32,7 @@ public class Reservation{
     private Long idReservation;
 
     @Column(name = "hora_comienzo")
-    @JsonDeserialize(using = LocalTimeDeserializer.class)
+//    @JsonDeserialize(using = LocalTimeDeserializer.class)
     private LocalTime startHour;
 
     @Column(name = "fecha_inicio")
@@ -46,7 +46,7 @@ public class Reservation{
     @JsonSerialize(using = HibernateProxySerializer.class)
     private Product product;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     @JsonIgnore
     private Client client;
