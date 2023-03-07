@@ -58,20 +58,19 @@ public class ProductController {
     @Transactional
     public ResponseEntity<ProductDTO> createProduct(@RequestBody ProductDTO productDTO) {
         Product product = new Product();
-        Category category = new Category();
-        Location location = new Location();
 
         Optional<Category> optionalCategory = categoryService.getCategory(productDTO.getCategoryId());
         if(optionalCategory.isPresent()) {
-            category = optionalCategory.get();
-        }else {
-            category.setTitle("New Category");
-            categoryService.createCategory(category);
+            Category category = optionalCategory.get();
+            product.setCategory(category);
         }
 
-        location.setIdLocation(productDTO.getLocationId());
-        locationService.createLocation(location);
-        product.setLocations(location);
+        Optional<Location> locationOptional = locationService.searchLocation(productDTO.getLocationId());
+        if(locationOptional.isPresent()) {
+            Location location = locationOptional.get();
+            product.setLocations(location);
+        }
+
 
         Set<Feature> existingFeatures = new HashSet<>(featureService.searchAllFeatures());
         Set<Feature> features = new HashSet<>();
