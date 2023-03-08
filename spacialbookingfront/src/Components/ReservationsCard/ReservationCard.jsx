@@ -3,6 +3,7 @@ import img from "../../assets/img/loader.gif";
 import { useEffect, useState } from "react";
 import styles from "./ReservationCard.module.css";
 import { IoLocationSharp} from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const ReservationCard = (props) => {
 
@@ -46,7 +47,8 @@ const ReservationCard = (props) => {
                 <span className={styles.location}>{altitudeFormated}mts s.n.m</span>
                 <p className={styles.checkInOut}>Check in {`${props.date[0]?.toLocaleDateString()}`}</p>
                 <p className={styles.checkInOut}>Check out {`${props.date[1]?.toLocaleDateString()}`}</p>
-                <button className={styles.reservationbtn} onClick={props.handleClick}>Confirmar Reserva</button> 
+              <button className={styles.reservationbtn} onClick={props.handleClick}>Confirmar Reserva</button> 
+                
             </section>
         </>
 };
