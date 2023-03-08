@@ -14,6 +14,7 @@ import ProductDetailView from './Components/ProductDetailView/ProductDetailView'
 import FilterCategory from './Components/FilterCategory/FilterCategory';
 import BookingForm from './Components/BookingForm/BookingForm';
 import Reservations from './Components/Reservations/Reservations';
+import SuccessfulReservation from './Components/SuccessfulReservation/SuccessfulReservation';
 
 
 function App() {
@@ -35,8 +36,9 @@ const {isLoged,dataproduct,idProduct,setIdProduct,setDataProduct} = GlobalContex
         <Route path='/categoryProducts/:id' element={<FilterCategory></FilterCategory>}></Route>
         {/* <Route path='/bookingForm' element={<BookingForm></BookingForm>}></Route> */}
         <Route path='/reservations/:id' element={<Reservations></Reservations>}></Route>
+        <Route path='/successfulReservation' element={<SuccessfulReservation></SuccessfulReservation>}></Route>
+        
   </Routes>      
-     
   <Footer/>
 </>;
 }

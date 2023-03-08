@@ -11,8 +11,10 @@ import "../../stylesVariables/styledCalendar.css"
 
 
 function BookingForm(props){
-    const {date,changeDate, time, changeTime, changeCity,user} = props;
+    const {date,setStartDate,setEndDate, time, changeTime, changeCity,user} = props;
     // console.log(user)
+
+   
     const [form] = Form.useForm();
     const [formLayout, setFormLayout] = useState('horizontal');
     const format = 'HH:mm';
@@ -20,9 +22,14 @@ function BookingForm(props){
     setFormLayout(layout);
 };
 
-    function onChangeDate(nextValue){
-        changeDate(nextValue);
+    function onChangeDate(date){
+      const formattedDateRange = date.map(date => date.toISOString().slice(0, 10));
+      setStartDate(formattedDateRange[0])
+      setEndDate(formattedDateRange[1])
+      console.log(formattedDateRange[0]); // ["31/05/2023", "28/06/2023"]
     }
+
+    
 
     
 
@@ -96,7 +103,7 @@ const formItemLayout =
         </div >
         <h2 className={styles.bookingTitles}>Selecciona tu fecha de reserva</h2>
         <div className={styles.calendarContainer}>
-                <Calendar onChange={changeDate} value={date} minDate={new Date(Date.now())} selectRange={true}  showDoubleView={true} calendarType={"US"}>
+                <Calendar onChange={onChangeDate} value={date} minDate={new Date(Date.now())} selectRange={true}  showDoubleView={true} calendarType={"US"}>
                 </Calendar>
         </div>
         <h2 className={styles.bookingTitles}>Tu horario de llegada</h2>
