@@ -39,6 +39,7 @@ public class ReservationController {
         if(optionalClient.isPresent()) {
             Client client = optionalClient.get();
             reservation.setClient(client);
+            reservationDTO.setClientId(client.getIdClient());
         }
 
         Optional<Product> optionalProduct = productService.searchProduct(reservationDTO.getProductId());
