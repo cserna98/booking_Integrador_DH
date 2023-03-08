@@ -75,7 +75,6 @@ const Reservations = () => {
             }
         }
         
-
         console.log(reservation)
         postReservation(reservation)
     },[reservation])

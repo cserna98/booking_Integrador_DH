@@ -132,6 +132,16 @@
   background-color: #007443;
 }
 
+.add{
+  grid-column: 7/8;
+  grid-row: 1/3;
+  
+}
+
+#btnAad{
+  width: 3vw;
+}
+
 /*__________________________________________________mobile_____________________________________________*/
 @media only screen and (min-width:591px) {
 

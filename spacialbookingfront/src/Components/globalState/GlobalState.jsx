@@ -24,6 +24,54 @@ export const ContextProvider = ({children}) => {
 
     const [displayedProducts, setDisplayedProducts] = useState([]);
     
+
+    const getToken = async (email, password) => {
+      try {
+        const response = await fetch('http://18.220.89.28:8080/api/v1/auth/authenticate', {
+          method: 'POST',
+          body: JSON.stringify({
+            email: email,
+            password: password
+          }),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+    
+        if (response.ok) {
+          const data = await response.json();
+          localStorage.setItem('token', data.token);
+          setLogin(true);
+          return response;
+        } else {
+          throw new Error('Credenciales inválidas');
+        }
+      } catch (error) {
+        alert(error.message);
+      }
+    };
+
+    // fecth de usuario cuando se encuentre logeado
+    async function fetchDataUser(url) {
+      console.log(url)
+      const response = await fetch(url);
+      const data = await response.json();
+      console.log(data)
+      setUser(data);
+      localStorage.setItem('EmailUser', data.email)
+      localStorage.setItem('RoleUser', data.role.name)    
+    }
+
+    useEffect(()=>{
+      console.log(user)
+      if(localStorage.getItem('EmailUser') !== null){
+        const email = localStorage.getItem('EmailUser');
+        fetchDataUser(`http://18.220.89.28:8080/api/usuarios/email/${email}`)
+      }
+    },[])
+
+
+
     
     return (
       <ContextGlobal.Provider
@@ -48,7 +96,9 @@ export const ContextProvider = ({children}) => {
       loginModal,
       setLoginModal,
       emailUser,
-      setEmailUser
+      setEmailUser,
+      fetchDataUser,
+      getToken
           }}>
         {children}
       </ContextGlobal.Provider>
