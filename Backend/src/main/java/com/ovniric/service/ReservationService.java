@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,7 +30,6 @@ public class ReservationService {
     }
 
 
-
     public List<Reservation> getReservationsByClient(Long clientId) {
         return reservationRepository.findByClientId(clientId);
     }
@@ -38,8 +38,9 @@ public class ReservationService {
         return reservationRepository.findAllByProductId(productId);
     }
 
-    public Reservation createReservation(Reservation reservation) {
-        return reservationRepository.save(reservation);
+    public ReservationDTO createReservation(ReservationDTO reservationDTO) {
+        Reservation reservationToCreate = reservationRepository.save(toReservation(reservationDTO));
+        return toReservationDTO(reservationToCreate);
     }
 
     public Reservation updateReservation(Reservation updatedReservation) {
@@ -52,32 +53,35 @@ public class ReservationService {
 
     public Reservation toReservation(ReservationDTO reservationDTO) {
 
-        Reservation newreservation = new Reservation();
-        newreservation.setIdReservation(reservationDTO.getId());
-        newreservation.setStartHour(reservationDTO.getStartHour());
-        newreservation.setEndDate(reservationDTO.getEndDate());
-        newreservation.setStartDate(reservationDTO.getStartDate());
         Client client = new Client();
+        client.setIdClient(reservationDTO.getClientId());
         Product product= new Product();
-
         product.setIdProduct(reservationDTO.getProductId());
-        client.setId(reservationDTO.getClientId());
 
-        newreservation.setProduct(product);
-        newreservation.setClient(client);
-        return newreservation;
+        Reservation result = new Reservation();
+        result.setIdReservation(reservationDTO.getId());
+        LocalTime startHour =  LocalTime.parse(reservationDTO.getStartHour(), DateTimeFormatter.ofPattern("HH:mm:ss"));
+        result.setStartHour(startHour);
+
+        result.setEndDate(reservationDTO.getEndDate());
+        result.setStartDate(reservationDTO.getStartDate());
+        result.setProduct(product);
+        result.setClient(client);
+        return result;
     }
 
     public ReservationDTO toReservationDTO(Reservation reservation) {
 
-
         ReservationDTO result = new ReservationDTO();
 
         result.setId(reservation.getIdReservation());
-        result.setStartHour(LocalTime.now());
+
+        String startHour = reservation.getStartHour().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+        result.setStartHour(startHour);
+
         result.setEndDate(reservation.getEndDate());
         result.setStartDate(reservation.getStartDate());
-        result.setClientId(reservation.getClient().getId());
+        result.setClientId(reservation.getClient().getIdClient());
         result.setProductId(reservation.getProduct().getIdProduct());
 
         return result;

@@ -21,7 +21,7 @@ public class Image {
     @Column(name = "id_imagen")
     private Long idImage;
 
-    @Column(name = "url_imagen")
+    @Column(name = "url_imagen", unique = true)
     private String imageUrl;
 
     @Column(name = "titulo_imagen")

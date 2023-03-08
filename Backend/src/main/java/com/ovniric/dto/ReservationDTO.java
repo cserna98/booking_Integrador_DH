@@ -10,17 +10,19 @@ import java.time.LocalTime;
 
 @Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
 public class ReservationDTO {
 
 
     private Long id;
-    private LocalTime startHour;
+    private String startHour;
     private LocalDate startDate;
     private LocalDate endDate;
     private Long productId;
     private Long clientId;
 
+
+    public ReservationDTO() {
+    }
 
 }
