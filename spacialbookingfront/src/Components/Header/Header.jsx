@@ -12,7 +12,9 @@ const Header = () => {
   const {renderForm,setRenderForm,isLoged,setLogin, user}= GlobalContext();
 
   const [isOpen,setOpen] = useState(false);
- 
+  const [rolAdmin, setRolAdmin] = useState(true)
+  const [role, setRole] = useState("")
+
   
 
   const handleMenu = () => {
@@ -55,6 +57,19 @@ async function logout() {
     }
   
   }  
+
+
+  useEffect(()=>{
+    if(localStorage.getItem('token') !== null){
+      setLogin(true)
+    } 
+    setRole(localStorage.getItem('RoleUser'))
+  },[])
+
+
+  useEffect(()=>{
+    console.log(role)
+  },[role])
   
   useEffect(()=>{
     let name = user.firstname ;
@@ -70,6 +85,13 @@ async function logout() {
       <Link to="/" className={styles.lema} onClick={handleLogo}><img  className={styles.lema} src={lema} alt="Lema Ovniric" /></Link>
       {isLoged ?
            <>
+            {role == "ADMIN" ? (
+              <Link to='/administrationProducts' className={styles.add}>
+                <button className={styles.btn} id={styles.btnAad}>reservas</button>
+              </Link>
+            ): role == "USER" ? ( <Link to='/administrationProducts' className={styles.add}>
+            <button className={styles.btn} id={styles.btnAad}>+ producto</button>
+          </Link>): null}
               <div className={styles.avtContainer}>
                 <span className={styles.avtSpan}>
                   {`${user.firstname} ${user.lastname}`.split(" ").reduce(( accum,current) => {return accum + current[0].toUpperCase() + "."},"")}

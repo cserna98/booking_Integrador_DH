@@ -14,7 +14,12 @@ import ProductDetailView from './Components/ProductDetailView/ProductDetailView'
 import FilterCategory from './Components/FilterCategory/FilterCategory';
 import BookingForm from './Components/BookingForm/BookingForm';
 import Reservations from './Components/Reservations/Reservations';
+
 import SuccessfulReservation from './Components/SuccessfulReservation/SuccessfulReservation';
+
+import AddProducts from './Components/AddProducts/AddProducts';
+import MyBookings from './Components/MyBookings/MyBookings';
+import SuccessfulAdd from './Components/AddProducts/SuccessfulAdd';
 
 
 function App() {
@@ -35,9 +40,12 @@ const {isLoged,dataproduct,idProduct,setIdProduct,setDataProduct} = GlobalContex
         <Route path="/productdetails/:id" element={<ProductDetailView></ProductDetailView>} />
         <Route path='/categoryProducts/:id' element={<FilterCategory></FilterCategory>}></Route>
         {/* <Route path='/bookingForm' element={<BookingForm></BookingForm>}></Route> */}
+        <Route path='/administrationProducts' element={<AddProducts></AddProducts>}></Route>
+        <Route path='/administrationProducts/successful' element={<SuccessfulAdd></SuccessfulAdd>}></Route>
         <Route path='/reservations/:id' element={<Reservations></Reservations>}></Route>
         <Route path='/successfulReservation' element={<SuccessfulReservation></SuccessfulReservation>}></Route>
-        
+        <Route path='/MisReservas'element={<MyBookings></MyBookings>}></Route>
+
   </Routes>      
   <Footer/>
 </>;

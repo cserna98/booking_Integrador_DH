@@ -15,52 +15,23 @@ function Login(){
     const [passwordLogin, setPasswordLogin] = useState("")
     const [tokenLogin, setTokenLogin] = useState()
     const [response, setresponse] = useState()
-    const {setLogin,user,setUser,loginModal, setEmailUser, isLoged}= GlobalContext()
+    const {setLogin,user,loginModal, setEmailUser, isLoged,fetchDataUser, getToken}= GlobalContext()
     console.log(user, "datos usuarios")
 
     // datos usuraio de la api 
   
 
-    const getToken = async (email, password) => {
-      try {
-        const response = await fetch('http://18.220.89.28:8080/api/v1/auth/authenticate', {
-          method: 'POST',
-          body: JSON.stringify({
-            email: email,
-            password: password
-          }),
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        });
+
     
-        if (response.ok) {
-          const data = await response.json();
-          localStorage.setItem('token', data.token);
-          console.log(tokenLogin);
-          setLogin(true);
-          return response;
-        } else {
-          throw new Error('Credenciales inválidas');
-        }
-      } catch (error) {
-        alert(error.message);
-      }
-    };
-
-      // fecth de usuario cuando se encuentre logeado
-      async function fetchDataUser(url) {
-        console.log(url)
-        const response = await fetch(url);
-        const data = await response.json();
-        console.log(data)
-        setUser(data);    
-      }
-
+      
       useEffect(()=>{
         console.log(user)
       },[user])
 
+     
+
+
+      
 
       
 

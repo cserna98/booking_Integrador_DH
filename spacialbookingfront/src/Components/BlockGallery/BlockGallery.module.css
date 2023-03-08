@@ -26,9 +26,10 @@
     /* border: 10px solid blue; */
     display: grid;
     gap: 1rem;
-    grid-auto-flow: dense;
+    /* grid-auto-flow: dense; */
     grid-auto-rows: 48%;
-    grid-template-columns: repeat(auto-fit,minmax(min(100%, 19rem), 1fr));
+    /* grid-template-columns: repeat(auto-fit,minmax(min(100%, 19rem), 1fr)); */
+    grid-template-columns: 1fr 1fr;
     width: 60%;
 }
 
@@ -68,7 +69,7 @@
 .tabletMobile {
     display: none;
 }
-@media only screen and (max-width: 1400px) {
+@media only screen and (max-width: 992px) {
     .desktop {
         display: none;
     }
