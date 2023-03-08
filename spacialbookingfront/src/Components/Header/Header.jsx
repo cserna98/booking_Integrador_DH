@@ -89,8 +89,8 @@ async function logout() {
               <Link to='/administrationProducts' className={styles.add}>
                 <button className={styles.btn} id={styles.btnAad}>reservas</button>
               </Link>
-            ): role == "USER" ? ( <Link to='/administrationProducts' className={styles.add}>
-            <button className={styles.btn} id={styles.btnAad}>+ producto</button>
+            ): role == "USER" ? ( <Link to='/MisReservas' className={styles.add}>
+            <button className={styles.btn} id={styles.btnAad}>Mis reservas</button>
           </Link>): null}
               <div className={styles.avtContainer}>
                 <span className={styles.avtSpan}>

@@ -5,6 +5,7 @@ import Card from "../Card/Card"
 import  {useState, useEffect} from 'react';
 import { GlobalContext } from "../globalState/GlobalState";
 import '../../stylesVariables/variables.css'
+import { Link } from "react-router-dom";
 
 
 
