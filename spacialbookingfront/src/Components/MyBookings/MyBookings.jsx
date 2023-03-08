@@ -5,32 +5,32 @@ import styles from "./MyBookings.module.css";
 import { IoLocationSharp} from "react-icons/io5";
 
 function MyBookings (props){
-    // const[bookingsProduct,setBookingsProduct] = useState([]);
+     const[bookingsProduct,setBookingsProduct] = useState([]);
 
    
-    // const urlMyBookings =`http://18.220.89.28:8080/api/reservaciones/cliente/$`
+     const urlMyBookings =`http://18.220.89.28:8080/api/reservaciones/cliente/$`
 
-    // async function getMyBookings(url) {
-    //     const data = await fetch(url);
-    //     const myBookings = await data.json();
+    async function getMyBookings(url) {
+         const data = await fetch(url);
+        const myBookings = await data.json();
 
 
-    //         setBookingsProduct({
-    //             img : card.images[0].imageUrl,
-    //             category: card.category.title,
-    //             name: card.title,
-    //             location: card.locations.place,
-    //             altitude: card.altitude
-    //         })
+           setBookingsProduct({
+                 img : card.images[0].imageUrl,
+                 category: card.category.title,
+                 name: card.title,
+                 location: card.locations.place,
+                 altitude: card.altitude
+             })
 
-    //      };
+          };
 
-    //      fetchData()
+          fetchData()
  
 
         
 
-    //     let altitudeFormated = new Intl.NumberFormat().format(bookingsProduct.altitude);
+         let altitudeFormated = new Intl.NumberFormat().format(bookingsProduct.altitude);
 
 
 
@@ -39,7 +39,7 @@ function MyBookings (props){
         <>
         <h1>Mis Reservas</h1>
         <section className={styles.mainContainer}>
-                {/* <h2 className={styles.cardTitle}>Detalles de la reserva</h2>
+                 <h2 className={styles.cardTitle}>Detalles de la reserva</h2>
                 <img src={bookingsProduct.img} alt="product img" className={styles.img} />
                 <span className={styles.category}>{bookingsProduct.category}</span>
                 <h3 className={styles.title}>{bookingsProduct.name}</h3>
@@ -47,7 +47,7 @@ function MyBookings (props){
                 <span className={styles.location}>{altitudeFormated}mts s.n.m</span>
                 <p className={styles.checkInOut}>Check in {`${props.date[0]?.toLocaleDateString()}`}</p>
                 <p className={styles.checkInOut}>Check out {`${props.date[1]?.toLocaleDateString()}`}</p>
-                <button className={styles.reservationbtn} onClick={props.handleClick}>Confirmar Reserva</button>  */}
+                <button className={styles.reservationbtn} onClick={props.handleClick}>Confirmar Reserva</button>  
             </section>
             </>
     )
