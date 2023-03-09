@@ -14,6 +14,7 @@ const {Option} = Select;
 function AddProducts(){
   const [listCategory, setListCategory] = useState([]);
   const [listLocations, setListLocations] = useState([]);
+  const [body, setBody] = useState();
   const navigate = useNavigate();
 
   //Estado para guardar la información del producto
@@ -45,7 +46,8 @@ function AddProducts(){
   }
 
   const changeCategory = (e) => {
-    setInformationProduct({...informationProduct, categoryId: e});
+    const value = parseInt(e);
+    setInformationProduct({...informationProduct, categoryId: value});
   }
 
   const changeLocation = (e) => {
@@ -53,7 +55,8 @@ function AddProducts(){
   }
 
   const changeAltitude = (e) => {
-    setInformationProduct({...informationProduct, altitude: e.target.value});
+    const value = parseInt(e.target.value);
+    setInformationProduct({...informationProduct, altitude: value});
     console.log(informationProduct)
   }
 
@@ -136,18 +139,26 @@ function AddProducts(){
       for (let clave in informationPolicies) {
         policy += informationPolicies[clave] + " ";
       }
-      const body = {...informationProduct, imageUrl, featureTitle, availability: true, policy};
-
-      const createProducts = {
-        method: 'POST',
-        body: JSON.stringify(body),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }
+      const body = {...informationProduct, imageUrl, featureTitle, policy};
       console.log(body)
-      createProduct(urlCreateProduct, createProducts)
+      setBody(body)
+      
   }
+
+  useEffect(()=>{
+    if(body){
+      console.log(body)
+      const createProducts = {
+      method: 'POST',
+      body: JSON.stringify(body),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+    createProduct('http://18.220.89.28:8080/api/productos', createProducts)
+    }
+    
+  },[body])
 
 
   const urlCategories = "http://18.220.89.28:8080/api/categorias";

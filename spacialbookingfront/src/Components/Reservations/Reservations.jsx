@@ -69,6 +69,7 @@ const Reservations = () => {
                 console.log('La reserva ha sido creada:');
                 navigate("/successfulReservation")
             } else {
+                alert('Hubo un error al crear la reserva:')
                 console.log('Hubo un error al crear la reserva:');
             }
         }

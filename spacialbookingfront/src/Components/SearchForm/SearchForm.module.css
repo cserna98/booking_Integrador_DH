@@ -280,6 +280,7 @@
 
     .lb{
         display: none;
+        color: var(--color);
     }
 }
 
