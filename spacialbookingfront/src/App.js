@@ -18,15 +18,37 @@ import SuccessfulReservation from './Components/SuccessfulReservation/Successful
 import MyBookings from './Components/MyBookings/MyBookings';
 import SuccessfulAdd from './Components/AddProducts/SuccessfulAdd';
 import AddProducts from './Components/AddProducts/AddProducts';
+import './stylesVariables/variables.css'
+
 
 
 function App() {
 
 const {isLoged,dataproduct,idProduct,setIdProduct,setDataProduct} = GlobalContext();
- 
+const [theme, setTheme] = useState('light');
+
+function changeTheme() {
+  console.log("working")
+  console.log(theme)
+  if (theme === 'light') {
+    setTheme('dark');
+    document.documentElement.style.setProperty('--background', 'linear-gradient(to bottom, #323232 0%, #3F3F3F 40%, #1C1C1C 150%), linear-gradient(to top, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.25) 200%)');
+    document.documentElement.style.setProperty('--bar', 'linear-gradient(to bottom, #0c3483 0%, #a2b6df 100%, #6b8cce 100%, #a2b6df 100%)');
+    document.documentElement.style.setProperty('--backImage', 'radial-gradient(at top center, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0.03) 100%), linear-gradient(to top, rgba(255,255,255,0.1) 0%, rgba(143,152,157,0.60) 100%)');
+    document.documentElement.style.setProperty('--color', 'azure');
+  } else {
+    setTheme('light');
+    document.documentElement.style.setProperty('--background', 'linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%)');
+    document.documentElement.style.setProperty('--bar', 'linear-gradient(to bottom, #0c3483 0%, #a2b6df 100%, #6b8cce 100%, #a2b6df 100%)');
+    document.documentElement.style.setProperty('--backImage', 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)');
+    document.documentElement.style.setProperty('--color', '#3F3F3F');
+  }
+}
+
+
 
   return <>
-  <Header />
+  <Header changeTheme={changeTheme} />
   <Routes>
         <Route path="/" 
         element={<>

@@ -13,8 +13,8 @@ import { GlobalContext } from "../globalState/GlobalState";
 import { useParams } from 'react-router-dom';
 import BookingCalendar from "../BookingCalendar/BookingCalendar";
 import GoBackHeader from "../GoBackHeader/GoBackHeader";
-import img from "../../assets/img/loader.gif";
 import Policies from "../Policies/Policies";
+import '../../stylesVariables/variables.css'
 
 const ProductDetailView = () => {
 
@@ -44,7 +44,7 @@ const ProductDetailView = () => {
     ) : (
     
     <main className={styles.container}>
-        <Header />
+        
         <GoBackHeader category={product.category.title} title={product.title}/>
         <section className={styles.locationContainer}>
             <h4 className={styles.location}>  <IoLocationSharp/> {product.locations.place}</h4>
@@ -71,10 +71,7 @@ const ProductDetailView = () => {
 <Policies/>
 <h2  className={styles.featuresTitle} >Fechas Disponibles</h2>
 <div className={styles.calendarContainer}><BookingCalendar idProduct={id}></BookingCalendar></div>
-
-<Footer/>
 </main>
-
     )
     )
 

@@ -2,7 +2,7 @@
 .container{
     height: auto;
     padding-bottom: 6vh;
-    background: linear-gradient(to bottom, #323232 0%, #3F3F3F 40%, #1C1C1C 150%), linear-gradient(to top, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.25) 200%);
+    background: var(--backImage);
     background-blend-mode: multiply;
 }
 
@@ -52,14 +52,14 @@
 }
 
 .description{
-    color: azure;
+    color: var(--color);
 }
 
 
 .feature{
     justify-self: center;
     margin: 0;
-    color: azure;
+    color: var(--color);
     font-size: 16px;
     padding: 1vw;
 }
@@ -77,16 +77,16 @@
 
 .featureIcon{
     font-size: 20px;
-    color:azure;
+    color:var(--color);
 }
 
 .featuresTitle{
     margin: 0;
     padding: 1vw 2vw;
     border-bottom: double #2a5298;
-    color:azure;
-
+    color:var(--color);
 }
+
 
 .calendarContainer{
     background-image: radial-gradient(at top center, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0.03) 100%), linear-gradient(to top, rgba(255,255,255,0.1) 0%, rgba(143,152,157,0.60) 100%);

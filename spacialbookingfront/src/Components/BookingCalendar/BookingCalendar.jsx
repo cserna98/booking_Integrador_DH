@@ -10,6 +10,7 @@ import { GlobalContext } from "../globalState/GlobalState";
 function BookingCalendar(props){
 
     const {isLoged,loginModal,setLoginModal}= GlobalContext();
+    const {emailUser, user,startDate, setStartDate,endDate, setEndDate}= GlobalContext();
 
     const handleClick = () => {
     }
@@ -23,19 +24,23 @@ function BookingCalendar(props){
     function onChange(nextValue){
         setValue(nextValue);
     }
+
+    function onChangeDate(date){
+        const formattedDateRange = date.map(date => date.toISOString().slice(0, 10));
+        setStartDate(formattedDateRange[0])
+        setEndDate(formattedDateRange[1])
+        console.log(formattedDateRange); // ["31/05/2023", "28/06/2023"]
+      }
+  
     return(
     
     <div className={styles.calendarDouble}>
     
         <div className={styles.bookingCalendar}>
-            <div className={styles.calendarSelect}>
-                <Calendar  onChange={onChange} value={value} showDoubleView={true} calendarType={"US"}>
+        <div className={styles.calendarContainer}>
+                <Calendar onChange={onChangeDate}  minDate={new Date(Date.now())} selectRange={true}  showDoubleView={true} calendarType={"US"}>
                 </Calendar>
-            </div>
-            <div className={styles.calendarMobile}>
-                <Calendar  onChange={onChange} value={value}  calendarType={"US"}>
-                </Calendar>
-                </div>
+        </div>
             <div className={styles.sectionBooking}>
                 <p className={styles.letter}>A un clic de vivir tu experiencia espacial</p>
                 <Link to={isLoged ? `/reservations/${props.idProduct}`: pleaseLogin() }>

@@ -30,7 +30,7 @@
 
 
 .form label{
-    color: azure !important;
+    color: var(--color);
 }
 
 

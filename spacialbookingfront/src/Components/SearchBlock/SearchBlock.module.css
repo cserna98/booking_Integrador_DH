@@ -6,7 +6,7 @@
     margin: 1vw;
     font-size: 1.2rem;
     font-weight: 600;
-    color: #FFFFFF;
+    color: var(--color);
 }
 
 .searchBlock {   
@@ -18,7 +18,7 @@
     padding-bottom:1.5vh;
     text-align: center;
     background-color: transparent;
-    background-image: radial-gradient(at top center, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0.03) 100%), linear-gradient(to top, rgba(255,255,255,0.1) 0%, rgba(143,152,157,0.60) 100%);
+    background-image: var(--backImage);
     background-blend-mode: normal, multiply;
     box-shadow: rgba(107, 140, 206, 0.4) -5px 5px, rgba(107, 140, 206, 0.3) -10px 10px, rgba(107, 140, 206, 0.2) -15px 15px, rgba(107, 140, 206, 0.1) -20px 20px, rgba(107, 140, 206, 0.05) -25px 25px, rgba(107, 140, 206, 0.4) 5px 5px, rgba(107, 140, 206, 0.3) 10px 10px, rgba(107, 140, 206, 0.2) 15px 15px, rgba(107, 140, 206, 0.1) 20px 20px, rgba(107, 140, 206, 0.05) 25px 25px;
    
@@ -26,7 +26,7 @@
 
 #titleSearch h1{    
     margin: 0;
-    color: snow;
+    color: var(--color);
 }
 
 /*________________________________________Tablet_______________________*/

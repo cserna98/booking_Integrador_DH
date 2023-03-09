@@ -6,6 +6,8 @@ import { Button,Form,Input,InputNumber,Select } from "antd";
 import { useState } from "react";
 import { ContextGlobal } from "../globalState/GlobalState";
 import { useNavigate } from "react-router-dom";
+
+
 const {TextArea} = Input;
 const {Option} = Select;
 
@@ -21,6 +23,7 @@ function AddProducts(){
     locationId: 0,
     altitude: 0,
     description: "",
+    maxReservations: 0,
   });
 
   const [informationPolicies,setInformationPolicies] = useState({
@@ -51,6 +54,13 @@ function AddProducts(){
 
   const changeAltitude = (e) => {
     setInformationProduct({...informationProduct, altitude: e.target.value});
+    console.log(informationProduct)
+  }
+
+  const changequotas = (e) => {
+    const value = parseInt(e.target.value); 
+    setInformationProduct({...informationProduct, maxReservations: value});
+    console.log(informationProduct)
   }
 
   const changeDescription = (e) => {
@@ -200,6 +210,9 @@ function AddProducts(){
         
         <Form.Item label="Altitud">
           <Input placeholder={'Ingrese la altitud en números sin comas ni puntos'} onChange={changeAltitude}/>
+        </Form.Item>
+        <Form.Item label="Cupos">
+          <Input type="number" placeholder="Ingrese el número de cupos del producto" onChange={changequotas} />
         </Form.Item>
         </div>
         <Form.Item label="Descripción" className={styles.description}>

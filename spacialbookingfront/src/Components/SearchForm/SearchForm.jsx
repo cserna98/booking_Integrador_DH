@@ -1,4 +1,4 @@
-import  {useState, useEffect} from 'react';
+import  {useState, useEffect, useRef} from 'react';
 import React from 'react'; 
 import logolocation from '../../assets/img/Vector.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -16,7 +16,10 @@ function SearchForm(){
     const [places, setPlaces] = useState([]);
     const [startDate, setStartDate] = useState();
     const [endDate, setEndDate] = useState();
+    const [dateRange, setDateRange] = useState([new Date(), new Date()]);
+    const [showCalendar, setShowCalendar] = useState(false);
 
+    
     useEffect(() => {
         async function fetchDataLocation() {
           const response = await fetch(`http://18.220.89.28:8080/api/localizaciones`);
@@ -113,15 +116,15 @@ function SearchForm(){
                 ))}
             </ul>  
         </div> 
-       
+
         <div className={styles.datecontainer}>
-            <b className={`${styles.label}, ${styles.lb}`}>Inicio:</b>
+            <b className={`${styles.label} ${styles.lb}`}>Inicio:</b>
             <label className={styles.label} id={styles.Date} >
-                <input value={startDate ? startDate : ""}  className={`${styles.formInputs} ${styles.divItem} `} type="date"  onChange={(e)=>setStartDate(e.target.value)}></input>
+                <input value={startDate ? startDate : ""} min={new Date().toISOString().split("T")[0]} className={`${styles.formInputs} ${styles.divItem} `} type="date"  onChange={(e)=>setStartDate(e.target.value)}></input>
             </label>
             <b className={`${styles.label}, ${styles.lb}`}>Final:</b>
             <label className={styles.label} id='Date'>
-                <input value={endDate ? endDate : ""} className={`${styles.formInputs} ${styles.divItem} `}   type="date" onChange={(e)=>setEndDate(e.target.value)}></input>
+                <input value={endDate ? endDate : ""}  min={new Date().toISOString().split("T")[0]} className={`${styles.formInputs} ${styles.divItem} `}   type="date" onChange={(e)=>setEndDate(e.target.value)}></input>
             </label>
         </div>     
     

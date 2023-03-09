@@ -5,7 +5,7 @@ import { GlobalContext } from "../globalState/GlobalState";
 import categories from '../../assets/Json/categories.json'
 import styles from './BlockCategories.module.css'
 import img from '../../assets/img/category3.jpeg'
-import '../../stylesVariables/variables.css'
+
 
 import {Link} from "react-router-dom";
 

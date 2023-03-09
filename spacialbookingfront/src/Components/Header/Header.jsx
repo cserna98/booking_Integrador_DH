@@ -7,7 +7,7 @@ import { GlobalContext } from "../globalState/GlobalState";
 import { Link } from "react-router-dom"
 import '../../stylesVariables/variables.css'
 
-const Header = () => {
+const Header = ({changeTheme}) => {
 
   const {renderForm,setRenderForm,isLoged,setLogin, user,role, setRole}= GlobalContext();
 
@@ -80,6 +80,7 @@ async function logout() {
     <header className={styles.header}>
       <Link to="/" className={styles.logo} onClick={handleLogo}><img  className={styles.logo} src={logo} alt="Logo Ovniric" /></Link>
       <Link to="/" className={styles.lema} onClick={handleLogo}><img  className={styles.lema} src={lema} alt="Lema Ovniric" /></Link>
+      <button onClick={changeTheme}>theme</button>
       {isLoged ? 
           <div className={styles.login}>
               <div className={styles.avtContainer}>

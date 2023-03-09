@@ -4,6 +4,7 @@ import { useState } from "react";
 import styles from './Register.module.css';
 import { GlobalContext } from "../globalState/GlobalState";
 
+
 function Register(){
     // Creación de los estados
     const [name, setName] = useState("");

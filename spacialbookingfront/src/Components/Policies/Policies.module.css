@@ -21,12 +21,12 @@
 
    
 .policyTitle{
-    color: azure;
+    color:var(--color);
     text-align: center;
 }
 
 .policyContent{
-    color: azure;
+    color: var(--color);
     text-align: center;
     font-size: 16px;
     font-weight: 600;
