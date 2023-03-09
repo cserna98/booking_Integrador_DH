@@ -110,9 +110,7 @@ const formItemLayout =
         <div className={styles.letterP}>
 
           <h2>Tu horario de llegada</h2>
-          <p>Tu experiencia está programada para las {time && `${time?.$d.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', hour12: false})}`}</p>
-
-          <p >Tu experiencia está programada para las {time && `${time?.$H}:${time?.$m}`}</p>
+          <p>Tu experiencia está programada para las:  {time && `${time?.$d.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', hour12: false})}h`}</p>
 
           <p>Indica tu horario estimado de llegada</p>
           <TimePicker className={styles.selectTime} value={time} onOk={handleChangeTime} format={format} placeholder={"Seleccionar hora"} ></TimePicker>

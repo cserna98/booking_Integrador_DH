@@ -23,6 +23,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     @Query("SELECT p FROM Product p WHERE p.locations.place= :place AND NOT EXISTS (SELECT r FROM p.reservations r WHERE r.endDate >= :startDate AND r.startDate <= :endDate)")
     List<Product> findAvailableProductosByLocalizacion(@Param("place") String place, @Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
 
+    @Query("SELECT p FROM Product p WHERE NOT EXISTS (SELECT r FROM p.reservations r WHERE r.endDate >= :startDate AND r.startDate <= :endDate)")
+    List<Product> findAvailableProducts(@Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
 
     @Query("SELECT p FROM Product p WHERE p.category.categoryId = :categoryId")
     List<Product> findByCategoryId(@Param("categoryId") Long id);

@@ -14,7 +14,7 @@ function Register(){
     const [city, setCity] = useState('');
 
     // Variables estado global 
-    const {setEmail,setPassword, setNameUser, setLastNameUser}= GlobalContext()
+    const {setEmail,setPassword, setNameUser, setLastNameUser,setRenderForm}= GlobalContext()
 
     // Manejadores de eventos para cada input para actualziar los estados a medida que el usurio escribe en los inputs
     const onChangeName = (e) => setName(e.target.value);
@@ -31,6 +31,12 @@ function Register(){
         email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
         password: /^.{7,1000}$/, // 7 a 1000 digitos.
     }
+
+    //funcion para manejar click a boton X
+    const handleClick = ()=>{
+        setRenderForm(null)
+     }
+
 
     // Función para validación de los inputs
     function validateInputs (){
@@ -91,7 +97,7 @@ function Register(){
             la etiqueta Link*/}
             {/* <Link to='/home'> */}
                 <Link to="/">
-                    <button >X</button>
+                    <button onClick={handleClick} >X</button>
                 </Link>
             {/* </Link> */}
             </div>

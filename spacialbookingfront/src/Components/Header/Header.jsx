@@ -9,11 +9,11 @@ import '../../stylesVariables/variables.css'
 
 const Header = () => {
 
-  const {renderForm,setRenderForm,isLoged,setLogin, user}= GlobalContext();
+  const {renderForm,setRenderForm,isLoged,setLogin, user,role, setRole}= GlobalContext();
 
   const [isOpen,setOpen] = useState(false);
   const [rolAdmin, setRolAdmin] = useState(true)
-  const [role, setRole] = useState("")
+ 
 
   
 
@@ -49,6 +49,9 @@ async function logout() {
       if (response.status === 204) {
         // Logout successful, remove token from local storage and redirect to login page
         localStorage.removeItem('token');
+        localStorage.removeItem('RoleUser');
+        setRole("")
+        
       } else {
         throw new Error('Logout failed');
       }
@@ -59,12 +62,6 @@ async function logout() {
   }  
 
 
-  useEffect(()=>{
-    if(localStorage.getItem('token') !== null){
-      setLogin(true)
-    } 
-    setRole(localStorage.getItem('RoleUser'))
-  },[])
 
 
   useEffect(()=>{
@@ -79,36 +76,36 @@ async function logout() {
   console.log(user)
 
  
-    return <>
+    return (
     <header className={styles.header}>
       <Link to="/" className={styles.logo} onClick={handleLogo}><img  className={styles.logo} src={logo} alt="Logo Ovniric" /></Link>
       <Link to="/" className={styles.lema} onClick={handleLogo}><img  className={styles.lema} src={lema} alt="Lema Ovniric" /></Link>
-      {isLoged ?
-           <>
-            {role == "ADMIN" ? (
-              <Link to='/administrationProducts' className={styles.add}>
-                <button className={styles.btn} id={styles.btnAad}>reservas</button>
-              </Link>
-            ): role == "USER" ? ( <Link to='/MisReservas' className={styles.add}>
-            <button className={styles.btn} id={styles.btnAad}>Mis reservas</button>
-          </Link>): null}
+      {isLoged ? 
+          <div className={styles.login}>
               <div className={styles.avtContainer}>
                 <span className={styles.avtSpan}>
                   {`${user.firstname} ${user.lastname}`.split(" ").reduce(( accum,current) => {return accum + current[0].toUpperCase() + "."},"")}
                 </span>
               </div>
               <a href="#" className={styles.username}>{`Hola ${user.firstname}`}</a>
-              <button className={`${styles.btn} ${styles.logout}` } onClick={logout} >Log out</button>          
-           </> : 
-        <>
+              {role == "ADMIN" ? (
+              <Link to='/administrationProducts' className={styles.add}>
+                <button className={styles.btn} id={styles.btnAdd}>+ Producto</button>
+              </Link>
+            ): role == "USER" ? (
+              <Link to='/MisReservas' className={styles.add}>
+                <button className={styles.btn} id={styles.btnAdd}>Mis reservas</button>
+              </Link>): null}
+              <button className={`${styles.btn} ${styles.logout}` } id={styles.logout} onClick={logout} >Log out</button>          
+          </div> : 
+        <div className={styles.login}>
           <Link to="/signup"  className={`${styles.loginbtn}` }>
             <button className={` ${styles.btn} ${renderForm == "SignUp" ? styles.Disp_none : "" }`} onClick={handleSingUp}>Sign up </button>
           </Link>
           <Link to="/login" className={`${styles.signupbtn} `}>
             <button className={` ${styles.btn} ${renderForm == "LogIn" ? styles.Disp_none : "" } `}  onClick={handleLogIn}>Log in</button>
           </Link>
-          
-        </>
+        </div> 
         }
         <span  className={styles.menu} onClick={handleMenu}>{isOpen ? <FaTimes/> : <FaBars/>}</span>
       {isOpen ? <div className={styles.menuarea}>
@@ -129,7 +126,8 @@ async function logout() {
         }
        
        </header>
-    </>
+    )
+   
 }
 
 export default Header;

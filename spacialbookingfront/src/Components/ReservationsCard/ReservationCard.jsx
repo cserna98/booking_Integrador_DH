@@ -45,8 +45,8 @@ const ReservationCard = (props) => {
                 <h3 className={styles.title}>{reservationProduct.name}</h3>
                 <span  className={styles.location}> <IoLocationSharp/> {reservationProduct.location}</span>
                 <span className={styles.location}>{altitudeFormated}mts s.n.m</span>
-                <p className={styles.checkInOut}>Check in {`${props.date[0]?.toLocaleDateString()}`}</p>
-                <p className={styles.checkInOut}>Check out {`${props.date[1]?.toLocaleDateString()}`}</p>
+                <p className={styles.checkInOut}>Check in: {props.startDate}</p>
+                <p className={styles.checkInOut}>Check out:  {props.endDate}</p>
               <button className={styles.reservationbtn} onClick={props.handleClick}>Confirmar Reserva</button> 
                 
             </section>

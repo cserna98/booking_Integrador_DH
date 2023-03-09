@@ -19,6 +19,7 @@ export const ContextProvider = ({children}) => {
     const [url, setUrl] = useState("");
     const [loginModal,setLoginModal] = useState(false);
     const [emailUser, setEmailUser] = useState();
+    const [role, setRole] = useState("")
    
     
 
@@ -70,6 +71,14 @@ export const ContextProvider = ({children}) => {
       }
     },[])
 
+    useEffect(()=>{
+      if(localStorage.getItem('token') !== null){
+        setLogin(true)
+      } 
+      setRole(localStorage.getItem('RoleUser'))
+    },[user])
+  
+
 
 
     
@@ -98,7 +107,9 @@ export const ContextProvider = ({children}) => {
       emailUser,
       setEmailUser,
       fetchDataUser,
-      getToken
+      getToken,
+      role,
+      setRole
           }}>
         {children}
       </ContextGlobal.Provider>

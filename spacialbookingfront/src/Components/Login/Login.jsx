@@ -15,7 +15,7 @@ function Login(){
     const [passwordLogin, setPasswordLogin] = useState("")
     const [tokenLogin, setTokenLogin] = useState()
     const [response, setresponse] = useState()
-    const {setLogin,user,loginModal, setEmailUser, isLoged,fetchDataUser, getToken}= GlobalContext()
+    const {setLogin,user,loginModal, setEmailUser, isLoged,fetchDataUser, getToken, setRenderForm}= GlobalContext()
     console.log(user, "datos usuarios")
 
     // datos usuraio de la api 
@@ -28,7 +28,9 @@ function Login(){
         console.log(user)
       },[user])
 
-     
+     const handleClick = ()=>{
+        setRenderForm(null)
+     }
 
 
       
@@ -63,7 +65,7 @@ function Login(){
             la etiqueta Link*/}
             {/* <Link to='/home'> */}
             <Link to="/" >
-                <button >X</button>
+                <button onClick={handleClick}>X</button>
             </Link>
             {/* </Link> */}
         </div>

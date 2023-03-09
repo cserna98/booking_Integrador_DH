@@ -6,7 +6,7 @@ import ReservationCard from "../ReservationsCard/ReservationCard";
 import GoBackHeader from "../GoBackHeader/GoBackHeader";
 import BookingForm from "../BookingForm/BookingForm";
 import styles from "./Reservations.module.css"
-
+import { useNavigate } from "react-router-dom";
 import { GlobalContext } from "../globalState/GlobalState";
 import Policies from "../Policies/Policies";
 
@@ -20,6 +20,7 @@ const Reservations = () => {
     const {emailUser, user}= GlobalContext();
     const [startDate, setStartDate] = useState();
     const [endDate, setEndDate] = useState();
+    const navigate = useNavigate();
 
     const [userCopy, setUserCopy] = useState();
     const [city,setCity] = useState();
@@ -70,6 +71,7 @@ const Reservations = () => {
 
             if(response.ok){
                 console.log('La reserva ha sido creada:');
+                navigate("/successfulReservation")
             } else {
                 console.log('Hubo un error al crear la reserva:');
             }
@@ -147,7 +149,8 @@ const Reservations = () => {
            <ReservationCard 
              className={styles.reservationCard}
              id={productId}
-             date={date}
+             startDate={startDate}
+             endDate={endDate}
              time={dataTime}
              user={userCopy}
              changeUser={setUserCopy}

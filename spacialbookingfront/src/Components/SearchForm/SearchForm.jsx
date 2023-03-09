@@ -2,6 +2,7 @@ import  {useState, useEffect} from 'react';
 import React from 'react'; 
 import logolocation from '../../assets/img/Vector.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Calendar from "react-calendar";
 import {FaSearchLocation} from "react-icons/fa"
 import styles from "./SearchForm.module.css"
 import { GlobalContext } from "../globalState/GlobalState";
@@ -45,13 +46,21 @@ function SearchForm(){
 
 
     function handleSubmit(e){
+        const exist = places.filter((place) =>{
+            if(place.place.includes(actualValue)){
+                return true
+            }
+        } );
         console.log(places)
         e.preventDefault()
-        if(startDate && endDate){
+        if(startDate && endDate && exist){
             console.log("holi")
             setUrl(`http://18.220.89.28:8080/api/productos/disponibles/${actualValue}/${startDate}/${endDate}`)
             console.log(url)            
-        }else{
+        }else if (startDate && endDate && !exist){
+            setUrl(`http://18.220.89.28:8080/api/productos/disponibles/${startDate}/${endDate}`)
+        }
+        else{
             setUrl(`http://18.220.89.28:8080/api/productos/localizacion/${actualValue}`)
         }
 
@@ -112,11 +121,11 @@ function SearchForm(){
             <b className={`${styles.label}, ${styles.lb}`}>Inicio:</b>
             <label className={styles.label} id={styles.Date} >
                 <input value={startDate ? startDate : ""}  className={`${styles.formInputs} ${styles.divItem} `} type="date"  onChange={(e)=>setStartDate(e.target.value)}></input>
-             </label>
-             <b className={`${styles.label}, ${styles.lb}`}>Final:</b>
-             <label className={styles.label} id='Date'>
+            </label>
+            <b className={`${styles.label}, ${styles.lb}`}>Final:</b>
+            <label className={styles.label} id='Date'>
                 <input value={endDate ? endDate : ""} className={`${styles.formInputs} ${styles.divItem} `}   type="date" onChange={(e)=>setEndDate(e.target.value)}></input>
-             </label>
+            </label>
         </div>     
     
         <button  id={styles.searchButon} className={styles.submit} type="submit" >Buscar</button>                     

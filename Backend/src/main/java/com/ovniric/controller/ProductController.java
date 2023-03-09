@@ -103,7 +103,7 @@ public class ProductController {
         product.setAvailability(productDTO.getAvailability());
         product.setPolicy(productDTO.getPolicy());
 
-        productoRepository.save(product);
+        productRepository.save(product);
 
         productDTO.setId(product.getIdProduct());
         return ResponseEntity.status(HttpStatus.CREATED).body(productDTO);
@@ -153,17 +153,17 @@ public class ProductController {
     }
 
     @Autowired
-    private ProductRepository productoRepository;
+    private ProductRepository productRepository;
 
     @GetMapping("/localizacion/{place}")
     public ResponseEntity<List<Product>> getProductosByLocalizacionPlace(@PathVariable String place) {
-        List<Product> productos = productoRepository.findByLocationPlace(place);
+        List<Product> productos = productRepository.findByLocationPlace(place);
         return ResponseEntity.ok(productos);
     }
 
     @GetMapping("/categoria/{categoryId}")
     public ResponseEntity<List<Product>> getProductosByLocalizacionPlace(@PathVariable Long categoryId) {
-        List<Product> productos = productoRepository.findByCategoryId(categoryId);
+        List<Product> productos = productRepository.findByCategoryId(categoryId);
         return ResponseEntity.ok(productos);
     }
 
@@ -176,8 +176,16 @@ public class ProductController {
     public List<Product> getProductosDisponibles(@PathVariable("location") String location,
                                                  @PathVariable("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
                                                  @PathVariable("endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) {
-        List<Product> productAvalibles= productoRepository.findAvailableProductosByLocalizacion(location, startDate, endDate);
+        List<Product> productAvalibles= productRepository.findAvailableProductosByLocalizacion(location, startDate, endDate);
         return productAvalibles;
+    }
+
+    @GetMapping("/disponible/{startDate}/{endDate}")
+    public List<Product> getAvailableProducts(
+            @PathVariable("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+            @PathVariable("endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) {
+
+        return productRepository.findAvailableProducts(startDate, endDate);
     }
 
 
