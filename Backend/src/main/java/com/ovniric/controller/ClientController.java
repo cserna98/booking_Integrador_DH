@@ -33,8 +33,8 @@ public class ClientController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Client> getClienteById(@PathVariable Long id) {
-        Optional<Client> clienteToSearch = clientService.getClientByid(id);
+    public ResponseEntity<Client> getClientById(@PathVariable Long id) {
+        Optional<Client> clienteToSearch = clientService.getClientById(id);
         if (clienteToSearch.isPresent()) {
             return ResponseEntity.ok(clienteToSearch.get());
         }else {
@@ -58,7 +58,7 @@ public class ClientController {
 
     @PutMapping
     public ResponseEntity<String> updateClient(@RequestBody Client client){
-        Optional<Client> clientToUpdate = clientService.getClientByid(client.getId());
+        Optional<Client> clientToUpdate = clientService.getClientById(client.getId());
         if(clientToUpdate.isPresent()) {
             clientService.updateClient(client);
             return ResponseEntity.ok("The client has been updated");
@@ -69,7 +69,7 @@ public class ClientController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteClient(@PathVariable Long id) {
-        Optional<Client> clienteToSearch = clientService.getClientByid(id);
+        Optional<Client> clienteToSearch = clientService.getClientById(id);
         if(clienteToSearch.isPresent()) {
             clientService.deleteClient(id);
             return ResponseEntity.ok("The client was successfully deleted");

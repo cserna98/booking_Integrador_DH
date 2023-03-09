@@ -4,10 +4,13 @@ import com.ovniric.dto.ReservationDTO;
 import com.ovniric.model.Product;
 import com.ovniric.model.Reservation;
 import com.ovniric.model.user.Client;
+import com.ovniric.model.user.User;
 import com.ovniric.repository.ReservationRepository;
+import com.ovniric.repository.UserRepository;
 import com.ovniric.service.ClientService;
 import com.ovniric.service.ProductService;
 import com.ovniric.service.ReservationService;
+import com.ovniric.service.UserService;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -26,22 +29,21 @@ import java.util.Optional;
 @RequestMapping("/api/reservaciones")
 public class ReservationController {
     private ReservationService reservationService;
-    private ClientService clientService;
+    private UserService userService;
     private ProductService productService;
     private ReservationRepository reservationRepository;
+    private final UserRepository userRepository;
 
     @PostMapping
     @Transactional
     public ResponseEntity<ReservationDTO> createReservation(@RequestBody ReservationDTO reservationDTO){
        Reservation reservation = new Reservation();
 
-        Optional<Client> optionalClient = clientService.getClientByid(reservationDTO.getClientId());
-        if(optionalClient.isPresent()) {
-            Client client = optionalClient.get();
-            reservation.setClient(client);
-            reservationDTO.setClientId(client.getIdClient());
-        }else {
-
+        Optional<User> optionalUser = userService.getUser(reservationDTO.getUserId());
+        if(optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            reservation.setUser(user);
+            reservationDTO.setUserId(user.getId());
         }
 
         Optional<Product> optionalProduct = productService.searchProduct(reservationDTO.getProductId());
@@ -79,9 +81,14 @@ public class ReservationController {
         }
     }
 
-    @GetMapping("/cliente/{clientId}")
-    public ResponseEntity<List<Reservation>> getReservationsByClientId(@PathVariable Long clientId) {
-        return ResponseEntity.ok(reservationService.getReservationsByClient(clientId));
+    @GetMapping("/cliente/{userId}")
+    public ResponseEntity<List<Reservation>> getReservationsByClientId(@PathVariable Long userId) {
+        User user = userRepository.findUserById(userId);
+        if (user == null) {
+            return ResponseEntity.notFound().build();
+        }
+        List<Reservation> reservations = reservationService.getReservationsByUser(user);
+        return ResponseEntity.ok(reservations);
     }
 
     @GetMapping("/producto/{productId}")

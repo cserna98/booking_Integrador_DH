@@ -34,7 +34,7 @@ public class ClientService {
         return  clientRepository.findAll();
     }
 
-    public Optional<Client> getClientByid(Long id){
+    public Optional<Client> getClientById(Long id){
        return clientRepository.findById(id);
     }
 
@@ -42,7 +42,7 @@ public class ClientService {
         clientRepository.save(client);
     }
     public void deleteClient(Long id) {
-        Optional<Client> clientToDelete = getClientByid(id);
+        Optional<Client> clientToDelete = getClientById(id);
         if (clientToDelete.isPresent()) {
             clientRepository.deleteById(id);
         }

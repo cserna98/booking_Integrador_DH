@@ -19,7 +19,7 @@ public class ReservationDTO {
     private LocalDate startDate;
     private LocalDate endDate;
     private Long productId;
-    private Long clientId;
+    private Long userId;
 
     public ReservationDTO() {
     }

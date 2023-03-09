@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.ovniric.config.HibernateProxySerializer;
 import com.ovniric.config.LocalTimeDeserializer;
 import com.ovniric.model.user.Client;
+import com.ovniric.model.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -47,8 +48,13 @@ public class Reservation{
     private Product product;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
+    @JoinColumn(name = "cliente_id", referencedColumnName = "id")
     @JsonIgnore
     private Client client;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "usuario_id", nullable = false)
+    @JsonIgnore
+    private User user;
 
 }

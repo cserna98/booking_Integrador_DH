@@ -19,7 +19,7 @@ public class AuthenticationController {
 
     private final AuthenticationService authenticationService;
     private final RoleRepository roleRepository;
-    private final ClientRepository clientRepository;
+
 
 
     //Conectar con cliente

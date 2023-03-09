@@ -1,9 +1,11 @@
 package com.ovniric.auth;
 
 
+import com.ovniric.model.user.Client;
 import com.ovniric.model.user.Role;
 import com.ovniric.model.user.RoleEnum;
 import com.ovniric.model.user.User;
+import com.ovniric.repository.ClientRepository;
 import com.ovniric.repository.RoleRepository;
 import com.ovniric.repository.UserRepository;
 import com.ovniric.service.JwtService;
@@ -22,6 +24,7 @@ public class AuthenticationService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
     private final RoleRepository roleRepository;
+    private final ClientRepository clientRepository;
 
 
     public AuthenticationResponse registerUser(RegisterRequest request) {
@@ -36,6 +39,9 @@ public class AuthenticationService {
                 .city(request.getCity())
                 .build();
         userRepository.save(user);
+
+
+
 
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder()
@@ -55,6 +61,7 @@ public class AuthenticationService {
                 .city(request.getCity())
                 .build();
         userRepository.save(user);
+
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder()
                 .token(jwtToken)

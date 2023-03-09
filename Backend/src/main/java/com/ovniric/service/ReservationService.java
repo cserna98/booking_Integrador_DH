@@ -4,12 +4,14 @@ import com.ovniric.dto.ReservationDTO;
 import com.ovniric.model.user.Client;
 import com.ovniric.model.Product;
 import com.ovniric.model.Reservation;
+import com.ovniric.model.user.User;
 import com.ovniric.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,9 +32,29 @@ public class ReservationService {
     }
 
 
-    public List<Reservation> getReservationsByClient(Long clientId) {
-        return reservationRepository.findByClientId(clientId);
+//    public List<Reservation> getReservationsByUser(User user) {
+//        List<Reservation> allReservations = reservationRepository.findByUser(user);
+//        List<Reservation> clientReservations = new ArrayList<>();
+//        for (Reservation reservation : allReservations) {
+//            if (reservation.getClient().getId().equals(user.getId())) {
+//                clientReservations.add(reservation);
+//            }
+//        }
+//        return clientReservations;
+//    }
+
+    public List<Reservation> getReservationsByUser(User user) {
+        List<Reservation> allReservations = reservationRepository.findByUser(user);
+        List<Reservation> userReservations = new ArrayList<>();
+        for (Reservation reservation : allReservations) {
+            if (reservation.getUser().equals(user)) {
+                userReservations.add(reservation);
+            }
+        }
+        return userReservations;
     }
+
+
 
     public List<Reservation> findReservationsByProductId(Long productId) {
         return reservationRepository.findAllByProductId(productId);
@@ -53,8 +75,8 @@ public class ReservationService {
 
     public Reservation toReservation(ReservationDTO reservationDTO) {
 
-        Client client = new Client();
-        client.setIdClient(reservationDTO.getClientId());
+        User user = new User();
+        user.setId(reservationDTO.getUserId());
         Product product= new Product();
         product.setIdProduct(reservationDTO.getProductId());
 
@@ -66,7 +88,7 @@ public class ReservationService {
         result.setEndDate(reservationDTO.getEndDate());
         result.setStartDate(reservationDTO.getStartDate());
         result.setProduct(product);
-        result.setClient(client);
+        result.setUser(user);
         return result;
     }
 
@@ -81,7 +103,7 @@ public class ReservationService {
 
         result.setEndDate(reservation.getEndDate());
         result.setStartDate(reservation.getStartDate());
-        result.setClientId(reservation.getClient().getIdClient());
+        result.setUserId(reservation.getUser().getId());
         result.setProductId(reservation.getProduct().getIdProduct());
 
         return result;

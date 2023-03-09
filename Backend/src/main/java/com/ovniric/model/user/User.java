@@ -2,6 +2,7 @@ package com.ovniric.model.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ovniric.repository.ClientRepository;
+import com.ovniric.service.ClientService;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -45,6 +46,11 @@ public class User implements UserDetails {
     @ManyToOne
     @JoinColumn(name = "rol_id",referencedColumnName = "id")
     private Role role;
+
+    @Transient
+    @Autowired
+    private ClientService clientService;
+
 
 
     @Override
