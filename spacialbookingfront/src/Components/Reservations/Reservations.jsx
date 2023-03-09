@@ -37,7 +37,7 @@ const Reservations = () => {
         startDate: '',
         endDate: '',
         productId: '',
-        clientId: '',
+        userId: '',
       });
 
       function handleClick(){
@@ -49,7 +49,7 @@ const Reservations = () => {
                 startDate: startDate,
                 endDate: endDate,
                 productId: productId,
-                clientId: user.id
+                userId: user.id
               })
             alert("objeto ennviado con exito");
             console.log(time)

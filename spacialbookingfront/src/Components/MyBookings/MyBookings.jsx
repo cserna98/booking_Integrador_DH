@@ -24,7 +24,7 @@ function MyBookings (){
     };
 
     useEffect(() => {
-        getMyBookings(urlTest)
+        getMyBookings(urlMyBookings)
     }, [])
 
 
