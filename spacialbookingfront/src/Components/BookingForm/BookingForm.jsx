@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {Button, Form, Input,TimePicker} from "antd";
 import { useState } from "react";
 import Calendar from "react-calendar";
@@ -6,6 +6,7 @@ import styles from "./BookingForm.module.css"
 import dayjs from "dayjs";
 import { GlobalContext } from "../globalState/GlobalState";
 import "../../stylesVariables/styledCalendar.css"
+import { useParams } from "react-router-dom";
 
 
 
@@ -21,6 +22,9 @@ function BookingForm(props){
     const onFormLayoutChange = ({ layout }) => {
     setFormLayout(layout);
 };
+    const {id} = useParams();
+    const [booking, setBooking] = useState();
+    const urlBooking = `http://18.220.89.28:8080/api/reservaciones/producto/${id}`;
 
     function onChangeDate(date){
       const formattedDateRange = date.map(date => date.toISOString().slice(0, 10));
@@ -29,7 +33,37 @@ function BookingForm(props){
       console.log(formattedDateRange[0]); // ["31/05/2023", "28/06/2023"]
     }
 
-    
+    async function getData(url) {
+      const data = await fetch(url);
+      const bookings = await data.json();
+      setBooking(bookings);
+  }
+
+  function validateBooking (date) {
+      const calendar = date.date;
+      if (booking) {
+          return date && booking.some( range => {
+              const start = new Date(range.startDate);
+              const end =  new Date(range.endDate);
+              console.log(end.getDate())
+              return (
+                  calendar.getFullYear() >= start.getFullYear() &&
+                  calendar.getMonth() >= start.getMonth() &&
+                  calendar.getDate() >= (start.getDate()+1) &&
+                  calendar.getFullYear() <= end.getFullYear() &&
+                  calendar.getMonth() <= end.getMonth() &&
+                  calendar.getDate() <= (end.getDate()+1)
+              ) 
+          })
+      } else {
+          return false
+      }
+
+  }
+
+  useEffect(() => {
+      getData(urlBooking);
+  }, [])
 
     
 
@@ -103,7 +137,7 @@ const formItemLayout =
         </div >
         <h2 className={styles.bookingTitles}>Selecciona tu fecha de reserva</h2>
         <div className={styles.calendarContainer}>
-                <Calendar onChange={onChangeDate} value={date} minDate={new Date(Date.now())} selectRange={true}  showDoubleView={true} calendarType={"US"}>
+                <Calendar onChange={onChangeDate} value={date} minDate={new Date(Date.now())} selectRange={true}  showDoubleView={true} calendarType={"US"} tileDisabled={validateBooking}>
                 </Calendar>
         </div>
         <h2 className={styles.bookingTitles}>Tu horario de llegada</h2>
