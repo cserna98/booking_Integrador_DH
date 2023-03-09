@@ -24,7 +24,7 @@ function MyBookings (){
     };
 
     useEffect(() => {
-        getMyBookings(urlTest)
+        getMyBookings(urlMyBookings)
     }, [])
 
 
@@ -33,7 +33,7 @@ function MyBookings (){
         
         {bookingsProduct.length > 0 ?
         <>
-        <h1>Mis Reservas</h1>
+        <h1 className={styles.titleP}>Mis Reservas</h1>
         <div className={styles.containerBooking}>
         {bookingsProduct && bookingsProduct.map(booking => (
             <section key={booking.id} className={styles.mainContainer}>
