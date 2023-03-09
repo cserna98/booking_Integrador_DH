@@ -47,7 +47,6 @@ const Reservations = () => {
                 productId: '',
                 clientId: '',
               })
-            alert("Reserva exitosa")
             console.log(time)
         } else{
             alert("Lamentablemente la reserva no ha podido realizarse. Por favor, intente más tarde")

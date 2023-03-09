@@ -20,6 +20,8 @@ export const ContextProvider = ({children}) => {
     const [loginModal,setLoginModal] = useState(false);
     const [emailUser, setEmailUser] = useState();
    
+
+   
     
 
     const [displayedProducts, setDisplayedProducts] = useState([]);
@@ -49,6 +51,7 @@ export const ContextProvider = ({children}) => {
       setLoginModal,
       emailUser,
       setEmailUser
+
           }}>
         {children}
       </ContextGlobal.Provider>

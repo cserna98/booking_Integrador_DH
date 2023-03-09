@@ -33,9 +33,9 @@ function BookingCalendar(props){
                 </Calendar>
             </div>
             <div className={styles.calendarMobile}>
-                <Calendar  onChange={onChange} value={value}  calendarType={"US"}>
+                <Calendar className={styles.calendarMobile}  onChange={onChange} value={value}  calendarType={"US"}>
                 </Calendar>
-                </div>
+           </div>
             <div className={styles.sectionBooking}>
                 <p className={styles.letter}>A un clic de vivir tu experiencia espacial</p>
                 <Link to={isLoged ? `/reservations/${props.idProduct}`: pleaseLogin() }>

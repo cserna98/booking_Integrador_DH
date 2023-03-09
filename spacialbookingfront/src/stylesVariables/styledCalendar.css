@@ -130,4 +130,15 @@
   .react-calendar--selectRange .react-calendar__tile--hover {
     background-color:  rgba(12, 52, 131,0.5);
   }
+
+  @media screen and (max-width:992px){
+    .react-calendar--doubleView {
+      margin: 0;
+    }
+    .react-calendar--doubleView .react-calendar__viewContainer {
+      width: 85vw;
+    }
+
+   
+  }
   

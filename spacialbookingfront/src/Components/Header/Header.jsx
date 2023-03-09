@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Header.module.css"
-import logo from "../../assets/img/ovniricLogoLight.png";
-import lema from "../../assets/img/ovniricLemaLight.png"
-import {FaBars,FaTimes} from "react-icons/fa"
+import logoLight from "../../assets/img/ovniricLogoLight.png";
+import lemaLight from "../../assets/img/ovniricLemaLight.png";
+import logoDark from "../../assets/img/ovniricLogoLight.png";
+import lemaDark from "../../assets/img/ovniricLemaLight.png";
+import {FaBars,FaTimes} from "react-icons/fa";
 import { GlobalContext } from "../globalState/GlobalState";
 import { Link } from "react-router-dom"
 import '../../stylesVariables/variables.css'
@@ -66,8 +68,8 @@ async function logout() {
  
     return <>
     <header className={styles.header}>
-      <Link to="/" className={styles.logo} onClick={handleLogo}><img  className={styles.logo} src={logo} alt="Logo Ovniric" /></Link>
-      <Link to="/" className={styles.lema} onClick={handleLogo}><img  className={styles.lema} src={lema} alt="Lema Ovniric" /></Link>
+      <Link to="/" className={styles.logo} onClick={handleLogo}><img  className={styles.logo} src={logoLight} alt="Logo Ovniric" /></Link>
+      <Link to="/" className={styles.lema} onClick={handleLogo}><img  className={styles.lema} src={lemaLight} alt="Lema Ovniric" /></Link>
       {isLoged ?
            <>
               <div className={styles.avtContainer}>
@@ -88,12 +90,12 @@ async function logout() {
           
         </>
         }
-        <span  className={styles.menu} onClick={handleMenu}>{isOpen ? <FaTimes/> : <FaBars/>}</span>
+        <span  className={styles.menu} onClick={handleMenu}>{isOpen ? <FaTimes className={styles.menuIcon}/> : <FaBars />}</span>
       {isOpen ? <div className={styles.menuarea}>
          {isLoged ? 
         <>
-          <div className={` ${styles.hamburgueravatar}`}></div>
-          <a href="#" className={` ${styles.hamburguerusername}`}>username</a>
+          <div className={` ${styles.hamburgueravatar}`}> <span className={styles.avtSpanHamburguer}>{`${user.firstname} ${user.lastname}`.split(" ").reduce(( accum,current) => {return accum + current[0].toUpperCase() + "."},"")}</span> </div>
+          <a href="#" className={` ${styles.hamburguerusername}`}>{user.firstname}</a>
           <a href="#" className={styles.hamburguerlogout}>Log out</a>
         </> :
         <>
@@ -102,8 +104,9 @@ async function logout() {
         </>  
         }
         </div> : 
-        <>
-        </>
+       <></>
+        
+        
         }
        
        </header>

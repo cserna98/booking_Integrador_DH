@@ -85,3 +85,17 @@
     font-size: 20px;
     padding: 0.5vw;
 }
+
+@media screen and (max-width:992px) {
+    .form{
+        width: 85vw;
+    }
+    .calendarContainer{
+        width: 85vw;
+    }
+
+    .letterP{
+        width: 85vw;
+    }
+    
+}

@@ -73,3 +73,27 @@
      background-color:  #a2b6df ;
      color:#0c3483 ;
 }
+
+
+@media screen and (max-width:992px) {
+    .mainContainer{
+        width: 85vw;
+        justify-self: center;
+    }
+    .reservationbtn{
+        width: 80vw;
+    }
+    .checkInOut{
+        font-weight: 700;
+        font-size: 14px;
+    }
+    .location{
+        font-size: 14px;
+        font-weight: 600;
+    }
+    .category{
+        font-weight: 600;
+        font-size: 14px;
+    }
+    
+}
