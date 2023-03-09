@@ -48,32 +48,34 @@ public class Product {
 
     @Column(name = "descripcion")
     private String description;
-    @Column(name = "disponibilidad")
-    private Boolean availability;
 
     @Column(name = "politica", length = 500)
     private String policy;
+
+    @Column(name = "reservaciones_maximas")
+    private Integer maxReservations;
+
 
 
 
     //CONSTRUCTORS
 
 
-    public Product(Long idProduct, String title, Integer altitude, String description, Boolean availability, String policy) {
+    public Product(Long idProduct, String title, Location locations, Integer altitude, String description, String policy, Integer maxReservations) {
         this.idProduct = idProduct;
-        this.title = title;
-        this.altitude = altitude;
-        this.description = description;
-        this.availability = availability;
-        this.policy = policy;
-    }
-
-    public Product(String title, Location locations, Integer altitude, String description, Boolean availability, String policy) {
         this.title = title;
         this.locations = locations;
         this.altitude = altitude;
         this.description = description;
-        this.availability = availability;
+        this.policy = policy;
+        this.maxReservations = maxReservations;
+    }
+
+    public Product(String title, Location locations, Integer altitude, String description, String policy) {
+        this.title = title;
+        this.locations = locations;
+        this.altitude = altitude;
+        this.description = description;
         this.policy = policy;
     }
 
@@ -108,13 +110,14 @@ public class Product {
         this.description = description;
     }
 
-    public Boolean getAvailability() {
-        return availability;
+    public Integer getMaxReservations() {
+        return maxReservations;
     }
 
-    public void setAvailability(Boolean availability) {
-        this.availability = availability;
+    public void setMaxReservations(Integer maxReservations) {
+        this.maxReservations = maxReservations;
     }
+
 
     public String getPolicy() {
         return policy;

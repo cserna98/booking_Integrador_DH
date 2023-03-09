@@ -37,30 +37,41 @@ public class ReservationController {
     @PostMapping
     @Transactional
     public ResponseEntity<ReservationDTO> createReservation(@RequestBody ReservationDTO reservationDTO){
-       Reservation reservation = new Reservation();
+        try{
+            Reservation reservation = new Reservation();
 
-        Optional<User> optionalUser = userService.getUser(reservationDTO.getUserId());
-        if(optionalUser.isPresent()) {
-            User user = optionalUser.get();
-            reservation.setUser(user);
-            reservationDTO.setUserId(user.getId());
+            Optional<User> optionalUser = userService.getUser(reservationDTO.getUserId());
+            if (optionalUser.isPresent()) {
+                User user = optionalUser.get();
+                reservation.setUser(user);
+                reservationDTO.setUserId(user.getId());
+            }
+
+            Optional<Product> optionalProduct = productService.searchProduct(reservationDTO.getProductId());
+            if (optionalProduct.isPresent()) {
+                Product product = optionalProduct.get();
+                reservation.setProduct(product);
+
+                int numReservations = reservationRepository.countByProductAndStartDate(product, reservationDTO.getStartDate());
+                if (numReservations >= product.getMaxReservations()) {
+                    return ResponseEntity.status(HttpStatus.CONFLICT)
+                            .body(null);
+                }
+            }
+
+
+            LocalTime startHour = LocalTime.parse(reservationDTO.getStartHour(), DateTimeFormatter.ofPattern("HH:mm:ss"));
+            reservation.setStartHour(startHour);
+            reservation.setStartDate(reservationDTO.getStartDate());
+            reservation.setEndDate(reservationDTO.getEndDate());
+
+            reservationRepository.save(reservation);
+
+            reservationDTO.setId(reservation.getIdReservation());
+            return ResponseEntity.status(HttpStatus.CREATED).body(reservationDTO);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
-
-        Optional<Product> optionalProduct = productService.searchProduct(reservationDTO.getProductId());
-        if(optionalProduct.isPresent()) {
-            Product product = optionalProduct.get();
-            reservation.setProduct(product);
-        }
-
-        LocalTime startHour =  LocalTime.parse(reservationDTO.getStartHour(), DateTimeFormatter.ofPattern("HH:mm:ss"));
-        reservation.setStartHour(startHour);
-        reservation.setStartDate(reservationDTO.getStartDate());
-        reservation.setEndDate(reservationDTO.getEndDate());
-
-        reservationRepository.save(reservation);
-
-        reservationDTO.setId(reservation.getIdReservation());
-        return ResponseEntity.status(HttpStatus.CREATED).body(reservationDTO);
 //        ReservationDTO reservation = reservationService.createReservation(reservationDTO);
 //        return ResponseEntity.status(HttpStatus.CREATED).body(reservation);
     }

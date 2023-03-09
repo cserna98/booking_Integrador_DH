@@ -100,7 +100,7 @@ public class ProductController {
         product.setTitle(productDTO.getTitle());
         product.setAltitude(productDTO.getAltitude());
         product.setDescription(productDTO.getDescription());
-        product.setAvailability(productDTO.getAvailability());
+        product.setMaxReservations(productDTO.getMaxReservations());
         product.setPolicy(productDTO.getPolicy());
 
         productRepository.save(product);
