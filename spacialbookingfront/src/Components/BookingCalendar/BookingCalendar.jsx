@@ -10,6 +10,7 @@ import { GlobalContext } from "../globalState/GlobalState";
 function BookingCalendar(props){
 
     const {isLoged,loginModal,setLoginModal}= GlobalContext();
+    const {emailUser, user,startDate, setStartDate,endDate, setEndDate}= GlobalContext();
     const {id} = useParams();
     const [booking, setBooking] = useState();
     const urlBooking = `http://18.220.89.28:8080/api/reservaciones/producto/${id}`;
@@ -26,6 +27,15 @@ function BookingCalendar(props){
     function onChange(nextValue){
         setValue(nextValue);
     }
+
+
+    function onChangeDate(date){
+        const formattedDateRange = date.map(date => date.toISOString().slice(0, 10));
+        setStartDate(formattedDateRange[0])
+        setEndDate(formattedDateRange[1])
+        console.log(formattedDateRange); // ["31/05/2023", "28/06/2023"]
+      }
+  
 
     async function getData(url) {
         const data = await fetch(url);
@@ -59,19 +69,18 @@ function BookingCalendar(props){
         getData(urlBooking);
     }, [])
 
+
     return(
     
     <div className={styles.calendarDouble}>
     
         <div className={styles.bookingCalendar}>
-            <div className={styles.calendarSelect}>
-                <Calendar  onChange={onChange} value={value} showDoubleView={true} calendarType={"US"} selectRange={true} minDate={new Date(Date.now())} tileDisabled={validateBooking}>
+
+            <div className={styles.calendarContainer}>
+                <Calendar onChange={onChangeDate}  minDate={new Date(Date.now())} selectRange={true}  showDoubleView={true} calendarType={"US"}>
                 </Calendar>
             </div>
-            <div className={styles.calendarMobile}>
-                <Calendar  onChange={onChange} value={value}  calendarType={"US"} selectRange={true} minDate={new Date(Date.now())}>
-                </Calendar>
-                </div>
+
             <div className={styles.sectionBooking}>
                 <p className={styles.letter}>A un clic de vivir tu experiencia espacial</p>
                 <Link to={isLoged ? `/reservations/${props.idProduct}`: pleaseLogin() }>

@@ -91,7 +91,7 @@ label::before {
 }
 
 label {
-    color: white !important;
+    color: var(--color);
     font-weight: bold;
 }
 

@@ -17,15 +17,12 @@ const Reservations = () => {
     const [date, setDate] = useState(new Date());
     const [dataTime,setDataTime] = useState();
     const [time,setTime] = useState();
-    const {emailUser, user}= GlobalContext();
-    const [startDate, setStartDate] = useState();
-    const [endDate, setEndDate] = useState();
+    const {emailUser, user,startDate, setStartDate,endDate, setEndDate}= GlobalContext();
     const navigate = useNavigate();
 
     const [userCopy, setUserCopy] = useState();
     const [city,setCity] = useState();
     const [correctBooking,setCorrectBooking] = useState(false);
-    const [dataUsers, setDataUsers] = useState()
     const {id} = useParams();
     // const [datos, setDatos] = useState({
     //     city: "datos"
@@ -43,7 +40,7 @@ const Reservations = () => {
       function handleClick(){
 
         console.log("click working")
-        if(city && date && time){
+        if(city && startDate && endDate && time){
             setReservation({
                 startHour: time,
                 startDate: startDate,
@@ -51,7 +48,6 @@ const Reservations = () => {
                 productId: productId,
                 userId: user.id
               })
-            alert("objeto ennviado con exito");
             console.log(time)
         } else{
             alert("Lamentablemente la reserva no ha podido realizarse. Por favor, intente más tarde")
@@ -158,8 +154,6 @@ const Reservations = () => {
              handleClick = {handleClick} 
              />
          </section>
-         <Header />
-
          <Policies className={styles.policiesContainer} />
          <Footer />
        </>

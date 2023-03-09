@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import styles from "./Card.module.css";
 import { GlobalContext } from "../globalState/GlobalState";
 
-import '../../stylesVariables/variables.css'
 
 
 import { Link, useNavigate } from "react-router-dom";

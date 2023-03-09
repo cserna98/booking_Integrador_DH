@@ -14,19 +14,19 @@
 .title{
     margin: 0;
     font-size: 3vh;
-    color: azure;
+   color: var(--color);
 }
 
 .category{
     font-size: 2vh;
     font-weight: 500;
-    color: azure;
+    color: var(--color);
 }
 
 .goBack{
     font-size: 5vh;
     align-self: center;
-    color: azure;
+    color: var(--color);
 }
 
 .goBack :hover{

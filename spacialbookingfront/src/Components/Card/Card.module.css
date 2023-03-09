@@ -27,12 +27,12 @@
     }
     .container{
         grid-column: 3/9;
-        width: 80vw;
+        width: 90vw;
         height: 35vw;
      }
     
      .img{
-        width: 40vw;
+        width: 45vw;
         height: 35vw;
         border-radius: 0.5rem;
     }
@@ -49,10 +49,7 @@
   }
 
 .container{
-
-    background-color: #E4E4E1;
-    background-image: radial-gradient(at top center, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0.03) 100%), linear-gradient(to top, rgba(255,255,255,0.1) 0%, rgba(143,152,157,0.60) 100%);
-    background-blend-mode: normal, multiply;
+    background-image: var(--backImage);
     display: flex;
     flex-direction: row;
     margin: 2vw;
@@ -83,12 +80,12 @@
   padding-bottom: 2vw;
   font-size: 1em;
   font-weight: 600;
-  color: snow;
+  color: var(--color);
 }
 
 .category{
     font-size: 0.9em;
-    color: snow;
+    color: var(--color);
     font-weight: 400;
     margin-right: 2vw;
     
@@ -109,7 +106,7 @@
     padding: 0;
     margin-top: 0.3rem;
     margin-bottom: 0;
-    color:  snow;
+    color:  var(--color)
 }
 
 .viewMore{

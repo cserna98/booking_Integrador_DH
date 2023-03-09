@@ -1,9 +1,15 @@
 
 .registerTemplate{
-    background-color: #ccc;
+    background-color: transparent;
+    background-image: var(--backImage);
+    box-shadow: rgba(107, 140, 206, 0.4) -5px 5px, rgba(107, 140, 206, 0.3) -10px 10px, rgba(107, 140, 206, 0.2) -15px 15px, rgba(107, 140, 206, 0.1) -20px 20px, rgba(107, 140, 206, 0.05) -25px 25px, rgba(107, 140, 206, 0.4) 5px 5px, rgba(107, 140, 206, 0.3) 10px 10px, rgba(107, 140, 206, 0.2) 15px 15px, rgba(107, 140, 206, 0.1) 20px 20px, rgba(107, 140, 206, 0.05) 25px 25px;
+    width: 30vw;
+    margin: auto;
+    margin-top: 1vw;
+    height: 80vh;
     display: grid;
+    border-radius: 10px;
     grid-template-rows: 5% 95% ;
-    height: auto;
     grid-template-columns: repeat(1,1fr);
 }
 
@@ -48,20 +54,22 @@
 
 
 .buttonSignup {
-    background-color:#1D2951;
-    color: white;
-    width: 22vw;
-    height: 50px;
-    font-weight: 600;
-    border-radius: 0.5rem;
-    border: solid  #4C3B71 3px;
-    margin-top: 20px;
+    color: azure;
+    background-color: transparent;
+    width: 15vw;
+    height: 33px;
+    border-radius: 10px;
+    margin-top: 1vw;
+    font-weight: 900;
+    background-color: #0c3483;
+    border: solid 2px #0c3483;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
 .buttonSignup:hover{
-    background-color: #4C3B71B3;
-}
-
+    background-color:  #a2b6df ;
+    color:#0c3483 ;
+} 
 
 
 
