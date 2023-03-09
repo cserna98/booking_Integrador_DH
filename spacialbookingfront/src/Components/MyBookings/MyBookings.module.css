@@ -24,7 +24,7 @@
 }
 
 .titleP {
-    color: white;
+    color: var(--color);
     text-shadow: 1.7px 1px 1px rgb(104, 104, 240);
     margin-top: 3rem;
     text-align: center;
@@ -47,25 +47,25 @@
 
 .category{
     font-size: max(0.8rem, min(12px));
-    color: azure;
+    color: var(--color);
     font-weight: 400;
     padding-left: 1vw;
 }
 
 .location{
     padding-left: 1.05vw;
-    color: azure;
+    color: var(--color);
 }
 .location{
     display: block;
 }
 .cardTitle{
-    color: azure;
+    color: var(--color);
     padding-left: 1vw;
 }
 
 .checkInOut{
-    color: azure;
+    color: var(--color);
     padding-top: 2vw;
     padding-left: 1vw;
 }
