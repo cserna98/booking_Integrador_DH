@@ -10,7 +10,7 @@ import { GlobalContext } from "../globalState/GlobalState";
 function SearchForm(){
 
     const {setUrl,url}= GlobalContext()
-    const [actualValue, setActualvalue] = useState(""); 
+    const [actualValue, setActualvalue] = useState(null); 
     const [renderList, SetRenderList] = useState(false);
     const [filteredPlaces, setFilteredPlaces] = useState([]);
     const [places, setPlaces] = useState([]);
@@ -46,21 +46,18 @@ function SearchForm(){
 
 
     function handleSubmit(e){
-        const exist = places.filter((place) =>{
-            if(place.place.includes(actualValue)){
-                return true
-            }
-        } );
-        console.log(places)
+        console.log(actualValue)
         e.preventDefault()
-        if(startDate && endDate && exist){
-            console.log("holi")
-            setUrl(`http://18.220.89.28:8080/api/productos/disponibles/${actualValue}/${startDate}/${endDate}`)
+        if(startDate && endDate && !actualValue ){
+            console.log("entro fechas")
+            setUrl(`http://18.220.89.28:8080/api/productos/disponible/${startDate}/${endDate}`)
             console.log(url)            
-        }else if (startDate && endDate && !exist){
-            setUrl(`http://18.220.89.28:8080/api/productos/disponibles/${startDate}/${endDate}`)
+        }else if (startDate && endDate ){
+            console.log("entro 3")
+            setUrl(`http://18.220.89.28:8080/api/productos/disponibles/${actualValue}/${startDate}/${endDate}`)
         }
         else{
+            console.log("entro solo location")
             setUrl(`http://18.220.89.28:8080/api/productos/localizacion/${actualValue}`)
         }
 
