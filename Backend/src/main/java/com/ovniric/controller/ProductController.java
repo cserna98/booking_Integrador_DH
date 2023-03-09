@@ -169,7 +169,7 @@ public class ProductController {
 
     @GetMapping("/random")
     public List<Product> getRandomProducts() {
-        return productService.getRandomProducts(5);
+        return productService.getRandomProducts(8);
     }
 
     @GetMapping ("/disponibles/{location}/{startDate}/{endDate}")
