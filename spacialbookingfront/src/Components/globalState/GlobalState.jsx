@@ -24,7 +24,6 @@ export const ContextProvider = ({children}) => {
     const [endDate, setEndDate] = useState();
 
     
-
     const [displayedProducts, setDisplayedProducts] = useState([]);
     
 
@@ -107,15 +106,17 @@ export const ContextProvider = ({children}) => {
       loginModal,
       setLoginModal,
       emailUser,
+
       setEmailUser,
       fetchDataUser,
       getToken,
       role,
       setRole,
       startDate,
-       setStartDate,
-       endDate,
-        setEndDate
+      setStartDate,
+      endDate,
+      setEndDate,
+      setEmailUser
           }}>
         {children}
       </ContextGlobal.Provider>

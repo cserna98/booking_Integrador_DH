@@ -37,10 +37,10 @@ function BookingCalendar(props){
     <div className={styles.calendarDouble}>
     
         <div className={styles.bookingCalendar}>
-        <div className={styles.calendarContainer}>
+            <div className={styles.calendarContainer}>
                 <Calendar onChange={onChangeDate}  minDate={new Date(Date.now())} selectRange={true}  showDoubleView={true} calendarType={"US"}>
                 </Calendar>
-        </div>
+            </div>
             <div className={styles.sectionBooking}>
                 <p className={styles.letter}>A un clic de vivir tu experiencia espacial</p>
                 <Link to={isLoged ? `/reservations/${props.idProduct}`: pleaseLogin() }>

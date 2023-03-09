@@ -6,9 +6,15 @@
 }
 
 .recomendations{
-    color: azure;
+    color: var(--color);
     margin: 1vw;
     padding-left: 1vw;
     margin-bottom: 0;
+}
+
+@media screen and (max-width: 590px){
+   .container{
+    padding-bottom:4vw
+   } 
 }
 

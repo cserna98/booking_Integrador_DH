@@ -48,7 +48,6 @@ const Reservations = () => {
                 productId: productId,
                 userId: user.id
               })
-            alert("objeto ennviado con exito");
             console.log(time)
         } else{
             alert("Lamentablemente la reserva no ha podido realizarse. Por favor, intente más tarde")
@@ -155,8 +154,6 @@ const Reservations = () => {
              handleClick = {handleClick} 
              />
          </section>
-         <Header />
-
          <Policies className={styles.policiesContainer} />
          <Footer />
        </>

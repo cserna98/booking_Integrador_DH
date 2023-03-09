@@ -1,11 +1,11 @@
 import  {useState, useEffect, useRef} from 'react';
 import React from 'react'; 
-import logolocation from '../../assets/img/Vector.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Calendar from "react-calendar";
 import {FaSearchLocation} from "react-icons/fa"
 import styles from "./SearchForm.module.css"
 import { GlobalContext } from "../globalState/GlobalState";
+import logolocation from '../../assets/img/Vector.png'
 
 function SearchForm(){
 

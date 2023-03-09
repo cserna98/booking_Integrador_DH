@@ -5,7 +5,8 @@ import Calendar from "react-calendar";
 import styles from "./BookingForm.module.css"
 import dayjs from "dayjs";
 import { GlobalContext } from "../globalState/GlobalState";
-import "../../stylesVariables/variables.css"
+import "../../stylesVariables/styledCalendar.css"
+
 
 
 

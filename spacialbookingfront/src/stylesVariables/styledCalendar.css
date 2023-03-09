@@ -18,7 +18,7 @@
   .react-calendar--doubleView .react-calendar__viewContainer > * {
     width: 50%;
     margin: 0.5em;
-    border: solid azure 1px;
+    border: solid var(--color) 1px;
     border-radius: 7px ;
   }
   .react-calendar,
@@ -33,7 +33,7 @@
     margin: 0;
     border: 0;
     outline: none;
-    color: azure;
+    color: var(--color);
     font-size: 900;
   }
   .react-calendar button:enabled:hover {
@@ -59,14 +59,14 @@
   .react-calendar__navigation button:enabled:hover,
   .react-calendar__navigation button:enabled:focus {
     background-color: rgba(12, 52, 131,0.5);
-    color: azure;
+    color: var(--color);
   }
   .react-calendar__month-view__weekdays {
     text-align: center;
     text-transform: uppercase;
     font-weight:800;
     font-size: 0.75em;
-    color:azure;
+    color:var(--color);
   }
   .react-calendar__month-view__weekdays__weekday {
     padding: 0.5em;
@@ -129,5 +129,16 @@
   }
   .react-calendar--selectRange .react-calendar__tile--hover {
     background-color:  rgba(12, 52, 131,0.5);
+  }
+
+  @media screen and (max-width:992px){
+    .react-calendar--doubleView {
+      margin: 0;
+    }
+    .react-calendar--doubleView .react-calendar__viewContainer {
+      width: 85vw;
+    }
+
+   
   }
   

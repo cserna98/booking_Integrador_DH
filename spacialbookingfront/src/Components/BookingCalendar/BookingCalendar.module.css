@@ -6,7 +6,7 @@
 
 .letter{
     font-weight: bold;
-    color: azure;
+    color: var(--color);
 }
 
 .sectionBooking{
@@ -41,7 +41,7 @@
 .calendarDouble h2{
     position: relative;
     left: 17%;
-    color: azure;
+    color: var(--color);
 }
 
 .calendarMobile {
@@ -49,14 +49,13 @@
 }
 
 /* -------------------Tablet---------------- */
-@media only screen and (max-width: 1400px) {
+@media only screen and (max-width: 992px) {
     .bookingCalendar{
         display: block;
     }
 
     .sectionBooking {
-        display: flex;
-        padding: 1rem 0;
+        display: block;
     }
 
     .sectionBooking p {
@@ -65,21 +64,23 @@
 
     .sectionBooking button {
         position: relative;
-        right: 20%;
+        right: 1%;
         height: 2rem;
-        width: 15%;
+        width: 50%;
+        margin: 1%;
     }
-
-
+ 
 }
 
 /* -------------Mobile----------- */
-@media only screen and (max-width: 481px) {
+@media only screen and (max-width: 590px) {
+    
     .calendarSelect {
         display: none;
     }
     .calendarMobile {
         display: block;
+        margin: auto;
     }
 
     .sectionBooking {
