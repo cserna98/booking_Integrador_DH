@@ -16,11 +16,18 @@
     transform: scale(1.01);
 }
 
+.containerBooking{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr));
+    grid-auto-flow: dense;
+    justify-items: center;
+}
 
-h1 {
+.titleP {
     color: white;
     text-shadow: 1.7px 1px 1px rgb(104, 104, 240);
     margin-top: 3rem;
+    text-align: center;
 }
 
 .img{

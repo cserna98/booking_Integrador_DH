@@ -58,7 +58,7 @@ public class ProductService {
         result.setImageUrl(product.getImages().stream().map(Image::getImageUrl).collect(Collectors.toSet()));
         result.setFeatureTitle(product.getFeatures().stream().map(Feature::getTitle).collect(Collectors.toSet()));
         result.setDescription(product.getDescription());
-        result.setAvailability(product.getAvailability());
+        result.setMaxReservations(product.getMaxReservations());
         result.setPolicy(product.getPolicy());
         return result;
 
@@ -94,7 +94,7 @@ public class ProductService {
         result.setImages(images);
         result.setFeatures(features);
         result.setDescription(productDTO.getDescription());
-        result.setAvailability(productDTO.getAvailability());
+        result.setMaxReservations(productDTO.getMaxReservations());
         result.setPolicy(productDTO.getPolicy());
 
         return result;

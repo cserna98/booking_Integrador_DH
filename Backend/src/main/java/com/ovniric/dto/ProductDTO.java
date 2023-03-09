@@ -17,7 +17,7 @@ public class ProductDTO {
     private Set<String> imageUrl;
     private Set<String> featureTitle;
     private String description;
-    private Boolean availability;
+    private Integer maxReservations;
     private String policy;
 
 
