@@ -25,8 +25,18 @@ public class SecurityConfiguration {
                 .csrf()//solicitudes necesitan enviar un token csrf
                 .disable()//desabilito la proteccion csrf
                 .authorizeHttpRequests()//reglas de autorización
-                .requestMatchers("/api/v1/auth/**", "/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html", "/api/**")//todas las solicitudes que empiezan con este endpoint no necesitan ser autenticadas
+                .requestMatchers("/api/v1/auth/**", "/swagger-ui/**", "/v3/api-docs/**",
+                        "/swagger-ui.html")//todas las solicitudes que empiezan con este endpoint no necesitan ser autenticadas
                 .permitAll()//todas las permitidas
+                .requestMatchers(HttpMethod.GET, "/api/productos/**","/api/localizaciones/**", "/api/imagenes/**",
+                        "/api/categorias/**", "/api/caracteristicas/**")
+                .permitAll()
+                .requestMatchers(HttpMethod.POST, "/api/reservaciones")
+                .hasAnyAuthority("ADMIN", "USER")
+                .requestMatchers(HttpMethod.GET, "/api/reservaciones/**")
+                .hasAnyAuthority("USER", "ADMIN")
+                .requestMatchers("/api/**")
+                .hasAuthority("ADMIN")
                 .anyRequest() //request que necesitan ser autenticadas
                 .authenticated()//indica que necesitan ser autenticadas
                 .and()
