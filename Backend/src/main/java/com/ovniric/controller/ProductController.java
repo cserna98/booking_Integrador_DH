@@ -129,17 +129,82 @@ public class ProductController {
         }
     }
 
-    @PutMapping
-    public ResponseEntity<String> updateProduct(@RequestBody ProductDTO productDTO){
-        Optional<Product> productToUpdate = productService.searchProduct(productDTO.getId());
-        if(productToUpdate.isPresent()) {
-            productService.updateProduct(productDTO);
-            return ResponseEntity.ok("The product has been updated");
-        }else {
-            return ResponseEntity.badRequest().body("The product has not been updated because it is not in " +
-                    "the list of products");
-        }
-    }
+//    @PutMapping
+//    public ResponseEntity<String> updateProduct(@RequestBody ProductDTO productDTO){
+//        Optional<Product> productToUpdate = productService.searchProduct(productDTO.getId());
+//        if(productToUpdate.isPresent()) {
+//            productService.updateProduct(productDTO);
+//            return ResponseEntity.ok("The product has been updated");
+//        }else {
+//            return ResponseEntity.badRequest().body("The product has not been updated because it is not in " +
+//                    "the list of products");
+//        }
+//    }
+
+//    @PutMapping("/{id}")
+//    @Transactional
+//    public ResponseEntity<ProductDTO> updateProduct(@PathVariable Long id, @RequestBody ProductDTO productDTO) {
+//        Optional<Product> optionalProduct = productRepository.findById(id);
+//
+//        if(optionalProduct.isPresent()) {
+//            Product product = optionalProduct.get();
+//
+//            Optional<Category> optionalCategory = categoryService.getCategory(productDTO.getCategoryId());
+//            if(optionalCategory.isPresent()) {
+//                Category category = optionalCategory.get();
+//                product.setCategory(category);
+//            }
+//
+//            Optional<Location> locationOptional = locationService.searchLocation(productDTO.getLocationId());
+//            if(locationOptional.isPresent()) {
+//                Location location = locationOptional.get();
+//                product.setLocations(location);
+//            }
+//
+//            Set<Feature> existingFeatures = new HashSet<>(featureService.searchAllFeatures());
+//            Set<Feature> features = new HashSet<>();
+//            for(String featureTitle : productDTO.getFeatureTitle()){
+//                Optional<Feature> optionalFeature = existingFeatures.stream()
+//                        .filter(feat -> feat.getTitle().equalsIgnoreCase(featureTitle))
+//                        .findFirst();
+//
+//                if(optionalFeature.isPresent()){
+//                    features.add(optionalFeature.get());
+//                }else {
+//                    Feature feature = new Feature();
+//                    feature.setTitle(featureTitle);
+//                    featureService.createFeature(feature);
+//                    features.add(feature);
+//                }
+//            }
+//
+//            product.setFeatures(features);
+//
+//            List<Image> images = new ArrayList<>();
+//            for(String imageUrl : productDTO.getImageUrl()){
+//                Image image = new Image();
+//                image.setImageUrl(imageUrl);
+//                image.setProduct(product);
+//                image.setImageTitle(product.getTitle());
+//                images.add(image);
+//            }
+//            product.setImages(images);
+//
+//            product.setTitle(productDTO.getTitle());
+//            product.setAltitude(productDTO.getAltitude());
+//            product.setDescription(productDTO.getDescription());
+//            product.setMaxReservations(productDTO.getMaxReservations());
+//            product.setPolicy(productDTO.getPolicy());
+//
+//            productRepository.save(product);
+//
+//            productDTO.setId(product.getIdProduct());
+//            return ResponseEntity.ok(productDTO);
+//        } else {
+//            return ResponseEntity.notFound().build();
+//        }
+//    }
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteProduct(@PathVariable Long id) {

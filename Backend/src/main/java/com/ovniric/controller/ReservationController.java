@@ -72,8 +72,7 @@ public class ReservationController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
-//        ReservationDTO reservation = reservationService.createReservation(reservationDTO);
-//        return ResponseEntity.status(HttpStatus.CREATED).body(reservation);
+
     }
 
 
